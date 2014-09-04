@@ -4,13 +4,14 @@ Space-Shooter
 A top down scrolling space action game!
 
 Requires:
-Cmake (version 2.8 or greater)
-SDL2
+* Cmake (version 2.8 or greater)
+* SDL2
 
 How to:
-git clone
-cd build
-cmake .. && make
+* git clone
+* mkdir build
+* cd build
+* cmake .. && make
 
 
 
