@@ -3,6 +3,8 @@
 
 #include <SDL2/SDL.h>
 
+#include "Game.h"
+
 //Screen dimension constants
 const int SCREEN_WIDTH = 800;
 const int SCREEN_HEIGHT = 600;
@@ -37,31 +39,13 @@ int main(int argc, char* args[])
 		//The surface contained by the window
 		SDL_Surface* screenSurface = SDL_GetWindowSurface( window );
 
+		Game game;
+
+		game.init();
+
 	    while(!quit)
 	    {
-			/* Poll for events */
-			while(SDL_PollEvent(&event))
-			{
-			    
-			    switch(event.type)
-			    {
-			        /* Keyboard event */
-			        /* Pass the event data onto PrintKeyInfo() */
-			        case SDL_KEYDOWN:
-			        	if (event.key.keysym.sym == SDLK_ESCAPE)
-			        	{
-			        		quit = true;
-			        	}
-			            break;
-			        /* SDL_QUIT event (window close) */
-			        case SDL_QUIT:
-			            quit = true;
-			            break;
-			        default:
-			            break;
-			    }
-			}
-
+         quit = game.update();
 
 			//Fill the surface white
 			SDL_FillRect(screenSurface,
@@ -71,7 +55,7 @@ int main(int argc, char* args[])
 			//Update the surface
 			SDL_UpdateWindowSurface(window);
 
-			SDL_Delay(50);
+			SDL_Delay(1000);
 		}
 	}
 
