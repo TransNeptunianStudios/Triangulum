@@ -9,6 +9,7 @@ Requires:
 
 How to:
 * git clone
+* cd Space-Shooter
 * mkdir build
 * cd build
 * cmake .. && make
