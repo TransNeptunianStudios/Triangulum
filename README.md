@@ -19,4 +19,4 @@ Resources, current, future and potential:
 * CMake 3.0.1 - http://www.cmake.org/
 * OpenGl
 * sfxr- http://www.drpetter.se/project_sfxr.html
-* "Component" design inspired by github.com/richardlord/Ash
+* "Component" design inspired by https://github.com/richardlord/Ash
