@@ -19,6 +19,8 @@ add_executable(
    src/components/PlayerMotionControl.cpp
    include/components/Position.h
    src/components/Position.cpp
+   include/systems/BaseNode.h
+   src/systems/BaseNode.cpp
    include/systems/MovementSystem.h
    src/systems/MovementSystem.cpp
    include/systems/PlayerControlSystem.h
@@ -27,12 +29,14 @@ add_executable(
 
 add_definitions(-std=c++11)
 
-set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall")
-
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/modules/")
 
 find_package(SDL2 REQUIRED)
+find_package(OpenGL REQUIRED)
 
 include_directories(include ${SDL2_INCLUDE_DIR})
+include_directories(include ${OPENGL_INCLUDE_DIR})
 
-target_link_libraries(SpaceShooter ${SDL2_LIBRARY})
+target_link_libraries(SpaceShooter 
+				${SDL2_LIBRARY}
+				${OPENGL_LIBRARIES})

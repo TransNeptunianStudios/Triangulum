@@ -1,0 +1,5 @@
+<map id="Component" name="Component">
+<area shape="rect" id="node2" href="$class_motion.html" title="Motion" alt="" coords="5,80,67,107"/>
+<area shape="rect" id="node3" href="$class_player_motion_control.html" title="PlayerMotionControl" alt="" coords="91,80,231,107"/>
+<area shape="rect" id="node4" href="$class_position.html" title="Position" alt="" coords="256,80,325,107"/>
+</map>
