@@ -19,8 +19,6 @@ add_executable(
    src/components/PlayerMotionControl.cpp
    include/components/Position.h
    src/components/Position.cpp
-   include/systems/BaseNode.h
-   src/systems/BaseNode.cpp
    include/systems/MovementSystem.h
    src/systems/MovementSystem.cpp
    include/systems/PlayerControlSystem.h
@@ -28,6 +26,8 @@ add_executable(
 )
 
 add_definitions(-std=c++11)
+
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall")
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/modules/")
 

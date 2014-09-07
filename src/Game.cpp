@@ -15,6 +15,7 @@ Game::Game()
 
 void Game::init()
 {
+   createSpaceShip();
 }
 
 bool Game::update()
