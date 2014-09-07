@@ -13,5 +13,5 @@ void SpaceShipView::draw()
 
    // TODO: Draw a space ship!
 
-   std::cout << "Drawing space ship!" << std::endl;
+   std::cout << "Drawing space ship at" << std::endl;
 }

@@ -1,6 +1,7 @@
 #ifndef GAME_H
 #define GAME_H
 
+#include "SDL.h"
 #include "KeyHandler.h"
 #include "Actor.h"
 #include "systems/PlayerControlSystem.h"
@@ -15,7 +16,7 @@ public:
 
    void init();
 
-   bool update();
+   void run();
 
 private:
 
@@ -24,7 +25,21 @@ private:
       return m_currentActorId++; 
    }
 
+   void processInput();
+
+   void update();
+
+   void render();
+
+   void exit();
+
    void createSpaceShip();
+
+   // TBR
+   SDL_Window* m_pWindow;
+
+   // TBR
+   SDL_Surface* m_pSurface;
 
    std::vector<Actor> m_actors;
 
