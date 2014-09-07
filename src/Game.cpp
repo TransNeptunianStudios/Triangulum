@@ -56,10 +56,10 @@ void Game::createSpaceShip()
    spaceShip.addComponent(pSpaceShipMotionControl);
 
    Motion* pMotion = new Motion();
-   spaceShip.addComponent(pSpaceShipMotionControl);
+   spaceShip.addComponent(pMotion);
 
    Position* pPosition = new Position();
-   spaceShip.addComponent(pSpaceShipMotionControl);
+   spaceShip.addComponent(pPosition);
 
    m_playerControlSystem.addNode(PlayerControlSystem::Node(pSpaceShipMotionControl,
                                                            pMotion));
