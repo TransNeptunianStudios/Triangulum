@@ -3,9 +3,8 @@
 
 #include <tuple>
 
-#include "components/PlayerMotionControl.h"
-#include "components/Motion.h"
-
+class PlayerMotionControl;
+class Motion;
 class KeyHandler;
 
 class PlayerControlSystem

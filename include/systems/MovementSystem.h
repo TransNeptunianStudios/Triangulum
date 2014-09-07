@@ -1,11 +1,11 @@
 #ifndef MOVEMENTSYSTEM_H
 #define MOVEMENTSYSTEM_H
 
-#include <vector>
 #include <tuple>
+#include <vector>
 
-#include "components/Motion.h"
-#include "components/Position.h"
+class Motion;
+class Position;
 
 class MovementSystem
 {

@@ -1,6 +1,6 @@
 #include "systems/MovementSystem.h"
-
-#include <iostream>
+#include "components/Motion.h"
+#include "components/Position.h"
 
 MovementSystem::MovementSystem()
 : m_nodes()

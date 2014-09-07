@@ -13,16 +13,21 @@ add_executable(
    src/KeyHandler.cpp
    include/components/Component.h
    src/components/Component.cpp
+   include/components/Display.h
+   src/components/Display.cpp
    include/components/Motion.h
    src/components/Motion.cpp
    include/components/PlayerMotionControl.h
    src/components/PlayerMotionControl.cpp
    include/components/Position.h
    src/components/Position.cpp
-   include/systems/BaseNode.h
-   src/systems/BaseNode.cpp
+   include/graphics/IDrawable.h
+   include/graphics/SpaceShipView.h
+   src/graphics/SpaceShipView.cpp
    include/systems/MovementSystem.h
    src/systems/MovementSystem.cpp
+   include/systems/RenderSystem.h
+   src/systems/RenderSystem.cpp
    include/systems/PlayerControlSystem.h
    src/systems/PlayerControlSystem.cpp
 )

@@ -1,5 +1,7 @@
 
 #include "systems/PlayerControlSystem.h"
+#include "components/PlayerMotionControl.h"
+#include "components/Motion.h"
 #include "KeyHandler.h"
 
 // TBR

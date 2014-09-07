@@ -3,6 +3,8 @@
 #include "components/PlayerMotionControl.h"
 #include "components/Motion.h"
 #include "components/Position.h"
+#include "components/Display.h"
+#include "graphics/SpaceShipView.h"
 
 Game::Game()
 : m_actors()
@@ -10,6 +12,7 @@ Game::Game()
 , m_keyHandler()
 , m_playerControlSystem()
 , m_movementSystem()
+, m_renderSystem()
 {
 }
 
@@ -44,7 +47,10 @@ bool Game::update()
    }
 
    m_playerControlSystem.update(m_keyHandler);
+
    m_movementSystem.update(0.0);
+
+   m_renderSystem.update();
 
    return quit;
 }
@@ -53,6 +59,7 @@ void Game::createSpaceShip()
 {
    Actor spaceShip(getNextActorId());
 
+   // Create all components
    PlayerMotionControl* pSpaceShipMotionControl = new PlayerMotionControl();
    spaceShip.addComponent(pSpaceShipMotionControl);
 
@@ -62,10 +69,16 @@ void Game::createSpaceShip()
    Position* pPosition = new Position();
    spaceShip.addComponent(pPosition);
 
+   Display* pDisplay = new Display(new SpaceShipView());
+   spaceShip.addComponent(pDisplay);
+
+   // Register components to systems
    m_playerControlSystem.addNode(PlayerControlSystem::Node(pSpaceShipMotionControl,
                                                            pMotion));
 
    m_movementSystem.addNode(MovementSystem::Node(pMotion, pPosition));
+
+   m_renderSystem.addNode(RenderSystem::Node(pPosition, pDisplay));
 
    m_actors.push_back(spaceShip);
 }

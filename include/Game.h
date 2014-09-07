@@ -5,6 +5,7 @@
 #include "Actor.h"
 #include "systems/PlayerControlSystem.h"
 #include "systems/MovementSystem.h"
+#include "systems/RenderSystem.h"
 
 class Game
 {
@@ -34,6 +35,8 @@ private:
    PlayerControlSystem m_playerControlSystem;
 
    MovementSystem m_movementSystem;
+
+   RenderSystem m_renderSystem;
 };
 
 #endif
