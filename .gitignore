@@ -19,3 +19,10 @@
 *.exe
 *.out
 *.app
+
+# Other - Is this the way to do it?
+Space-Shooter.config
+Space-Shooter.creator
+Space-Shooter.files
+Space-Shooter.includes
+
