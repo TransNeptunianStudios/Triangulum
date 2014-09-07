@@ -19,8 +19,6 @@ add_executable(
    src/components/PlayerMotionControl.cpp
    include/components/Position.h
    src/components/Position.cpp
-   include/systems/BaseNode.h
-   src/systems/BaseNode.cpp
    include/systems/MovementSystem.h
    src/systems/MovementSystem.cpp
    include/systems/PlayerControlSystem.h
