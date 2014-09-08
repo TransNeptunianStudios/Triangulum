@@ -2,6 +2,7 @@
 #define MOTION_H
 
 #include "components/Component.h"
+#include "utils/Vector2.h"
 
 class Motion : public Component
 {
@@ -9,7 +10,7 @@ public:
 
    Motion();
 
-   float x, y;
+   Vector2 velocity;
 };
 
 #endif

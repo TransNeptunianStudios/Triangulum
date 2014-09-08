@@ -24,7 +24,7 @@ void RenderSystem::update()
       auto pDisplay = std::get<1>(node);
 
       glLoadIdentity();
-      glTranslatef(pPosition->x, pPosition->y, 0.f);
+      glTranslatef(pPosition->position.x(), pPosition->position.y(), 0.f);
 
       pDisplay->draw();
    }

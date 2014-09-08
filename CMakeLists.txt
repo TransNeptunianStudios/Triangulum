@@ -30,6 +30,8 @@ add_executable(
    src/systems/RenderSystem.cpp
    include/systems/PlayerControlSystem.h
    src/systems/PlayerControlSystem.cpp
+   include/utils/Vector2.h
+   src/utils/Vector2.cpp
 )
 
 add_definitions(-std=c++11)

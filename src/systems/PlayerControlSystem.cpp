@@ -21,15 +21,14 @@ void PlayerControlSystem::update(const KeyHandler& keyHandler)
 
    if (keyHandler.isPressed(SDLK_a))
    {
-      pMotion->x = -0.3f;
+      pMotion->velocity.x() = -0.3f;
    }
    else if (keyHandler.isPressed(SDLK_d))
    {
-      pMotion->x = 0.3f;
+      pMotion->velocity.x() = 0.3f;
    }
    else
    {
-       pMotion->x = 0.0f;
-       pMotion->y = 0.0f;
+       pMotion->velocity.x() = 0.0f;
    }
 }
