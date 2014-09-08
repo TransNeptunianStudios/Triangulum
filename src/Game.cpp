@@ -52,16 +52,16 @@ void Game::init()
       std::exit(EXIT_FAILURE);
    }
 
-   // Initlize OpenGl context to draw in
-   m_GLContext = SDL_GL_CreateContext(m_pWindow);
-   if(m_GLContext == 0)
-   {
-       std::cout << "OpenGl redner context could not be created: " << SDL_GetError() << std::endl;
+    // Initlize OpenGl context to draw in
+    m_GLContext = SDL_GL_CreateContext(m_pWindow);
+    if(m_GLContext == 0)
+    {
+        std::cout << "OpenGl redner context could not be created: " << SDL_GetError() << std::endl;
 
-       SDL_Quit();
+        SDL_Quit();
 
-       std::exit(EXIT_FAILURE);
-   }
+        std::exit(EXIT_FAILURE);
+    }
 
    createSpaceShip();
 }
@@ -125,7 +125,7 @@ void Game::update()
 
 void Game::render()
 {
-    glClearColor(0,1,0,1);
+    glClearColor(0,0,0,1); // Black
     glClear(GL_COLOR_BUFFER_BIT);
 
     m_renderSystem.update();

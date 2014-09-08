@@ -10,11 +10,9 @@ SpaceShipView::SpaceShipView()
 void SpaceShipView::draw()
 {
     // Draw spaceship
-    glBegin(GL_QUADS);              // Each set of 4 vertices form a quad
-       glColor3f(1.0f, 0.0f, 0.0f); // Red
-       glVertex2f(-0.5f, -0.5f);    // x, y
-       glVertex2f( 0.5f, -0.5f);
-       glVertex2f( 0.5f,  0.5f);
-       glVertex2f(-0.5f,  0.5f);
+    glBegin(GL_TRIANGLES);
+        glVertex3f( 0.0f, 0.1f, 0.0f);              // Top
+        glVertex3f(-0.1f,-0.1f, 0.0f);              // Bottom Left
+        glVertex3f( 0.1f,-0.1f, 0.0f);              // Bottom Right
     glEnd();
 }
