@@ -3,12 +3,10 @@ Space-Shooter
 
 A top down scrolling space action game!
 
-Doxygen docs:
-https://rawgit.com/RocSolidProductions/Space-Shooter/master/doxygen/html/index.html
-
 Requires:
 * CMake (version 2.8 or greater)
 * SDL2
+* OpenGL
 
 How to:
 * git clone
