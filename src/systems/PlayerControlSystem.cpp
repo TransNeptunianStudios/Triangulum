@@ -4,9 +4,6 @@
 #include "components/Motion.h"
 #include "KeyHandler.h"
 
-// TBR
-#include <iostream>
-
 PlayerControlSystem::PlayerControlSystem()
 : m_node()
 { 
@@ -24,10 +21,15 @@ void PlayerControlSystem::update(const KeyHandler& keyHandler)
 
    if (keyHandler.isPressed(SDLK_a))
    {
-      std::cout << "Moving left" << std::endl;
+      pMotion->x = -0.3f;
    }
    else if (keyHandler.isPressed(SDLK_d))
    {
-      std::cout << "Moving right" << std::endl;
+      pMotion->x = 0.3f;
+   }
+   else
+   {
+       pMotion->x = 0.0f;
+       pMotion->y = 0.0f;
    }
 }

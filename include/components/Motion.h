@@ -9,7 +9,7 @@ public:
 
    Motion();
 
-   int velocity[2];
+   float x, y;
 };
 
 #endif

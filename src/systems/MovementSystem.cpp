@@ -18,5 +18,8 @@ void MovementSystem::update(float dt)
    {
       auto pMotion = std::get<0>(node);
       auto pPostion = std::get<1>(node);
+
+      pPostion->x += pMotion->x * dt / 1000;
+      pPostion->y += pMotion->y * dt / 1000;
    }
 }

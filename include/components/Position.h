@@ -9,7 +9,7 @@ public:
 
    Position();  
 
-   int x, y;
+   float x, y;
 };
 
 #endif
