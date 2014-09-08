@@ -2,6 +2,7 @@
 #define GAME_H
 
 #include "SDL.h"
+#include <SDL_opengl.h>
 #include "KeyHandler.h"
 #include "Actor.h"
 #include "systems/PlayerControlSystem.h"
@@ -38,8 +39,8 @@ private:
    // TBR
    SDL_Window* m_pWindow;
 
-   // TBR
-   SDL_Surface* m_pSurface;
+   // TBR (from here)
+   SDL_GLContext m_GLContext;
 
    std::vector<Actor> m_actors;
 

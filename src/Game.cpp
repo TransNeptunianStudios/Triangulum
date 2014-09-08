@@ -17,7 +17,7 @@ static Uint32 MS_PER_UPDATE = 10.0;
 
 Game::Game()
 : m_pWindow(0)
-, m_pSurface(0)
+, m_GLContext(0)
 , m_actors()
 , m_currentActorId(0)
 , m_keyHandler()
@@ -30,7 +30,7 @@ Game::Game()
 void Game::init()
 {
    //Initialize SDL
-   if(SDL_Init(SDL_INIT_VIDEO ) < 0)
+   if(SDL_Init(SDL_INIT_EVERYTHING ) < 0) // I'm a coward
    {
       std::cout << "SDL could not initialize! SDL_Error: " << SDL_GetError() << std::endl;
       std::exit(EXIT_FAILURE);
@@ -41,7 +41,7 @@ void Game::init()
                                 SDL_WINDOWPOS_UNDEFINED,
                                 SCREEN_WIDTH,
                                 SCREEN_HEIGHT,
-                                SDL_WINDOW_SHOWN);
+                                SDL_WINDOW_SHOWN | SDL_WINDOW_OPENGL);
 
    if (m_pWindow == 0)
    {
@@ -52,14 +52,22 @@ void Game::init()
       std::exit(EXIT_FAILURE);
    }
 
-   m_pSurface = SDL_GetWindowSurface(m_pWindow);
+   // Initlize OpenGl context to draw in
+   m_GLContext = SDL_GL_CreateContext(m_pWindow);
+   if(m_GLContext == 0)
+   {
+       std::cout << "OpenGl redner context could not be created: " << SDL_GetError() << std::endl;
+
+       SDL_Quit();
+
+       std::exit(EXIT_FAILURE);
+   }
 
    createSpaceShip();
 }
 
 void Game::run()
 {
-
    Uint32 previousTime = SDL_GetTicks();
    Uint32 lag = 0;
 
@@ -117,20 +125,20 @@ void Game::update()
 
 void Game::render()
 {
-   m_renderSystem.update();
+    glClearColor(0,1,0,1);
+    glClear(GL_COLOR_BUFFER_BIT);
 
-   // TBR
-   //Fill the surface white
-   SDL_FillRect(m_pSurface,
-                NULL,
-                SDL_MapRGB(m_pSurface->format, 0x00, 0x00, 0x00));
+    m_renderSystem.update();
 
-   //Update the surface
-   SDL_UpdateWindowSurface(m_pWindow);
+    SDL_GL_SwapWindow(m_pWindow);
 }
 
 void Game::exit()
 {
+
+   //Destroy openGl context
+    SDL_GL_DeleteContext(m_GLContext);
+
    //Destroy window
    SDL_DestroyWindow(m_pWindow);
 

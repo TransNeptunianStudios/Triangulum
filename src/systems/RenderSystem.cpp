@@ -1,6 +1,10 @@
 #include "systems/RenderSystem.h"
 #include "components/Position.h"
 #include "components/Display.h"
+#include <SDL_opengl.h>
+
+// TBR
+#include <iostream>
 
 RenderSystem::RenderSystem()
 : m_nodes()
@@ -19,7 +23,7 @@ void RenderSystem::update()
       auto pPosition = std::get<0>(node);
       auto pDisplay = std::get<1>(node);
 
-      // TODO: Translate to position
+      //glTranslatef(pPosition->postion[0], pPosition->postion[1], 0.f);
 
       pDisplay->draw();
    }
