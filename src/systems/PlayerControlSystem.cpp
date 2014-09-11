@@ -29,5 +29,18 @@ void PlayerControlSystem::update(EntityManager &entities,
       {
          motion.get()->velocity.x() = 0.0f;
       }
+
+      if (m_pKeyHandler->isPressed(playerControl.get()->up))
+      {
+         motion.get()->velocity.y() = 0.3f;
+      }
+      else if (m_pKeyHandler->isPressed(playerControl.get()->down))
+      {
+         motion.get()->velocity.y() = -0.3f;
+      }
+      else
+      {
+         motion.get()->velocity.y() = 0.0f;
+      }
    }
 }

@@ -22,8 +22,7 @@ void RenderSystem::update(EntityManager &entities,
 
    Position::Handle position;
    Display::Handle display;
-   Animation::Handle animationState;
-   for (Entity entity : entities.entities_with_components(position, display, animationState))
+   for (Entity entity : entities.entities_with_components(position, display))
    {
       glLoadIdentity();
 

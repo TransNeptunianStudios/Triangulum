@@ -4,14 +4,9 @@
 #include "Game.h"
 #include "systems/PlayerControlSystem.h"
 #include "systems/MovementSystem.h"
+#include "systems/GunSystem.h"
 #include "systems/AnimationSystem.h"
 #include "systems/RenderSystem.h"
-#include "components/PlayerMotionControl.h"
-#include "components/Motion.h"
-#include "components/Position.h"
-#include "components/Animation.h"
-#include "components/Display.h"
-#include "graphics/SpaceShipView.h"
 
 //Screen dimension constants
 const int SCREEN_WIDTH = 800;
@@ -25,10 +20,11 @@ using namespace entityx;
 Game::Game()
 : m_pWindow(0)
 , m_GLContext(0)
-, m_keyHandler()
 , m_eventManager()
 , m_entityManager(m_eventManager)
 , m_systemManager(m_entityManager, m_eventManager)
+, m_creator(m_entityManager)
+, m_keyHandler()
 {
 }
 
@@ -132,6 +128,7 @@ void Game::update()
 {
    m_systemManager.update<PlayerControlSystem>(MS_PER_UPDATE);
    m_systemManager.update<MovementSystem>(MS_PER_UPDATE);
+   m_systemManager.update<GunSystem>(MS_PER_UPDATE);
    m_systemManager.update<AnimationSystem>(MS_PER_UPDATE);
 }
 
@@ -159,6 +156,7 @@ void Game::createSystems()
 {
    m_systemManager.add<PlayerControlSystem>(&m_keyHandler);
    m_systemManager.add<MovementSystem>();
+   m_systemManager.add<GunSystem>(&m_keyHandler, &m_creator);
    m_systemManager.add<AnimationSystem>();
    m_systemManager.add<RenderSystem>(m_pWindow);
    m_systemManager.configure();
@@ -166,11 +164,5 @@ void Game::createSystems()
 
 void Game::createEntities()
 {
-   auto pSsv = new SpaceShipView();
-   auto spaceShip = m_entityManager.create();
-   spaceShip.assign<PlayerMotionControl>();
-   spaceShip.assign<Motion>();
-   spaceShip.assign<Position>();
-   spaceShip.assign<Animation>(pSsv);
-   spaceShip.assign<Display>(pSsv);
+   m_creator.createSpaceShip();
 }

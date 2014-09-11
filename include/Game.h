@@ -8,6 +8,7 @@
 #include "entityx/Entity.h"
 #include "entityx/System.h"
 
+#include "EntityCreator.h"
 #include "KeyHandler.h"
 
 class Game
@@ -42,13 +43,15 @@ private:
    // TBR (from here)
    SDL_GLContext m_GLContext;
 
-   KeyHandler m_keyHandler;
-
    entityx::EventManager m_eventManager;
 
    entityx::EntityManager m_entityManager;
 
    entityx::SystemManager m_systemManager;
+
+   EntityCreator m_creator;
+
+   KeyHandler m_keyHandler;
 };
 
 #endif

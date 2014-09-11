@@ -5,6 +5,8 @@ project(SpaceShooter)
 add_executable(
    SpaceShooter
    src/main.cpp
+   include/EntityCreator.h
+   src/EntityCreator.cpp
    include/Game.h
    src/Game.cpp
    include/KeyHandler.h
@@ -13,6 +15,8 @@ add_executable(
    src/components/Animation.cpp
    include/components/Display.h
    src/components/Display.cpp
+   include/components/Gun.h
+   src/components/Gun.cpp
    include/components/Motion.h
    src/components/Motion.cpp
    include/components/Position.h
@@ -21,10 +25,14 @@ add_executable(
    src/components/PlayerMotionControl.cpp
    include/graphics/IAnimatible.h
    include/graphics/IDrawable.h
+   include/graphics/BulletView.h
+   src/graphics/BulletView.cpp
    include/graphics/SpaceShipView.h
    src/graphics/SpaceShipView.cpp
    include/systems/AnimationSystem.h
    src/systems/AnimationSystem.cpp
+   include/systems/GunSystem.h
+   src/systems/GunSystem.cpp
    include/systems/MovementSystem.h
    src/systems/MovementSystem.cpp
    include/systems/RenderSystem.h
