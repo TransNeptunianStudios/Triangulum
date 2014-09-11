@@ -2,24 +2,21 @@
 #include "components/Motion.h"
 #include "components/Position.h"
 
+using namespace entityx;
+
 MovementSystem::MovementSystem()
-: m_nodes()
 {
 }
 
-void MovementSystem::addNode(const MovementSystem::Node& node)
+void MovementSystem::update(EntityManager &entities,
+                            EventManager &events,
+                            double dt)
 {
-   m_nodes.push_back(node);
-}
-
-void MovementSystem::update(float dt)
-{
-   for (auto node : m_nodes)
+   Motion::Handle motion;
+   Position::Handle position;
+   for (Entity entity : entities.entities_with_components(motion, position))
    {
-      auto pMotion = std::get<0>(node);
-      auto pPostion = std::get<1>(node);
-
-      pPostion->position.x() += pMotion->velocity.x() * dt / 1000;
-      pPostion->position.y() += pMotion->velocity.y() * dt / 1000;
+      position->position.x() += motion->velocity.x() * dt / 1000.0;
+      position->position.y() += motion->velocity.y() * dt / 1000.0;
    }
 }

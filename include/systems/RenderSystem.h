@@ -1,28 +1,22 @@
 #ifndef RENDERSYSTEM_H
 #define RENDERSYSTEM_H
 
-#include <tuple>
-#include <vector>
+#include "SDL.h"
+#include "entityx/System.h"
 
-class Position;
-class Display;
-
-class RenderSystem
+class RenderSystem : public entityx::System<RenderSystem>
 {
 public:
 
-   typedef std::tuple<Position*, Display*> Node;
+   RenderSystem(SDL_Window* pWindow);
 
-   RenderSystem();
-
-   void addNode(const RenderSystem::Node& node);
-
-   void update();
+   void update(entityx::EntityManager &entities,
+               entityx::EventManager &events,
+               double dt);
 
 private:
 
-   std::vector<RenderSystem::Node> m_nodes;
-
+   SDL_Window* m_pWindow;
 };
 
 #endif // RENDERSYSTEM_H

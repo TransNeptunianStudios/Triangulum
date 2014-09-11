@@ -1,22 +1,14 @@
 #ifndef DISPLAY_H
 #define DISPLAY_H
 
-#include "components/Component.h"
+#include "entityx/Entity.h"
+#include "graphics/IDrawable.h"
 
-class IDrawable;
-
-class Display : public Component
+struct Display : public entityx::Component<Display>
 {
-public:
+   Display(IDrawable* _pDrawable);
 
-   Display(IDrawable* pDrawable);
-
-   void draw();
-
-private:
-
-   IDrawable* m_pDrawable;
-
+   IDrawable* pDrawable;
 };
 
 #endif // DISPLAY_H

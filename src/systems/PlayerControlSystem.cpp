@@ -1,34 +1,33 @@
-
 #include "systems/PlayerControlSystem.h"
 #include "components/PlayerMotionControl.h"
 #include "components/Motion.h"
-#include "KeyHandler.h"
 
-PlayerControlSystem::PlayerControlSystem()
-: m_node()
+using namespace entityx;
+
+PlayerControlSystem::PlayerControlSystem(KeyHandler* pKeyHandler)
+: m_pKeyHandler(pKeyHandler)
 { 
 }
 
-void PlayerControlSystem::addNode(const PlayerControlSystem::Node& node)
+void PlayerControlSystem::update(EntityManager &entities,
+                                 EventManager &events,
+                                 double dt)
 {
-   m_node = node;
-}
-
-void PlayerControlSystem::update(const KeyHandler& keyHandler)
-{
-   auto pPlayerControl = std::get<0>(m_node);
-   auto pMotion = std::get<1>(m_node);
-
-   if (keyHandler.isPressed(SDLK_a))
+   PlayerMotionControl::Handle playerControl;
+   Motion::Handle motion;
+   for (Entity entity : entities.entities_with_components(playerControl, motion))
    {
-      pMotion->velocity.x() = -0.3f;
-   }
-   else if (keyHandler.isPressed(SDLK_d))
-   {
-      pMotion->velocity.x() = 0.3f;
-   }
-   else
-   {
-       pMotion->velocity.x() = 0.0f;
+      if (m_pKeyHandler->isPressed(playerControl.get()->right))
+      {
+         motion.get()->velocity.x() = 0.3f;
+      }
+      else if (m_pKeyHandler->isPressed(playerControl.get()->left))
+      {
+         motion.get()->velocity.x() = -0.3f;
+      }
+      else
+      {
+         motion.get()->velocity.x() = 0.0f;
+      }
    }
 }

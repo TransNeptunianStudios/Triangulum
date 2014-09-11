@@ -1,12 +1,6 @@
 #include "components/Display.h"
-#include "graphics/IDrawable.h"
 
-Display::Display(IDrawable* pDrawable)
-: m_pDrawable(pDrawable)
+Display::Display(IDrawable* _pDrawable)
+: pDrawable(_pDrawable)
 {
-}
-
-void Display::draw()
-{
-   m_pDrawable->draw();
 }

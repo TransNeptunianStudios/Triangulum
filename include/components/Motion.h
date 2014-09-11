@@ -1,14 +1,14 @@
 #ifndef MOTION_H
 #define MOTION_H
 
-#include "components/Component.h"
+#include "entityx/Entity.h"
 #include "utils/Vector2.h"
 
-class Motion : public Component
+struct Motion : public entityx::Component<Motion>
 {
-public:
-
    Motion();
+
+   Motion(const Vector2 _velocity);
 
    Vector2 velocity;
 };

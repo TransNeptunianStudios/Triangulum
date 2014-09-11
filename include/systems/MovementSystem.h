@@ -1,28 +1,17 @@
 #ifndef MOVEMENTSYSTEM_H
 #define MOVEMENTSYSTEM_H
 
-#include <tuple>
-#include <vector>
+#include "entityx/System.h"
 
-class Motion;
-class Position;
-
-class MovementSystem
+class MovementSystem : public entityx::System<MovementSystem>
 {
 public:
 
-   typedef std::tuple<Motion*,
-                      Position*> Node;
-
    MovementSystem();
 
-   void addNode(const MovementSystem::Node& node);
-
-   void update(float dt);
-
-private:
-
-   std::vector<MovementSystem::Node> m_nodes;
+   void update(entityx::EntityManager &entities,
+               entityx::EventManager &events,
+               double dt);
 };
 
 #endif

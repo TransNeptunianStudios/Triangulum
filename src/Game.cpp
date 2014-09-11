@@ -2,6 +2,9 @@
 #include <cstdlib>
 
 #include "Game.h"
+#include "systems/PlayerControlSystem.h"
+#include "systems/MovementSystem.h"
+#include "systems/RenderSystem.h"
 #include "components/PlayerMotionControl.h"
 #include "components/Motion.h"
 #include "components/Position.h"
@@ -15,15 +18,15 @@ const int SCREEN_HEIGHT = 600;
 // Updates per milliseconds
 static Uint32 MS_PER_UPDATE = 10.0;
 
+using namespace entityx;
+
 Game::Game()
 : m_pWindow(0)
 , m_GLContext(0)
-, m_actors()
-, m_currentActorId(0)
 , m_keyHandler()
-, m_playerControlSystem()
-, m_movementSystem()
-, m_renderSystem()
+, m_eventManager()
+, m_entityManager(m_eventManager)
+, m_systemManager(m_entityManager, m_eventManager)
 {
 }
 
@@ -52,18 +55,20 @@ void Game::init()
       std::exit(EXIT_FAILURE);
    }
 
-    // Initlize OpenGl context to draw in
-    m_GLContext = SDL_GL_CreateContext(m_pWindow);
-    if(m_GLContext == 0)
-    {
-        std::cout << "OpenGl redner context could not be created: " << SDL_GetError() << std::endl;
+   // Initlize OpenGl context to draw in
+   m_GLContext = SDL_GL_CreateContext(m_pWindow);
 
-        SDL_Quit();
+   if(m_GLContext == 0)
+   {
+      std::cout << "OpenGl redner context could not be created: " << SDL_GetError() << std::endl;
 
-        std::exit(EXIT_FAILURE);
-    }
+      SDL_Quit();
 
-   createSpaceShip();
+      std::exit(EXIT_FAILURE);
+   }
+
+   createSystems();
+   createEntities();
 }
 
 void Game::run()
@@ -102,6 +107,10 @@ void Game::processInput()
       switch (event.type)
       {
       case SDL_KEYDOWN:
+         if (event.key.keysym.sym == SDLK_ESCAPE)
+         {
+            exit();
+         }
          m_keyHandler.updateKey(event.key.keysym.sym, true);
          break;
        case SDL_KEYUP:
@@ -119,18 +128,13 @@ void Game::processInput()
 
 void Game::update()
 {
-   m_playerControlSystem.update(m_keyHandler);
-   m_movementSystem.update(MS_PER_UPDATE);
+   m_systemManager.update<PlayerControlSystem>(MS_PER_UPDATE);
+   m_systemManager.update<MovementSystem>(MS_PER_UPDATE);
 }
 
 void Game::render()
 {
-    glClearColor(0,0,0,1); // Black
-    glClear(GL_COLOR_BUFFER_BIT);
-
-    m_renderSystem.update();
-
-    SDL_GL_SwapWindow(m_pWindow);
+    m_systemManager.update<RenderSystem>(0.0);
 }
 
 void Game::exit()
@@ -148,30 +152,19 @@ void Game::exit()
    std::exit(EXIT_SUCCESS);
 }
 
-void Game::createSpaceShip()
+void Game::createSystems()
 {
-   Actor spaceShip(getNextActorId());
+   m_systemManager.add<PlayerControlSystem>(&m_keyHandler);
+   m_systemManager.add<MovementSystem>();
+   m_systemManager.add<RenderSystem>(m_pWindow);
+   m_systemManager.configure();
+}
 
-   // Create all components
-   PlayerMotionControl* pSpaceShipMotionControl = new PlayerMotionControl();
-   spaceShip.addComponent(pSpaceShipMotionControl);
-
-   Motion* pMotion = new Motion();
-   spaceShip.addComponent(pMotion);
-
-   Position* pPosition = new Position();
-   spaceShip.addComponent(pPosition);
-
-   Display* pDisplay = new Display(new SpaceShipView());
-   spaceShip.addComponent(pDisplay);
-
-   // Register components to systems
-   m_playerControlSystem.addNode(PlayerControlSystem::Node(pSpaceShipMotionControl,
-                                                           pMotion));
-
-   m_movementSystem.addNode(MovementSystem::Node(pMotion, pPosition));
-
-   m_renderSystem.addNode(RenderSystem::Node(pPosition, pDisplay));
-
-   m_actors.push_back(spaceShip);
+void Game::createEntities()
+{
+   Entity spaceShip = m_entityManager.create();
+   spaceShip.assign<PlayerMotionControl>();
+   spaceShip.assign<Motion>();
+   spaceShip.assign<Position>();
+   spaceShip.assign<Display>(new SpaceShipView());
 }

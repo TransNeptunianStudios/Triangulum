@@ -1,31 +1,36 @@
+#include "SDL_opengl.h"
+
 #include "systems/RenderSystem.h"
 #include "components/Position.h"
 #include "components/Display.h"
-#include <SDL_opengl.h>
 
-// TBR
-#include <iostream>
+using namespace entityx;
 
-RenderSystem::RenderSystem()
-: m_nodes()
+RenderSystem::RenderSystem(SDL_Window* pWindow)
+: m_pWindow(pWindow)
 {
 }
 
-void RenderSystem::addNode(const RenderSystem::Node &node)
+void RenderSystem::update(EntityManager &entities,
+                          EventManager &events,
+                          double dt)
 {
-   m_nodes.push_back(node);
-}
+   glClearColor(0, 0, 0, 1); // Black
 
-void RenderSystem::update()
-{
-   for (auto node : m_nodes)
+   glClear(GL_COLOR_BUFFER_BIT);
+
+   Position::Handle position;
+   Display::Handle display;
+   for (Entity entity : entities.entities_with_components(position, display))
    {
-      auto pPosition = std::get<0>(node);
-      auto pDisplay = std::get<1>(node);
-
       glLoadIdentity();
-      glTranslatef(pPosition->position.x(), pPosition->position.y(), 0.f);
 
-      pDisplay->draw();
+      glTranslatef(position->position.x(),
+                   position->position.y(),
+                   0.f);
+
+      display->pDrawable->draw();
    }
+
+   SDL_GL_SwapWindow(m_pWindow);
 }

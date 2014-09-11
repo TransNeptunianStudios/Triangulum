@@ -1,14 +1,14 @@
 #ifndef POSITION_H
 #define POSITION_H
 
-#include "components/Component.h"
+#include "entityx/Entity.h"
 #include "utils/Vector2.h"
 
-class Position : public Component
+struct Position : public entityx::Component<Position>
 {
-public:
+   Position();
 
-   Position();  
+   Position(const Vector2 &_position);
 
    Vector2 position;
 };

@@ -1,14 +1,17 @@
 #ifndef PLAYERMOTIONCONTROL_H
 #define PLAYERMOTIONCONTROL_H
 
-#include "components/Component.h"
+#include "SDL_keycode.h"
 
-class PlayerMotionControl : public Component
+#include "entityx/Entity.h"
+
+struct PlayerMotionControl : public entityx::Component<PlayerMotionControl>
 {
-public:
-   
    PlayerMotionControl();
-   
+
+   SDL_Keycode left;
+
+   SDL_Keycode right;
 };
 
-#endif
+#endif // PLAYERMOTIONCONTROL_H

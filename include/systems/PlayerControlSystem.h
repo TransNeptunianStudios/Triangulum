@@ -1,28 +1,22 @@
 #ifndef PLAYERCONTROLSYSTEM_H
 #define PLAYERCONTROLSYSTEM_H
 
-#include <tuple>
+#include "entityx/System.h"
+#include "KeyHandler.h"
 
-class PlayerMotionControl;
-class Motion;
-class KeyHandler;
-
-class PlayerControlSystem
+class PlayerControlSystem : public entityx::System<PlayerControlSystem>
 {
 public:
 
-   typedef std::tuple<PlayerMotionControl*,
-                      Motion*> Node;
+   PlayerControlSystem(KeyHandler* pKeyHandler);
 
-   PlayerControlSystem();
-
-   void addNode(const PlayerControlSystem::Node& node);
-
-   void update(const KeyHandler& keyHandler);
+   void update(entityx::EntityManager &entities,
+               entityx::EventManager &events,
+               double dt);
 
 private:
 
-   PlayerControlSystem::Node m_node;
+   KeyHandler* m_pKeyHandler;
 };
 
 #endif

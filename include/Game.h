@@ -2,12 +2,13 @@
 #define GAME_H
 
 #include "SDL.h"
-#include <SDL_opengl.h>
+#include "SDL_opengl.h"
+
+#include "entityx/Event.h"
+#include "entityx/Entity.h"
+#include "entityx/System.h"
+
 #include "KeyHandler.h"
-#include "Actor.h"
-#include "systems/PlayerControlSystem.h"
-#include "systems/MovementSystem.h"
-#include "systems/RenderSystem.h"
 
 class Game
 {
@@ -21,11 +22,6 @@ public:
 
 private:
 
-   ActorId getNextActorId()
-   { 
-      return m_currentActorId++; 
-   }
-
    void processInput();
 
    void update();
@@ -33,6 +29,10 @@ private:
    void render();
 
    void exit();
+
+   void createSystems();
+
+   void createEntities();
 
    void createSpaceShip();
 
@@ -42,17 +42,13 @@ private:
    // TBR (from here)
    SDL_GLContext m_GLContext;
 
-   std::vector<Actor> m_actors;
-
-   ActorId m_currentActorId;
-
    KeyHandler m_keyHandler;
 
-   PlayerControlSystem m_playerControlSystem;
+   entityx::EventManager m_eventManager;
 
-   MovementSystem m_movementSystem;
+   entityx::EntityManager m_entityManager;
 
-   RenderSystem m_renderSystem;
+   entityx::SystemManager m_systemManager;
 };
 
 #endif
