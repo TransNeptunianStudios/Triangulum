@@ -3,6 +3,7 @@
 #include "systems/RenderSystem.h"
 #include "components/Position.h"
 #include "components/Display.h"
+#include "components/Animation.h"
 
 using namespace entityx;
 
@@ -21,7 +22,8 @@ void RenderSystem::update(EntityManager &entities,
 
    Position::Handle position;
    Display::Handle display;
-   for (Entity entity : entities.entities_with_components(position, display))
+   Animation::Handle animationState;
+   for (Entity entity : entities.entities_with_components(position, display, animationState))
    {
       glLoadIdentity();
 

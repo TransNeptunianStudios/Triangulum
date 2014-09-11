@@ -4,10 +4,12 @@
 #include "Game.h"
 #include "systems/PlayerControlSystem.h"
 #include "systems/MovementSystem.h"
+#include "systems/AnimationSystem.h"
 #include "systems/RenderSystem.h"
 #include "components/PlayerMotionControl.h"
 #include "components/Motion.h"
 #include "components/Position.h"
+#include "components/Animation.h"
 #include "components/Display.h"
 #include "graphics/SpaceShipView.h"
 
@@ -130,6 +132,7 @@ void Game::update()
 {
    m_systemManager.update<PlayerControlSystem>(MS_PER_UPDATE);
    m_systemManager.update<MovementSystem>(MS_PER_UPDATE);
+   m_systemManager.update<AnimationSystem>(MS_PER_UPDATE);
 }
 
 void Game::render()
@@ -156,15 +159,18 @@ void Game::createSystems()
 {
    m_systemManager.add<PlayerControlSystem>(&m_keyHandler);
    m_systemManager.add<MovementSystem>();
+   m_systemManager.add<AnimationSystem>();
    m_systemManager.add<RenderSystem>(m_pWindow);
    m_systemManager.configure();
 }
 
 void Game::createEntities()
 {
-   Entity spaceShip = m_entityManager.create();
+   auto pSsv = new SpaceShipView();
+   auto spaceShip = m_entityManager.create();
    spaceShip.assign<PlayerMotionControl>();
    spaceShip.assign<Motion>();
    spaceShip.assign<Position>();
-   spaceShip.assign<Display>(new SpaceShipView());
+   spaceShip.assign<Animation>(pSsv);
+   spaceShip.assign<Display>(pSsv);
 }

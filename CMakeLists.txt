@@ -9,6 +9,8 @@ add_executable(
    src/Game.cpp
    include/KeyHandler.h
    src/KeyHandler.cpp
+   include/components/Animation.h
+   src/components/Animation.cpp
    include/components/Display.h
    src/components/Display.cpp
    include/components/Motion.h
@@ -17,9 +19,12 @@ add_executable(
    src/components/Position.cpp
    include/components/PlayerMotionControl.h
    src/components/PlayerMotionControl.cpp
+   include/graphics/IAnimatible.h
    include/graphics/IDrawable.h
    include/graphics/SpaceShipView.h
    src/graphics/SpaceShipView.cpp
+   include/systems/AnimationSystem.h
+   src/systems/AnimationSystem.cpp
    include/systems/MovementSystem.h
    src/systems/MovementSystem.cpp
    include/systems/RenderSystem.h
