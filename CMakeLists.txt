@@ -50,13 +50,16 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/modules/")
 find_package(SDL2 REQUIRED)
 find_package(OpenGL REQUIRED)
 find_package(EntityX)
+find_package(SDL2IMAGE REQUIRED)
 
 include_directories(include ${SDL2_INCLUDE_DIR})
 include_directories(include ${OPENGL_INCLUDE_DIR})
 include_directories(include ${ENTITYX_INCLUDE_DIR})
+include_directories(include ${SDLIMAGE_INCLUDE_DIR})
 
 target_link_libraries(SpaceShooter
                         ${SDL2_LIBRARY}
                         ${OPENGL_LIBRARIES}
                         ${ENTITYX_LIBRARY}
+			${SDLIMAGE_LIBRARY}
 )

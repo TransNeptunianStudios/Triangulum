@@ -8,6 +8,7 @@ Requires:
 * SDL2
 * OpenGL
 * EntityX (https://github.com/alecthomas/entityx.git)
+* SDL Image (https://www.libsdl.org/projects/SDL_image/)
 
 How to:
 * git clone
