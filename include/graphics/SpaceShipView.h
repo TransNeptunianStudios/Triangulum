@@ -4,6 +4,9 @@
 #include "graphics/IDrawable.h"
 #include "graphics/IAnimatible.h"
 
+#include <SDL.h>
+#include <SDL_opengl.h>
+
 enum SpaceShipState
 {
    SSS_Idle,
@@ -27,6 +30,8 @@ public:
 private:
 
    SpaceShipState m_state;
+
+   GLuint m_texture;
 
    double m_duration;
 };

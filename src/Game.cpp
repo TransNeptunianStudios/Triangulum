@@ -31,11 +31,14 @@ Game::Game()
 void Game::init()
 {
    //Initialize SDL
-   if(SDL_Init(SDL_INIT_EVERYTHING ) < 0) // I'm a coward
+   if(SDL_Init(SDL_INIT_EVERYTHING|SDL_INIT_NOPARACHUTE)) // I'm a coward
    {
       std::cout << "SDL could not initialize! SDL_Error: " << SDL_GetError() << std::endl;
       std::exit(EXIT_FAILURE);
    }
+
+   // Not needed?
+   glEnable(GL_DEPTH_TEST);
 
    m_pWindow = SDL_CreateWindow("Space-Shooter",
                                 SDL_WINDOWPOS_UNDEFINED,
