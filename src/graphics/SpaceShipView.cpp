@@ -74,32 +74,33 @@ void SpaceShipView::draw()
 
    GLfloat color[3];
 
-   switch (m_state)
-   {
-   case SSS_Idle:
-      color[0] = 1.0;
-      color[1] = 1.0;
-      color[2] = 1.0;
-      break;
-   case SSS_Right1:
-      color[0] = 1.0;
-      color[1] = 0.7;
-      color[2] = 0.7;
-      break;
-   case SSS_Right2:
-      color[0] = 1.0;
-      color[1] = 0.3;
-      color[2] = 0.3;
-      break;
-   case SSS_Right3:
-      color[0] = 1.0;
-      color[1] = 0.0;
-      color[2] = 0.0;
-      break;
-   }
+//   switch (m_state)
+//   {
+//   case SSS_Idle:
+//      color[0] = 1.0;
+//      color[1] = 1.0;
+//      color[2] = 1.0;
+//      break;
+//   case SSS_Right1:
+//      color[0] = 1.0;
+//      color[1] = 0.7;
+//      color[2] = 0.7;
+//      break;
+//   case SSS_Right2:
+//      color[0] = 1.0;
+//      color[1] = 0.3;
+//      color[2] = 0.3;
+//      break;
+//   case SSS_Right3:
+//      color[0] = 1.0;
+//      color[1] = 0.0;
+//      color[2] = 0.0;
+//      break;
+//   }
 
   // Draw spaceship
   glBegin(GL_QUADS);
+    glColor3f(1.0f, 1.0f, 1.0f);
     glTexCoord2f(0, 1);
     glVertex3f( -0.1f, -0.1f, 0.0f); // Lower Left
     glTexCoord2f(1, 1);

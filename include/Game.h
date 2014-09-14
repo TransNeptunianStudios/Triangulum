@@ -10,6 +10,7 @@
 
 #include "EntityCreator.h"
 #include "KeyHandler.h"
+#include "AudioManager.h"
 
 class Game
 {
@@ -52,6 +53,8 @@ private:
    EntityCreator m_creator;
 
    KeyHandler m_keyHandler;
+
+   AudioManager m_audioManager;
 };
 
 #endif

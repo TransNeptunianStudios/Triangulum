@@ -1,4 +1,5 @@
 #include "systems/GunSystem.h"
+#include "systems/Events.h"
 #include "components/PlayerMotionControl.h"
 #include "components/Position.h"
 #include "components/Gun.h"
@@ -27,6 +28,8 @@ void GunSystem::update(EntityManager &entities,
          {
             m_pEntityCreator->createBullet(position->position,
                                            Vector2(0.0, 0.6));
+
+            events.emit<PlaySound>(GUN_SHOOT);
 
             gun->isShooting = true;
          }

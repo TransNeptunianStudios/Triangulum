@@ -7,6 +7,7 @@
 #include "systems/GunSystem.h"
 #include "systems/BulletLifeTimeSystem.h"
 #include "systems/AnimationSystem.h"
+#include "systems/AudioSystem.h"
 #include "systems/RenderSystem.h"
 
 //Screen dimension constants
@@ -26,6 +27,7 @@ Game::Game()
 , m_systemManager(m_entityManager, m_eventManager)
 , m_creator(m_entityManager)
 , m_keyHandler()
+, m_audioManager()
 {
 }
 
@@ -68,6 +70,8 @@ void Game::init()
 
       std::exit(EXIT_FAILURE);
    }
+
+   m_audioManager.init();
 
    createSystems();
    createEntities();
@@ -144,6 +148,7 @@ void Game::render()
 
 void Game::exit()
 {
+   m_audioManager.cleanup();
 
    //Destroy openGl context
     SDL_GL_DeleteContext(m_GLContext);
@@ -164,6 +169,7 @@ void Game::createSystems()
    m_systemManager.add<GunSystem>(&m_keyHandler, &m_creator);
    m_systemManager.add<BulletLifeTimeSystem>();
    m_systemManager.add<AnimationSystem>();
+   m_systemManager.add<AudioSystem>(&m_audioManager);
    m_systemManager.add<RenderSystem>(m_pWindow);
    m_systemManager.configure();
 }
