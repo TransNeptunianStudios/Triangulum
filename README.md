@@ -6,6 +6,7 @@ A top down scrolling space action game!
 Requires:
 * CMake (version 2.8 or greater)
 * SDL2
+* SDL2_image
 * OpenGL
 * EntityX (https://github.com/alecthomas/entityx.git)
 * SDL Image (https://www.libsdl.org/projects/SDL_image/)
