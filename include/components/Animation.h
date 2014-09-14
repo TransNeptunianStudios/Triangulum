@@ -6,9 +6,9 @@
 
 struct Animation : public entityx::Component<Animation>
 {
-   Animation(IAnimatible* _pAnimatible);
+   Animation(const IAnimatibleSP& _spAnimatible);
 
-   IAnimatible* pAnimatible;
+   IAnimatibleSP spAnimatible;
 };
 
 #endif // ANIMATIONSTATE_H

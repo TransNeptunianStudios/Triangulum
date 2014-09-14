@@ -12,16 +12,26 @@
 # module, but with modifications to recognize OS X frameworks and 
 # additional Unix paths (FreeBSD, etc).
 
-FIND_PATH(SDLIMAGE_INCLUDE_DIR SDL_image.h
-  PATHS
+#=============================================================================
+# Copyright 2005-2009 Kitware, Inc.
+#
+# Distributed under the OSI-approved BSD License (the "License");
+# see accompanying file Copyright.txt for details.
+#
+# This software is distributed WITHOUT ANY WARRANTY; without even the
+# implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# See the License for more information.
+#=============================================================================
+# (To distribute this file outside of CMake, substitute the full
+#  License text for the above reference.)
+
+FIND_PATH(SDLIMAGE_INCLUDE_DIR SDL2/SDL_image.h
+  HINTS
   $ENV{SDLIMAGEDIR}
   $ENV{SDLDIR}
-  NO_DEFAULT_PATH
   PATH_SUFFIXES include
-)
-
-FIND_PATH(SDLIMAGE_INCLUDE_DIR SDL_image.h
   PATHS
+  ../SDL2_image/prefix
   ~/Library/Frameworks
   /Library/Frameworks
   /usr/local/include/SDL
@@ -42,18 +52,17 @@ FIND_PATH(SDLIMAGE_INCLUDE_DIR SDL_image.h
   /opt/include
 )
 
-FIND_LIBRARY(SDLIMAGE_LIBRARY 
-  NAMES SDL_image
-  PATHS
-  $ENV{SDLIMAGEDIR}
-  $ENV{SDLDIR}
-  NO_DEFAULT_PATH
-    PATH_SUFFIXES lib64 lib
-)
+SET(SDLIMAGE_INCLUDE_DIR ${SDLIMAGE_INCLUDE_DIR}/SDL2)
+
 
 FIND_LIBRARY(SDLIMAGE_LIBRARY 
-  NAMES SDL_image
+  NAMES SDL2_image
+  HINTS
+  $ENV{SDLIMAGEDIR}
+  $ENV{SDLDIR}
+  PATH_SUFFIXES lib64 lib
   PATHS
+  ../SDL2_image/prefix
   ~/Library/Frameworks
   /Library/Frameworks
   /usr/local
@@ -62,11 +71,13 @@ FIND_LIBRARY(SDLIMAGE_LIBRARY
   /opt/local
   /opt/csw
   /opt
-    PATH_SUFFIXES lib64 lib
 )
 
 SET(SDLIMAGE_FOUND "NO")
 IF(SDLIMAGE_LIBRARY AND SDLIMAGE_INCLUDE_DIR)
   SET(SDLIMAGE_FOUND "YES")
 ENDIF(SDLIMAGE_LIBRARY AND SDLIMAGE_INCLUDE_DIR)
+
+message("SDLIMAGE INCLUDE DIR " ${SDLIMAGE_INCLUDE_DIR})
+message("SDLIMAGE_LIBRARY " ${SDLIMAGE_LIBRARY})
 

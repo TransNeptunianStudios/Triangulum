@@ -16,6 +16,6 @@ void AnimationSystem::update(EntityManager &entities,
    Motion::Handle motion;
    for (Entity entity : entities.entities_with_components(animation, motion))
    {
-      animation->pAnimatible->animate(motion->velocity, dt);
+      animation->spAnimatible->animate(motion->velocity, dt);
    }
 }

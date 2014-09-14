@@ -5,6 +5,7 @@
 #include "systems/PlayerControlSystem.h"
 #include "systems/MovementSystem.h"
 #include "systems/GunSystem.h"
+#include "systems/BulletLifeTimeSystem.h"
 #include "systems/AnimationSystem.h"
 #include "systems/RenderSystem.h"
 
@@ -38,7 +39,7 @@ void Game::init()
    }
 
    // Not needed?
-   glEnable(GL_DEPTH_TEST);
+   //glEnable(GL_DEPTH_TEST);
 
    m_pWindow = SDL_CreateWindow("Space-Shooter",
                                 SDL_WINDOWPOS_UNDEFINED,
@@ -132,6 +133,7 @@ void Game::update()
    m_systemManager.update<PlayerControlSystem>(MS_PER_UPDATE);
    m_systemManager.update<MovementSystem>(MS_PER_UPDATE);
    m_systemManager.update<GunSystem>(MS_PER_UPDATE);
+   m_systemManager.update<BulletLifeTimeSystem>(MS_PER_UPDATE);
    m_systemManager.update<AnimationSystem>(MS_PER_UPDATE);
 }
 
@@ -160,6 +162,7 @@ void Game::createSystems()
    m_systemManager.add<PlayerControlSystem>(&m_keyHandler);
    m_systemManager.add<MovementSystem>();
    m_systemManager.add<GunSystem>(&m_keyHandler, &m_creator);
+   m_systemManager.add<BulletLifeTimeSystem>();
    m_systemManager.add<AnimationSystem>();
    m_systemManager.add<RenderSystem>(m_pWindow);
    m_systemManager.configure();

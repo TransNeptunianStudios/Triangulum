@@ -30,7 +30,7 @@ void RenderSystem::update(EntityManager &entities,
                    position->position.y(),
                    0.f);
 
-      display->pDrawable->draw();
+      display->spDrawable->draw();
    }
 
    SDL_GL_SwapWindow(m_pWindow);

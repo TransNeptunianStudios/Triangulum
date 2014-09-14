@@ -13,6 +13,8 @@ add_executable(
    src/KeyHandler.cpp
    include/components/Animation.h
    src/components/Animation.cpp
+   include/components/Bullet.h
+   src/components/Bullet.cpp
    include/components/Display.h
    src/components/Display.cpp
    include/components/Gun.h
@@ -31,6 +33,8 @@ add_executable(
    src/graphics/SpaceShipView.cpp
    include/systems/AnimationSystem.h
    src/systems/AnimationSystem.cpp
+   include/systems/BulletLifeTimeSystem.h
+   src/systems/BulletLifeTimeSystem.cpp
    include/systems/GunSystem.h
    src/systems/GunSystem.cpp
    include/systems/MovementSystem.h
@@ -50,7 +54,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/modules/")
 find_package(SDL2 REQUIRED)
 find_package(OpenGL REQUIRED)
 find_package(EntityX)
-find_package(SDL2IMAGE REQUIRED)
+find_package(SDL2_image REQUIRED)
 
 include_directories(include ${SDL2_INCLUDE_DIR})
 include_directories(include ${OPENGL_INCLUDE_DIR})
@@ -61,5 +65,5 @@ target_link_libraries(SpaceShooter
                         ${SDL2_LIBRARY}
                         ${OPENGL_LIBRARIES}
                         ${ENTITYX_LIBRARY}
-			${SDLIMAGE_LIBRARY}
+                        ${SDLIMAGE_LIBRARY}
 )

@@ -6,9 +6,9 @@
 
 struct Display : public entityx::Component<Display>
 {
-   Display(IDrawable* _pDrawable);
+   Display(const IDrawableSP& _spDrawable);
 
-   IDrawable* pDrawable;
+   IDrawableSP spDrawable;
 };
 
 #endif // DISPLAY_H
