@@ -16,7 +16,7 @@ EntityCreator::EntityCreator(EntityManager& entityManager)
 {
 }
 
-void EntityCreator::createSpaceShip()
+void EntityCreator::createSpaceShip() const
 {
    auto pSsv = std::make_shared<SpaceShipView>();
    auto spaceShip = m_entityManager.create();
@@ -29,7 +29,7 @@ void EntityCreator::createSpaceShip()
 }
 
 void EntityCreator::createBullet(const Vector2& position,
-                                 const Vector2& velocity)
+                                 const Vector2& velocity) const
 {
    auto pBv = new BulletView();
    auto bullet = m_entityManager.create();

@@ -1,11 +1,12 @@
 #include "systems/PlayerControlSystem.h"
 #include "components/PlayerMotionControl.h"
 #include "components/Motion.h"
+#include "KeyHandler.h"
 
 using namespace entityx;
 
-PlayerControlSystem::PlayerControlSystem(KeyHandler* pKeyHandler)
-: m_pKeyHandler(pKeyHandler)
+PlayerControlSystem::PlayerControlSystem(const KeyHandler& keyHandler)
+: m_keyHandler(keyHandler)
 { 
 }
 
@@ -13,34 +14,36 @@ void PlayerControlSystem::update(EntityManager &entities,
                                  EventManager &events,
                                  double dt)
 {
+   float vel = 0.3f;
+
    PlayerMotionControl::Handle playerControl;
    Motion::Handle motion;
    for (Entity entity : entities.entities_with_components(playerControl, motion))
    {
-      if (m_pKeyHandler->isPressed(playerControl.get()->right))
+      if (m_keyHandler.isPressed(playerControl->right))
       {
-         motion.get()->velocity.x() = 0.3f;
+         motion->velocity.x() = vel;
       }
-      else if (m_pKeyHandler->isPressed(playerControl.get()->left))
+      else if (m_keyHandler.isPressed(playerControl->left))
       {
-         motion.get()->velocity.x() = -0.3f;
+         motion->velocity.x() = -vel;
       }
       else
       {
-         motion.get()->velocity.x() = 0.0f;
+         motion->velocity.x() = 0.0f;
       }
 
-      if (m_pKeyHandler->isPressed(playerControl.get()->up))
+      if (m_keyHandler.isPressed(playerControl->up))
       {
-         motion.get()->velocity.y() = 0.3f;
+         motion->velocity.y() = vel;
       }
-      else if (m_pKeyHandler->isPressed(playerControl.get()->down))
+      else if (m_keyHandler.isPressed(playerControl->down))
       {
-         motion.get()->velocity.y() = -0.3f;
+         motion->velocity.y() = -vel;
       }
       else
       {
-         motion.get()->velocity.y() = 0.0f;
+         motion->velocity.y() = 0.0f;
       }
    }
 }

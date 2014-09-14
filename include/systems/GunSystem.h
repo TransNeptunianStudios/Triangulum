@@ -2,15 +2,16 @@
 #define GUNSYSTEM_H
 
 #include "entityx/System.h"
-#include "KeyHandler.h"
-#include "EntityCreator.h"
+
+class KeyHandler;
+class EntityCreator;
 
 class GunSystem : public entityx::System<GunSystem>
 {
 public:
 
-   GunSystem(KeyHandler* pKeyHandler,
-             EntityCreator* pEntityCreator);
+   GunSystem(const KeyHandler& keyHandler,
+             const EntityCreator& entityCreator);
 
    void update(entityx::EntityManager &entities,
                entityx::EventManager &events,
@@ -18,9 +19,9 @@ public:
 
 private:
 
-   KeyHandler* m_pKeyHandler;
+   const KeyHandler& m_keyHandler;
 
-   EntityCreator* m_pEntityCreator;
+   const EntityCreator& m_entityCreator;
 };
 
 #endif // GUNSYSTEM_H

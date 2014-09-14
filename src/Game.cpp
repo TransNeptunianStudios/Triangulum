@@ -164,12 +164,12 @@ void Game::exit()
 
 void Game::createSystems()
 {
-   m_systemManager.add<PlayerControlSystem>(&m_keyHandler);
+   m_systemManager.add<PlayerControlSystem>(m_keyHandler);
    m_systemManager.add<MovementSystem>();
-   m_systemManager.add<GunSystem>(&m_keyHandler, &m_creator);
+   m_systemManager.add<GunSystem>(m_keyHandler, m_creator);
    m_systemManager.add<BulletLifeTimeSystem>();
    m_systemManager.add<AnimationSystem>();
-   m_systemManager.add<AudioSystem>(&m_audioManager);
+   m_systemManager.add<AudioSystem>(m_audioManager);
    m_systemManager.add<RenderSystem>(m_pWindow);
    m_systemManager.configure();
 }

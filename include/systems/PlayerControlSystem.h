@@ -2,13 +2,14 @@
 #define PLAYERCONTROLSYSTEM_H
 
 #include "entityx/System.h"
-#include "KeyHandler.h"
+
+class KeyHandler;
 
 class PlayerControlSystem : public entityx::System<PlayerControlSystem>
 {
 public:
 
-   PlayerControlSystem(KeyHandler* pKeyHandler);
+   PlayerControlSystem(const KeyHandler& keyHandler);
 
    void update(entityx::EntityManager &entities,
                entityx::EventManager &events,
@@ -16,7 +17,7 @@ public:
 
 private:
 
-   KeyHandler* m_pKeyHandler;
+   const KeyHandler& m_keyHandler;
 };
 
 #endif

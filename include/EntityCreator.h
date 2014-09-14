@@ -10,9 +10,9 @@ public:
 
    EntityCreator(entityx::EntityManager& entityManager);
 
-   void createSpaceShip();
+   void createSpaceShip() const;
 
-   void createBullet(const Vector2& position, const Vector2& velocity);
+   void createBullet(const Vector2& position, const Vector2& velocity) const;
 
 private:
 

@@ -13,7 +13,7 @@ class AudioSystem
 {
 public:
 
-   AudioSystem(AudioManager* pAudioManager);
+   AudioSystem(AudioManager& audioManager);
 
    void configure(entityx::EventManager& eventManager);
 
@@ -25,7 +25,7 @@ public:
 
 private:
 
-   AudioManager* m_pAudioManager;
+   AudioManager& m_audioManager;
 
 };
 

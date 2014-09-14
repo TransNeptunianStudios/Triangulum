@@ -3,8 +3,8 @@
 
 using namespace entityx;
 
-AudioSystem::AudioSystem(AudioManager* pAudioManager)
-: m_pAudioManager(pAudioManager)
+AudioSystem::AudioSystem(AudioManager &audioManager)
+: m_audioManager(audioManager)
 {
 }
 
@@ -21,5 +21,5 @@ void AudioSystem::update(EntityManager& entities,
 
 void AudioSystem::receive(const PlaySound& playSound)
 {
-   m_pAudioManager->playSound(playSound.id);
+   m_audioManager.playSound(playSound.id);
 }

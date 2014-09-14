@@ -35,7 +35,7 @@ void AudioManager::playSound(SoundId id)
 {
    auto it = m_soundMap.find(id);
 
-   if (it != m_soundMap.end())
+   if (it != end(m_soundMap))
    {
       Mix_PlayChannel(-1, it->second, 0);
    }
