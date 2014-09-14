@@ -7,9 +7,9 @@ Requires:
 * CMake (version 2.8 or greater)
 * SDL2
 * SDL2_image
+* SDL2_mixer
 * OpenGL
 * EntityX (https://github.com/alecthomas/entityx.git)
-* SDL Image (https://www.libsdl.org/projects/SDL_image/)
 
 How to:
 * git clone
