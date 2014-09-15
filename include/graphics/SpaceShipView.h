@@ -3,9 +3,7 @@
 
 #include "graphics/IDrawable.h"
 #include "graphics/IAnimatible.h"
-
-#include <SDL.h>
-#include <SDL_opengl.h>
+#include "SpriteSheet.h"
 
 enum SpaceShipState
 {
@@ -21,7 +19,7 @@ class SpaceShipView
 {
 public:
 
-   SpaceShipView();
+   SpaceShipView(SpriteSheet* pSpriteSheet);
 
    void animate(const Vector2 velocity, double dt);
 
@@ -29,9 +27,9 @@ public:
 
 private:
 
-   SpaceShipState m_state;
+   SpriteSheet* m_pSpriteSheet;
 
-   GLuint m_texture;
+   SpaceShipState m_state;
 
    double m_duration;
 };

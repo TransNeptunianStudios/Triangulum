@@ -8,6 +8,7 @@
 #include "components/Bullet.h"
 #include "graphics/SpaceShipView.h"
 #include "graphics/BulletView.h"
+#include "SpriteSheet.h"
 
 using namespace entityx;
 
@@ -18,7 +19,9 @@ EntityCreator::EntityCreator(EntityManager& entityManager)
 
 void EntityCreator::createSpaceShip() const
 {
-   auto pSsv = std::make_shared<SpaceShipView>();
+   auto pSpriteSheet = new SpriteSheet("../images/ship.bmp", 32);
+
+   auto pSsv = std::make_shared<SpaceShipView>(pSpriteSheet);
    auto spaceShip = m_entityManager.create();
    spaceShip.assign<PlayerMotionControl>();
    spaceShip.assign<Motion>();

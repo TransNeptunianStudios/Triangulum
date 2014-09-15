@@ -13,6 +13,8 @@ add_executable(
    src/Game.cpp
    include/KeyHandler.h
    src/KeyHandler.cpp
+   include/SpriteSheet.h
+   src/SpriteSheet.cpp
    include/SoundId.h
    include/components/Animation.h
    src/components/Animation.cpp
