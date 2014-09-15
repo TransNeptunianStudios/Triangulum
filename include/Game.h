@@ -24,6 +24,8 @@ public:
 
 private:
 
+   void initGL();
+
    void processInput();
 
    void update();

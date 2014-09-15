@@ -1,7 +1,7 @@
 #include "SpriteSheet.h"
 
 // This should be used to load other file formats with IMG_LOAD
-#include <SDL/SDL_image.h>
+#include "SDL_image.h"
 
 SpriteSheet::SpriteSheet(std::string filename, unsigned tileSize)
 : m_filename(filename)

@@ -25,7 +25,7 @@
 # (To distribute this file outside of CMake, substitute the full
 #  License text for the above reference.)
 
-FIND_PATH(SDLIMAGE_INCLUDE_DIR SDL2/SDL_image.h
+FIND_PATH(SDLIMAGE_INCLUDE_DIR SDL_image.h
   HINTS
   $ENV{SDLIMAGEDIR}
   $ENV{SDLDIR}
@@ -52,8 +52,7 @@ FIND_PATH(SDLIMAGE_INCLUDE_DIR SDL2/SDL_image.h
   /opt/include
 )
 
-SET(SDLIMAGE_INCLUDE_DIR ${SDLIMAGE_INCLUDE_DIR}/SDL2)
-
+#SET(SDLIMAGE_INCLUDE_DIR ${SDLIMAGE_INCLUDE_DIR}/SDL2)
 
 FIND_LIBRARY(SDLIMAGE_LIBRARY 
   NAMES SDL2_image

@@ -16,9 +16,9 @@ void RenderSystem::update(EntityManager &entities,
                           EventManager &events,
                           double dt)
 {
-   glClearColor(0, 0, 0, 1); // Black
-
    glClear(GL_COLOR_BUFFER_BIT);
+   glMatrixMode(GL_MODELVIEW);
+   glLoadIdentity();
 
    Position::Handle position;
    Display::Handle display;

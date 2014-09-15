@@ -71,10 +71,27 @@ void Game::init()
       std::exit(EXIT_FAILURE);
    }
 
+   initGL();
+
    m_audioManager.init();
 
    createSystems();
    createEntities();
+}
+
+void Game::initGL()
+{
+   glClearColor(0, 0, 0, 1); // Black
+
+   glViewport(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+
+   glMatrixMode(GL_PROJECTION);
+
+   glLoadIdentity();
+
+   double ratio = (double)SCREEN_WIDTH/(double)SCREEN_HEIGHT;
+
+   glOrtho(-1.0 * ratio, 1.0 * ratio, -1.0, 1.0, -1.0, 1.0);
 }
 
 void Game::run()
