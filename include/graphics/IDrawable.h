@@ -3,13 +3,15 @@
 
 #include <memory>
 
+class Position;
+
 class IDrawable
 {
 public:
 
    virtual ~IDrawable() {}
 
-   virtual void draw() = 0;
+   virtual void draw(const Position& pos) = 0;
 };
 
 typedef std::shared_ptr<IDrawable> IDrawableSP;

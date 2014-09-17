@@ -193,5 +193,6 @@ void Game::createSystems()
 
 void Game::createEntities()
 {
+   m_creator.createBackground();
    m_creator.createSpaceShip();
 }

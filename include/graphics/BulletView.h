@@ -9,7 +9,7 @@ public:
 
    BulletView();
 
-   void draw();
+   void draw(const Position& pos);
 };
 
 #endif // BULLETVIEW_H

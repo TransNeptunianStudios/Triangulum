@@ -32,6 +32,8 @@ add_executable(
    src/components/PlayerMotionControl.cpp
    include/graphics/IAnimatible.h
    include/graphics/IDrawable.h
+   include/graphics/BackgroundView.h
+   src/graphics/BackgroundView.cpp
    include/graphics/BulletView.h
    src/graphics/BulletView.cpp
    include/graphics/SpaceShipView.h

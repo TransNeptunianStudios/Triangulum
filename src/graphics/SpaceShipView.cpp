@@ -1,5 +1,5 @@
 #include "graphics/SpaceShipView.h"
-
+#include "components/Position.h"
 
 SpaceShipView::SpaceShipView(SpriteSheet* pSpriteSheet)
 : m_state(SSS_Idle)
@@ -45,7 +45,7 @@ void SpaceShipView::animate(const Vector2 velocity, double dt)
    }
 }
 
-void SpaceShipView::draw()
+void SpaceShipView::draw(const Position& pos)
 {
 //   GLfloat color[3];
 //   switch (m_state)
@@ -71,6 +71,10 @@ void SpaceShipView::draw()
 //      color[2] = 0.0;
 //      break;
 //   }
+
+   glTranslatef(pos.position.x(),
+                pos.position.y(),
+                0.f);
 
     if(m_pSpriteSheet != nullptr)
         m_pSpriteSheet->draw(0, 0);

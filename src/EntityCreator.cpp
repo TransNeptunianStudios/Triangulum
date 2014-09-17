@@ -8,6 +8,7 @@
 #include "components/Bullet.h"
 #include "graphics/SpaceShipView.h"
 #include "graphics/BulletView.h"
+#include "graphics/BackgroundView.h"
 #include "SpriteSheet.h"
 
 using namespace entityx;
@@ -15,6 +16,15 @@ using namespace entityx;
 EntityCreator::EntityCreator(EntityManager& entityManager)
 : m_entityManager(entityManager)
 {
+}
+
+void EntityCreator::createBackground() const
+{
+   auto pBv = new BackgroundView();
+   auto bg = m_entityManager.create();
+   bg.assign<Motion>(Vector2(0.0, 0.02));
+   bg.assign<Position>();
+   bg.assign<Display>(IDrawableSP(pBv));
 }
 
 void EntityCreator::createSpaceShip() const

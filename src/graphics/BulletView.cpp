@@ -1,12 +1,17 @@
 #include "SDL_opengl.h"
 #include "graphics/BulletView.h"
+#include "components/Position.h"
 
 BulletView::BulletView()
 {
 }
 
-void BulletView::draw()
+void BulletView::draw(const Position& pos)
 {
+   glTranslatef(pos.position.x(),
+                pos.position.y(),
+                0.f);
+
    glBegin(GL_QUADS);
        glColor3f(0.0f, 1.0f, 0.0f);
        glVertex3f(-0.005f, 0.02f, 0.0f);               // Top Left

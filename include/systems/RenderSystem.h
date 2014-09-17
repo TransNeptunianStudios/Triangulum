@@ -2,6 +2,7 @@
 #define RENDERSYSTEM_H
 
 #include "SDL.h"
+#include "SDL_opengl.h"
 #include "entityx/System.h"
 
 class RenderSystem : public entityx::System<RenderSystem>

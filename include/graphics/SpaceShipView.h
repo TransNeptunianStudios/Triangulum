@@ -23,7 +23,7 @@ public:
 
    void animate(const Vector2 velocity, double dt);
 
-   void draw();
+   void draw(const Position& pos);
 
 private:
 
