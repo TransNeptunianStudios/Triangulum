@@ -29,7 +29,7 @@ void EntityCreator::createBackground() const
 
 void EntityCreator::createSpaceShip() const
 {
-   auto pSpriteSheet = new SpriteSheet("../images/ship.bmp", 32);
+   auto pSpriteSheet = new SpriteSheet("../images/ship.png", 32);
 
    auto pSsv = std::make_shared<SpaceShipView>(pSpriteSheet);
    auto spaceShip = m_entityManager.create();

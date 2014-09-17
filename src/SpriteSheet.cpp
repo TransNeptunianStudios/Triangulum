@@ -7,7 +7,8 @@ SpriteSheet::SpriteSheet(std::string filename, unsigned tileSize)
 : m_filename(filename)
 , m_tileSize(tileSize)
 {
-    SDL_Surface* pSurface = SDL_LoadBMP(m_filename.c_str());
+   SDL_Surface* pSurface = IMG_Load(m_filename.c_str());
+
     if (pSurface==NULL) { //If it failed, say why and don't continue loading the texture
         printf("Error: \"%s\"\n",SDL_GetError()); return;
     }
@@ -19,7 +20,15 @@ SpriteSheet::SpriteSheet(std::string filename, unsigned tileSize)
 
     glBindTexture(GL_TEXTURE_2D, m_texture);
 
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, pSurface->w,pSurface->h, 0, GL_RGB,GL_UNSIGNED_BYTE,pSurface->pixels);
+    glTexImage2D(GL_TEXTURE_2D,
+                 0,
+                 GL_RGBA,
+                 pSurface->w,
+                 pSurface->h,
+                 0,
+                 GL_BGRA,
+                 GL_UNSIGNED_BYTE,
+                 pSurface->pixels);
 
     glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
