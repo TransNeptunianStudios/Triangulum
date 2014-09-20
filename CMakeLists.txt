@@ -57,25 +57,28 @@ add_executable(
    src/utils/Vector2.cpp
 )
 
-add_definitions(-std=c++11)
+add_definitions(-std=c++11 -lSDL2_image)
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/modules/")
 
+
+INCLUDE(FindPkgConfig)
+
 find_package(SDL2 REQUIRED)
-find_package(SDL2_image REQUIRED)
+PKG_SEARCH_MODULE(SDL2IMAGE REQUIRED SDL2_image>=2.0.0)
 find_package(SDL2_mixer REQUIRED)
 find_package(OpenGL REQUIRED)
 find_package(EntityX)
 
 include_directories(include ${SDL2_INCLUDE_DIR})
-include_directories(include ${SDLIMAGE_INCLUDE_DIR})
+include_directories(include ${SDL2IMAGE_INCLUDE_DIRS})
 include_directories(include ${SDL2_MIXER_INCLUDE_DIRS})
 include_directories(include ${OPENGL_INCLUDE_DIR})
 include_directories(include ${ENTITYX_INCLUDE_DIR})
 
 target_link_libraries(SpaceShooter
                         ${SDL2_LIBRARY}
-                        ${SDLIMAGE_LIBRARY}
+                        ${SDL2IMAGE_LIBRARIES}
                         ${SDL2_MIXER_LIBRARIES}
                         ${OPENGL_LIBRARIES}
                         ${ENTITYX_LIBRARY}                        
