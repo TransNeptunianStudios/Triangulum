@@ -201,4 +201,6 @@ void Game::createEntities()
 {
    m_creator.createBackground();
    m_creator.createSpaceShip();
+
+   m_creator.createAsteroid(Vector2(0.0, 0.6), Vector2(0.0, 0.0));
 }

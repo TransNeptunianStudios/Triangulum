@@ -34,6 +34,8 @@ add_executable(
    include/graphics/IDrawable.h
    include/graphics/BackgroundView.h
    src/graphics/BackgroundView.cpp
+   include/graphics/Asteroidview.h
+   src/graphics/Asteroidview.cpp
    include/graphics/BulletView.h
    src/graphics/BulletView.cpp
    include/graphics/SpaceShipView.h

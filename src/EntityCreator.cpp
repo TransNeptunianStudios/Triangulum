@@ -9,6 +9,7 @@
 #include "graphics/SpaceShipView.h"
 #include "graphics/BulletView.h"
 #include "graphics/BackgroundView.h"
+#include "graphics/Asteroidview.h"
 #include "SpriteSheet.h"
 
 using namespace entityx;
@@ -16,6 +17,7 @@ using namespace entityx;
 EntityCreator::EntityCreator(EntityManager& entityManager)
 : m_entityManager(entityManager)
 {
+
 }
 
 void EntityCreator::createBackground() const
@@ -29,9 +31,9 @@ void EntityCreator::createBackground() const
 
 void EntityCreator::createSpaceShip() const
 {
-   auto pSpriteSheet = new SpriteSheet("../images/SpriteSheet.png", 32);
 
-   auto pSsv = std::make_shared<SpaceShipView>(pSpriteSheet);
+   auto pSpriteSheet = new SpriteSheet("../images/SpriteSheet.png", 32);
+   auto pSsv = std::make_shared<SpaceShipView>( pSpriteSheet );
    auto spaceShip = m_entityManager.create();
    spaceShip.assign<PlayerMotionControl>();
    spaceShip.assign<Motion>();
@@ -39,6 +41,16 @@ void EntityCreator::createSpaceShip() const
    spaceShip.assign<Gun>();
    spaceShip.assign<Animation>(IAnimatibleSP(pSsv));
    spaceShip.assign<Display>(IDrawableSP(pSsv));
+}
+
+void EntityCreator::createAsteroid(const Vector2 &position, const Vector2 &velocity) const
+{
+    auto pSpriteSheet = new SpriteSheet("../images/SpriteSheet.png", 32);
+    auto pAv = new AsteroidView( pSpriteSheet );
+    auto asteroid = m_entityManager.create();
+    asteroid.assign<Motion>(velocity);
+    asteroid.assign<Position>(position);
+    asteroid.assign<Display>(IDrawableSP(pAv));
 }
 
 void EntityCreator::createBullet(const Vector2& position,

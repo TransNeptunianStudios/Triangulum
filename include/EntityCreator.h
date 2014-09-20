@@ -4,6 +4,8 @@
 #include "entityx/Entity.h"
 #include "utils/Vector2.h"
 
+#include "SpriteSheet.h"
+
 class EntityCreator
 {
 public:
@@ -13,6 +15,8 @@ public:
    void createBackground() const;
 
    void createSpaceShip() const;
+
+   void createAsteroid(const Vector2& position, const Vector2& velocity) const;
 
    void createBullet(const Vector2& position, const Vector2& velocity) const;
 
