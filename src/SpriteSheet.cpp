@@ -53,11 +53,11 @@ bool SpriteSheet::draw(unsigned x, unsigned y) const
     glBegin(GL_QUADS);
 
     glColor3f(1.0f, 1.0f, 1.0f);
-    glTexCoord2f(x*m_rTS[0], (y+1) * m_rTS[1]);
+    glTexCoord2f(x * m_rTS[0], (y+1) * m_rTS[1]);
     glVertex3f( -0.1f, -0.1f, 0.0f); // Lower Left
     glTexCoord2f((x+1) * m_rTS[0], (y+1) * m_rTS[1]);
     glVertex3f(  0.1f, -0.1f, 0.0f); // Lower Right
-    glTexCoord2f((x+1) * m_rTS[0], x * m_rTS[1]);
+    glTexCoord2f((x+1) * m_rTS[0], y * m_rTS[1]);
     glVertex3f(  0.1f,  0.1f, 0.0f); // Upper Right
     glTexCoord2f(x * m_rTS[0], y * m_rTS[1]);
     glVertex3f( -0.1f,  0.1f, 0.0f); // Upper Left
