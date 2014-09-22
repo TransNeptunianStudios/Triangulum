@@ -9,7 +9,7 @@ BackgroundView::BackgroundView()
 , m_textureOffset(0.0)
 , m_textureHeightStart(1.0/3.0)
 {
-   SDL_Surface* surface = IMG_Load("../images/bg.jpg");
+   SDL_Surface* surface = IMG_Load("../images/bg.png");
 
    if (!surface)
    {
