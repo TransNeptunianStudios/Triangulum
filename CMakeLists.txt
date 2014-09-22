@@ -59,7 +59,7 @@ add_executable(
    src/utils/Vector2.cpp
 )
 
-add_definitions(-std=c++11 -lSDL2_image)
+add_definitions(-std=c++11)
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/modules/")
 
