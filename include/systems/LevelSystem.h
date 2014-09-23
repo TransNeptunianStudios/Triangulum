@@ -30,6 +30,11 @@ private:
 
    double m_levelOffset;
 
+   typedef std::pair<double, ICreatableSP> CreatablePair;
+
+   typedef std::list<CreatablePair> CreatableList;
+
+   CreatableList m_creatables;
 };
 
 #endif // LEVELSYSTEM_H

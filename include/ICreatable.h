@@ -12,4 +12,6 @@ public:
    virtual void create(entityx::Entity entity) = 0;
 };
 
+typedef std::shared_ptr<ICreatable> ICreatableSP;
+
 #endif // ICREATABLE_H
