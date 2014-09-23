@@ -11,6 +11,7 @@ add_executable(
    src/EntityCreator.cpp
    include/Game.h
    src/Game.cpp
+   include/ICreatable.h
    include/KeyHandler.h
    src/KeyHandler.cpp
    include/SpriteSheet.h
@@ -49,6 +50,8 @@ add_executable(
    include/systems/Events.h
    include/systems/GunSystem.h
    src/systems/GunSystem.cpp
+   include/systems/LevelSystem.h
+   src/systems/LevelSystem.cpp
    include/systems/MovementSystem.h
    src/systems/MovementSystem.cpp
    include/systems/RenderSystem.h

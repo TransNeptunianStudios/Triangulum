@@ -21,7 +21,7 @@ public:
                entityx::EventManager &events,
                double dt);
 
-   void receive(const PlaySound& playSound);
+   void receive(const EvPlaySound& playSound);
 
 private:
 

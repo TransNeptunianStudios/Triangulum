@@ -8,10 +8,8 @@
 
 using namespace entityx;
 
-GunSystem::GunSystem(const KeyHandler& keyHandler,
-                     const EntityCreator& entityCreator)
+GunSystem::GunSystem(const KeyHandler& keyHandler)
 : m_keyHandler(keyHandler)
-, m_entityCreator(entityCreator)
 {
 }
 
@@ -27,11 +25,11 @@ void GunSystem::update(EntityManager &entities,
       if (m_keyHandler.isPressed(playerControl->shoot))
       {
          if (!gun->isShooting)
-         {
-            m_entityCreator.createBullet(position->position,
-                                         Vector2(0.0, 0.6));
+         {            
+            BulletCreator(position->position,
+                          Vector2(0.0, 0.6)).create(entities.create());
 
-            events.emit<PlaySound>(GUN_SHOOT);
+            events.emit<EvPlaySound>(GUN_SHOOT);
 
             gun->isShooting = true;
          }

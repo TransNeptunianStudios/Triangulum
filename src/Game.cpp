@@ -2,6 +2,7 @@
 #include <cstdlib>
 
 #include "Game.h"
+#include "systems/LevelSystem.h"
 #include "systems/PlayerControlSystem.h"
 #include "systems/MovementSystem.h"
 #include "systems/GunSystem.h"
@@ -25,7 +26,6 @@ Game::Game()
 , m_eventManager()
 , m_entityManager(m_eventManager)
 , m_systemManager(m_entityManager, m_eventManager)
-, m_creator(m_entityManager)
 , m_keyHandler()
 , m_audioManager()
 {
@@ -76,7 +76,8 @@ void Game::init()
    m_audioManager.init();
 
    createSystems();
-   createEntities();
+
+   m_eventManager.emit<EvInit>();
 }
 
 void Game::initGL()
@@ -157,6 +158,7 @@ void Game::processInput()
 
 void Game::update()
 {
+   m_systemManager.update<LevelSystem>(MS_PER_UPDATE);
    m_systemManager.update<PlayerControlSystem>(MS_PER_UPDATE);
    m_systemManager.update<MovementSystem>(MS_PER_UPDATE);
    m_systemManager.update<GunSystem>(MS_PER_UPDATE);
@@ -187,20 +189,13 @@ void Game::exit()
 
 void Game::createSystems()
 {
+   m_systemManager.add<LevelSystem>(m_entityManager);
    m_systemManager.add<PlayerControlSystem>(m_keyHandler);
    m_systemManager.add<MovementSystem>();
-   m_systemManager.add<GunSystem>(m_keyHandler, m_creator);
+   m_systemManager.add<GunSystem>(m_keyHandler);
    m_systemManager.add<BulletLifeTimeSystem>();
    m_systemManager.add<AnimationSystem>();
    m_systemManager.add<AudioSystem>(m_audioManager);
    m_systemManager.add<RenderSystem>(m_pWindow);
    m_systemManager.configure();
-}
-
-void Game::createEntities()
-{
-   m_creator.createBackground();
-   m_creator.createSpaceShip();
-
-   m_creator.createAsteroid(Vector2(0.0, 0.6), Vector2(0.0, 0.0));
 }

@@ -3,27 +3,60 @@
 
 #include "entityx/Entity.h"
 #include "utils/Vector2.h"
+#include "ICreatable.h"
 
-#include "SpriteSheet.h"
-
-class EntityCreator
+class BackgroundCreator : public ICreatable
 {
 public:
 
-   EntityCreator(entityx::EntityManager& entityManager);
+   BackgroundCreator(double scrollSpeed);
 
-   void createBackground() const;
-
-   void createSpaceShip() const;
-
-   void createAsteroid(const Vector2& position, const Vector2& velocity) const;
-
-   void createBullet(const Vector2& position, const Vector2& velocity) const;
+   void create(entityx::Entity entity);
 
 private:
 
-   entityx::EntityManager& m_entityManager;
+   double m_scrollSpeed;
+};
 
+class SpaceShipCreator : public ICreatable
+{
+public:
+
+   SpaceShipCreator();
+
+   void create(entityx::Entity entity);
+};
+
+class AsteroidCreator : public ICreatable
+{
+public:
+
+   AsteroidCreator(const Vector2& position,
+                   const Vector2& velocity);
+
+   void create(entityx::Entity entity);
+
+private:
+
+   Vector2 m_position;
+
+   Vector2 m_velocity;
+};
+
+class BulletCreator : public ICreatable
+{
+public:
+
+   BulletCreator(const Vector2& position,
+                 const Vector2& velocity);
+
+   void create(entityx::Entity entity);
+
+private:
+
+   Vector2 m_position;
+
+   Vector2 m_velocity;
 };
 
 #endif // ENTITYCREATOR_H

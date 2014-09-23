@@ -4,14 +4,12 @@
 #include "entityx/System.h"
 
 class KeyHandler;
-class EntityCreator;
 
 class GunSystem : public entityx::System<GunSystem>
 {
 public:
 
-   GunSystem(const KeyHandler& keyHandler,
-             const EntityCreator& entityCreator);
+   GunSystem(const KeyHandler& keyHandler);
 
    void update(entityx::EntityManager &entities,
                entityx::EventManager &events,
@@ -20,8 +18,6 @@ public:
 private:
 
    const KeyHandler& m_keyHandler;
-
-   const EntityCreator& m_entityCreator;
 };
 
 #endif // GUNSYSTEM_H

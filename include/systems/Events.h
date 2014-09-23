@@ -4,9 +4,14 @@
 #include "entityx/Event.h"
 #include "SoundId.h"
 
-struct PlaySound : public entityx::Event<PlaySound>
+struct EvInit : public entityx::Event<EvInit>
 {
-   PlaySound(SoundId _id)
+   EvInit() {}
+};
+
+struct EvPlaySound : public entityx::Event<EvPlaySound>
+{
+   EvPlaySound(SoundId _id)
    : id(_id)
    {
    }

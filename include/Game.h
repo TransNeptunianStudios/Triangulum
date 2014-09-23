@@ -52,8 +52,6 @@ private:
 
    entityx::SystemManager m_systemManager;
 
-   EntityCreator m_creator;
-
    KeyHandler m_keyHandler;
 
    AudioManager m_audioManager;

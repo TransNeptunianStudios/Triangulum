@@ -14,52 +14,64 @@
 
 using namespace entityx;
 
-EntityCreator::EntityCreator(EntityManager& entityManager)
-: m_entityManager(entityManager)
+BackgroundCreator::BackgroundCreator(double scrollSpeed)
+: m_scrollSpeed(scrollSpeed)
 {
-
 }
 
-void EntityCreator::createBackground() const
+void BackgroundCreator::create(Entity entity)
 {
-   auto pBv = new BackgroundView();
-   auto bg = m_entityManager.create();
-   bg.assign<Motion>(Vector2(0.0, 0.02));
-   bg.assign<Position>();
-   bg.assign<Display>(IDrawableSP(pBv));
+   entity.assign<Motion>(Vector2(0.0, m_scrollSpeed));
+   entity.assign<Position>();
+   entity.assign<Display>(IDrawableSP(new BackgroundView()));
 }
 
-void EntityCreator::createSpaceShip() const
-{
 
+SpaceShipCreator::SpaceShipCreator()
+{
+}
+
+void SpaceShipCreator::create(Entity entity)
+{
    auto pSpriteSheet = new SpriteSheet("../images/SpriteSheet.png", 32);
    auto pSsv = std::make_shared<SpaceShipView>( pSpriteSheet );
-   auto spaceShip = m_entityManager.create();
-   spaceShip.assign<PlayerMotionControl>();
-   spaceShip.assign<Motion>();
-   spaceShip.assign<Position>();
-   spaceShip.assign<Gun>();
-   spaceShip.assign<Animation>(IAnimatibleSP(pSsv));
-   spaceShip.assign<Display>(IDrawableSP(pSsv));
+   entity.assign<PlayerMotionControl>();
+   entity.assign<Motion>();
+   entity.assign<Position>();
+   entity.assign<Gun>();
+   entity.assign<Animation>(IAnimatibleSP(pSsv));
+   entity.assign<Display>(IDrawableSP(pSsv));
 }
 
-void EntityCreator::createAsteroid(const Vector2 &position, const Vector2 &velocity) const
+
+AsteroidCreator::AsteroidCreator(const Vector2 &position,
+                                 const Vector2 &velocity)
+: m_position(position)
+, m_velocity(velocity)
 {
-    auto pSpriteSheet = new SpriteSheet("../images/SpriteSheet.png", 32);
-    auto pAv = new AsteroidView( pSpriteSheet );
-    auto asteroid = m_entityManager.create();
-    asteroid.assign<Motion>(velocity);
-    asteroid.assign<Position>(position);
-    asteroid.assign<Display>(IDrawableSP(pAv));
 }
 
-void EntityCreator::createBullet(const Vector2& position,
-                                 const Vector2& velocity) const
+void AsteroidCreator::create(Entity entity)
+{
+   auto pSpriteSheet = new SpriteSheet("../images/SpriteSheet.png", 32);
+   auto pAv = new AsteroidView( pSpriteSheet );
+   entity.assign<Motion>(m_velocity);
+   entity.assign<Position>(m_position);
+   entity.assign<Display>(IDrawableSP(pAv));
+}
+
+BulletCreator::BulletCreator(const Vector2 &position,
+                             const Vector2 &velocity)
+: m_position(position)
+, m_velocity(velocity)
+{
+}
+
+void BulletCreator::create(Entity entity)
 {
    auto pBv = new BulletView();
-   auto bullet = m_entityManager.create();
-   bullet.assign<Motion>(velocity);
-   bullet.assign<Position>(position);
-   bullet.assign<Bullet>(10000.0);
-   bullet.assign<Display>(IDrawableSP(pBv));
+   entity.assign<Motion>(m_velocity);
+   entity.assign<Position>(m_position);
+   entity.assign<Bullet>(10000.0);
+   entity.assign<Display>(IDrawableSP(pBv));
 }
