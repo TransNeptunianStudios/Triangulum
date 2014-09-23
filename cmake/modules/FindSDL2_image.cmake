@@ -36,6 +36,7 @@ FIND_PATH(SDLIMAGE_INCLUDE_DIR SDL_image.h
   /Library/Frameworks
   /usr/local/include/SDL
   /usr/include/SDL
+  /usr/include/SDL2
   /usr/local/include/SDL12
   /usr/local/include/SDL11 # FreeBSD ports
   /usr/include/SDL12

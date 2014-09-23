@@ -44,6 +44,7 @@ SET(SDL2_SEARCH_PATHS
    ~/Library/Frameworks
    /Library/Frameworks
    /usr/local
+   /usr/lib
    /usr
    /sw # Fink
    /opt/local # DarwinPorts
