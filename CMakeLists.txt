@@ -31,6 +31,8 @@ add_executable(
    src/components/Position.cpp
    include/components/PlayerMotionControl.h
    src/components/PlayerMotionControl.cpp
+   include/components/Volume.h
+   src/components/Volume.cpp
    include/graphics/IAnimatible.h
    include/graphics/IDrawable.h
    include/graphics/BackgroundView.h
@@ -47,6 +49,8 @@ add_executable(
    src/systems/AudioSystem.cpp
    include/systems/BulletLifeTimeSystem.h
    src/systems/BulletLifeTimeSystem.cpp
+   include/systems/CollisionSystem.h
+   src/systems/CollisionSystem.cpp
    include/systems/Events.h
    include/systems/GunSystem.h
    src/systems/GunSystem.cpp
