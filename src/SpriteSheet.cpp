@@ -26,7 +26,7 @@ SpriteSheet::SpriteSheet(std::string filename, unsigned tileSize)
                  pSurface->w,
                  pSurface->h,
                  0,
-                 GL_RGBA,
+                 GL_BGRA,
                  GL_UNSIGNED_BYTE,
                  pSurface->pixels);
 

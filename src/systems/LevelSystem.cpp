@@ -21,8 +21,6 @@ void LevelSystem::update(EntityManager& entities,
 {
    m_levelOffset += m_scrollSpeed * dt / 1000.0;
 
-   printf("Level offset: %lf", m_levelOffset);
-
    if (!m_creatables.empty())
    {
       if (m_levelOffset >= m_creatables.front().first)
