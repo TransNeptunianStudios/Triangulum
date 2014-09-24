@@ -4,7 +4,7 @@ using namespace entityx;
 
 LevelSystem::LevelSystem(EntityManager& entities)
 : m_entityManager(entities)
-, m_scrollSpeed(0.02)
+, m_scrollSpeed(50.0)
 , m_levelOffset(0.0)
 , m_creatables()
 {
@@ -21,6 +21,8 @@ void LevelSystem::update(EntityManager& entities,
 {
    m_levelOffset += m_scrollSpeed * dt / 1000.0;
 
+   printf("Level offset: %lf", m_levelOffset);
+
    if (!m_creatables.empty())
    {
       if (m_levelOffset >= m_creatables.front().first)
@@ -33,25 +35,25 @@ void LevelSystem::update(EntityManager& entities,
 
 void LevelSystem::receive(const EvInit &e)
 {
-   BackgroundCreator(m_scrollSpeed).create(m_entityManager.create());
+   BackgroundCreator(0.02).create(m_entityManager.create());
    SpaceShipCreator().create(m_entityManager.create());
 
    m_creatables.push_back(
-      std::make_pair(0.05,
-                     ICreatableSP(new AsteroidCreator(Vector2(-0.3, 1.1),
-                                                      Vector2(0.0, -m_scrollSpeed*20)))));
+      std::make_pair(300.0,
+                     ICreatableSP(new AsteroidCreator(Vector2(200.0, -16.0),
+                                                      Vector2(0.0, m_scrollSpeed)))));
    m_creatables.push_back(
-      std::make_pair(0.07,
-                     ICreatableSP(new AsteroidCreator(Vector2(0.7, 1.1),
-                                                      Vector2(0.0, -m_scrollSpeed*20)))));
+      std::make_pair(500.0,
+                     ICreatableSP(new AsteroidCreator(Vector2(600.0, -16.0),
+                                                      Vector2(0.0, m_scrollSpeed)))));
 
    m_creatables.push_back(
-      std::make_pair(0.08,
-                     ICreatableSP(new AsteroidCreator(Vector2(0.5, 1.1),
-                                                      Vector2(0.0, -m_scrollSpeed*20)))));
+      std::make_pair(700.0,
+                     ICreatableSP(new AsteroidCreator(Vector2(400.0, -16.0),
+                                                      Vector2(0.0, m_scrollSpeed)))));
 
    m_creatables.push_back(
-      std::make_pair(0.1,
-                     ICreatableSP(new AsteroidCreator(Vector2(0.0, 1.1),
-                                                      Vector2(0.0, -m_scrollSpeed*20)))));
+      std::make_pair(1000.0,
+                     ICreatableSP(new AsteroidCreator(Vector2(350.0, -16.0),
+                                                      Vector2(0.0, m_scrollSpeed)))));
 }

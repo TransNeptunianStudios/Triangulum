@@ -96,9 +96,10 @@ void Game::initGL()
 
    glLoadIdentity();
 
-   double ratio = (double)SCREEN_WIDTH/(double)SCREEN_HEIGHT;
+   glOrtho(0.0, (double)SCREEN_WIDTH, (double)SCREEN_HEIGHT, 0.0, -1.0, 1.0);
 
-   glOrtho(-1.0 * ratio, 1.0 * ratio, -1.0, 1.0, -1.0, 1.0);
+   //double ratio = (double)SCREEN_WIDTH/(double)SCREEN_HEIGHT;
+   //glOrtho(-1.0 * ratio, 1.0 * ratio, -1.0, 1.0, -1.0, 1.0);
 }
 
 void Game::run()

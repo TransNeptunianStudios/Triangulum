@@ -27,7 +27,7 @@ void GunSystem::update(EntityManager &entities,
          if (!gun->isShooting)
          {            
             BulletCreator(position->position,
-                          Vector2(0.0, 0.6)).create(entities.create());
+                          Vector2(0.0, -100.0)).create(entities.create());
 
             events.emit<EvPlaySound>(GUN_SHOOT);
 

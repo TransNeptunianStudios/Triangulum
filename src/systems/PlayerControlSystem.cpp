@@ -14,7 +14,7 @@ void PlayerControlSystem::update(EntityManager &entities,
                                  EventManager &events,
                                  double dt)
 {
-   float vel = 0.3f;
+   float vel = 50.0f;
 
    PlayerMotionControl::Handle playerControl;
    Motion::Handle motion;
@@ -35,11 +35,11 @@ void PlayerControlSystem::update(EntityManager &entities,
 
       if (m_keyHandler.isPressed(playerControl->up))
       {
-         motion->velocity.y() = vel;
+         motion->velocity.y() = -vel;
       }
       else if (m_keyHandler.isPressed(playerControl->down))
       {
-         motion->velocity.y() = -vel;
+         motion->velocity.y() = vel;
       }
       else
       {

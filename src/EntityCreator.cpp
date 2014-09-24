@@ -37,7 +37,7 @@ void SpaceShipCreator::create(Entity entity)
    auto pSsv = std::make_shared<SpaceShipView>( pSpriteSheet );
    entity.assign<PlayerMotionControl>();
    entity.assign<Motion>();
-   entity.assign<Position>();
+   entity.assign<Position>(Vector2(400.0, 300.0));
    entity.assign<Gun>();
    entity.assign<Animation>(IAnimatibleSP(pSsv));
    entity.assign<Display>(IDrawableSP(pSsv));

@@ -52,13 +52,13 @@ void BackgroundView::draw(const Position& pos)
    glColor3f(1.0f, 1.0f, 1.0f);
 
    glTexCoord2f(0.0f, m_textureHeightStart+offset);
-   glVertex3f(-1.0f - m_ratio, 1.0f, -0.5f);
+   glVertex3f(0.0f, 0.0f, -0.5f);
    glTexCoord2f(1.0f, m_textureHeightStart+offset);
-   glVertex3f(1.0f + m_ratio, 1.0f, -0.5f);
+   glVertex3f(800.0, 0.0, -0.5f);
    glTexCoord2f(1.0f, offset);
-   glVertex3f(1.0f + m_ratio, -1.0f, -0.5f);
+   glVertex3f(800.0, 600.0, -0.5f);
    glTexCoord2f(0.0f, offset);
-   glVertex3f(-1.0f - m_ratio, -1.0f, -0.5f);
+   glVertex3f(0.0, 600.0, -0.5f);
 
    glEnd();
 

@@ -18,12 +18,19 @@ void RenderSystem::update(EntityManager &entities,
 
    glMatrixMode(GL_MODELVIEW);
 
+   glLoadIdentity();
+
+   //glTranslatef(400.0, 300.0, 0.f);
+
    Position::Handle position;
    Display::Handle display;
    for (Entity entity : entities.entities_with_components(position, display))
-   {
-      glLoadIdentity();
+   {      
+      glPushMatrix();
+
       display->spDrawable->draw(*position.get());
+
+      glPopMatrix();
    }
 
    SDL_GL_SwapWindow(m_pWindow);
