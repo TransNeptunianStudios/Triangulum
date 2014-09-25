@@ -2,6 +2,7 @@
 #include <cstdlib>
 
 #include "Game.h"
+#include "ScreenSize.h"
 #include "systems/LevelSystem.h"
 #include "systems/PlayerControlSystem.h"
 #include "systems/MovementSystem.h"
@@ -47,8 +48,8 @@ void Game::init()
    m_pWindow = SDL_CreateWindow("Space-Shooter",
                                 SDL_WINDOWPOS_UNDEFINED,
                                 SDL_WINDOWPOS_UNDEFINED,
-                                SCREEN_WIDTH,
-                                SCREEN_HEIGHT,
+                                800.0,
+                                600.0,
                                 SDL_WINDOW_SHOWN | SDL_WINDOW_OPENGL);
 
    if (m_pWindow == 0)

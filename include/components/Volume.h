@@ -2,20 +2,13 @@
 #define VOLUME_H
 
 #include "entityx/Entity.h"
-#include "utils/Vector2.h"
-
-struct Box
-{
-   double w;
-   double h;
-   Vector2 offset;
-};
+#include "utils/CollisionBox.h"
 
 struct Volume : public entityx::Component<Volume>
 {
    Volume();
 
-   typedef std::vector<Box> BoxList;
+   typedef std::vector<CollisionBox> BoxList;
 
    BoxList m_boxes;
 };

@@ -7,6 +7,8 @@
 #include "components/Gun.h"
 #include "components/Bullet.h"
 #include "components/Volume.h"
+#include "components/SpaceShip.h"
+#include "components/Obstacle.h"
 #include "graphics/SpaceShipView.h"
 #include "graphics/BulletView.h"
 #include "graphics/BackgroundView.h"
@@ -34,13 +36,11 @@ SpaceShipCreator::SpaceShipCreator()
 
 void SpaceShipCreator::create(Entity entity)
 {
-   Box b;
-   b.w = 0.2;
-   b.h = 0.2;
    auto volume = Volume();
-   volume.m_boxes.push_back(b);
+   volume.m_boxes.push_back(CollisionBox(32, 32));
    auto pSpriteSheet = new SpriteSheet("../images/SpriteSheet.png", 32);
    auto pSsv = std::make_shared<SpaceShipView>( pSpriteSheet );
+   entity.assign<SpaceShip>();
    entity.assign<PlayerMotionControl>();
    entity.assign<Motion>();
    entity.assign<Position>(Vector2(400.0, 300.0));
@@ -60,13 +60,11 @@ AsteroidCreator::AsteroidCreator(const Vector2 &position,
 
 void AsteroidCreator::create(Entity entity)
 {
-   Box b;
-   b.w = 0.2;
-   b.h = 0.2;
    auto volume = Volume();
-   volume.m_boxes.push_back(b);
+   volume.m_boxes.push_back(CollisionBox(32, 32));
    auto pSpriteSheet = new SpriteSheet("../images/SpriteSheet.png", 32);
    auto pAv = new AsteroidView( pSpriteSheet );
+   entity.assign<Obstacle>();
    entity.assign<Motion>(m_velocity);
    entity.assign<Position>(m_position);
    entity.assign<Volume>(volume);
@@ -82,9 +80,12 @@ BulletCreator::BulletCreator(const Vector2 &position,
 
 void BulletCreator::create(Entity entity)
 {
+   auto volume = Volume();
+   volume.m_boxes.push_back(CollisionBox(4, 8));
    auto pBv = new BulletView();
    entity.assign<Motion>(m_velocity);
    entity.assign<Position>(m_position);
    entity.assign<Bullet>(10000.0);
+   entity.assign<Volume>(volume);
    entity.assign<Display>(IDrawableSP(pBv));
 }

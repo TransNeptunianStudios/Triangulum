@@ -2,6 +2,7 @@
 #define AUDIOMANAGER_H
 
 #include <map>
+#include <string>
 
 #include "SDL_mixer.h"
 
@@ -20,6 +21,8 @@ public:
    void playSound(SoundId id);
 
 private:
+
+   void loadSoundEffect(const std::string& fileName, SoundId id);
 
    typedef std::map<SoundId, Mix_Chunk*> SoundMap;
 

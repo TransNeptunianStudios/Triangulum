@@ -27,10 +27,14 @@ add_executable(
    src/components/Gun.cpp
    include/components/Motion.h
    src/components/Motion.cpp
+   include/components/Obstacle.h
+   src/components/Obstacle.cpp
    include/components/Position.h
    src/components/Position.cpp
    include/components/PlayerMotionControl.h
    src/components/PlayerMotionControl.cpp
+   include/components/SpaceShip.h
+   src/components/SpaceShip.cpp
    include/components/Volume.h
    src/components/Volume.cpp
    include/graphics/IAnimatible.h
@@ -62,6 +66,8 @@ add_executable(
    src/systems/RenderSystem.cpp
    include/systems/PlayerControlSystem.h
    src/systems/PlayerControlSystem.cpp
+   include/utils/CollisionBox.h
+   src/utils/CollisionBox.cpp
    include/utils/Vector2.h
    src/utils/Vector2.cpp
 )

@@ -23,10 +23,6 @@ private:
                        Volume* vol1,
                        Position* pos2,
                        Volume* vol2);
-
-   SDL_Rect convertToSDLRect(const Vector2& boxPos,
-                             double boxW,
-                             double boxH);
 };
 
 #endif // COLLISIONSYSTEM_H
