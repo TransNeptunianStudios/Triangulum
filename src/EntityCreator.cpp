@@ -13,9 +13,21 @@
 #include "graphics/BulletView.h"
 #include "graphics/BackgroundView.h"
 #include "graphics/Asteroidview.h"
+#include "graphics/StartMenuView.h"
 #include "SpriteSheet.h"
+#include "ScreenSize.h"
 
 using namespace entityx;
+
+StartMenuCreator::StartMenuCreator()
+{
+}
+
+void StartMenuCreator::create(Entity entity)
+{
+   entity.assign<Position>(Vector2(ScreenSize::width()/2.0, ScreenSize::height()/2.0));
+   entity.assign<Display>(IDrawableSP(new StartMenuView()));
+}
 
 BackgroundCreator::BackgroundCreator(double scrollSpeed)
 : m_scrollSpeed(scrollSpeed)

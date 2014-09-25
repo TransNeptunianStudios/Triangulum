@@ -5,6 +5,15 @@
 #include "utils/Vector2.h"
 #include "ICreatable.h"
 
+class StartMenuCreator : public ICreatable
+{
+public:
+
+   StartMenuCreator();
+
+   void create(entityx::Entity entity);
+};
+
 class BackgroundCreator : public ICreatable
 {
 public:

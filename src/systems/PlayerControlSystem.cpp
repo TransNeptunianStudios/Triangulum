@@ -14,7 +14,7 @@ void PlayerControlSystem::update(EntityManager &entities,
                                  EventManager &events,
                                  double dt)
 {
-   float vel = 100.0f;
+   float vel = 200.0f;
 
    PlayerMotionControl::Handle playerControl;
    Motion::Handle motion;

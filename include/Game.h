@@ -8,7 +8,7 @@
 #include "entityx/Entity.h"
 #include "entityx/System.h"
 
-#include "EntityCreator.h"
+#include "GameManager.h"
 #include "KeyHandler.h"
 #include "AudioManager.h"
 
@@ -51,6 +51,8 @@ private:
    entityx::EntityManager m_entityManager;
 
    entityx::SystemManager m_systemManager;
+
+   GameManager m_gameManager;
 
    KeyHandler m_keyHandler;
 

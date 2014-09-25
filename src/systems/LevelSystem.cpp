@@ -33,6 +33,10 @@ void LevelSystem::update(EntityManager& entities,
 
 void LevelSystem::receive(const EvInit &e)
 {
+   m_scrollSpeed = 50.0;
+   m_levelOffset = 0.0;
+   m_creatables.clear();
+
    BackgroundCreator(0.02).create(m_entityManager.create());
    SpaceShipCreator().create(m_entityManager.create());
 

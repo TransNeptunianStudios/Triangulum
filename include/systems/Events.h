@@ -4,9 +4,19 @@
 #include "entityx/Event.h"
 #include "SoundId.h"
 
+struct EvStartGame : public entityx::Event<EvStartGame>
+{
+   EvStartGame() {}
+};
+
 struct EvInit : public entityx::Event<EvInit>
 {
    EvInit() {}
+};
+
+struct EvGameOver : public entityx::Event<EvGameOver>
+{
+   EvGameOver() {}
 };
 
 struct EvPlaySound : public entityx::Event<EvPlaySound>

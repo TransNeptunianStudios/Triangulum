@@ -3,6 +3,7 @@
 
 #include "Game.h"
 #include "ScreenSize.h"
+#include "systems/StartMenuSystem.h"
 #include "systems/LevelSystem.h"
 #include "systems/PlayerControlSystem.h"
 #include "systems/MovementSystem.h"
@@ -12,10 +13,6 @@
 #include "systems/AnimationSystem.h"
 #include "systems/AudioSystem.h"
 #include "systems/RenderSystem.h"
-
-//Screen dimension constants
-const int SCREEN_WIDTH = 800;
-const int SCREEN_HEIGHT = 600;
 
 // Updates per milliseconds
 static Uint32 MS_PER_UPDATE = 10.0;
@@ -28,6 +25,7 @@ Game::Game()
 , m_eventManager()
 , m_entityManager(m_eventManager)
 , m_systemManager(m_entityManager, m_eventManager)
+, m_gameManager(m_entityManager, m_eventManager)
 , m_keyHandler()
 , m_audioManager()
 {
@@ -35,6 +33,9 @@ Game::Game()
 
 void Game::init()
 {
+   ScreenSize::setWidth(800);
+   ScreenSize::setHeight(600);
+
    //Initialize SDL
    if(SDL_Init(SDL_INIT_EVERYTHING|SDL_INIT_NOPARACHUTE)) // I'm a coward
    {
@@ -48,8 +49,8 @@ void Game::init()
    m_pWindow = SDL_CreateWindow("Space-Shooter",
                                 SDL_WINDOWPOS_UNDEFINED,
                                 SDL_WINDOWPOS_UNDEFINED,
-                                800.0,
-                                600.0,
+                                ScreenSize::width(),
+                                ScreenSize::height(),
                                 SDL_WINDOW_SHOWN | SDL_WINDOW_OPENGL);
 
    if (m_pWindow == 0)
@@ -75,11 +76,11 @@ void Game::init()
 
    initGL();
 
+   m_gameManager.init();
+
    m_audioManager.init();
 
    createSystems();
-
-   m_eventManager.emit<EvInit>();
 }
 
 void Game::initGL()
@@ -92,16 +93,13 @@ void Game::initGL()
 
    glClearColor(0, 0, 0, 1); // Black
 
-   glViewport(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+   glViewport(0, 0, ScreenSize::width(), ScreenSize::height());
 
    glMatrixMode(GL_PROJECTION);
 
    glLoadIdentity();
 
-   glOrtho(0.0, (double)SCREEN_WIDTH, (double)SCREEN_HEIGHT, 0.0, -1.0, 1.0);
-
-   //double ratio = (double)SCREEN_WIDTH/(double)SCREEN_HEIGHT;
-   //glOrtho(-1.0 * ratio, 1.0 * ratio, -1.0, 1.0, -1.0, 1.0);
+   glOrtho(0.0, (double)ScreenSize::width(), (double)ScreenSize::height(), 0.0, -1.0, 1.0);
 }
 
 void Game::run()
@@ -161,13 +159,22 @@ void Game::processInput()
 
 void Game::update()
 {
-   m_systemManager.update<LevelSystem>(MS_PER_UPDATE);
-   m_systemManager.update<PlayerControlSystem>(MS_PER_UPDATE);
-   m_systemManager.update<MovementSystem>(MS_PER_UPDATE);
-   m_systemManager.update<GunSystem>(MS_PER_UPDATE);
-   m_systemManager.update<BulletLifeTimeSystem>(MS_PER_UPDATE);
-   m_systemManager.update<CollisionSystem>(MS_PER_UPDATE);
-   m_systemManager.update<AnimationSystem>(MS_PER_UPDATE);
+   GameState state(m_gameManager.getGameState());
+
+   if (state == GS_StartMenu)
+   {
+      m_systemManager.update<StartMenuSystem>(MS_PER_UPDATE);
+   }
+   else if (state == GS_Playing)
+   {
+      m_systemManager.update<LevelSystem>(MS_PER_UPDATE);
+      m_systemManager.update<PlayerControlSystem>(MS_PER_UPDATE);
+      m_systemManager.update<MovementSystem>(MS_PER_UPDATE);
+      m_systemManager.update<GunSystem>(MS_PER_UPDATE);
+      m_systemManager.update<BulletLifeTimeSystem>(MS_PER_UPDATE);
+      m_systemManager.update<CollisionSystem>(MS_PER_UPDATE);
+      m_systemManager.update<AnimationSystem>(MS_PER_UPDATE);
+   }
 }
 
 void Game::render()
@@ -193,6 +200,7 @@ void Game::exit()
 
 void Game::createSystems()
 {
+   m_systemManager.add<StartMenuSystem>(m_keyHandler);
    m_systemManager.add<LevelSystem>(m_entityManager);
    m_systemManager.add<PlayerControlSystem>(m_keyHandler);
    m_systemManager.add<MovementSystem>();

@@ -11,9 +11,13 @@ add_executable(
    src/EntityCreator.cpp
    include/Game.h
    src/Game.cpp
+   include/GameManager.h
+   src/GameManager.cpp
    include/ICreatable.h
    include/KeyHandler.h
    src/KeyHandler.cpp
+   include/ScreenSize.h
+   src/ScreenSize.cpp
    include/SpriteSheet.h
    src/SpriteSheet.cpp
    include/SoundId.h
@@ -47,6 +51,8 @@ add_executable(
    src/graphics/BulletView.cpp
    include/graphics/SpaceShipView.h
    src/graphics/SpaceShipView.cpp
+   include/graphics/StartMenuView.h
+   src/graphics/StartMenuView.cpp
    include/systems/AnimationSystem.h
    src/systems/AnimationSystem.cpp
    include/systems/AudioSystem.h
@@ -64,6 +70,8 @@ add_executable(
    src/systems/MovementSystem.cpp
    include/systems/RenderSystem.h
    src/systems/RenderSystem.cpp
+   include/systems/StartMenuSystem.h
+   src/systems/StartMenuSystem.cpp
    include/systems/PlayerControlSystem.h
    src/systems/PlayerControlSystem.cpp
    include/utils/CollisionBox.h

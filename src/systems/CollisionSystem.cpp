@@ -30,6 +30,7 @@ void CollisionSystem::update(EntityManager& entities,
          {
              spaceShipEntity.destroy();
              events.emit<EvPlaySound>(SHIP_EXPLOSION);
+             events.emit<EvGameOver>();
              return;
          }
       }
