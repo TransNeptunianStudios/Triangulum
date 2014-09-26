@@ -1,9 +1,22 @@
 #include "SDL_opengl.h"
 #include "graphics/StartMenuView.h"
 #include "components/Position.h"
+#include "systems/Events.h"
+#include "KeyHandler.h"
+
+using namespace entityx;
 
 StartMenuView::StartMenuView()
 {
+}
+
+void StartMenuView::update(const KeyHandler& keyHandler,
+                           EventManager& eventManager)
+{
+   if (keyHandler.isPressed(SDLK_SPACE))
+   {
+      eventManager.emit<EvStartGame>();
+   }
 }
 
 void StartMenuView::draw(const Position &pos)

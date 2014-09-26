@@ -1,15 +1,15 @@
-#ifndef STARTMENUSYSTEM_H
-#define STARTMENUSYSTEM_H
+#ifndef MENUSYSTEM_H
+#define MENUSYSTEM_H
 
 #include "entityx/System.h"
 
 class KeyHandler;
 
-class StartMenuSystem : public entityx::System<StartMenuSystem>
+class MenuSystem : public entityx::System<MenuSystem>
 {
 public:
 
-   StartMenuSystem(const KeyHandler& keyHandler);
+   MenuSystem(const KeyHandler& keyHandler);
 
    void update(entityx::EntityManager &entities,
                entityx::EventManager &events,
@@ -20,4 +20,4 @@ private:
    const KeyHandler& m_keyHandler;
 };
 
-#endif // STARTMENUSYSTEM_H
+#endif // MENUSYSTEM_H

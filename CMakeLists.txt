@@ -29,6 +29,9 @@ add_executable(
    src/components/Display.cpp
    include/components/Gun.h
    src/components/Gun.cpp
+   include/components/IMenu.h
+   include/components/Menu.h
+   src/components/Menu.cpp
    include/components/Motion.h
    src/components/Motion.cpp
    include/components/Obstacle.h
@@ -66,12 +69,12 @@ add_executable(
    src/systems/GunSystem.cpp
    include/systems/LevelSystem.h
    src/systems/LevelSystem.cpp
+   include/systems/MenuSystem.h
+   src/systems/MenuSystem.cpp
    include/systems/MovementSystem.h
    src/systems/MovementSystem.cpp
    include/systems/RenderSystem.h
    src/systems/RenderSystem.cpp
-   include/systems/StartMenuSystem.h
-   src/systems/StartMenuSystem.cpp
    include/systems/PlayerControlSystem.h
    src/systems/PlayerControlSystem.cpp
    include/utils/CollisionBox.h

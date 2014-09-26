@@ -3,7 +3,7 @@
 
 #include "Game.h"
 #include "ScreenSize.h"
-#include "systems/StartMenuSystem.h"
+#include "systems/MenuSystem.h"
 #include "systems/LevelSystem.h"
 #include "systems/PlayerControlSystem.h"
 #include "systems/MovementSystem.h"
@@ -163,7 +163,7 @@ void Game::update()
 
    if (state == GS_StartMenu)
    {
-      m_systemManager.update<StartMenuSystem>(MS_PER_UPDATE);
+      m_systemManager.update<MenuSystem>(MS_PER_UPDATE);
    }
    else if (state == GS_Playing)
    {
@@ -200,7 +200,7 @@ void Game::exit()
 
 void Game::createSystems()
 {
-   m_systemManager.add<StartMenuSystem>(m_keyHandler);
+   m_systemManager.add<MenuSystem>(m_keyHandler);
    m_systemManager.add<LevelSystem>(m_entityManager);
    m_systemManager.add<PlayerControlSystem>(m_keyHandler);
    m_systemManager.add<MovementSystem>();

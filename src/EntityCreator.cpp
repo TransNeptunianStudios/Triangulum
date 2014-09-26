@@ -9,6 +9,7 @@
 #include "components/Volume.h"
 #include "components/SpaceShip.h"
 #include "components/Obstacle.h"
+#include "components/Menu.h"
 #include "graphics/SpaceShipView.h"
 #include "graphics/BulletView.h"
 #include "graphics/BackgroundView.h"
@@ -25,8 +26,10 @@ StartMenuCreator::StartMenuCreator()
 
 void StartMenuCreator::create(Entity entity)
 {
+   auto pSmv = std::make_shared<StartMenuView>();
+   entity.assign<Menu>(IMenuSP(pSmv));
    entity.assign<Position>(Vector2(ScreenSize::width()/2.0, ScreenSize::height()/2.0));
-   entity.assign<Display>(IDrawableSP(new StartMenuView()));
+   entity.assign<Display>(IDrawableSP(pSmv));
 }
 
 BackgroundCreator::BackgroundCreator(double scrollSpeed)
