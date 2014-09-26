@@ -3,9 +3,16 @@
 
 #include "entityx/Entity.h"
 
+enum ObstacleType
+{
+   OT_Asteroid,
+};
+
 struct Obstacle : public entityx::Component<Obstacle>
 {
-   Obstacle();
+   Obstacle(ObstacleType _type);
+
+   ObstacleType type;
 };
 
 #endif // OBSTACLE_H

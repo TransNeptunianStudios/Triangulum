@@ -1,5 +1,6 @@
 #include "components/Obstacle.h"
 
-Obstacle::Obstacle()
+Obstacle::Obstacle(ObstacleType _type)
+: type(_type)
 {
 }

@@ -15,6 +15,7 @@ void AudioManager::init()
    loadSoundEffect("../resources/gun_shoot.wav", GUN_SHOOT);
    loadSoundEffect("../resources/ship_explosion.wav", SHIP_EXPLOSION);
    loadSoundEffect("../resources/asteroid_hit.wav", ASTEROID_HIT);
+   loadSoundEffect("../resources/asteroid_explosion.wav", ASTEROID_EXPLOSION);
 }
 
 void AudioManager::cleanup()

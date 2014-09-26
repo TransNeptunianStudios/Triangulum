@@ -2,6 +2,7 @@
 #define ENTITYCREATOR_H
 
 #include "entityx/Entity.h"
+#include "systems/BulletType.h"
 #include "utils/Vector2.h"
 #include "ICreatable.h"
 
@@ -66,7 +67,8 @@ class BulletCreator : public ICreatable
 public:
 
    BulletCreator(const Vector2& position,
-                 const Vector2& velocity);
+                 const Vector2& velocity,
+                 BulletType bulletType);
 
    void create(entityx::Entity entity);
 
@@ -75,6 +77,8 @@ private:
    Vector2 m_position;
 
    Vector2 m_velocity;
+
+   BulletType m_bulletType;
 };
 
 #endif // ENTITYCREATOR_H

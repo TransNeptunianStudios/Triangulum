@@ -1,9 +1,8 @@
 #include "systems/CollisionSystem.h"
 #include "systems/Events.h"
 #include "components/SpaceShip.h"
-#include "components/Obstacle.h"
 #include "components/Bullet.h"
-#include "SoundId.h"
+#include "components/Health.h"
 
 using namespace entityx;
 
@@ -39,17 +38,34 @@ void CollisionSystem::update(EntityManager& entities,
    Bullet::Handle bullet;
    Position::Handle bulletPos;
    Volume::Handle bulletVol;
+   Health::Handle health;
    for (Entity bulletEntity : entities.entities_with_components(bullet, bulletPos, bulletVol))
    {
-      for (Entity obstacleEntity : entities.entities_with_components(obstacle, obstaclePos, obstacleVol))
+      for (Entity obstacleEntity : entities.entities_with_components(obstacle, obstaclePos, obstacleVol, health))
       {
          if (checkCollision(bulletPos.get(),
                             bulletVol.get(),
                             obstaclePos.get(),
                             obstacleVol.get()))
          {
+             health->health -= bullet->damage;
+
              bulletEntity.destroy();
-             events.emit<EvPlaySound>(ASTEROID_HIT);
+
+             SoundId soundId = NO_SOUND;
+
+             if (health->health <= 0)
+             {
+                soundId = getDeathSound(obstacle->type);
+                obstacleEntity.destroy();
+             }
+             else
+             {
+                soundId = getHitSound(obstacle->type);
+             }
+
+             events.emit<EvPlaySound>(soundId);
+
              break;
          }
       }
@@ -77,4 +93,34 @@ bool CollisionSystem::checkCollision(Position* pos1,
    }
 
    return false;
+}
+
+SoundId CollisionSystem::getHitSound(ObstacleType type)
+{
+   SoundId soundId = NO_SOUND;
+
+   switch (type) {
+   case OT_Asteroid:
+      soundId = ASTEROID_HIT;
+      break;
+   default:
+      break;
+   }
+
+   return soundId;
+}
+
+SoundId CollisionSystem::getDeathSound(ObstacleType type)
+{
+   SoundId soundId = NO_SOUND;
+
+   switch (type) {
+   case OT_Asteroid:
+      soundId = ASTEROID_EXPLOSION;
+      break;
+   default:
+      break;
+   }
+
+   return soundId;
 }

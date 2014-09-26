@@ -9,6 +9,7 @@
 #include "components/Volume.h"
 #include "components/SpaceShip.h"
 #include "components/Obstacle.h"
+#include "components/Health.h"
 #include "components/Menu.h"
 #include "graphics/SpaceShipView.h"
 #include "graphics/BulletView.h"
@@ -92,7 +93,8 @@ void AsteroidCreator::create(Entity entity)
    volume.m_boxes.push_back(CollisionBox(32, 32));
    auto pSpriteSheet = new SpriteSheet("../images/SpriteSheet.png", 32);
    auto pAv = new AsteroidView( pSpriteSheet );
-   entity.assign<Obstacle>();
+   entity.assign<Obstacle>(OT_Asteroid);
+   entity.assign<Health>(5);
    entity.assign<Motion>(m_velocity);
    entity.assign<Position>(m_position);
    entity.assign<Volume>(volume);
@@ -100,20 +102,23 @@ void AsteroidCreator::create(Entity entity)
 }
 
 BulletCreator::BulletCreator(const Vector2 &position,
-                             const Vector2 &velocity)
+                             const Vector2 &velocity,
+                             BulletType bulletType)
 : m_position(position)
 , m_velocity(velocity)
+, m_bulletType(bulletType)
 {
 }
 
 void BulletCreator::create(Entity entity)
 {
+   auto damage = BulletDamageTable::lookup(m_bulletType);
    auto volume = Volume();
    volume.m_boxes.push_back(CollisionBox(4, 8));
    auto pBv = new BulletView();
    entity.assign<Motion>(m_velocity);
    entity.assign<Position>(m_position);
-   entity.assign<Bullet>(10000.0);
+   entity.assign<Bullet>(10000.0, damage);
    entity.assign<Volume>(volume);
    entity.assign<Display>(IDrawableSP(pBv));
 }

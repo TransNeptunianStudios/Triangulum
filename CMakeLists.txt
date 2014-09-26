@@ -29,6 +29,8 @@ add_executable(
    src/components/Display.cpp
    include/components/Gun.h
    src/components/Gun.cpp
+   include/components/Health.h
+   src/components/Health.cpp
    include/components/IMenu.h
    include/components/Menu.h
    src/components/Menu.cpp
@@ -64,6 +66,8 @@ add_executable(
    src/systems/AudioSystem.cpp
    include/systems/BulletLifeTimeSystem.h
    src/systems/BulletLifeTimeSystem.cpp
+   include/systems/BulletType.h
+   src/systems/BulletType.cpp
    include/systems/CollisionSystem.h
    src/systems/CollisionSystem.cpp
    include/systems/Events.h
