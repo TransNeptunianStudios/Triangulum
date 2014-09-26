@@ -161,7 +161,7 @@ void Game::update()
 {
    GameState state(m_gameManager.getGameState());
 
-   if (state == GS_StartMenu)
+   if (state == GS_StartMenu || state == GS_GameOver)
    {
       m_systemManager.update<MenuSystem>(MS_PER_UPDATE);
    }

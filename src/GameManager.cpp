@@ -34,11 +34,11 @@ void GameManager::receive(const EvStartGame& startGame)
    m_eventManager.emit<EvInit>();
 }
 
-void GameManager::receive(const EvGameOver &gameOver)
+void GameManager::receive(const EvGameOver& gameOver)
 {
-   m_gameState = GS_StartMenu;
+   m_gameState = GS_GameOver;
 
    m_entityManager.reset();
 
-   StartMenuCreator().create(m_entityManager.create());
+   GameOverMenuCreator().create(m_entityManager.create());
 }

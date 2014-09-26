@@ -52,6 +52,8 @@ add_executable(
    src/graphics/Asteroidview.cpp
    include/graphics/BulletView.h
    src/graphics/BulletView.cpp
+   include/graphics/GameOverMenuView.h
+   src/graphics/GameOverMenuView.cpp
    include/graphics/SpaceShipView.h
    src/graphics/SpaceShipView.cpp
    include/graphics/StartMenuView.h

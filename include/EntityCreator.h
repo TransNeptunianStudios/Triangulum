@@ -14,6 +14,15 @@ public:
    void create(entityx::Entity entity);
 };
 
+class GameOverMenuCreator : public ICreatable
+{
+public:
+
+   GameOverMenuCreator();
+
+   void create(entityx::Entity entity);
+};
+
 class BackgroundCreator : public ICreatable
 {
 public:

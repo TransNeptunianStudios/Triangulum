@@ -15,6 +15,7 @@
 #include "graphics/BackgroundView.h"
 #include "graphics/Asteroidview.h"
 #include "graphics/StartMenuView.h"
+#include "graphics/GameOverMenuView.h"
 #include "SpriteSheet.h"
 #include "ScreenSize.h"
 
@@ -28,7 +29,19 @@ void StartMenuCreator::create(Entity entity)
 {
    auto pSmv = std::make_shared<StartMenuView>();
    entity.assign<Menu>(IMenuSP(pSmv));
-   entity.assign<Position>(Vector2(ScreenSize::width()/2.0, ScreenSize::height()/2.0));
+   entity.assign<Position>(Vector2(ScreenSize::width()/2.0, ScreenSize::height()*0.33));
+   entity.assign<Display>(IDrawableSP(pSmv));
+}
+
+GameOverMenuCreator::GameOverMenuCreator()
+{
+}
+
+void GameOverMenuCreator::create(Entity entity)
+{
+   auto pSmv = std::make_shared<GameOverMenuView>();
+   entity.assign<Menu>(IMenuSP(pSmv));
+   entity.assign<Position>(Vector2(ScreenSize::width()/2.0, ScreenSize::height()*0.33));
    entity.assign<Display>(IDrawableSP(pSmv));
 }
 

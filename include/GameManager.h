@@ -8,7 +8,8 @@
 enum GameState
 {
    GS_StartMenu,
-   GS_Playing
+   GS_Playing,
+   GS_GameOver
 };
 
 class GameManager : public entityx::Receiver<GameManager>

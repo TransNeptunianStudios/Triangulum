@@ -1,19 +1,18 @@
-#include "SDL.h"
+#include <iostream>
 #include "SDL_image.h"
-#include "SDL_opengl.h"
-#include "graphics/StartMenuView.h"
+#include "graphics/GameOverMenuView.h"
 #include "components/Position.h"
 #include "systems/Events.h"
 #include "KeyHandler.h"
 
 using namespace entityx;
 
-StartMenuView::StartMenuView()
+GameOverMenuView::GameOverMenuView()
 : m_texture()
 , m_halfLogoWidth(0.0)
 , m_halfLogoHeight(0.0)
 {
-   SDL_Surface* surface = IMG_Load("../images/logo.png");
+   SDL_Surface* surface = IMG_Load("../images/game_over.png");
 
    if (!surface)
    {
@@ -44,8 +43,8 @@ StartMenuView::StartMenuView()
    SDL_FreeSurface(surface);
 }
 
-void StartMenuView::update(const KeyHandler& keyHandler,
-                           EventManager& eventManager)
+void GameOverMenuView::update(const KeyHandler &keyHandler,
+                              EventManager &eventManager)
 {
    if (keyHandler.isPressed(SDLK_SPACE))
    {
@@ -53,8 +52,8 @@ void StartMenuView::update(const KeyHandler& keyHandler,
    }
 }
 
-void StartMenuView::draw(const Position &pos)
-{   
+void GameOverMenuView::draw(const Position &pos)
+{
    glTranslatef(pos.position.x(),
                 pos.position.y(),
                 0.f);

@@ -1,16 +1,17 @@
-#ifndef STARTMENUVIEW_H
-#define STARTMENUVIEW_H
+#ifndef GAMEOVERMENUVIEW_H
+#define GAMEOVERMENUVIEW_H
 
+#include "SDL_opengl.h"
 #include "graphics/IDrawable.h"
 #include "components/IMenu.h"
 
-class StartMenuView
+class GameOverMenuView
       : public IDrawable
       , public IMenu
 {
 public:
 
-   StartMenuView();
+   GameOverMenuView();
 
    void update(const KeyHandler &keyHandler,
                entityx::EventManager& eventManager);
@@ -24,6 +25,7 @@ private:
    float m_halfLogoWidth;
 
    float m_halfLogoHeight;
+
 };
 
-#endif // STARTMENUVIEW_H
+#endif // GAMEOVERMENUVIEW_H
