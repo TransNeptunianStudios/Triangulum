@@ -20,7 +20,7 @@ void CollisionSystem::update(EntityManager& entities,
    Volume::Handle spaceShipVol, enemyVol;
    for (Entity spaceShipEntity : entities.entities_with_components(spaceShip, spaceShipPos, spaceShipVol))
    {
-      for (Entity enemy : entities.entities_with_components(enemy, enemyPos, enemyVol))
+      for (Entity enemyEntity : entities.entities_with_components(enemy, enemyPos, enemyVol))
       {
          if (checkCollision(spaceShipPos.get(),
                             spaceShipVol.get(),
