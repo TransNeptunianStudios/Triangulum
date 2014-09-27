@@ -42,8 +42,8 @@ add_executable(
    src/components/Obstacle.cpp
    include/components/Position.h
    src/components/Position.cpp
-   include/components/PlayerMotionControl.h
-   src/components/PlayerMotionControl.cpp
+   include/components/PlayerControl.h
+   src/components/PlayerControl.cpp
    include/components/SpaceShip.h
    src/components/SpaceShip.cpp
    include/components/Volume.h

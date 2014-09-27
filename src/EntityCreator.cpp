@@ -1,5 +1,5 @@
 #include "EntityCreator.h"
-#include "components/PlayerMotionControl.h"
+#include "components/PlayerControl.h"
 #include "components/Motion.h"
 #include "components/Position.h"
 #include "components/State.h"
@@ -70,7 +70,7 @@ void SpaceShipCreator::create(Entity entity)
    auto pSpriteSheet = new SpriteSheet("../images/SpriteSheet.png", 32);
    auto pSsv = std::make_shared<SpaceShipView>( pSpriteSheet );
    entity.assign<SpaceShip>();
-   entity.assign<PlayerMotionControl>();
+   entity.assign<PlayerControl>();
    entity.assign<Motion>();
    entity.assign<Position>(Vector2(400.0, 300.0));
    entity.assign<Gun>();

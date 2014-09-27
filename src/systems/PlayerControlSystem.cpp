@@ -1,6 +1,7 @@
 #include "systems/PlayerControlSystem.h"
-#include "components/PlayerMotionControl.h"
+#include "components/PlayerControl.h"
 #include "components/Motion.h"
+#include "components/Gun.h"
 #include "KeyHandler.h"
 
 using namespace entityx;
@@ -16,9 +17,10 @@ void PlayerControlSystem::update(EntityManager &entities,
 {
    float vel = 200.0f;
 
-   PlayerMotionControl::Handle playerControl;
+   PlayerControl::Handle playerControl;
    Motion::Handle motion;
-   for (Entity entity : entities.entities_with_components(playerControl, motion))
+   Gun::Handle gun;
+   for (Entity entity : entities.entities_with_components(playerControl, motion, gun))
    {
       if (m_keyHandler.isPressed(playerControl->right))
       {
@@ -45,5 +47,7 @@ void PlayerControlSystem::update(EntityManager &entities,
       {
          motion->velocity.y() = 0.0f;
       }
+
+      gun->isMainFirePressed = m_keyHandler.isPressed(playerControl->shoot);
    }
 }

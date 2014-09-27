@@ -1,15 +1,12 @@
 #include "systems/GunSystem.h"
 #include "systems/Events.h"
-#include "components/PlayerMotionControl.h"
 #include "components/Position.h"
 #include "components/Gun.h"
-#include "KeyHandler.h"
 #include "EntityCreator.h"
 
 using namespace entityx;
 
-GunSystem::GunSystem(const KeyHandler& keyHandler)
-: m_keyHandler(keyHandler)
+GunSystem::GunSystem()
 {
 }
 
@@ -17,27 +14,19 @@ void GunSystem::update(EntityManager &entities,
                        EventManager &events,
                        double dt)
 {
-   PlayerMotionControl::Handle playerControl;
    Position::Handle position;
    Gun::Handle gun;
-   for (Entity entity : entities.entities_with_components(playerControl, position, gun))
+   for (Entity entity : entities.entities_with_components(position, gun))
    {
-      if (m_keyHandler.isPressed(playerControl->shoot))
+      if (gun->isMainFirePressed && !gun->wasMainFirePressed)
       {
-         if (!gun->isShooting)
-         {
-            BulletCreator(position->position,
-                          Vector2(0.0, -500.0),
-                          BT_Simple).create(entities.create());
+         BulletCreator(position->position,
+                       Vector2(0.0, -500.0),
+                       BT_Simple).create(entities.create());
 
-            events.emit<EvPlaySound>(GUN_SHOOT);
+         events.emit<EvPlaySound>(GUN_SHOOT);
+      }
 
-            gun->isShooting = true;
-         }
-      }
-      else
-      {
-         gun->isShooting = false;
-      }
+      gun->wasMainFirePressed = gun->isMainFirePressed;
    }
 }

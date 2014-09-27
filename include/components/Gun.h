@@ -7,7 +7,11 @@ struct Gun : public entityx::Component<Gun>
 {
    Gun();
 
-   bool isShooting;
+   // Updated by player/ai control system
+   bool isMainFirePressed;
+
+   // Updated by gun system
+   bool wasMainFirePressed;
 };
 
 #endif // GUN_H

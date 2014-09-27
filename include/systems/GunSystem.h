@@ -9,15 +9,11 @@ class GunSystem : public entityx::System<GunSystem>
 {
 public:
 
-   GunSystem(const KeyHandler& keyHandler);
+   GunSystem();
 
    void update(entityx::EntityManager &entities,
                entityx::EventManager &events,
                double dt);
-
-private:
-
-   const KeyHandler& m_keyHandler;
 };
 
 #endif // GUNSYSTEM_H
