@@ -23,12 +23,19 @@ add_executable(
    include/Animation.h
    src/Animation.cpp
    include/SoundId.h
-   include/components/State.h
-   src/components/State.cpp
+   include/ai/BaseAi.h
+   src/ai/BaseAi.cpp
+   include/ai/FirstBossAi.h
+   src/ai/FirstBossAi.cpp
+   include/ai/IAi.h
+   include/components/AiControl.h
+   src/components/AiControl.cpp
    include/components/Bullet.h
    src/components/Bullet.cpp
    include/components/Display.h
    src/components/Display.cpp
+   include/components/Enemy.h
+   src/components/Enemy.cpp
    include/components/Gun.h
    src/components/Gun.cpp
    include/components/Health.h
@@ -46,6 +53,8 @@ add_executable(
    src/components/PlayerControl.cpp
    include/components/SpaceShip.h
    src/components/SpaceShip.cpp
+   include/components/State.h
+   src/components/State.cpp
    include/components/Volume.h
    src/components/Volume.cpp
    include/graphics/IAnimatible.h
@@ -58,6 +67,8 @@ add_executable(
    src/graphics/BulletView.cpp
    include/graphics/GameOverMenuView.h
    src/graphics/GameOverMenuView.cpp
+   include/graphics/LevelCompMenuView.h
+   src/graphics/LevelCompMenuView.cpp
    include/graphics/SpaceShipView.h
    src/graphics/SpaceShipView.cpp
    include/graphics/StartMenuView.h
@@ -70,6 +81,8 @@ add_executable(
    src/systems/BulletLifeTimeSystem.cpp
    include/systems/BulletType.h
    src/systems/BulletType.cpp
+   include/systems/AiControlSystem.h
+   src/systems/AiControlSystem.cpp
    include/systems/CollisionSystem.h
    src/systems/CollisionSystem.cpp
    include/systems/Events.h

@@ -24,6 +24,15 @@ public:
    void create(entityx::Entity entity);
 };
 
+class LevelCompMenuCreator : public ICreatable
+{
+public:
+
+   LevelCompMenuCreator();
+
+   void create(entityx::Entity entity);
+};
+
 class BackgroundCreator : public ICreatable
 {
 public:
@@ -66,7 +75,8 @@ class BulletCreator : public ICreatable
 {
 public:
 
-   BulletCreator(const Vector2& position,
+   BulletCreator(entityx::Entity::Id ownerId,
+                 const Vector2& position,
                  const Vector2& velocity,
                  BulletType bulletType);
 
@@ -74,11 +84,32 @@ public:
 
 private:
 
+   entityx::Entity::Id m_ownerId;
+
    Vector2 m_position;
 
    Vector2 m_velocity;
 
    BulletType m_bulletType;
+};
+
+class FirstBossCreator : public ICreatable
+{
+public:
+
+   FirstBossCreator(entityx::Entity::Id enemyId,
+                    const Vector2& position,
+                    double scrollSpeed);
+
+   void create(entityx::Entity entity);
+
+private:
+
+   entityx::Entity::Id m_enemyId;
+
+   Vector2 m_position;
+
+   double m_scrollSpeed;
 };
 
 #endif // ENTITYCREATOR_H

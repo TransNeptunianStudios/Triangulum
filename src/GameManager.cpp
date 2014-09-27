@@ -17,6 +17,8 @@ void GameManager::init()
 
    m_eventManager.subscribe<EvGameOver>(*this);
 
+   m_eventManager.subscribe<EvBossKilled>(*this);
+
    StartMenuCreator().create(m_entityManager.create());
 }
 
@@ -41,4 +43,13 @@ void GameManager::receive(const EvGameOver& gameOver)
    m_entityManager.reset();
 
    GameOverMenuCreator().create(m_entityManager.create());
+}
+
+void GameManager::receive(const EvBossKilled& bossKilled)
+{
+   m_gameState = GS_LevelCompleted;
+
+   m_entityManager.reset();
+
+   LevelCompMenuCreator().create(m_entityManager.create());
 }

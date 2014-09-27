@@ -5,11 +5,13 @@
 
 enum ObstacleType
 {
-   OT_Asteroid,
+   OT_Unknown,
 };
 
 struct Obstacle : public entityx::Component<Obstacle>
 {
+   Obstacle();
+
    Obstacle(ObstacleType _type);
 
    ObstacleType type;

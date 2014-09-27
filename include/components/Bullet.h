@@ -7,7 +7,11 @@ struct Bullet : public entityx::Component<Bullet>
 {
    Bullet();
 
-   Bullet(double _lifeTime, long _damage);
+   Bullet(entityx::Entity::Id _ownerId,
+          double _lifeTime,
+          long _damage);
+
+   entityx::Entity::Id ownerId;
 
    double lifeTime;
 

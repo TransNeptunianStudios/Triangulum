@@ -6,7 +6,7 @@
 #include "entityx/System.h"
 #include "components/Position.h"
 #include "components/Volume.h"
-#include "components/Obstacle.h"
+#include "components/Enemy.h"
 #include "SoundId.h"
 
 class CollisionSystem : public entityx::System<CollisionSystem>
@@ -26,9 +26,9 @@ private:
                        Position* pos2,
                        Volume* vol2);
 
-   SoundId getHitSound(ObstacleType type);
+   SoundId getHitSound(EnemyType type);
 
-   SoundId getDeathSound(ObstacleType type);
+   SoundId getDeathSound(EnemyType type);
 };
 
 #endif // COLLISIONSYSTEM_H

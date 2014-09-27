@@ -35,6 +35,8 @@ private:
    typedef std::list<CreatablePair> CreatableList;
 
    CreatableList m_creatables;
+
+   CreatableList m_bosses;
 };
 
 #endif // LEVELSYSTEM_H

@@ -7,6 +7,7 @@ LevelSystem::LevelSystem(EntityManager& entities)
 , m_scrollSpeed(50.0)
 , m_levelOffset(0.0)
 , m_creatables()
+, m_bosses()
 {
 }
 
@@ -29,6 +30,15 @@ void LevelSystem::update(EntityManager& entities,
          m_creatables.pop_front();
       }
    }
+
+   if (!m_bosses.empty())
+   {
+      if (m_levelOffset >= m_bosses.front().first)
+      {
+         m_bosses.front().second->create(entities.create());
+         m_bosses.pop_front();
+      }
+   }
 }
 
 void LevelSystem::receive(const EvInit &e)
@@ -38,7 +48,10 @@ void LevelSystem::receive(const EvInit &e)
    m_creatables.clear();
 
    BackgroundCreator(0.02).create(m_entityManager.create());
-   SpaceShipCreator().create(m_entityManager.create());
+
+   Entity spaceShipEntity = m_entityManager.create();
+
+   SpaceShipCreator().create(spaceShipEntity);
 
    m_creatables.push_back(
       std::make_pair(300.0,
@@ -58,4 +71,10 @@ void LevelSystem::receive(const EvInit &e)
       std::make_pair(1000.0,
                      ICreatableSP(new AsteroidCreator(Vector2(350.0, -16.0),
                                                       Vector2(0.0, m_scrollSpeed)))));
+
+   m_bosses.push_back(
+      std::make_pair(1200.0,
+                     ICreatableSP(new FirstBossCreator(spaceShipEntity.id(),
+                                                       Vector2(400.0, -16.0),
+                                                       m_scrollSpeed))));
 }

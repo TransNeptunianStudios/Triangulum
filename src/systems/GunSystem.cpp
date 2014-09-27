@@ -20,8 +20,12 @@ void GunSystem::update(EntityManager &entities,
    {
       if (gun->isMainFirePressed && !gun->wasMainFirePressed)
       {
-         BulletCreator(position->position,
-                       Vector2(0.0, -500.0),
+         auto initVelocity = Vector2(500.0*gun->direction.x(),
+                                     500.0*gun->direction.y());
+
+         BulletCreator(entity.id(),
+                       position->position,
+                       initVelocity,
                        BT_Simple).create(entities.create());
 
          events.emit<EvPlaySound>(GUN_SHOOT);

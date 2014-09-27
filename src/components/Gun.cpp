@@ -1,7 +1,15 @@
 #include "components/Gun.h"
 
 Gun::Gun()
-: isMainFirePressed(false)
+: direction()
+, isMainFirePressed(false)
+, wasMainFirePressed(false)
+{
+}
+
+Gun::Gun(const Vector2& _direction)
+: direction(_direction)
+, isMainFirePressed(false)
 , wasMainFirePressed(false)
 {
 }

@@ -11,12 +11,16 @@
 #include "components/Obstacle.h"
 #include "components/Health.h"
 #include "components/Menu.h"
+#include "components/AiControl.h"
+#include "components/Enemy.h"
 #include "graphics/SpaceShipView.h"
 #include "graphics/BulletView.h"
 #include "graphics/BackgroundView.h"
 #include "graphics/Asteroidview.h"
 #include "graphics/StartMenuView.h"
 #include "graphics/GameOverMenuView.h"
+#include "graphics/LevelCompMenuView.h"
+#include "ai/FirstBossAi.h"
 #include "SpriteSheet.h"
 #include "ScreenSize.h"
 
@@ -41,6 +45,18 @@ GameOverMenuCreator::GameOverMenuCreator()
 void GameOverMenuCreator::create(Entity entity)
 {
    auto pSmv = std::make_shared<GameOverMenuView>();
+   entity.assign<Menu>(IMenuSP(pSmv));
+   entity.assign<Position>(Vector2(ScreenSize::width()/2.0, ScreenSize::height()*0.33));
+   entity.assign<Display>(IDrawableSP(pSmv));
+}
+
+LevelCompMenuCreator::LevelCompMenuCreator()
+{
+}
+
+void LevelCompMenuCreator::create(Entity entity)
+{
+   auto pSmv = std::make_shared<LevelCompMenuView>();
    entity.assign<Menu>(IMenuSP(pSmv));
    entity.assign<Position>(Vector2(ScreenSize::width()/2.0, ScreenSize::height()*0.33));
    entity.assign<Display>(IDrawableSP(pSmv));
@@ -73,7 +89,7 @@ void SpaceShipCreator::create(Entity entity)
    entity.assign<PlayerControl>();
    entity.assign<Motion>();
    entity.assign<Position>(Vector2(400.0, 300.0));
-   entity.assign<Gun>();
+   entity.assign<Gun>(Vector2(0.0, -1.0));
    entity.assign<Volume>(volume);
    entity.assign<State>(IAnimatibleSP(pSsv));
    entity.assign<Display>(IDrawableSP(pSsv));
@@ -93,7 +109,7 @@ void AsteroidCreator::create(Entity entity)
    volume.m_boxes.push_back(CollisionBox(32, 32));
    auto pSpriteSheet = new SpriteSheet("../images/SpriteSheet.png", 32);
    auto pAv = new AsteroidView( pSpriteSheet );
-   entity.assign<Obstacle>(OT_Asteroid);
+   entity.assign<Enemy>(ET_Asteroid);
    entity.assign<Health>(5);
    entity.assign<Motion>(m_velocity);
    entity.assign<Position>(m_position);
@@ -101,10 +117,12 @@ void AsteroidCreator::create(Entity entity)
    entity.assign<Display>(IDrawableSP(pAv));
 }
 
-BulletCreator::BulletCreator(const Vector2 &position,
+BulletCreator::BulletCreator(Entity::Id ownerId,
+                             const Vector2 &position,
                              const Vector2 &velocity,
                              BulletType bulletType)
-: m_position(position)
+: m_ownerId(ownerId)
+, m_position(position)
 , m_velocity(velocity)
 , m_bulletType(bulletType)
 {
@@ -118,7 +136,32 @@ void BulletCreator::create(Entity entity)
    auto pBv = new BulletView();
    entity.assign<Motion>(m_velocity);
    entity.assign<Position>(m_position);
-   entity.assign<Bullet>(10000.0, damage);
+   entity.assign<Bullet>(m_ownerId, 10000.0, damage);
    entity.assign<Volume>(volume);
    entity.assign<Display>(IDrawableSP(pBv));
+}
+
+FirstBossCreator::FirstBossCreator(Entity::Id enemyId,
+                                   const Vector2& position,
+                                   double scrollSpeed)
+: m_enemyId(enemyId)
+, m_position(position)
+, m_scrollSpeed(scrollSpeed)
+{
+}
+
+void FirstBossCreator::create(Entity entity)
+{
+   auto volume = Volume();
+   volume.m_boxes.push_back(CollisionBox(32, 32));
+   auto pSpriteSheet = new SpriteSheet("../images/SpriteSheet.png", 32);
+   auto pAv = new AsteroidView( pSpriteSheet );
+   entity.assign<AiControl>(IAiSP(new FirstBossAi(entity.id(), m_enemyId, m_scrollSpeed)));
+   entity.assign<Enemy>(ET_Boss);
+   entity.assign<Health>(5);
+   entity.assign<Motion>();
+   entity.assign<Position>(m_position);
+   entity.assign<Gun>(Vector2(0.0, 1.0));
+   entity.assign<Volume>(volume);
+   entity.assign<Display>(IDrawableSP(pAv));
 }

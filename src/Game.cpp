@@ -6,6 +6,7 @@
 #include "systems/MenuSystem.h"
 #include "systems/LevelSystem.h"
 #include "systems/PlayerControlSystem.h"
+#include "systems/AiControlSystem.h"
 #include "systems/MovementSystem.h"
 #include "systems/GunSystem.h"
 #include "systems/BulletLifeTimeSystem.h"
@@ -161,7 +162,9 @@ void Game::update()
 {
    GameState state(m_gameManager.getGameState());
 
-   if (state == GS_StartMenu || state == GS_GameOver)
+   if (state == GS_StartMenu ||
+       state == GS_GameOver ||
+       state == GS_LevelCompleted)
    {
       m_systemManager.update<MenuSystem>(MS_PER_UPDATE);
    }
@@ -169,6 +172,7 @@ void Game::update()
    {
       m_systemManager.update<LevelSystem>(MS_PER_UPDATE);
       m_systemManager.update<PlayerControlSystem>(MS_PER_UPDATE);
+      m_systemManager.update<AiControlSystem>(MS_PER_UPDATE);
       m_systemManager.update<MovementSystem>(MS_PER_UPDATE);
       m_systemManager.update<GunSystem>(MS_PER_UPDATE);
       m_systemManager.update<BulletLifeTimeSystem>(MS_PER_UPDATE);
@@ -203,6 +207,7 @@ void Game::createSystems()
    m_systemManager.add<MenuSystem>(m_keyHandler);
    m_systemManager.add<LevelSystem>(m_entityManager);
    m_systemManager.add<PlayerControlSystem>(m_keyHandler);
+   m_systemManager.add<AiControlSystem>();
    m_systemManager.add<MovementSystem>();
    m_systemManager.add<GunSystem>();
    m_systemManager.add<BulletLifeTimeSystem>();

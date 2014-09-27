@@ -19,6 +19,11 @@ struct EvGameOver : public entityx::Event<EvGameOver>
    EvGameOver() {}
 };
 
+struct EvBossKilled : public entityx::Event<EvBossKilled>
+{
+   EvBossKilled() {}
+};
+
 struct EvPlaySound : public entityx::Event<EvPlaySound>
 {
    EvPlaySound(SoundId _id)

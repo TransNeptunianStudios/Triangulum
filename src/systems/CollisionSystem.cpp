@@ -15,17 +15,17 @@ void CollisionSystem::update(EntityManager& entities,
                              double dt)
 {
    SpaceShip::Handle spaceShip;
-   Obstacle::Handle obstacle;
-   Position::Handle spaceShipPos, obstaclePos;
-   Volume::Handle spaceShipVol, obstacleVol;
+   Enemy::Handle enemy;
+   Position::Handle spaceShipPos, enemyPos;
+   Volume::Handle spaceShipVol, enemyVol;
    for (Entity spaceShipEntity : entities.entities_with_components(spaceShip, spaceShipPos, spaceShipVol))
    {
-      for (Entity obstacleEntity : entities.entities_with_components(obstacle, obstaclePos, obstacleVol))
+      for (Entity enemy : entities.entities_with_components(enemy, enemyPos, enemyVol))
       {
          if (checkCollision(spaceShipPos.get(),
                             spaceShipVol.get(),
-                            obstaclePos.get(),
-                            obstacleVol.get()))
+                            enemyPos.get(),
+                            enemyVol.get()))
          {
              spaceShipEntity.destroy();
              events.emit<EvPlaySound>(SHIP_EXPLOSION);
@@ -41,12 +41,37 @@ void CollisionSystem::update(EntityManager& entities,
    Health::Handle health;
    for (Entity bulletEntity : entities.entities_with_components(bullet, bulletPos, bulletVol))
    {
-      for (Entity obstacleEntity : entities.entities_with_components(obstacle, obstaclePos, obstacleVol, health))
+      for (Entity spaceShipEntity : entities.entities_with_components(spaceShip, spaceShipPos, spaceShipVol))
       {
+         if (bullet->ownerId == spaceShipEntity.id())
+         {
+            break;
+         }
+
          if (checkCollision(bulletPos.get(),
                             bulletVol.get(),
-                            obstaclePos.get(),
-                            obstacleVol.get()))
+                            spaceShipPos.get(),
+                            spaceShipVol.get()))
+         {
+             bulletEntity.destroy();
+             spaceShipEntity.destroy();
+             events.emit<EvPlaySound>(SHIP_EXPLOSION);
+             events.emit<EvGameOver>();
+             return;
+         }
+      }
+
+      for (Entity enemyEntity : entities.entities_with_components(enemy, enemyPos, enemyVol, health))
+      {
+         if (bullet->ownerId == enemyEntity.id())
+         {
+            break;
+         }
+
+         if (checkCollision(bulletPos.get(),
+                            bulletVol.get(),
+                            enemyPos.get(),
+                            enemyVol.get()))
          {
              health->health -= bullet->damage;
 
@@ -56,15 +81,22 @@ void CollisionSystem::update(EntityManager& entities,
 
              if (health->health <= 0)
              {
-                soundId = getDeathSound(obstacle->type);
-                obstacleEntity.destroy();
+                EnemyType type = enemy->type;
+
+                enemyEntity.destroy();
+
+                events.emit<EvPlaySound>(getDeathSound(type));
+
+                if (type == ET_Boss)
+                {
+                   events.emit<EvBossKilled>();
+                   return;
+                }
              }
              else
              {
-                soundId = getHitSound(obstacle->type);
+                events.emit<EvPlaySound>(getHitSound(enemy->type));
              }
-
-             events.emit<EvPlaySound>(soundId);
 
              break;
          }
@@ -95,12 +127,13 @@ bool CollisionSystem::checkCollision(Position* pos1,
    return false;
 }
 
-SoundId CollisionSystem::getHitSound(ObstacleType type)
+SoundId CollisionSystem::getHitSound(EnemyType type)
 {
    SoundId soundId = NO_SOUND;
 
    switch (type) {
-   case OT_Asteroid:
+   case ET_Asteroid:
+   case ET_Boss:
       soundId = ASTEROID_HIT;
       break;
    default:
@@ -110,12 +143,13 @@ SoundId CollisionSystem::getHitSound(ObstacleType type)
    return soundId;
 }
 
-SoundId CollisionSystem::getDeathSound(ObstacleType type)
+SoundId CollisionSystem::getDeathSound(EnemyType type)
 {
    SoundId soundId = NO_SOUND;
 
    switch (type) {
-   case OT_Asteroid:
+   case ET_Asteroid:
+   case ET_Boss:
       soundId = ASTEROID_EXPLOSION;
       break;
    default:

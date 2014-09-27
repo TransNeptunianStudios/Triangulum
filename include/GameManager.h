@@ -9,7 +9,8 @@ enum GameState
 {
    GS_StartMenu,
    GS_Playing,
-   GS_GameOver
+   GS_GameOver,
+   GS_LevelCompleted,
 };
 
 class GameManager : public entityx::Receiver<GameManager>
@@ -26,6 +27,8 @@ public:
    void receive(const EvStartGame& startGame);
 
    void receive(const EvGameOver& gameOver);
+
+   void receive(const EvBossKilled& bossKilled);
 
 private:
 
