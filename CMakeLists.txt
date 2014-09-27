@@ -20,9 +20,11 @@ add_executable(
    src/ScreenSize.cpp
    include/SpriteSheet.h
    src/SpriteSheet.cpp
+   include/Animation.h
+   src/Animation.cpp
    include/SoundId.h
-   include/components/Animation.h
-   src/components/Animation.cpp
+   include/components/State.h
+   src/components/State.cpp
    include/components/Bullet.h
    src/components/Bullet.cpp
    include/components/Display.h

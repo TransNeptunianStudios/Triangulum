@@ -1,6 +1,4 @@
 #include "SpriteSheet.h"
-
-// This should be used to load other file formats with IMG_LOAD
 #include "SDL_image.h"
 
 SpriteSheet::SpriteSheet(std::string filename, unsigned tileSize)
@@ -26,7 +24,7 @@ SpriteSheet::SpriteSheet(std::string filename, unsigned tileSize)
                  pSurface->w,
                  pSurface->h,
                  0,
-                 GL_BGRA,
+                 GL_RGBA,
                  GL_UNSIGNED_BYTE,
                  pSurface->pixels);
 

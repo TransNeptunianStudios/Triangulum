@@ -2,7 +2,7 @@
 #include "components/PlayerMotionControl.h"
 #include "components/Motion.h"
 #include "components/Position.h"
-#include "components/Animation.h"
+#include "components/State.h"
 #include "components/Display.h"
 #include "components/Gun.h"
 #include "components/Bullet.h"
@@ -75,7 +75,7 @@ void SpaceShipCreator::create(Entity entity)
    entity.assign<Position>(Vector2(400.0, 300.0));
    entity.assign<Gun>();
    entity.assign<Volume>(volume);
-   entity.assign<Animation>(IAnimatibleSP(pSsv));
+   entity.assign<State>(IAnimatibleSP(pSsv));
    entity.assign<Display>(IDrawableSP(pSsv));
 }
 

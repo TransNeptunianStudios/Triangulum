@@ -1,5 +1,5 @@
 #include "systems/AnimationSystem.h"
-#include "components/Animation.h"
+#include "components/State.h"
 #include "components/Motion.h"
 
 using namespace entityx;
@@ -12,7 +12,7 @@ void AnimationSystem::update(EntityManager &entities,
                              EventManager &events,
                              double dt)
 {
-   Animation::Handle animation;
+   State::Handle animation;
    Motion::Handle motion;
    for (Entity entity : entities.entities_with_components(animation, motion))
    {

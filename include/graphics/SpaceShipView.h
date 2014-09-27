@@ -5,6 +5,8 @@
 #include "graphics/IAnimatible.h"
 #include "SpriteSheet.h"
 
+class Animation;
+
 enum SpaceShipState
 {
    SSS_Idle,
@@ -32,6 +34,9 @@ private:
    SpaceShipState m_state;
 
    double m_duration;
+
+   //////
+   Animation *m_test;
 };
 
 #endif // SPACESHIPVIEW_H
