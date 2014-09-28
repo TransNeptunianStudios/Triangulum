@@ -1,25 +1,33 @@
-Space-Shooter
-=============
+![Alt text](https://raw.githubusercontent.com/RocSolidProductions/Space-Shooter/master/images/logo.png "Space shooter logo")
 
-A top down scrolling space action game!
+A top down scrolling space action game! Asteroids, lasers, one animation and so much more! Like bosses, sounds and menus. That's about it right now but there's steady consistent progress! 
 
-Requires:
-* CMake (version 2.8 or greater)
-* SDL2
-* SDL2_image
-* SDL2_mixer
-* OpenGL
-* EntityX (https://github.com/alecthomas/entityx.git)
+![Alt text](https://github.com/RocSolidProductions/Space-Shooter/blob/master/images/Screenshoot1.png "Screenshoot")
 
-How to:
+## Prepare to build
+Follow [EntityX](https://github.com/alecthomas/entityx.git) instructions for installation
+
+### Linux
+Use "sudo apt-get install *package*", packages needed: 
+
+**cmake, libsdl2-dev, libsdl2-image-dev, mesa-common-dev (I think), libsdl2-mixer-dev**
+
+### Mac
+
+### Windows
+
+## Building 
 * git clone
 * cd Space-Shooter
 * mkdir build
 * cd build
 * cmake .. && make
 
-Resources, current, future and potential:
-* SDL 2.0.3 - https://www.libsdl.org/download-2.0.php
-* CMake 3.0.1 - http://www.cmake.org/
+## Resources, current, future and potential
+
+* SDL 2.0.3       - https://www.libsdl.org/download-2.0.php
+* CMake 3.0.1     - http://www.cmake.org/
 * OpenGl
-* sfxr- http://www.drpetter.se/project_sfxr.html
+* sfxr            - http://www.drpetter.se/project_sfxr.html
+* aseprite        - http://www.aseprite.org/
+
