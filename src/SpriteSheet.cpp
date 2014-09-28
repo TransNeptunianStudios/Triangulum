@@ -35,11 +35,13 @@ SpriteSheet::SpriteSheet(std::string filename, unsigned tileSize)
     SDL_FreeSurface(pSurface);
     }
 
-bool SpriteSheet::draw(unsigned x, unsigned y) const
+bool SpriteSheet::draw(unsigned x, unsigned y, int extraSized) const
 {
     // Check if requested sprite is inside spriteSheet
     if((x+1) * m_rTS[0] > 1.0 || (y+1) * m_rTS[1] > 1.0)
         return false;
+
+    float rel_pos = m_tileSize / 2.0f + 32.0f * extraSized;
 
     // chose to work with this spriteSheets texture.
     glBindTexture(GL_TEXTURE_2D,m_texture);
@@ -51,14 +53,22 @@ bool SpriteSheet::draw(unsigned x, unsigned y) const
     glBegin(GL_QUADS);
 
     glColor3f(1.0f, 1.0f, 1.0f);
-    glTexCoord2f(x * m_rTS[0], (y+1) * m_rTS[1]);
-    glVertex3f( -16.0f, 16.0f, 0.0f); // Lower Left
-    glTexCoord2f((x+1) * m_rTS[0], (y+1) * m_rTS[1]);
-    glVertex3f(  16.0f, 16.0f, 0.0f); // Lower Right
-    glTexCoord2f((x+1) * m_rTS[0], y * m_rTS[1]);
-    glVertex3f(  16.0f,  -16.0f, 0.0f); // Upper Right
-    glTexCoord2f(x * m_rTS[0], y * m_rTS[1]);
-    glVertex3f( -16.0f,  -16.0f, 0.0f); // Upper Left
+
+    glTexCoord2f(x * m_rTS[0],
+                (y+1+extraSized) * m_rTS[1]);
+    glVertex3f( -rel_pos, rel_pos, 0.0f); // Lower Left
+
+    glTexCoord2f((x+1+extraSized) * m_rTS[0],
+                 (y+1+extraSized) * m_rTS[1]);
+    glVertex3f(  rel_pos, rel_pos, 0.0f); // Lower Right
+
+    glTexCoord2f((x+1+extraSized) * m_rTS[0],
+                  y * m_rTS[1]);
+    glVertex3f(  rel_pos,  -rel_pos, 0.0f); // Upper Right
+
+    glTexCoord2f(x * m_rTS[0],
+                 y * m_rTS[1]);
+    glVertex3f( -rel_pos,  -rel_pos, 0.0f); // Upper Left
 
     glEnd();
 

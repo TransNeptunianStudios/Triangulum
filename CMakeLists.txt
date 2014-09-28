@@ -61,8 +61,10 @@ add_executable(
    include/graphics/IDrawable.h
    include/graphics/BackgroundView.h
    src/graphics/BackgroundView.cpp
-   include/graphics/Asteroidview.h
-   src/graphics/Asteroidview.cpp
+   include/graphics/AsteroidView.h
+   src/graphics/AsteroidView.cpp
+   include/graphics/AsteroidBossView.h
+   src/graphics/AsteroidBossView.cpp
    include/graphics/BulletView.h
    src/graphics/BulletView.cpp
    include/graphics/GameOverMenuView.h

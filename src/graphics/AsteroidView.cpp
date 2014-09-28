@@ -1,4 +1,4 @@
-#include "graphics/Asteroidview.h"
+#include "graphics/AsteroidView.h"
 #include "components/Position.h"
 
 AsteroidView::AsteroidView(SpriteSheet* pSpriteSheet)

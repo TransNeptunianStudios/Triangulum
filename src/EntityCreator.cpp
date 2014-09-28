@@ -16,7 +16,8 @@
 #include "graphics/SpaceShipView.h"
 #include "graphics/BulletView.h"
 #include "graphics/BackgroundView.h"
-#include "graphics/Asteroidview.h"
+#include "graphics/AsteroidView.h"
+#include "graphics/AsteroidBossView.h"
 #include "graphics/StartMenuView.h"
 #include "graphics/GameOverMenuView.h"
 #include "graphics/LevelCompMenuView.h"
@@ -153,12 +154,12 @@ FirstBossCreator::FirstBossCreator(Entity::Id enemyId,
 void FirstBossCreator::create(Entity entity)
 {
    auto volume = Volume();
-   volume.m_boxes.push_back(CollisionBox(32, 32));
+   volume.m_boxes.push_back(CollisionBox(96, 96));
    auto pSpriteSheet = new SpriteSheet("../images/SpriteSheet.png", 32);
-   auto pAv = new AsteroidView( pSpriteSheet );
+   auto pAv = new AsteroidBossView( pSpriteSheet );
    entity.assign<AiControl>(IAiSP(new FirstBossAi(entity.id(), m_enemyId, m_scrollSpeed)));
    entity.assign<Enemy>(ET_Boss);
-   entity.assign<Health>(5);
+   entity.assign<Health>(10);
    entity.assign<Motion>();
    entity.assign<Position>(m_position);
    entity.assign<Gun>(Vector2(0.0, 1.0));
