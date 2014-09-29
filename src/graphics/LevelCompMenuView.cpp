@@ -67,13 +67,13 @@ void LevelCompMenuView::draw(const Position &pos)
    glColor3f(1.0f, 1.0f, 1.0f);
 
    glTexCoord2f(0.0f, 1.0f);
-   glVertex3f(-m_halfLogoWidth, -m_halfLogoHeight, 0.0f);
-   glTexCoord2f(1.0f, 1.0f);
-   glVertex3f(m_halfLogoWidth, -m_halfLogoHeight, 0.0f);
-   glTexCoord2f(1.0f, 0.0f);
-   glVertex3f(m_halfLogoWidth, m_halfLogoHeight, 0.0f);
-   glTexCoord2f(0.0f, 0.0f);
    glVertex3f(-m_halfLogoWidth, m_halfLogoHeight, 0.0f);
+   glTexCoord2f(1.0f, 1.0f);
+   glVertex3f(m_halfLogoWidth, m_halfLogoHeight, 0.0f);
+   glTexCoord2f(1.0f, 0.0f);
+   glVertex3f(m_halfLogoWidth, -m_halfLogoHeight, 0.0f);
+   glTexCoord2f(0.0f, 0.0f);
+   glVertex3f(-m_halfLogoWidth, -m_halfLogoHeight, 0.0f);
 
    glEnd();
 
