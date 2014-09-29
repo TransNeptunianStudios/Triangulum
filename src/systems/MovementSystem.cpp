@@ -18,18 +18,19 @@ void MovementSystem::update(EntityManager &entities,
 {
    Motion::Handle motion;
    Position::Handle position;
+   Vector2 newPos;
    for (Entity entity : entities.entities_with_components(motion, position))
    {
-        auto newPos = new Vector2(position->position.x() + motion->velocity.x() * dt / 1000.0,
+        newPos = Vector2(position->position.x() + motion->velocity.x() * dt / 1000.0,
                                   position->position.y() + motion->velocity.y() * dt / 1000.0);
 
         // Players are not allowed outside the screen
         if(    entity.has_component<PlayerControl>()
-            && !isOnScreen(*newPos))
+            && !isOnScreen(newPos))
             continue;
 
-        position->position.x() = newPos->x();
-        position->position.y() = newPos->y();
+        position->position.x() = newPos.x();
+        position->position.y() = newPos.y();
     }
 
 }
