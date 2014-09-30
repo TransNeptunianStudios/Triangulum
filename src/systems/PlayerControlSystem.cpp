@@ -3,6 +3,7 @@
 #include "components/Motion.h"
 #include "components/Gun.h"
 #include "KeyHandler.h"
+#include "systems/Events.h"
 
 using namespace entityx;
 
@@ -22,6 +23,11 @@ void PlayerControlSystem::update(EntityManager &entities,
    Gun::Handle gun;
    for (Entity entity : entities.entities_with_components(playerControl, motion, gun))
    {
+      if(m_keyHandler.isPressed(playerControl->pause))
+      {
+          events.emit<EvPauseGame>();
+      }
+
       if (m_keyHandler.isPressed(playerControl->right))
       {
          motion->velocity.x() = vel;

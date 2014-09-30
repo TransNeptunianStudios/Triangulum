@@ -14,6 +14,16 @@ struct EvInit : public entityx::Event<EvInit>
    EvInit() {}
 };
 
+struct EvPauseGame : public entityx::Event<EvPauseGame>
+{
+   EvPauseGame() {}
+};
+
+struct EvResumeGame : public entityx::Event<EvResumeGame>
+{
+   EvResumeGame() {}
+};
+
 struct EvGameOver : public entityx::Event<EvGameOver>
 {
    EvGameOver() {}

@@ -69,6 +69,8 @@ add_executable(
    src/graphics/BulletView.cpp
    include/graphics/GameOverMenuView.h
    src/graphics/GameOverMenuView.cpp
+   include/graphics/PauseMenuView.h
+   src/graphics/PauseMenuView.cpp
    include/graphics/LevelCompMenuView.h
    src/graphics/LevelCompMenuView.cpp
    include/graphics/SpaceShipView.h

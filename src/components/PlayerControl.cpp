@@ -6,5 +6,6 @@ PlayerControl::PlayerControl()
 , up(SDLK_w)
 , down(SDLK_s)
 , shoot(SDLK_SPACE)
+, pause(SDLK_ESCAPE)
 {
 }

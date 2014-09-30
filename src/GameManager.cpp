@@ -1,6 +1,8 @@
 #include "GameManager.h"
 #include "EntityCreator.h"
 
+#include "components/Menu.h"
+
 using namespace entityx;
 
 GameManager::GameManager(EntityManager& entityManager,
@@ -18,6 +20,10 @@ void GameManager::init()
    m_eventManager.subscribe<EvGameOver>(*this);
 
    m_eventManager.subscribe<EvBossKilled>(*this);
+
+   m_eventManager.subscribe<EvPauseGame>(*this);
+
+   m_eventManager.subscribe<EvResumeGame>(*this);
 
    StartMenuCreator().create(m_entityManager.create());
 }
@@ -52,4 +58,20 @@ void GameManager::receive(const EvBossKilled& bossKilled)
    m_entityManager.reset();
 
    LevelCompMenuCreator().create(m_entityManager.create());
+}
+
+void GameManager::receive(const EvPauseGame& gamePause)
+{
+  m_gameState = GS_Paused;
+  PauseMenuCreator().create(m_entityManager.create());
+
+}
+
+void GameManager::receive(const EvResumeGame& gameResume)
+{
+    Menu::Handle menu;
+    for (Entity entity : m_entityManager.entities_with_components(menu))
+        m_entityManager.destroy(entity.id());
+
+    m_gameState = GS_Playing;
 }

@@ -9,6 +9,7 @@ enum GameState
 {
    GS_StartMenu,
    GS_Playing,
+   GS_Paused,
    GS_GameOver,
    GS_LevelCompleted,
 };
@@ -29,6 +30,10 @@ public:
    void receive(const EvGameOver& gameOver);
 
    void receive(const EvBossKilled& bossKilled);
+
+   void receive(const EvPauseGame& gamePause);
+
+   void receive(const EvResumeGame& gameResume);
 
 private:
 

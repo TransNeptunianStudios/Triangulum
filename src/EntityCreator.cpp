@@ -19,6 +19,7 @@
 #include "graphics/AsteroidView.h"
 #include "graphics/AsteroidBossView.h"
 #include "graphics/StartMenuView.h"
+#include "graphics/PauseMenuView.h"
 #include "graphics/GameOverMenuView.h"
 #include "graphics/LevelCompMenuView.h"
 #include "ai/FirstBossAi.h"
@@ -34,6 +35,18 @@ StartMenuCreator::StartMenuCreator()
 void StartMenuCreator::create(Entity entity)
 {
    auto pSmv = std::make_shared<StartMenuView>();
+   entity.assign<Menu>(IMenuSP(pSmv));
+   entity.assign<Position>(Vector2(ScreenSize::width()/2.0, ScreenSize::height()*0.33));
+   entity.assign<Display>(IDrawableSP(pSmv));
+}
+
+PauseMenuCreator::PauseMenuCreator()
+{
+}
+
+void PauseMenuCreator::create(Entity entity)
+{
+   auto pSmv = std::make_shared<PauseMenuView>();
    entity.assign<Menu>(IMenuSP(pSmv));
    entity.assign<Position>(Vector2(ScreenSize::width()/2.0, ScreenSize::height()*0.33));
    entity.assign<Display>(IDrawableSP(pSmv));

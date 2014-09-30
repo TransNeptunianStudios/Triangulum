@@ -18,6 +18,8 @@ struct PlayerControl : public entityx::Component<PlayerControl>
    SDL_Keycode down;
 
    SDL_Keycode shoot;
+
+   SDL_Keycode pause;
 };
 
 #endif // PLAYERCONTROL_H
