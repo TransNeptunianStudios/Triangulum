@@ -164,7 +164,8 @@ void Game::update()
 
    if (state == GS_StartMenu ||
        state == GS_GameOver ||
-       state == GS_LevelCompleted)
+       state == GS_LevelCompleted ||
+       state == GS_Paused)
    {
       m_systemManager.update<MenuSystem>(MS_PER_UPDATE);
    }
@@ -178,9 +179,6 @@ void Game::update()
       m_systemManager.update<BulletLifeTimeSystem>(MS_PER_UPDATE);
       m_systemManager.update<CollisionSystem>(MS_PER_UPDATE);
       m_systemManager.update<AnimationSystem>(MS_PER_UPDATE);
-   }else if(state == GS_Paused)
-   {
-       m_systemManager.update<MenuSystem>(MS_PER_UPDATE);
    }
 }
 
