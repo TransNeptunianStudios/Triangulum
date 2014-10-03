@@ -11,8 +11,8 @@ public:
 
    virtual ~IMenu() {}
 
-   virtual void update(const KeyHandler& keyHandler,
-                       entityx::EventManager& eventManager) = 0;
+   virtual void onConfirm(entityx::EventManager& eventManager) = 0;
+
 };
 
 typedef std::shared_ptr<IMenu> IMenuSP;

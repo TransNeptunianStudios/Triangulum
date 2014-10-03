@@ -44,14 +44,6 @@ PauseMenuView::PauseMenuView()
     SDL_FreeSurface(surface);
 }
 
-void PauseMenuView::update(const KeyHandler &keyHandler, entityx::EventManager &eventManager)
-{
-    if (keyHandler.isPressed(SDLK_ESCAPE))
-    {
-       eventManager.emit<EvResumeGame>();
-    }
-}
-
 void PauseMenuView::draw(const Position &pos)
 {
 
@@ -81,4 +73,7 @@ void PauseMenuView::draw(const Position &pos)
     glDisable(GL_TEXTURE_2D);
 }
 
-
+void PauseMenuView::onConfirm(entityx::EventManager& eventManager)
+{
+    eventManager.emit<EvResumeGame>();
+}

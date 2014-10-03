@@ -43,15 +43,6 @@ GameOverMenuView::GameOverMenuView()
    SDL_FreeSurface(surface);
 }
 
-void GameOverMenuView::update(const KeyHandler &keyHandler,
-                              EventManager &eventManager)
-{
-   if (keyHandler.isPressed(SDLK_SPACE))
-   {
-      eventManager.emit<EvStartGame>();
-   }
-}
-
 void GameOverMenuView::draw(const Position &pos)
 {
    glTranslatef(pos.position.x(),
@@ -78,4 +69,9 @@ void GameOverMenuView::draw(const Position &pos)
    glEnd();
 
    glDisable(GL_TEXTURE_2D);
+}
+
+
+void GameOverMenuView::onConfirm(entityx::EventManager& eventManager){
+    eventManager.emit<EvStartGame>();
 }

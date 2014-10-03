@@ -43,15 +43,6 @@ LevelCompMenuView::LevelCompMenuView()
    SDL_FreeSurface(surface);
 }
 
-void LevelCompMenuView::update(const KeyHandler &keyHandler,
-                               EventManager &eventManager)
-{
-   if (keyHandler.isPressed(SDLK_SPACE))
-   {
-      eventManager.emit<EvStartGame>();
-   }
-}
-
 void LevelCompMenuView::draw(const Position &pos)
 {
    glTranslatef(pos.position.x(),
@@ -78,4 +69,9 @@ void LevelCompMenuView::draw(const Position &pos)
    glEnd();
 
    glDisable(GL_TEXTURE_2D);
+}
+
+void LevelCompMenuView::onConfirm(entityx::EventManager& eventManager)
+{
+    eventManager.emit<EvStartGame>();
 }

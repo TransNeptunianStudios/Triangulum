@@ -44,15 +44,6 @@ StartMenuView::StartMenuView()
    SDL_FreeSurface(surface);
 }
 
-void StartMenuView::update(const KeyHandler& keyHandler,
-                           EventManager& eventManager)
-{
-   if (keyHandler.isPressed(SDLK_SPACE))
-   {
-      eventManager.emit<EvStartGame>();
-   }
-}
-
 void StartMenuView::draw(const Position &pos)
 {   
    glTranslatef(pos.position.x(),
@@ -79,4 +70,9 @@ void StartMenuView::draw(const Position &pos)
    glEnd();
 
    glDisable(GL_TEXTURE_2D);
+}
+
+void StartMenuView::onConfirm(entityx::EventManager& eventManager)
+{
+    eventManager.emit<EvStartGame>();
 }

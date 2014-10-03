@@ -12,10 +12,9 @@ public:
 
     PauseMenuView();
 
-    void update(const KeyHandler &keyHandler,
-                entityx::EventManager& eventManager);
-
     void draw(const Position& pos);
+
+    void onConfirm(entityx::EventManager& eventManager);
 
  private:
 

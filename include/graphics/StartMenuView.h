@@ -12,10 +12,9 @@ public:
 
    StartMenuView();
 
-   void update(const KeyHandler &keyHandler,
-               entityx::EventManager& eventManager);
-
    void draw(const Position& pos);
+
+   void onConfirm(entityx::EventManager& eventManager);
 
 private:
 
@@ -24,6 +23,7 @@ private:
    float m_halfLogoWidth;
 
    float m_halfLogoHeight;
+
 };
 
 #endif // STARTMENUVIEW_H
