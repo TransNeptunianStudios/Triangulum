@@ -1,12 +1,10 @@
 #ifndef PAUSEMENUVIEW_H
 #define PAUSEMENUVIEW_H
 
-#include "graphics/IDrawable.h"
 #include "components/IMenu.h"
 
 class PauseMenuView
-      : public IDrawable
-      , public IMenu
+      : public IMenu
 {
 public:
 
@@ -15,7 +13,7 @@ public:
     void update(const KeyHandler &keyHandler,
                 entityx::EventManager& eventManager);
 
-    void draw(const Position& pos);
+    void draw();
 
  private:
 

@@ -2,13 +2,15 @@
 #define DISPLAY_H
 
 #include "entityx/Entity.h"
-#include "graphics/IDrawable.h"
+#include "components/Animation.h"
 
 struct Display : public entityx::Component<Display>
 {
-   Display(const IDrawableSP& _spDrawable);
+   Display();
 
-   IDrawableSP spDrawable;
+   Display(const SpriteSheetCoordinate& _coord);
+
+   SpriteSheetCoordinate coord;
 };
 
 #endif // DISPLAY_H

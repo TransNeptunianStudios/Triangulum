@@ -13,6 +13,8 @@ public:
 
    virtual void update(const KeyHandler& keyHandler,
                        entityx::EventManager& eventManager) = 0;
+
+   virtual void draw() = 0;
 };
 
 typedef std::shared_ptr<IMenu> IMenuSP;

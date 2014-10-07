@@ -52,12 +52,8 @@ void GameOverMenuView::update(const KeyHandler &keyHandler,
    }
 }
 
-void GameOverMenuView::draw(const Position &pos)
+void GameOverMenuView::draw()
 {
-   glTranslatef(pos.position.x(),
-                pos.position.y(),
-                0.f);
-
    glBindTexture(GL_TEXTURE_2D, m_texture);
 
    glEnable(GL_TEXTURE_2D);

@@ -53,12 +53,8 @@ void StartMenuView::update(const KeyHandler& keyHandler,
    }
 }
 
-void StartMenuView::draw(const Position &pos)
-{   
-   glTranslatef(pos.position.x(),
-                pos.position.y(),
-                0.f);
-
+void StartMenuView::draw()
+{
    glBindTexture(GL_TEXTURE_2D, m_texture);
 
    glEnable(GL_TEXTURE_2D);

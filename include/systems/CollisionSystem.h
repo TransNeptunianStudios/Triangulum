@@ -26,6 +26,9 @@ private:
                        Position* pos2,
                        Volume* vol2);
 
+   void spaceShipDestroyed(entityx::Entity& spaceShip,
+                           entityx::EventManager& events);
+
    SoundId getHitSound(EnemyType type);
 
    SoundId getDeathSound(EnemyType type);

@@ -1,6 +1,11 @@
 #include "components/Display.h"
 
-Display::Display(const IDrawableSP& _spDrawable)
-: spDrawable(_spDrawable)
+Display::Display()
+: coord()
+{
+}
+
+Display::Display(const SpriteSheetCoordinate& _coord)
+: coord(_coord)
 {
 }

@@ -1,15 +1,17 @@
 #ifndef BACKGROUNDVIEW_H
 #define BACKGROUNDVIEW_H
 
-#include "graphics/IDrawable.h"
+#include "SDL_opengl.h"
 
-class BackgroundView : public IDrawable
+class BackgroundView
 {
 public:
 
    BackgroundView();
 
-   void draw(const Position& pos);
+   void draw(double offset);
+
+private:
 
    GLuint m_texture;
 

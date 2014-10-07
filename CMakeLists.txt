@@ -5,6 +5,8 @@ project(SpaceShooter)
 add_executable(
    SpaceShooter
    src/main.cpp
+   include/AnimationFactory.h
+   src/AnimationFactory.cpp
    include/AudioManager.h
    src/AudioManager.cpp
    include/EntityCreator.h
@@ -20,8 +22,6 @@ add_executable(
    src/ScreenSize.cpp
    include/SpriteSheet.h
    src/SpriteSheet.cpp
-   include/Animation.h
-   src/Animation.cpp
    include/SoundId.h
    include/ai/BaseAi.h
    src/ai/BaseAi.cpp
@@ -30,8 +30,14 @@ add_executable(
    include/ai/IAi.h
    include/components/AiControl.h
    src/components/AiControl.cpp
+   include/components/Animation.h
+   src/components/Animation.cpp
+   include/components/Background.h
+   src/components/Background.cpp
    include/components/Bullet.h
    src/components/Bullet.cpp
+   include/components/DeathSentence.h
+   src/components/DeathSentence.cpp
    include/components/Display.h
    src/components/Display.cpp
    include/components/Enemy.h
@@ -53,28 +59,17 @@ add_executable(
    src/components/PlayerControl.cpp
    include/components/SpaceShip.h
    src/components/SpaceShip.cpp
-   include/components/State.h
-   src/components/State.cpp
    include/components/Volume.h
    src/components/Volume.cpp
-   include/graphics/IAnimatible.h
-   include/graphics/IDrawable.h
    include/graphics/BackgroundView.h
    src/graphics/BackgroundView.cpp
-   include/graphics/AsteroidView.h
-   src/graphics/AsteroidView.cpp
-   include/graphics/AsteroidBossView.h
-   src/graphics/AsteroidBossView.cpp
-   include/graphics/BulletView.h
-   src/graphics/BulletView.cpp
    include/graphics/GameOverMenuView.h
    src/graphics/GameOverMenuView.cpp
+   include/graphics/IDrawable.h
    include/graphics/PauseMenuView.h
    src/graphics/PauseMenuView.cpp
    include/graphics/LevelCompMenuView.h
    src/graphics/LevelCompMenuView.cpp
-   include/graphics/SpaceShipView.h
-   src/graphics/SpaceShipView.cpp
    include/graphics/StartMenuView.h
    src/graphics/StartMenuView.cpp
    include/systems/AnimationSystem.h
@@ -89,6 +84,8 @@ add_executable(
    src/systems/AiControlSystem.cpp
    include/systems/CollisionSystem.h
    src/systems/CollisionSystem.cpp
+   include/systems/DeathRowSystem.h
+   src/systems/DeathRowSystem.cpp
    include/systems/Events.h
    include/systems/GunSystem.h
    src/systems/GunSystem.cpp

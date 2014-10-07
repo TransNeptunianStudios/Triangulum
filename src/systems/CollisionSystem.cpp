@@ -3,6 +3,9 @@
 #include "components/SpaceShip.h"
 #include "components/Bullet.h"
 #include "components/Health.h"
+#include "components/Animation.h"
+#include "components/DeathSentence.h"
+#include "AnimationFactory.h"
 
 using namespace entityx;
 
@@ -27,10 +30,8 @@ void CollisionSystem::update(EntityManager& entities,
                             enemyPos.get(),
                             enemyVol.get()))
          {
-             spaceShipEntity.destroy();
-             events.emit<EvPlaySound>(SHIP_EXPLOSION);
-             events.emit<EvGameOver>();
-             return;
+            spaceShipDestroyed(spaceShipEntity, events);
+            return;
          }
       }
    }
@@ -54,9 +55,7 @@ void CollisionSystem::update(EntityManager& entities,
                             spaceShipVol.get()))
          {
              bulletEntity.destroy();
-             spaceShipEntity.destroy();
-             events.emit<EvPlaySound>(SHIP_EXPLOSION);
-             events.emit<EvGameOver>();
+             spaceShipDestroyed(spaceShipEntity, events);
              return;
          }
       }
@@ -125,6 +124,14 @@ bool CollisionSystem::checkCollision(Position* pos1,
    }
 
    return false;
+}
+
+void CollisionSystem::spaceShipDestroyed(entityx::Entity& spaceShip,
+                                         entityx::EventManager& events)
+{
+   spaceShip.assign<DeathAnimation>(AnimationFactory::spaceShipDeathAnimation());
+   spaceShip.assign<DeathSentence>(2000.0);
+   events.emit<EvPlaySound>(SHIP_EXPLOSION);
 }
 
 SoundId CollisionSystem::getHitSound(EnemyType type)

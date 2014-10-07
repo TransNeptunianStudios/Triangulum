@@ -38,10 +38,8 @@ BackgroundView::BackgroundView()
    SDL_FreeSurface(surface);
 }
 
-void BackgroundView::draw(const Position& pos)
+void BackgroundView::draw(double offset)
 {
-   const float offset = pos.position.y();
-
    const float screenWidth = ScreenSize::width();
 
    const float screenHeight = ScreenSize::height();

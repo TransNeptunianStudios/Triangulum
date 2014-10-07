@@ -2,11 +2,15 @@
 #include "systems/RenderSystem.h"
 #include "components/Position.h"
 #include "components/Display.h"
+#include "components/Background.h"
+#include "components/Menu.h"
 
 using namespace entityx;
 
-RenderSystem::RenderSystem(SDL_Window* pWindow)
+RenderSystem::RenderSystem(SDL_Window* pWindow,
+                           SpriteSheet* pSpriteSheet)
 : m_pWindow(pWindow)
+, m_pSpriteSheet(pSpriteSheet)
 {
 }
 
@@ -20,15 +24,50 @@ void RenderSystem::update(EntityManager &entities,
 
    glLoadIdentity();
 
-   //glTranslatef(400.0, 300.0, 0.f);
-
    Position::Handle position;
+   Background::Handle background;
+   for (Entity entity : entities.entities_with_components(position, background))
+   {
+      glPushMatrix();
+
+      glTranslatef(position->position.x(),
+                   position->position.y(),
+                   0.f);
+
+      background->view.draw(position->position.y());
+
+      glPopMatrix();
+   }
+
    Display::Handle display;
    for (Entity entity : entities.entities_with_components(position, display))
    {      
       glPushMatrix();
 
-      display->spDrawable->draw(*position.get());
+      glTranslatef(position->position.x(),
+                   position->position.y(),
+                   0.f);
+
+      if (display->coord.x != 999 && display->coord.y != 999)
+      {
+         m_pSpriteSheet->draw(display->coord.x,
+                              display->coord.y,
+                              display->coord.extraSize);
+      }
+
+      glPopMatrix();
+   }
+
+   Menu::Handle menu;
+   for (Entity entity : entities.entities_with_components(position, menu))
+   {
+      glPushMatrix();
+
+      glTranslatef(position->position.x(),
+                   position->position.y(),
+                   0.f);
+
+      menu->spMenu->draw();
 
       glPopMatrix();
    }

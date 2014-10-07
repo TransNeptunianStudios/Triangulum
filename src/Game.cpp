@@ -10,6 +10,7 @@
 #include "systems/MovementSystem.h"
 #include "systems/GunSystem.h"
 #include "systems/BulletLifeTimeSystem.h"
+#include "systems/DeathRowSystem.h"
 #include "systems/CollisionSystem.h"
 #include "systems/AnimationSystem.h"
 #include "systems/AudioSystem.h"
@@ -178,6 +179,7 @@ void Game::update()
       m_systemManager.update<GunSystem>(MS_PER_UPDATE);
       m_systemManager.update<BulletLifeTimeSystem>(MS_PER_UPDATE);
       m_systemManager.update<CollisionSystem>(MS_PER_UPDATE);
+      m_systemManager.update<DeathRowSystem>(MS_PER_UPDATE);
       m_systemManager.update<AnimationSystem>(MS_PER_UPDATE);
    }
 }
@@ -213,8 +215,9 @@ void Game::createSystems()
    m_systemManager.add<GunSystem>();
    m_systemManager.add<BulletLifeTimeSystem>();
    m_systemManager.add<CollisionSystem>();
+   m_systemManager.add<DeathRowSystem>();
    m_systemManager.add<AnimationSystem>();
    m_systemManager.add<AudioSystem>(m_audioManager);
-   m_systemManager.add<RenderSystem>(m_pWindow);
+   m_systemManager.add<RenderSystem>(m_pWindow, new SpriteSheet("../images/SpriteSheet.png", 32));
    m_systemManager.configure();
 }

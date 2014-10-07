@@ -52,14 +52,9 @@ void PauseMenuView::update(const KeyHandler &keyHandler, entityx::EventManager &
     }
 }
 
-void PauseMenuView::draw(const Position &pos)
+void PauseMenuView::draw()
 {
-
-    glTranslatef(pos.position.x(),
-                 pos.position.y(),
-                 0.f);
-
-    glBindTexture(GL_TEXTURE_2D, m_texture);
+   glBindTexture(GL_TEXTURE_2D, m_texture);
 
     glEnable(GL_TEXTURE_2D);
 

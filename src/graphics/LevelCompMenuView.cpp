@@ -52,12 +52,8 @@ void LevelCompMenuView::update(const KeyHandler &keyHandler,
    }
 }
 
-void LevelCompMenuView::draw(const Position &pos)
+void LevelCompMenuView::draw()
 {
-   glTranslatef(pos.position.x(),
-                pos.position.y(),
-                0.f);
-
    glBindTexture(GL_TEXTURE_2D, m_texture);
 
    glEnable(GL_TEXTURE_2D);
