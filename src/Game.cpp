@@ -15,6 +15,7 @@
 #include "systems/AnimationSystem.h"
 #include "systems/AudioSystem.h"
 #include "systems/RenderSystem.h"
+#include "systems/Events.h"
 
 // Updates per milliseconds
 static Uint32 MS_PER_UPDATE = 10.0;
@@ -144,9 +145,11 @@ void Game::processInput()
          {
             exit();
          }
+         m_eventManager.emit<EvKeyboard>(event.key.keysym.sym, true);
          m_keyHandler.updateKey(event.key.keysym.sym, true);
          break;
        case SDL_KEYUP:
+         m_eventManager.emit<EvKeyboard>(event.key.keysym.sym, false);
          m_keyHandler.updateKey(event.key.keysym.sym, false);
          break;
       case SDL_QUIT:
@@ -207,7 +210,7 @@ void Game::exit()
 
 void Game::createSystems()
 {
-   m_systemManager.add<MenuSystem>(m_keyHandler);
+   m_systemManager.add<MenuSystem>(m_entityManager, m_eventManager);
    m_systemManager.add<LevelSystem>(m_entityManager);
    m_systemManager.add<PlayerControlSystem>(m_keyHandler);
    m_systemManager.add<AiControlSystem>();

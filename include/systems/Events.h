@@ -1,6 +1,7 @@
 #ifndef EVENTS_H
 #define EVENTS_H
 
+#include <SDL.h>
 #include "entityx/Event.h"
 #include "SoundId.h"
 
@@ -42,6 +43,18 @@ struct EvPlaySound : public entityx::Event<EvPlaySound>
    }
 
    SoundId id;
+};
+
+struct EvKeyboard : public entityx::Event<EvKeyboard>
+{
+   EvKeyboard(SDL_Keycode _id, bool _type)
+   : id(_id)
+   , type(_type)
+   {
+   }
+
+   SDL_Keycode id;
+   bool type;
 };
 
 #endif // EVENTS_H
