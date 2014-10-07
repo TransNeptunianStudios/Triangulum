@@ -76,4 +76,7 @@ void PauseMenuView::draw()
     glDisable(GL_TEXTURE_2D);
 }
 
-
+void PauseMenuView::onConfirm(entityx::EventManager& eventManager)
+{
+    eventManager.emit<EvResumeGame>();
+}

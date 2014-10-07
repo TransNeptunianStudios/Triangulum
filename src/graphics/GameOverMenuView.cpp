@@ -75,3 +75,8 @@ void GameOverMenuView::draw()
 
    glDisable(GL_TEXTURE_2D);
 }
+
+
+void GameOverMenuView::onConfirm(entityx::EventManager& eventManager){
+    eventManager.emit<EvStartGame>();
+}

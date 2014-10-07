@@ -76,3 +76,8 @@ void StartMenuView::draw()
 
    glDisable(GL_TEXTURE_2D);
 }
+
+void StartMenuView::onConfirm(entityx::EventManager& eventManager)
+{
+    eventManager.emit<EvStartGame>();
+}

@@ -15,6 +15,8 @@ public:
                        entityx::EventManager& eventManager) = 0;
 
    virtual void draw() = 0;
+
+   virtual void onConfirm(entityx::EventManager& eventManager) = 0;
 };
 
 typedef std::shared_ptr<IMenu> IMenuSP;

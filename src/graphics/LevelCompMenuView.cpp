@@ -75,3 +75,8 @@ void LevelCompMenuView::draw()
 
    glDisable(GL_TEXTURE_2D);
 }
+
+void LevelCompMenuView::onConfirm(entityx::EventManager& eventManager)
+{
+    eventManager.emit<EvStartGame>();
+}

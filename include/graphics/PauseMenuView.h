@@ -15,6 +15,8 @@ public:
 
     void draw();
 
+    void onConfirm(entityx::EventManager& eventManager);
+
  private:
 
     GLuint m_texture;

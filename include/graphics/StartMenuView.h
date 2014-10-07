@@ -15,6 +15,8 @@ public:
 
    void draw();
 
+   void onConfirm(entityx::EventManager& eventManager);
+
 private:
 
    GLuint m_texture;
@@ -22,6 +24,7 @@ private:
    float m_halfLogoWidth;
 
    float m_halfLogoHeight;
+
 };
 
 #endif // STARTMENUVIEW_H
