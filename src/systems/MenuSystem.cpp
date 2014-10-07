@@ -2,32 +2,20 @@
 #include "systems/Events.h"
 #include "components/Menu.h"
 #include "KeyHandler.h"
-#include "SDL.h"
 
 using namespace entityx;
-MenuSystem::MenuSystem(EntityManager &entities, EventManager &eventManager)
-    : m_entitiyManager(entities)
-    , m_eventManager(eventManager)
+MenuSystem::MenuSystem(const KeyHandler& keyHandler)
+: m_keyHandler(keyHandler)
 {
-}
-
-void MenuSystem::configure(EventManager& eventManager)
-{
-   eventManager.subscribe<EvKeyboard>(*this);
 }
 
 void MenuSystem::update(EntityManager& entities,
                         EventManager& events,
                         double dt)
 {
-}
-
-void MenuSystem::receive(const EvKeyboard& keyboard)
-{
-    Menu::Handle menu;
-    for (Entity entity : m_entitiyManager.entities_with_components(menu))
-    {
-       if(keyboard.id == SDLK_SPACE)
-          menu->spMenu->onConfirm(m_eventManager);
-    }
+   Menu::Handle menu;
+   for (Entity entity : entities.entities_with_components(menu))
+   {
+      menu->spMenu->update(m_keyHandler, events);
+   }
 }

@@ -2,32 +2,22 @@
 #define MENUSYSTEM_H
 
 #include "entityx/System.h"
-#include "systems/Events.h"
 
 class KeyHandler;
 
-class MenuSystem
-        : public entityx::System<MenuSystem>
-        , public entityx::Receiver<MenuSystem>
-
+class MenuSystem : public entityx::System<MenuSystem>
 {
 public:
 
-   MenuSystem(entityx::EntityManager &entities,
-              entityx::EventManager &m_eventManager);
-
-   void configure(entityx::EventManager& eventManager);
+   MenuSystem(const KeyHandler& keyHandler);
 
    void update(entityx::EntityManager &entities,
                entityx::EventManager &events,
                double dt);
 
-   void receive(const EvKeyboard& keyboard);
-
 private:
 
-   entityx::EntityManager& m_entitiyManager;
-   entityx::EventManager& m_eventManager;
+   const KeyHandler& m_keyHandler;
 };
 
 #endif // MENUSYSTEM_H

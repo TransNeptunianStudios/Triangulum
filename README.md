@@ -10,7 +10,7 @@ Follow [EntityX](https://github.com/alecthomas/entityx.git) instructions for ins
 ### Linux
 Use "sudo apt-get install *package*", packages needed: 
 
-**cmake, libsdl2-dev, libsdl2-image-dev, libsdl2-mixer-dev**
+**cmake, libsdl2-dev, libsdl2-image-dev, mesa-common-dev (I think), libsdl2-mixer-dev**
 
 ### Mac
 
@@ -28,7 +28,6 @@ Use "sudo apt-get install *package*", packages needed:
 * SDL 2.0.3       - https://www.libsdl.org/download-2.0.php
 * CMake 3.0.1     - http://www.cmake.org/
 * OpenGl
-* EntityX         - https://github.com/alecthomas/entityx.git
 * sfxr            - http://www.drpetter.se/project_sfxr.html
 * aseprite        - http://www.aseprite.org/
 
