@@ -5,6 +5,8 @@
 #include "components/Health.h"
 #include "components/Animation.h"
 #include "components/DeathSentence.h"
+#include "components/PlayerControl.h"
+#include "components/Gun.h"
 #include "AnimationFactory.h"
 
 using namespace entityx;
@@ -23,6 +25,11 @@ void CollisionSystem::update(EntityManager& entities,
    Volume::Handle spaceShipVol, enemyVol;
    for (Entity spaceShipEntity : entities.entities_with_components(spaceShip, spaceShipPos, spaceShipVol))
    {
+      if (spaceShipEntity.has_component<DeathSentence>())
+      {
+         break;
+      }
+
       for (Entity enemyEntity : entities.entities_with_components(enemy, enemyPos, enemyVol))
       {
          if (checkCollision(spaceShipPos.get(),
@@ -44,7 +51,7 @@ void CollisionSystem::update(EntityManager& entities,
    {
       for (Entity spaceShipEntity : entities.entities_with_components(spaceShip, spaceShipPos, spaceShipVol))
       {
-         if (bullet->ownerId == spaceShipEntity.id())
+         if (spaceShipEntity.has_component<DeathSentence>() || bullet->ownerId == spaceShipEntity.id())
          {
             break;
          }
@@ -129,6 +136,7 @@ bool CollisionSystem::checkCollision(Position* pos1,
 void CollisionSystem::spaceShipDestroyed(entityx::Entity& spaceShip,
                                          entityx::EventManager& events)
 {
+   spaceShip.remove<MovementAnimation>();
    spaceShip.assign<DeathAnimation>(AnimationFactory::spaceShipDeathAnimation());
    spaceShip.assign<DeathSentence>(2000.0);
    events.emit<EvPlaySound>(SHIP_EXPLOSION);

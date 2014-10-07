@@ -11,6 +11,11 @@ public:
 
    static DeathAnimation spaceShipDeathAnimation();
 
+   static MovementAnimation spaceShipIdleAnimation();
+
+   static MovementAnimation spaceShipTurnLeftAnimation();
+
+   static MovementAnimation spaceShipTurnRightAnimation();
 };
 
 #endif // ANIMATIONFACTORY_H

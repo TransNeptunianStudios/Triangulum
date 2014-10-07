@@ -4,6 +4,7 @@
 #include "entityx/System.h"
 
 class KeyHandler;
+class Vector2;
 
 class PlayerControlSystem : public entityx::System<PlayerControlSystem>
 {
@@ -16,6 +17,9 @@ public:
                double dt);
 
 private:
+
+   void assignAnimation(const Vector2& velocity,
+                        entityx::Entity& entity);
 
    const KeyHandler& m_keyHandler;
 };

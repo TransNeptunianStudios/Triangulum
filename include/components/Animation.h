@@ -32,11 +32,14 @@ enum AnimationType
    AT_LOOP
 };
 
+typedef uint8_t AnimationId;
+
 template<int tag>
 struct Animation : public entityx::Component<Animation<tag>>
 {
-   Animation()
-   : elapsedTime(0.0)
+   Animation(AnimationId _animationId)
+   : animationId(_animationId)
+   , elapsedTime(0.0)
    , timePerFrame(0.0)
    , type(AT_RUN_ONCE)
    , coordList()
@@ -45,6 +48,8 @@ struct Animation : public entityx::Component<Animation<tag>>
    }
 
    //SpriteSheetId spriteSheetId
+
+   AnimationId animationId;
 
    double elapsedTime;
 
@@ -57,6 +62,20 @@ struct Animation : public entityx::Component<Animation<tag>>
    size_t currentIndex;
 };
 
+// Death animations -----------------------------------------------------------
 typedef Animation<0> DeathAnimation;
+
+// Death animation id's
+static const AnimationId DestroyedDeathAnimation = 0;
+//-----------------------------------------------------------------------------
+
+// Movement animations --------------------------------------------------------
+typedef Animation<1> MovementAnimation;
+
+// Movement animation id's
+static const AnimationId IdleMovementAnimation  = 0;
+static const AnimationId LeftMovementAnimation  = 1;
+static const AnimationId RightMovementAnimation = 2;
+//-----------------------------------------------------------------------------
 
 #endif // ANIMATION_H

@@ -11,4 +11,5 @@ void AnimationSystem::update(EntityManager &entities,
                              double dt)
 {
    updateAnimation<DeathAnimation>(entities, dt);
+   updateAnimation<MovementAnimation>(entities, dt);
 }
