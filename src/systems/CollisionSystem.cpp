@@ -23,22 +23,30 @@ void CollisionSystem::update(EntityManager& entities,
    Enemy::Handle enemy;
    Position::Handle spaceShipPos, enemyPos;
    Volume::Handle spaceShipVol, enemyVol;
-   for (Entity spaceShipEntity : entities.entities_with_components(spaceShip, spaceShipPos, spaceShipVol))
+   Health::Handle spaceShipHealth;
+   for (Entity spaceShipEntity : entities.entities_with_components(spaceShip, spaceShipPos, spaceShipVol, spaceShipHealth))
    {
       if (spaceShipEntity.has_component<DeathSentence>())
       {
          break;
       }
 
-      for (Entity enemyEntity : entities.entities_with_components(enemy, enemyPos, enemyVol))
+      if (spaceShipHealth->isInvulnerable())
       {
-         if (checkCollision(spaceShipPos.get(),
-                            spaceShipVol.get(),
-                            enemyPos.get(),
-                            enemyVol.get()))
+         spaceShipHealth->invulnerableTime -= dt;
+      }
+      else
+      {
+         for (Entity enemyEntity : entities.entities_with_components(enemy, enemyPos, enemyVol))
          {
-            spaceShipDestroyed(spaceShipEntity, events);
-            return;
+            if (checkCollision(spaceShipPos.get(),
+                               spaceShipVol.get(),
+                               enemyPos.get(),
+                               enemyVol.get()))
+            {
+               spaceShipDamaged(spaceShipEntity, events);
+               return;
+            }
          }
       }
    }
@@ -49,21 +57,28 @@ void CollisionSystem::update(EntityManager& entities,
    Health::Handle health;
    for (Entity bulletEntity : entities.entities_with_components(bullet, bulletPos, bulletVol))
    {
-      for (Entity spaceShipEntity : entities.entities_with_components(spaceShip, spaceShipPos, spaceShipVol))
+      for (Entity spaceShipEntity : entities.entities_with_components(spaceShip, spaceShipPos, spaceShipVol, spaceShipHealth))
       {
          if (spaceShipEntity.has_component<DeathSentence>() || bullet->ownerId == spaceShipEntity.id())
          {
             break;
          }
 
-         if (checkCollision(bulletPos.get(),
-                            bulletVol.get(),
-                            spaceShipPos.get(),
-                            spaceShipVol.get()))
+         if (spaceShipHealth->isInvulnerable())
          {
-             bulletEntity.destroy();
-             spaceShipDestroyed(spaceShipEntity, events);
-             return;
+            spaceShipHealth->invulnerableTime -= dt;
+         }
+         else
+         {
+            if (checkCollision(bulletPos.get(),
+                               bulletVol.get(),
+                               spaceShipPos.get(),
+                               spaceShipVol.get()))
+            {
+                bulletEntity.destroy();
+                spaceShipDamaged(spaceShipEntity, events);
+                return;
+            }
          }
       }
 
@@ -133,12 +148,23 @@ bool CollisionSystem::checkCollision(Position* pos1,
    return false;
 }
 
-void CollisionSystem::spaceShipDestroyed(entityx::Entity& spaceShip,
-                                         entityx::EventManager& events)
+void CollisionSystem::spaceShipDamaged(Entity& spaceShip,
+                                       EventManager& events)
 {
-   spaceShip.remove<MovementAnimation>();
-   spaceShip.assign<DeathAnimation>(AnimationFactory::spaceShipDeathAnimation());
-   spaceShip.assign<DeathSentence>(2000.0);
+   Health::Handle health = spaceShip.component<Health>();
+
+   if (health->health == 0)
+   {
+      spaceShip.remove<MovementAnimation>();
+      spaceShip.assign<DeathAnimation>(AnimationFactory::spaceShipDeathAnimation());
+      spaceShip.assign<DeathSentence>(2000.0);
+   }
+   else
+   {
+      health->health -= 1;
+      health->invulnerableTime = 2000.0;
+   }
+
    events.emit<EvPlaySound>(SHIP_EXPLOSION);
 }
 

@@ -97,6 +97,7 @@ void SpaceShipCreator::create(Entity entity)
    entity.assign<Position>(Vector2(400.0, 300.0));
    entity.assign<Gun>(Vector2(0.0, -1.0));
    entity.assign<Volume>(volume);
+   entity.assign<Health>(2);
    entity.assign<MovementAnimation>(AnimationFactory::spaceShipIdleAnimation());
    entity.assign<Display>(SpriteSheetCoordinate(0, 0));
 }

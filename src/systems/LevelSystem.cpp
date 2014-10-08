@@ -75,6 +75,6 @@ void LevelSystem::receive(const EvInit &e)
    m_bosses.push_back(
       std::make_pair(1200.0,
                      ICreatableSP(new FirstBossCreator(spaceShipEntity.id(),
-                                                       Vector2(400.0, -16.0),
+                                                       Vector2(400.0, -48.0),
                                                        m_scrollSpeed))));
 }
