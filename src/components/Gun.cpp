@@ -2,6 +2,7 @@
 
 Gun::Gun()
 : direction()
+, bulletType(BT_Simple)
 , isMainFirePressed(false)
 , wasMainFirePressed(true)
 {
@@ -9,6 +10,7 @@ Gun::Gun()
 
 Gun::Gun(const Vector2& _direction)
 : direction(_direction)
+, bulletType(BT_Simple)
 , isMainFirePressed(false)
 , wasMainFirePressed(true)
 {

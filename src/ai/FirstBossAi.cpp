@@ -61,6 +61,13 @@ void FirstBossAi::update(EntityManager& entities,
          motion->velocity.x() = 0.0;
       }
 
+      Vector2 v(enemyPosition->position.x() - position->position.x(),
+                enemyPosition->position.y() - position->position.y());
+
+      v.normalize();
+
+      gun->direction = v;
+
       if (gun->isMainFirePressed)
       {
          gun->isMainFirePressed = false;

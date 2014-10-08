@@ -136,13 +136,30 @@ BulletCreator::BulletCreator(Entity::Id ownerId,
 void BulletCreator::create(Entity entity)
 {
    auto volume = Volume();
-   volume.m_boxes.push_back(CollisionBox(4, 8));
+   auto ssCoord = SpriteSheetCoordinate();
+
+   switch (m_bulletType)
+   {
+   case BT_Simple:
+      volume.m_boxes.push_back(CollisionBox(4, 8));
+      ssCoord.x = 0;
+      ssCoord.y = 5;
+      break;
+   case BT_Asteroid:
+      volume.m_boxes.push_back(CollisionBox(32, 32));
+      ssCoord.x = 0;
+      ssCoord.y = 1;
+      break;
+   default:
+      break;
+   }
+
    auto damage = BulletDamageTable::lookup(m_bulletType);
    entity.assign<Motion>(m_velocity);
    entity.assign<Position>(m_position);
    entity.assign<Bullet>(m_ownerId, 10000.0, damage);
    entity.assign<Volume>(volume);
-   entity.assign<Display>(SpriteSheetCoordinate(0, 5));
+   entity.assign<Display>(ssCoord);
 }
 
 FirstBossCreator::FirstBossCreator(Entity::Id enemyId,
@@ -156,6 +173,8 @@ FirstBossCreator::FirstBossCreator(Entity::Id enemyId,
 
 void FirstBossCreator::create(Entity entity)
 {
+   Gun gun(Vector2(0.0, 1.0));
+   gun.bulletType = BT_Asteroid;
    auto volume = Volume();
    volume.m_boxes.push_back(CollisionBox(96, 96));
    entity.assign<AiControl>(IAiSP(new FirstBossAi(entity.id(), m_enemyId, m_scrollSpeed)));
@@ -163,7 +182,7 @@ void FirstBossCreator::create(Entity entity)
    entity.assign<Health>(10);
    entity.assign<Motion>();
    entity.assign<Position>(m_position);
-   entity.assign<Gun>(Vector2(0.0, 1.0));
+   entity.assign<Gun>(gun);
    entity.assign<Volume>(volume);
    entity.assign<Display>(SpriteSheetCoordinate(7, 0, 96));
 }

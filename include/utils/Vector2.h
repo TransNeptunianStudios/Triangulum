@@ -17,7 +17,11 @@ public:
 
    float& y() { return m_y; }
 
+   void normalize();
+
 private:
+
+   float length() const;
 
    float m_x;
 

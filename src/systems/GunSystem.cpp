@@ -26,7 +26,7 @@ void GunSystem::update(EntityManager &entities,
          BulletCreator(entity.id(),
                        position->position,
                        initVelocity,
-                       BT_Simple).create(entities.create());
+                       gun->bulletType).create(entities.create());
 
          events.emit<EvPlaySound>(GUN_SHOOT);
       }

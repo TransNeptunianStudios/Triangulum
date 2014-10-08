@@ -4,6 +4,7 @@
 enum BulletType
 {
    BT_Simple,
+   BT_Asteroid,
 };
 
 class BulletDamageTable

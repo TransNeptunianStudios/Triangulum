@@ -10,6 +10,7 @@ long BulletDamageTable::lookup(BulletType type)
 
    switch (type) {
    case BT_Simple:
+   case BT_Asteroid:
       bulletDamage = 1;
       break;
    default:
