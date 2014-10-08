@@ -11,7 +11,7 @@ class SpriteSheet
 public:
     SpriteSheet(std::string filename, unsigned tileSize);
 
-    bool draw(unsigned x, unsigned y, int extraSized = 0) const;
+    bool draw(unsigned x, unsigned y, unsigned optionalSize = 0) const;
 
 private:
 

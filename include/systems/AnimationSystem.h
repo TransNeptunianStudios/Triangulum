@@ -32,6 +32,7 @@ public:
             else if (animation->type == AT_LOOP)
             {
                animation->currentIndex = 0;
+               animation->elapsedTime = 0.0;
             }
          }
          else

@@ -164,5 +164,5 @@ void FirstBossCreator::create(Entity entity)
    entity.assign<Position>(m_position);
    entity.assign<Gun>(Vector2(0.0, 1.0));
    entity.assign<Volume>(volume);
-   entity.assign<Display>(SpriteSheetCoordinate(7, 0, 2));
+   entity.assign<Display>(SpriteSheetCoordinate(7, 0, 96));
 }

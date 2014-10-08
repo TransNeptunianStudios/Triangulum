@@ -24,7 +24,7 @@ MovementAnimation AnimationFactory::spaceShipIdleAnimation()
    animation.coordList.push_back({0, 0});
    animation.coordList.push_back({1, 0});
    animation.type = AT_LOOP;
-   animation.timePerFrame = 1000.0/2.0;
+   animation.timePerFrame = 200.0/2.0;
    return animation;
 }
 
