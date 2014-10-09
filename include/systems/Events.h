@@ -47,14 +47,14 @@ struct EvPlaySound : public entityx::Event<EvPlaySound>
 
 struct EvKeyboard : public entityx::Event<EvKeyboard>
 {
-   EvKeyboard(SDL_Keycode _id, bool _type)
+   EvKeyboard(SDL_Keycode _id, bool _isDown)
    : id(_id)
-   , type(_type)
+   , isDown(_isDown)
    {
    }
 
    SDL_Keycode id;
-   bool type;
+   bool isDown;
 };
 
 #endif // EVENTS_H

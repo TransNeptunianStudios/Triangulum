@@ -80,3 +80,7 @@ void GameOverMenuView::draw()
 void GameOverMenuView::onConfirm(entityx::EventManager& eventManager){
     eventManager.emit<EvStartGame>();
 }
+
+void GameOverMenuView::onCancel(entityx::EventManager& eventManager){
+    // Nothing
+}

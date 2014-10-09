@@ -25,9 +25,18 @@ void MenuSystem::update(EntityManager& entities,
 void MenuSystem::receive(const EvKeyboard& keyboard)
 {
     Menu::Handle menu;
+    int activeMenus = 0;
     for (Entity entity : m_entitiyManager.entities_with_components(menu))
     {
-       if(keyboard.id == SDLK_SPACE)
-          menu->spMenu->onConfirm(m_eventManager);
+       if(keyboard.id == SDLK_SPACE && keyboard.isDown)
+          menu->spMenu->onConfirm(m_eventManager);    
+       else if(keyboard.id == SDLK_ESCAPE && keyboard.isDown)
+          menu->spMenu->onCancel(m_eventManager);
+       activeMenus++;
+    }
+
+    if( !activeMenus ){
+        if(keyboard.id == SDLK_ESCAPE && keyboard.isDown)
+           m_eventManager.emit<EvPauseGame>();
     }
 }

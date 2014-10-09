@@ -78,5 +78,10 @@ void PauseMenuView::draw()
 
 void PauseMenuView::onConfirm(entityx::EventManager& eventManager)
 {
+    //Nothing
+}
+
+
+void PauseMenuView::onCancel(entityx::EventManager& eventManager){
     eventManager.emit<EvResumeGame>();
 }

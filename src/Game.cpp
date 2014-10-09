@@ -175,6 +175,7 @@ void Game::update()
    }
    else if (state == GS_Playing)
    {
+      m_systemManager.update<MenuSystem>(MS_PER_UPDATE);
       m_systemManager.update<LevelSystem>(MS_PER_UPDATE);
       m_systemManager.update<PlayerControlSystem>(MS_PER_UPDATE);
       m_systemManager.update<AiControlSystem>(MS_PER_UPDATE);
