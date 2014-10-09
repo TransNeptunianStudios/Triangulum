@@ -1,7 +1,7 @@
 #ifndef BACKGROUNDVIEW_H
 #define BACKGROUNDVIEW_H
 
-#include "SDL_opengl.h"
+#include "utils/Texture.h"
 
 class BackgroundView
 {
@@ -13,9 +13,8 @@ public:
 
 private:
 
-   GLuint m_texture;
+   Texture m_texture;
 
-   // TBR
    double m_ratio;
 
    double m_textureOffset;

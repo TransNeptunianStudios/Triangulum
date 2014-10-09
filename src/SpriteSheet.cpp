@@ -1,39 +1,14 @@
 #include "SpriteSheet.h"
-#include "SDL_image.h"
 
-SpriteSheet::SpriteSheet(std::string filename, unsigned tileSize)
-: m_filename(filename)
-, m_tileSize(tileSize)
+SpriteSheet::SpriteSheet(const std::string& fileName, unsigned tileSize)
+: m_tileSize(tileSize)
+, m_texture()
 {
-   SDL_Surface* pSurface = IMG_Load(m_filename.c_str());
+   m_texture.load(fileName);
 
-    if (pSurface==NULL)
-    {
-        printf("Error: \"%s\"\n",SDL_GetError()); return;
-    }
+   m_rTS[0] = (double)tileSize / (double)m_texture.width();
 
-    m_rTS[0] = (double)tileSize / (double)pSurface->w;
-    m_rTS[1] = (double)tileSize / (double)pSurface->h;
-
-    glGenTextures(1,&m_texture);
-
-    glBindTexture(GL_TEXTURE_2D, m_texture);
-
-    glTexImage2D(GL_TEXTURE_2D,
-                 0,
-                 GL_RGBA,
-                 pSurface->w,
-                 pSurface->h,
-                 0,
-                 GL_RGBA,
-                 GL_UNSIGNED_BYTE,
-                 pSurface->pixels);
-
-    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
-
-    //Unload SDL's copy of the data; we don't need it anymore because OpenGL now stores it in the texture.
-    SDL_FreeSurface(pSurface);
+   m_rTS[1] = (double)tileSize / (double)m_texture.height();
 }
 
 bool SpriteSheet::draw(unsigned x, unsigned y, unsigned optionalSize) const
@@ -45,7 +20,7 @@ bool SpriteSheet::draw(unsigned x, unsigned y, unsigned optionalSize) const
    float relPos = (float)tileSize / 2.0f;
 
    // chose to work with this spriteSheets texture.
-   glBindTexture(GL_TEXTURE_2D,m_texture);
+   glBindTexture(GL_TEXTURE_2D, m_texture.glTexture());
 
    // time to use textures!
    glEnable(GL_TEXTURE_2D);

@@ -1,4 +1,3 @@
-#include "SDL_image.h"
 #include "SDL_opengl.h"
 #include "graphics/BackgroundView.h"
 #include "components/Position.h"
@@ -10,32 +9,7 @@ BackgroundView::BackgroundView()
 , m_textureOffset(0.0)
 , m_textureHeightStart(1.0/3.0)
 {
-   SDL_Surface* surface = IMG_Load("../images/bg.png");
-
-   if (!surface)
-   {
-      std::cout << "IMG_Load error " << IMG_GetError() << std::endl;
-   }
-
-   glGenTextures(1, &m_texture);
-
-   glBindTexture(GL_TEXTURE_2D, m_texture);
-
-   glTexImage2D(GL_TEXTURE_2D,
-                0,
-                GL_RGBA,
-                surface->w,
-                surface->h,
-                0,
-                GL_RGBA,
-                GL_UNSIGNED_BYTE,
-                surface->pixels);
-
-   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-
-   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
-   SDL_FreeSurface(surface);
+   m_texture.load("../images/bg.png");
 }
 
 void BackgroundView::draw(double offset)
@@ -45,7 +19,7 @@ void BackgroundView::draw(double offset)
    const float screenHeight = ScreenSize::height();
 
    // chose to work with this spriteSheets texture.
-   glBindTexture(GL_TEXTURE_2D, m_texture);
+   glBindTexture(GL_TEXTURE_2D, m_texture.glTexture());
 
    // time to use textures!
    glEnable(GL_TEXTURE_2D);

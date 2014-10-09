@@ -2,23 +2,22 @@
 #define SPRITESHEET_H
 
 #include <string>
-#include <SDL.h>
-#include <SDL_opengl.h>
-
+#include "utils/Texture.h"
 
 class SpriteSheet
 {
 public:
-    SpriteSheet(std::string filename, unsigned tileSize);
+    SpriteSheet(const std::string& fileName, unsigned tileSize);
 
     bool draw(unsigned x, unsigned y, unsigned optionalSize = 0) const;
 
 private:
 
     const unsigned m_tileSize;
+
     double m_rTS[2]; // Relative tile size (0-1 of whole sheit:)
-    const std::string m_filename;
-    GLuint m_texture;
+
+    Texture m_texture;
 };
 
 #endif // SPRITESHEET_H

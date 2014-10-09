@@ -12,35 +12,11 @@ LevelCompMenuView::LevelCompMenuView()
 , m_halfLogoWidth(0.0)
 , m_halfLogoHeight(0.0)
 {
-   SDL_Surface* surface = IMG_Load("../images/level_comp.png");
+   m_texture.load("../images/level_comp.png");
 
-   if (!surface)
-   {
-      std::cout << "IMG_Load error " << IMG_GetError() << std::endl;
-   }
+   m_halfLogoWidth = m_texture.width()/2.0;
 
-   m_halfLogoWidth = surface->w/2.0;
-   m_halfLogoHeight = surface->h/2.0;
-
-   glGenTextures(1, &m_texture);
-
-   glBindTexture(GL_TEXTURE_2D, m_texture);
-
-   glTexImage2D(GL_TEXTURE_2D,
-                0,
-                GL_RGBA,
-                surface->w,
-                surface->h,
-                0,
-                GL_RGBA,
-                GL_UNSIGNED_BYTE,
-                surface->pixels);
-
-   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-
-   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
-   SDL_FreeSurface(surface);
+   m_halfLogoHeight = m_texture.height()/2.0;
 }
 
 void LevelCompMenuView::update(const KeyHandler &keyHandler,
@@ -54,7 +30,7 @@ void LevelCompMenuView::update(const KeyHandler &keyHandler,
 
 void LevelCompMenuView::draw()
 {
-   glBindTexture(GL_TEXTURE_2D, m_texture);
+   glBindTexture(GL_TEXTURE_2D, m_texture.glTexture());
 
    glEnable(GL_TEXTURE_2D);
 

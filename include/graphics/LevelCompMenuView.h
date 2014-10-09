@@ -1,8 +1,8 @@
 #ifndef LEVELCOMPMENUVIEW_H
 #define LEVELCOMPMENUVIEW_H
 
-#include "SDL_opengl.h"
 #include "components/IMenu.h"
+#include "utils/Texture.h"
 
 class LevelCompMenuView
       : public IMenu
@@ -22,7 +22,7 @@ public:
 
 private:
 
-   GLuint m_texture;
+   Texture m_texture;
 
    float m_halfLogoWidth;
 

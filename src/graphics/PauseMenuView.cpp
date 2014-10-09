@@ -1,47 +1,18 @@
-#include "SDL.h"
-#include "SDL_image.h"
-#include "SDL_opengl.h"
 #include "graphics/PauseMenuView.h"
 #include "components/Position.h"
 #include "systems/Events.h"
 #include "KeyHandler.h"
 
-
 PauseMenuView::PauseMenuView()
-    : m_texture()
-    , m_halfLogoWidth(0.0)
-    , m_halfLogoHeight(0.0)
+: m_texture()
+, m_halfLogoWidth(0.0)
+, m_halfLogoHeight(0.0)
 {
+   m_texture.load("../images/pause.png");
 
-    SDL_Surface* surface = IMG_Load("../images/pause.png");
+   m_halfLogoWidth = m_texture.width()/2.0;
 
-    if (!surface)
-    {
-       std::cout << "IMG_Load error " << IMG_GetError() << std::endl;
-    }
-
-    m_halfLogoWidth = surface->w/2.0;
-    m_halfLogoHeight = surface->h/2.0;
-
-    glGenTextures(1, &m_texture);
-
-    glBindTexture(GL_TEXTURE_2D, m_texture);
-
-    glTexImage2D(GL_TEXTURE_2D,
-                 0,
-                 GL_RGBA,
-                 surface->w,
-                 surface->h,
-                 0,
-                 GL_RGBA,
-                 GL_UNSIGNED_BYTE,
-                 surface->pixels);
-
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
-    SDL_FreeSurface(surface);
+   m_halfLogoHeight = m_texture.height()/2.0;
 }
 
 void PauseMenuView::update(const KeyHandler &keyHandler, entityx::EventManager &eventManager)
@@ -54,7 +25,7 @@ void PauseMenuView::update(const KeyHandler &keyHandler, entityx::EventManager &
 
 void PauseMenuView::draw()
 {
-   glBindTexture(GL_TEXTURE_2D, m_texture);
+   glBindTexture(GL_TEXTURE_2D, m_texture.glTexture());
 
     glEnable(GL_TEXTURE_2D);
 
