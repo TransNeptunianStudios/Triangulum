@@ -32,7 +32,7 @@ LevelCompMenuView::LevelCompMenuView()
                 surface->w,
                 surface->h,
                 0,
-                GL_BGRA,
+                GL_RGBA,
                 GL_UNSIGNED_BYTE,
                 surface->pixels);
 
