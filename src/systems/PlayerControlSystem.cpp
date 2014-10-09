@@ -73,27 +73,19 @@ void PlayerControlSystem::update(EntityManager &entities,
 void PlayerControlSystem::assignAnimation(const Vector2& velocity,
                                           Entity& entity)
 {
-   MovementAnimation* pCurrentAnimation(entity.component<MovementAnimation>().get());
+   AnimationContainer* pAC = entity.component<AnimationContainer>().get();
 
    if (velocity.x() > 0.1f)
    {
-      if (pCurrentAnimation->animationId != RightMovementAnimation)
-      {
-         *pCurrentAnimation = AnimationFactory::spaceShipTurnRightAnimation();
-      }
+      pAC->setAnimation(AnimationId(AT_Movement, RightMovementAnimation));
+
    }
    else if (velocity.x() < -0.1f)
    {
-      if (pCurrentAnimation->animationId != LeftMovementAnimation)
-      {
-         *pCurrentAnimation = AnimationFactory::spaceShipTurnLeftAnimation();
-      }
+      pAC->setAnimation(AnimationId(AT_Movement, LeftMovementAnimation));
    }
    else
    {
-      if (pCurrentAnimation->animationId != IdleMovementAnimation)
-      {
-         *pCurrentAnimation = AnimationFactory::spaceShipIdleAnimation();
-      }
+      pAC->setAnimation(AnimationId(AT_Movement, IdleMovementAnimation));
    }
 }

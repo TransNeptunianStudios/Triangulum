@@ -9,13 +9,13 @@ public:
 
    AnimationFactory();
 
-   static DeathAnimation spaceShipDeathAnimation();
+   static Animator spaceShipDeathAnimation();
 
-   static MovementAnimation spaceShipIdleAnimation();
+   static Animator spaceShipIdleAnimation();
 
-   static MovementAnimation spaceShipTurnLeftAnimation();
+   static Animator spaceShipTurnLeftAnimation();
 
-   static MovementAnimation spaceShipTurnRightAnimation();
+   static Animator spaceShipTurnRightAnimation();
 };
 
 #endif // ANIMATIONFACTORY_H

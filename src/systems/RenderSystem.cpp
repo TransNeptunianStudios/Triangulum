@@ -52,7 +52,7 @@ void RenderSystem::update(EntityManager &entities,
       {
          m_pSpriteSheet->draw(display->coord.x,
                               display->coord.y,
-                              display->coord.extraSize);
+                              display->coord.optionalSize);
       }
 
       glPopMatrix();

@@ -155,8 +155,12 @@ void CollisionSystem::spaceShipDamaged(Entity& spaceShip,
 
    if (health->health == 0)
    {
-      spaceShip.remove<MovementAnimation>();
-      spaceShip.assign<DeathAnimation>(AnimationFactory::spaceShipDeathAnimation());
+      AnimationContainer::Handle acHandle = spaceShip.component<AnimationContainer>();
+
+      acHandle->resetAnimation(AT_Movement);
+
+      acHandle->setAnimation(AnimationId(AT_Death, DestroyedDeathAnimation));
+
       spaceShip.assign<DeathSentence>(2000.0);
    }
    else

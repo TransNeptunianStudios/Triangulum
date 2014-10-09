@@ -91,6 +91,21 @@ void SpaceShipCreator::create(Entity entity)
 {
    auto volume = Volume();
    volume.m_boxes.push_back(CollisionBox(32, 32));
+
+   AnimationContainer ac;
+
+   ac.addAnimation(AnimationId(AT_Movement, IdleMovementAnimation),
+                   AnimationFactory::spaceShipIdleAnimation());
+
+   ac.addAnimation(AnimationId(AT_Movement, LeftMovementAnimation),
+                   AnimationFactory::spaceShipTurnLeftAnimation());
+
+   ac.addAnimation(AnimationId(AT_Movement, RightMovementAnimation),
+                   AnimationFactory::spaceShipTurnRightAnimation());
+
+   ac.addAnimation(AnimationId(AT_Death, DestroyedDeathAnimation),
+                   AnimationFactory::spaceShipDeathAnimation());
+
    entity.assign<SpaceShip>();
    entity.assign<PlayerControl>();
    entity.assign<Motion>();
@@ -98,7 +113,7 @@ void SpaceShipCreator::create(Entity entity)
    entity.assign<Gun>(Vector2(0.0, -1.0));
    entity.assign<Volume>(volume);
    entity.assign<Health>(2);
-   entity.assign<MovementAnimation>(AnimationFactory::spaceShipIdleAnimation());
+   entity.assign<AnimationContainer>(ac);
    entity.assign<Display>(SpriteSheetCoordinate(0, 0));
 }
 
