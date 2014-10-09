@@ -101,6 +101,8 @@ add_executable(
    src/systems/PlayerControlSystem.cpp
    include/utils/CollisionBox.h
    src/utils/CollisionBox.cpp
+   include/utils/Texture.h
+   src/utils/Texture.cpp
    include/utils/Vector2.h
    src/utils/Vector2.cpp
 )

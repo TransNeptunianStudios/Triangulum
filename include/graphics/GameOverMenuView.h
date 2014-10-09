@@ -1,8 +1,8 @@
 #ifndef GAMEOVERMENUVIEW_H
 #define GAMEOVERMENUVIEW_H
 
-#include "SDL_opengl.h"
 #include "components/IMenu.h"
+#include "utils/Texture.h"
 
 class GameOverMenuView
       : public IMenu
@@ -20,7 +20,7 @@ public:
 
 private:
 
-   GLuint m_texture;
+   Texture m_texture;
 
    float m_halfLogoWidth;
 

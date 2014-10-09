@@ -2,6 +2,7 @@
 #define STARTMENUVIEW_H
 
 #include "components/IMenu.h"
+#include "utils/Texture.h"
 
 class StartMenuView
       : public IMenu
@@ -19,7 +20,7 @@ public:
 
 private:
 
-   GLuint m_texture;
+   Texture m_texture;
 
    float m_halfLogoWidth;
 
