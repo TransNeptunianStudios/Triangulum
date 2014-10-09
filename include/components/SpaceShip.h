@@ -6,6 +6,8 @@
 struct SpaceShip : public entityx::Component<SpaceShip>
 {
    SpaceShip();
+
+   int score;
 };
 
 #endif // SPACESHIP_H

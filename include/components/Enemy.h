@@ -17,6 +17,8 @@ struct Enemy : public entityx::Component<Enemy>
    Enemy(EnemyType _type);
 
    EnemyType type;
+
+   int value;
 };
 
 #endif // ENEMY_H

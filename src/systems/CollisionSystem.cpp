@@ -104,7 +104,10 @@ void CollisionSystem::update(EntityManager& entities,
              {
                 EnemyType type = enemy->type;
 
-                enemyEntity.destroy();
+                spaceShip->score += enemy->value;
+                printf("Score: %d\n", spaceShip->score);
+
+                enemyEntity.destroy();                
 
                 events.emit<EvPlaySound>(getDeathSound(type));
 
