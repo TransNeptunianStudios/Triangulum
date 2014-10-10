@@ -4,8 +4,18 @@ A top down scrolling space action game! Asteroids, lasers, bosses, cool music an
 
 ![Alt text](https://github.com/RocSolidProductions/Space-Shooter/blob/master/images/Screenshoot1.png "Screenshoot")
 
+## Dependencies
+* OpenGL
+* SDL2
+* SDL2_image
+* SDL2_mixer
+* EntityX (latest)
+* yaml-cpp (0.3.0)
+
 ## Prepare to build
 Follow [EntityX](https://github.com/alecthomas/entityx.git) instructions for installation
+
+Install [yaml-cpp](https://code.google.com/p/yaml-cpp/)
 
 ### Linux
 Use "sudo apt-get install *package*", packages needed: 

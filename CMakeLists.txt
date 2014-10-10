@@ -63,6 +63,8 @@ add_executable(
    src/components/Volume.cpp
    include/graphics/BackgroundView.h
    src/graphics/BackgroundView.cpp
+   include/graphics/GameCompMenuView.h
+   src/graphics/GameCompMenuView.cpp
    include/graphics/GameOverMenuView.h
    src/graphics/GameOverMenuView.cpp
    include/graphics/IDrawable.h
@@ -101,6 +103,8 @@ add_executable(
    src/systems/PlayerControlSystem.cpp
    include/utils/CollisionBox.h
    src/utils/CollisionBox.cpp
+   include/utils/LevelLoader.h
+   src/utils/LevelLoader.cpp
    include/utils/Texture.h
    src/utils/Texture.cpp
    include/utils/Vector2.h
@@ -115,18 +119,21 @@ find_package(SDL2 REQUIRED)
 find_package(SDL2_image REQUIRED)
 find_package(SDL2_mixer REQUIRED)
 find_package(OpenGL REQUIRED)
-find_package(EntityX)
+find_package(YamlCpp REQUIRED)
+find_package(EntityX REQUIRED)
 
 include_directories(include ${SDL2_INCLUDE_DIR})
 include_directories(include ${SDLIMAGE_INCLUDE_DIR})
 include_directories(include ${SDL2_MIXER_INCLUDE_DIRS})
 include_directories(include ${OPENGL_INCLUDE_DIR})
 include_directories(include ${ENTITYX_INCLUDE_DIR})
+include_directories(include ${YAMLCPP_INCLUDE_DIR})
 
 target_link_libraries(SpaceShooter
                         ${SDL2_LIBRARY}
                         ${SDLIMAGE_LIBRARY}
                         ${SDL2_MIXER_LIBRARIES}
                         ${OPENGL_LIBRARIES}
-                        ${ENTITYX_LIBRARY}                        
+                        ${YAMLCPP_LIBRARY}
+                        ${ENTITYX_LIBRARY}
 )

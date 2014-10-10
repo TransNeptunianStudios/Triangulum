@@ -10,7 +10,12 @@ struct Motion : public entityx::Component<Motion>
 
    Motion(const Vector2 _velocity);
 
+   Motion(const Vector2 _velocity,
+          double _rotation);
+
    Vector2 velocity;
+
+   double rotation;
 };
 
 #endif

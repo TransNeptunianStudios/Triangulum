@@ -53,7 +53,6 @@ void AudioManager::playMusic()
 
 void AudioManager::pauseMusic()
 {
-    printf("ONCE\n");
     if( !Mix_PausedMusic() )
     {
         Mix_PauseMusic();

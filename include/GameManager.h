@@ -12,6 +12,7 @@ enum GameState
    GS_Paused,
    GS_GameOver,
    GS_LevelCompleted,
+   GS_GameCompleted,
 };
 
 class GameManager : public entityx::Receiver<GameManager>
@@ -43,6 +44,7 @@ private:
 
    GameState m_gameState;
 
+   int m_currentLevel;
 };
 
 #endif // GAMEMANAGER_H

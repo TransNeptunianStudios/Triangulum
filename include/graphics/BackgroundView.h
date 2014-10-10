@@ -7,7 +7,7 @@ class BackgroundView
 {
 public:
 
-   BackgroundView();
+   BackgroundView(const std::string& fileName);
 
    void draw(double offset);
 
