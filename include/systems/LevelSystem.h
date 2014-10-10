@@ -4,6 +4,7 @@
 #include "entityx/System.h"
 #include "entityx/Event.h"
 #include "systems/Events.h"
+#include "utils/LevelLoader.h"
 #include "EntityCreator.h"
 
 class LevelSystem
@@ -24,15 +25,30 @@ public:
 
 private:
 
+   typedef std::pair<double, ICreatableSP> CreatablePair;
+
+   typedef std::list<CreatablePair> CreatableList;
+
+   struct SortCreatables
+   {
+      bool operator() (CreatablePair& p1,
+                       CreatablePair& p2)
+      {
+         return p1.first < p2.first;
+      }
+   };
+
+   void addObstacle(const ObstacleData& obstacle);
+
+   void addEnemy(const EnemyData& enemy);
+
+   void addBoss(const BossData& boss, entityx::Entity::Id spaceShipId);
+
    entityx::EntityManager& m_entityManager;
 
    double m_scrollSpeed;
 
    double m_levelOffset;
-
-   typedef std::pair<double, ICreatableSP> CreatablePair;
-
-   typedef std::list<CreatablePair> CreatableList;
 
    CreatableList m_creatables;
 

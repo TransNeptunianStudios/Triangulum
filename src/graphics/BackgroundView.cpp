@@ -1,15 +1,19 @@
+#include <sstream>
 #include "SDL_opengl.h"
 #include "graphics/BackgroundView.h"
 #include "components/Position.h"
 #include "ScreenSize.h"
 
-BackgroundView::BackgroundView()
+BackgroundView::BackgroundView(const std::string& fileName)
 : m_texture()
 , m_ratio((double)ScreenSize::width()/(double)ScreenSize::height())
 , m_textureOffset(0.0)
 , m_textureHeightStart(1.0/3.0)
 {
-   m_texture.load("../images/bg.png");
+   std::stringstream ss;
+   ss << "../images/";
+   ss << fileName;
+   m_texture.load(ss.str());
 }
 
 void BackgroundView::draw(double offset)

@@ -70,8 +70,10 @@ void LevelCompMenuCreator::create(Entity entity)
    entity.assign<Position>(Vector2(ScreenSize::width()/2.0, ScreenSize::height()*0.33));
 }
 
-BackgroundCreator::BackgroundCreator(double scrollSpeed)
-: m_scrollSpeed(scrollSpeed)
+BackgroundCreator::BackgroundCreator(const std::string& fileName,
+                                     double scrollSpeed)
+: m_fileName(fileName)
+, m_scrollSpeed(scrollSpeed)
 {
 }
 
@@ -79,7 +81,7 @@ void BackgroundCreator::create(Entity entity)
 {
    entity.assign<Motion>(Vector2(0.0, m_scrollSpeed));
    entity.assign<Position>();
-   entity.assign<Background>();
+   entity.assign<Background>(m_fileName);
 }
 
 
@@ -119,9 +121,11 @@ void SpaceShipCreator::create(Entity entity)
 
 
 AsteroidCreator::AsteroidCreator(const Vector2 &position,
-                                 const Vector2 &velocity)
+                                 const Vector2 &velocity,
+                                 double rotation)
 : m_position(position)
 , m_velocity(velocity)
+, m_rotation(rotation)
 {
 }
 
@@ -131,7 +135,7 @@ void AsteroidCreator::create(Entity entity)
    volume.m_boxes.push_back(CollisionBox(32, 32));
    entity.assign<Enemy>(ET_Asteroid);
    entity.assign<Health>(5);
-   entity.assign<Motion>(m_velocity);
+   entity.assign<Motion>(m_velocity, m_rotation);
    entity.assign<Position>(m_position);
    entity.assign<Volume>(volume);
    entity.assign<Display>(SpriteSheetCoordinate(0, 1));

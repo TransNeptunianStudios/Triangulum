@@ -8,6 +8,8 @@ struct Background : public entityx::Component<Background>
 {
    Background();
 
+   Background(const std::string& fileName);
+
    BackgroundView view;
 };
 

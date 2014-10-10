@@ -12,7 +12,12 @@ struct EvStartGame : public entityx::Event<EvStartGame>
 
 struct EvInit : public entityx::Event<EvInit>
 {
-   EvInit() {}
+   EvInit(int _levelNr)
+   : levelNr(_levelNr)
+   {
+   }
+
+   int levelNr;
 };
 
 struct EvPauseGame : public entityx::Event<EvPauseGame>

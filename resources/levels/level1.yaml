@@ -1,0 +1,38 @@
+background:
+   file: bg.png
+   scroll_speed: 0.02
+scroll_speed: 50.0
+boss:
+   type: big_asteroid
+obstacles:
+   - type: asteroid
+     level_offset: 300.0
+     start_x_pos: 0.25
+     rotation: 100.0
+     speed: [0.0, 50.0]
+   - type: asteroid
+     level_offset: 320.0
+     start_x_pos: 0.40
+     rotation: -250.0
+     speed: [0.0, 60.0]
+   - type: asteroid
+     level_offset: 400.0
+     start_x_pos: 0.90
+     rotation: 10.0
+     speed: [0.0, 40.0]
+   - type: asteroid
+     level_offset: 500.0
+     start_x_pos: 0.75
+     rotation: -200.0
+     speed: [0.0, 50.0]
+   - type: asteroid
+     level_offset: 700.0
+     start_x_pos: 0.50
+     rotation: 20.0
+     speed: [0.0, 50.0]
+   - type: asteroid
+     level_offset: 1000.0
+     start_x_pos: 0.4375
+     rotation: 50.0
+     speed: [0.0, 50.0]
+enemies:

@@ -1,4 +1,6 @@
 #include "systems/LevelSystem.h"
+#include "utils/LevelLoader.h"
+#include "ScreenSize.h"
 
 using namespace entityx;
 
@@ -41,40 +43,73 @@ void LevelSystem::update(EntityManager& entities,
    }
 }
 
-void LevelSystem::receive(const EvInit &e)
+void LevelSystem::receive(const EvInit& e)
 {
-   m_scrollSpeed = 50.0;
    m_levelOffset = 0.0;
    m_creatables.clear();
 
-   BackgroundCreator(0.02).create(m_entityManager.create());
+   LevelData level;
+
+   if (!LevelLoader::load(e.levelNr, level))
+   {
+      return;
+   }
+
+   m_scrollSpeed = level.scrollSpeed;
+
+   BackgroundCreator(level.background.fileName,
+                     level.background.scrollSpeed).create(m_entityManager.create());
 
    Entity spaceShipEntity = m_entityManager.create();
 
    SpaceShipCreator().create(spaceShipEntity);
 
-   m_creatables.push_back(
-      std::make_pair(300.0,
-                     ICreatableSP(new AsteroidCreator(Vector2(200.0, -16.0),
-                                                      Vector2(0.0, m_scrollSpeed)))));
-   m_creatables.push_back(
-      std::make_pair(500.0,
-                     ICreatableSP(new AsteroidCreator(Vector2(600.0, -16.0),
-                                                      Vector2(0.0, m_scrollSpeed)))));
+   for (size_t i = 0; i < level.obstacles.size(); ++i)
+   {
+      addObstacle(level.obstacles[i]);
+   }
 
-   m_creatables.push_back(
-      std::make_pair(700.0,
-                     ICreatableSP(new AsteroidCreator(Vector2(400.0, -16.0),
-                                                      Vector2(0.0, m_scrollSpeed)))));
+   for (size_t i = 0; i < level.enemies.size(); ++i)
+   {
+      addEnemy(level.enemies[i]);
+   }
 
-   m_creatables.push_back(
-      std::make_pair(1000.0,
-                     ICreatableSP(new AsteroidCreator(Vector2(350.0, -16.0),
-                                                      Vector2(0.0, m_scrollSpeed)))));
+   SortCreatables sortFunctor;
 
-   m_bosses.push_back(
-      std::make_pair(1200.0,
-                     ICreatableSP(new FirstBossCreator(spaceShipEntity.id(),
-                                                       Vector2(400.0, -48.0),
-                                                       m_scrollSpeed))));
+   m_creatables.sort(sortFunctor);
+
+   addBoss(level.boss, spaceShipEntity.id());
+}
+
+void LevelSystem::addObstacle(const ObstacleData& obstacle)
+{
+   double startXPos = ScreenSize::width() * obstacle.startXPos;
+
+   if (obstacle.type == "asteroid")
+   {
+      m_creatables.push_back(
+         std::make_pair(
+            obstacle.levelOffset,
+            ICreatableSP(new AsteroidCreator(Vector2(startXPos, -16.0),
+                                             obstacle.speed,
+                                             obstacle.rotation))));
+   }
+}
+
+void LevelSystem::addEnemy(const EnemyData &enemy)
+{
+}
+
+void LevelSystem::addBoss(const BossData& boss, Entity::Id spaceShipId)
+{
+   double offset = m_creatables.back().first + 500.0;
+
+   if (boss.type == "big_asteroid")
+   {
+      m_bosses.push_back(
+         std::make_pair(offset,
+                        ICreatableSP(new FirstBossCreator(spaceShipId,
+                                                          Vector2(400.0, -48.0),
+                                                          m_scrollSpeed))));
+   }
 }

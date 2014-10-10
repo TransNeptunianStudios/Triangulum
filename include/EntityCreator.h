@@ -46,11 +46,14 @@ class BackgroundCreator : public ICreatable
 {
 public:
 
-   BackgroundCreator(double scrollSpeed);
+   BackgroundCreator(const std::string& fileName,
+                     double scrollSpeed);
 
    void create(entityx::Entity entity);
 
 private:
+
+   std::string m_fileName;
 
    double m_scrollSpeed;
 };
@@ -69,7 +72,8 @@ class AsteroidCreator : public ICreatable
 public:
 
    AsteroidCreator(const Vector2& position,
-                   const Vector2& velocity);
+                   const Vector2& velocity,
+                   double rotation);
 
    void create(entityx::Entity entity);
 
@@ -78,6 +82,8 @@ private:
    Vector2 m_position;
 
    Vector2 m_velocity;
+
+   double m_rotation;
 };
 
 class BulletCreator : public ICreatable

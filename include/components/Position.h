@@ -10,7 +10,11 @@ struct Position : public entityx::Component<Position>
 
    Position(const Vector2 &_position);
 
+   Position(const Vector2 &_position, double _heading);
+
    Vector2 position;
+
+   double heading;
 };
 
 #endif

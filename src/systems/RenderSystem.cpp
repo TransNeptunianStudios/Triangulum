@@ -48,6 +48,9 @@ void RenderSystem::update(EntityManager &entities,
                    position->position.y(),
                    0.f);
 
+      glRotatef(position->heading,
+                0.f, 0.f, 1.f);
+
       if (display->coord.x != 999 && display->coord.y != 999)
       {
          m_pSpriteSheet->draw(display->coord.x,

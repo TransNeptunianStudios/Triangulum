@@ -10,6 +10,7 @@ GameManager::GameManager(EntityManager& entityManager,
 : m_entityManager(entityManager)
 , m_eventManager(eventManager)
 , m_gameState(GS_StartMenu)
+, m_currentLevel(1)
 {
 }
 
@@ -39,7 +40,7 @@ void GameManager::receive(const EvStartGame& startGame)
 
    m_entityManager.reset();
 
-   m_eventManager.emit<EvInit>();
+   m_eventManager.emit<EvInit>(m_currentLevel);
 }
 
 void GameManager::receive(const EvGameOver& gameOver)
@@ -53,6 +54,8 @@ void GameManager::receive(const EvGameOver& gameOver)
 
 void GameManager::receive(const EvBossKilled& bossKilled)
 {
+   ++m_currentLevel;
+
    m_gameState = GS_LevelCompleted;
 
    m_entityManager.reset();
