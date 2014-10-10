@@ -56,3 +56,7 @@ void LevelCompMenuView::onConfirm(entityx::EventManager& eventManager)
 {
     eventManager.emit<EvStartGame>();
 }
+
+void LevelCompMenuView::onCancel(entityx::EventManager& eventManager){
+    // Nothing
+}

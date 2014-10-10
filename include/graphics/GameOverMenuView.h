@@ -18,6 +18,8 @@ public:
 
    void onConfirm(entityx::EventManager& eventManager);
 
+   void onCancel(entityx::EventManager &eventManager);
+
 private:
 
    Texture m_texture;

@@ -54,3 +54,8 @@ void StartMenuView::onConfirm(entityx::EventManager& eventManager)
 {
     eventManager.emit<EvStartGame>();
 }
+
+void StartMenuView::onCancel(entityx::EventManager& eventManager)
+{
+    //nothing
+}

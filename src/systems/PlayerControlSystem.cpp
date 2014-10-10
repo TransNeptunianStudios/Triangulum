@@ -26,11 +26,6 @@ void PlayerControlSystem::update(EntityManager &entities,
    Gun::Handle gun;
    for (Entity entity : entities.entities_with_components(playerControl, motion, gun))
    {
-      if (m_keyHandler.isPressed(playerControl->pause))
-      {
-          events.emit<EvPauseGame>();
-      }
-
       if (entity.has_component<DeathSentence>())
       {
          motion->velocity.x() = 0.0;
