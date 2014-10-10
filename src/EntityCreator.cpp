@@ -19,6 +19,7 @@
 #include "graphics/PauseMenuView.h"
 #include "graphics/GameOverMenuView.h"
 #include "graphics/LevelCompMenuView.h"
+#include "graphics/GameCompMenuView.h"
 #include "ai/FirstBossAi.h"
 #include "SpriteSheet.h"
 #include "ScreenSize.h"
@@ -66,6 +67,17 @@ LevelCompMenuCreator::LevelCompMenuCreator()
 void LevelCompMenuCreator::create(Entity entity)
 {
    auto pSmv = std::make_shared<LevelCompMenuView>();
+   entity.assign<Menu>(IMenuSP(pSmv));
+   entity.assign<Position>(Vector2(ScreenSize::width()/2.0, ScreenSize::height()*0.33));
+}
+
+GameCompMenuCreator::GameCompMenuCreator()
+{
+}
+
+void GameCompMenuCreator::create(Entity entity)
+{
+   auto pSmv = std::make_shared<GameCompMenuView>();
    entity.assign<Menu>(IMenuSP(pSmv));
    entity.assign<Position>(Vector2(ScreenSize::width()/2.0, ScreenSize::height()*0.33));
 }

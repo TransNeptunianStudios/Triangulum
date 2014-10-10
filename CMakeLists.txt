@@ -63,6 +63,8 @@ add_executable(
    src/components/Volume.cpp
    include/graphics/BackgroundView.h
    src/graphics/BackgroundView.cpp
+   include/graphics/GameCompMenuView.h
+   src/graphics/GameCompMenuView.cpp
    include/graphics/GameOverMenuView.h
    src/graphics/GameOverMenuView.cpp
    include/graphics/IDrawable.h

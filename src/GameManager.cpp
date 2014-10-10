@@ -5,6 +5,8 @@
 
 using namespace entityx;
 
+static const int NR_OF_LEVELS = 2;
+
 GameManager::GameManager(EntityManager& entityManager,
                          EventManager& eventManager)
 : m_entityManager(entityManager)
@@ -54,20 +56,25 @@ void GameManager::receive(const EvGameOver& gameOver)
 
 void GameManager::receive(const EvBossKilled& bossKilled)
 {
-   ++m_currentLevel;
-
-   m_gameState = GS_LevelCompleted;
-
-   m_entityManager.reset();
-
-   LevelCompMenuCreator().create(m_entityManager.create());
+   if (m_currentLevel == NR_OF_LEVELS)
+   {
+      m_gameState = GS_GameCompleted;
+      m_entityManager.reset();
+      GameCompMenuCreator().create(m_entityManager.create());
+   }
+   else
+   {
+      ++m_currentLevel;
+      m_gameState = GS_LevelCompleted;
+      m_entityManager.reset();
+      LevelCompMenuCreator().create(m_entityManager.create());
+   }
 }
 
 void GameManager::receive(const EvPauseGame& gamePause)
 {
   m_gameState = GS_Paused;
   PauseMenuCreator().create(m_entityManager.create());
-
 }
 
 void GameManager::receive(const EvResumeGame& gameResume)
