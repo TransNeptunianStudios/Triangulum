@@ -11,6 +11,8 @@ AudioSystem::AudioSystem(AudioManager &audioManager)
 void AudioSystem::configure(EventManager& eventManager)
 {
    eventManager.subscribe<EvPlaySound>(*this);
+   eventManager.subscribe<EvPlayMusic>(*this);
+   eventManager.subscribe<EvPauseMusic>(*this);
 }
 
 void AudioSystem::update(EntityManager& entities,
@@ -21,5 +23,15 @@ void AudioSystem::update(EntityManager& entities,
 
 void AudioSystem::receive(const EvPlaySound& playSound)
 {
-   m_audioManager.playSound(playSound.id);
+    m_audioManager.playSound(playSound.id);
+}
+
+void AudioSystem::receive(const EvPlayMusic &playMusic)
+{
+    m_audioManager.playMusic();
+}
+
+void AudioSystem::receive(const EvPauseMusic &pauseMusic)
+{
+    m_audioManager.pauseMusic();
 }

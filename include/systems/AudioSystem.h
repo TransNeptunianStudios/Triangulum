@@ -23,6 +23,10 @@ public:
 
    void receive(const EvPlaySound& playSound);
 
+   void receive(const EvPlayMusic& playMusic);
+
+   void receive(const EvPauseMusic& pauseMusic);
+
 private:
 
    AudioManager& m_audioManager;
@@ -30,3 +34,4 @@ private:
 };
 
 #endif // AUDIOSYSTEM_H
+

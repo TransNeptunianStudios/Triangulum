@@ -39,4 +39,11 @@ void MenuSystem::receive(const EvKeyboard& keyboard)
         if(keyboard.id == SDLK_ESCAPE && keyboard.isDown)
            m_eventManager.emit<EvPauseGame>();
     }
+
+    // Don't really know where to put stuff like this
+    // Pretty sure it's not menu's business
+    if(keyboard.id == SDLK_m  && keyboard.isDown)
+    {
+        m_eventManager.emit<EvPauseMusic>();
+    }
 }

@@ -40,6 +40,8 @@ void GameManager::receive(const EvStartGame& startGame)
    m_entityManager.reset();
 
    m_eventManager.emit<EvInit>();
+
+   m_eventManager.emit<EvPlayMusic>();
 }
 
 void GameManager::receive(const EvGameOver& gameOver)

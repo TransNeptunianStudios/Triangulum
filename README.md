@@ -1,6 +1,6 @@
 ![Alt text](https://raw.githubusercontent.com/RocSolidProductions/Space-Shooter/master/images/logo.png "Space shooter logo")
 
-A top down scrolling space action game! Asteroids, lasers, one animation and so much more! Like bosses, sounds and menus. That's about it right now but there's steady consistent progress! 
+A top down scrolling space action game! Asteroids, lasers, bosses, cool music and explosions. A classic space shooter that wants to be the next R-type!  
 
 ![Alt text](https://github.com/RocSolidProductions/Space-Shooter/blob/master/images/Screenshoot1.png "Screenshoot")
 
@@ -25,10 +25,11 @@ Use "sudo apt-get install *package*", packages needed:
 
 ## Resources, current, future and potential
 
-* SDL 2.0.3       - https://www.libsdl.org/download-2.0.php
-* CMake 3.0.1     - http://www.cmake.org/
+* SDL 2.0.3       	- https://www.libsdl.org/download-2.0.php
+* CMake 3.0.1     	- http://www.cmake.org/
 * OpenGl
-* EntityX         - https://github.com/alecthomas/entityx.git
-* sfxr            - http://www.drpetter.se/project_sfxr.html
-* aseprite        - http://www.aseprite.org/
+* EntityX         	- https://github.com/alecthomas/entityx.git
+* sfxr         		- http://www.drpetter.se/project_sfxr.html
+* aseprite        	- http://www.aseprite.org/
+* Music 			- http://incompetech.com/music/royalty-free/
 

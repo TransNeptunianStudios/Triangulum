@@ -45,6 +45,17 @@ struct EvPlaySound : public entityx::Event<EvPlaySound>
    SoundId id;
 };
 
+struct EvPlayMusic : public entityx::Event<EvPlayMusic>
+{
+   EvPlayMusic() {}
+};
+
+struct EvPauseMusic : public entityx::Event<EvPauseMusic>
+{
+   EvPauseMusic() {}
+};
+
+
 struct EvKeyboard : public entityx::Event<EvKeyboard>
 {
    EvKeyboard(SDL_Keycode _id, bool _isDown)
