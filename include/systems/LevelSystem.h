@@ -13,7 +13,8 @@ class LevelSystem
 {
 public:
 
-   LevelSystem(entityx::EntityManager& entities);
+   LevelSystem(entityx::EntityManager& entities,
+               entityx::EventManager& eventManager);
 
    void configure(entityx::EventManager& eventManager);
 
@@ -45,6 +46,8 @@ private:
    void addBoss(const BossData& boss, entityx::Entity::Id spaceShipId);
 
    entityx::EntityManager& m_entityManager;
+
+   entityx::EventManager& m_eventManager;
 
    double m_scrollSpeed;
 

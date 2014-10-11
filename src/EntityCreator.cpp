@@ -10,7 +10,7 @@
 #include "components/Obstacle.h"
 #include "components/Health.h"
 #include "components/Menu.h"
-#include "components/AiControl.h"
+#include "components/Ai.h"
 #include "components/Enemy.h"
 #include "components/Background.h"
 #include "components/Animation.h"
@@ -208,7 +208,7 @@ void FirstBossCreator::create(Entity entity)
    gun.bulletType = BT_Asteroid;
    auto volume = Volume();
    volume.m_boxes.push_back(CollisionBox(96, 96));
-   entity.assign<AiControl>(IAiSP(new FirstBossAi(entity.id(), m_enemyId, m_scrollSpeed)));
+   entity.assign<Ai>(AI_ID_FIRST_BOSS);
    entity.assign<Enemy>(ET_Boss);
    entity.assign<Health>(10);
    entity.assign<Motion>();

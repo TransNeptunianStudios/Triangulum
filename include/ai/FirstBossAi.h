@@ -1,18 +1,20 @@
 #ifndef FIRSTBOSSAI_H
 #define FIRSTBOSSAI_H
 
-#include "ai/BaseAi.h"
+#include "ai/IAi.h"
 #include "utils/Vector2.h"
 
-class FirstBossAi : public BaseAi
+class FirstBossAi : public IAi
 {
 public:
 
-   FirstBossAi(entityx::Entity::Id myId,
-               entityx::Entity::Id enemyId,
-               double scrollSpeed);
+   FirstBossAi();
 
-   void update(entityx::EntityManager& entities,
+   void setScrollSpeed(double scrollSpeed);
+
+   void update(entityx::Entity::Id myEntityId,
+               entityx::Entity::Id enemyEntityId,
+               entityx::EntityManager& entities,
                double dt);
 
 private:

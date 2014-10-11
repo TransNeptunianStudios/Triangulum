@@ -4,8 +4,10 @@
 #include <memory>
 #include "entityx/Entity.h"
 
-class Motion;
-class Gun;
+typedef uint32_t AiId;
+
+static const AiId AI_ID_NONE           = 0;
+static const AiId AI_ID_FIRST_BOSS     = 1;
 
 class IAi
 {
@@ -13,7 +15,11 @@ public:
 
    virtual ~IAi() {}
 
-   virtual void update(entityx::EntityManager& entities,
+   virtual void setScrollSpeed(double scrollSpeed) = 0;
+
+   virtual void update(entityx::Entity::Id myEntityId,
+                       entityx::Entity::Id enemyEntityId,
+                       entityx::EntityManager& entities,
                        double dt) = 0;
 };
 

@@ -212,7 +212,7 @@ void Game::exit()
 void Game::createSystems()
 {
    m_systemManager.add<MenuSystem>(m_entityManager, m_eventManager);
-   m_systemManager.add<LevelSystem>(m_entityManager);
+   m_systemManager.add<LevelSystem>(m_entityManager, m_eventManager);
    m_systemManager.add<PlayerControlSystem>(m_keyHandler);
    m_systemManager.add<AiControlSystem>();
    m_systemManager.add<MovementSystem>();

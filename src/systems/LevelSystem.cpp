@@ -4,8 +4,10 @@
 
 using namespace entityx;
 
-LevelSystem::LevelSystem(EntityManager& entities)
+LevelSystem::LevelSystem(EntityManager& entities,
+                         EventManager& eventManager)
 : m_entityManager(entities)
+, m_eventManager(eventManager)
 , m_scrollSpeed(50.0)
 , m_levelOffset(0.0)
 , m_creatables()
@@ -57,12 +59,16 @@ void LevelSystem::receive(const EvInit& e)
 
    m_scrollSpeed = level.scrollSpeed;
 
+   m_eventManager.emit<EvReportScrollSpeed>(m_scrollSpeed);
+
    BackgroundCreator(level.background.fileName,
                      level.background.scrollSpeed).create(m_entityManager.create());
 
    Entity spaceShipEntity = m_entityManager.create();
 
    SpaceShipCreator().create(spaceShipEntity);
+
+   m_eventManager.emit<EvReportSpaceShipId>(spaceShipEntity.id());
 
    for (auto& obstacle : level.obstacles)
    {

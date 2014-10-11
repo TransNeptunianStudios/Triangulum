@@ -6,22 +6,26 @@
 
 using namespace entityx;
 
-FirstBossAi::FirstBossAi(entityx::Entity::Id myId,
-                         entityx::Entity::Id enemyId,
-                         double scrollSpeed)
-: BaseAi(myId, enemyId)
-, m_scrollSpeed(scrollSpeed)
+FirstBossAi::FirstBossAi()
+: m_scrollSpeed(0.0)
 , m_fbp(FBP_Init)
 , m_shootTimer(-1.0)
 {
 }
 
-void FirstBossAi::update(EntityManager& entities,
+void FirstBossAi::setScrollSpeed(double scrollSpeed)
+{
+   m_scrollSpeed = scrollSpeed;
+}
+
+void FirstBossAi::update(entityx::Entity::Id myEntityId,
+                         entityx::Entity::Id enemyEntityId,
+                         entityx::EntityManager& entities,
                          double dt)
 {
-   auto motion = entities.component<Motion>(getMyId());
-   auto position = entities.component<Position>(getMyId());
-   auto gun = entities.component<Gun>(getMyId());
+   auto motion = entities.component<Motion>(myEntityId);
+   auto position = entities.component<Position>(myEntityId);
+   auto gun = entities.component<Gun>(myEntityId);
 
    if (!motion.valid() ||
        !position.valid() ||
@@ -45,7 +49,7 @@ void FirstBossAi::update(EntityManager& entities,
       break;
    case FBP_Attack:
    {
-      auto enemyPosition = entities.component<Position>(getEnemyId());
+      auto enemyPosition = entities.component<Position>(enemyEntityId);
       double horSpeed = 50.0;
 
       if (position->position.x() < enemyPosition->position.x())

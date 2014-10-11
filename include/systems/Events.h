@@ -3,6 +3,7 @@
 
 #include <SDL.h>
 #include "entityx/Event.h"
+#include "entityx/Entity.h"
 #include "SoundId.h"
 
 struct EvStartGame : public entityx::Event<EvStartGame>
@@ -71,6 +72,26 @@ struct EvKeyboard : public entityx::Event<EvKeyboard>
 
    SDL_Keycode id;
    bool isDown;
+};
+
+struct EvReportScrollSpeed : public entityx::Event<EvReportScrollSpeed>
+{
+   EvReportScrollSpeed(double _scrollSpeed)
+   : scrollSpeed(_scrollSpeed)
+   {
+   }
+
+   double scrollSpeed;
+};
+
+struct EvReportSpaceShipId : public entityx::Event<EvReportSpaceShipId>
+{
+   EvReportSpaceShipId(entityx::Entity::Id _spaceShipId)
+   : spaceShipId(_spaceShipId)
+   {
+   }
+
+   entityx::Entity::Id spaceShipId;
 };
 
 #endif // EVENTS_H

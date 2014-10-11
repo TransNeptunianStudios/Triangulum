@@ -23,13 +23,11 @@ add_executable(
    include/SpriteSheet.h
    src/SpriteSheet.cpp
    include/SoundId.h
-   include/ai/BaseAi.h
-   src/ai/BaseAi.cpp
    include/ai/FirstBossAi.h
    src/ai/FirstBossAi.cpp
    include/ai/IAi.h
-   include/components/AiControl.h
-   src/components/AiControl.cpp
+   include/components/Ai.h
+   src/components/Ai.cpp
    include/components/Animation.h
    src/components/Animation.cpp
    include/components/Background.h
