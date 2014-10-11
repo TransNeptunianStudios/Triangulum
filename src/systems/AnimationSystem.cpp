@@ -44,23 +44,25 @@ void AnimationSystem::update(EntityManager &entities,
       }
    }
 
-   Health::Handle health;
-   SpaceShip::Handle spaceShip;
-   for (entityx::Entity entity : entities.entities_with_components(display, health, spaceShip))
+   for (entityx::Entity entity : entities.entities_with_components(display))
    {
-      if (health->isInvulnerable())
+      auto& blink = display->blink;
+
+      if (blink.blinkingTime > 0.0)
       {
-         if (health->timeSinceBlink > 100.0)
+         blink.blinkingTime -= dt;
+
+         if (blink.timeSinceBlink > 100.0)
          {
-            health->isOff = !health->isOff;
-            health->timeSinceBlink = 0.0;
+            blink.isOff = !blink.isOff;
+            blink.timeSinceBlink = 0.0;
          }
          else
          {
-            health->timeSinceBlink += dt;
+            blink.timeSinceBlink += dt;
          }
 
-         if (health->isOff)
+         if (blink.isOff)
          {
             display->coord = SpriteSheetCoordinate(999, 999);
          }

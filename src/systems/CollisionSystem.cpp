@@ -7,6 +7,7 @@
 #include "components/DeathSentence.h"
 #include "components/PlayerControl.h"
 #include "components/Gun.h"
+#include "components/Display.h"
 #include "AnimationFactory.h"
 
 using namespace entityx;
@@ -155,6 +156,7 @@ void CollisionSystem::spaceShipDamaged(Entity& spaceShip,
                                        EventManager& events)
 {
    Health::Handle health = spaceShip.component<Health>();
+   Display::Handle display = spaceShip.component<Display>();
 
    if (health->health == 0)
    {
@@ -170,6 +172,7 @@ void CollisionSystem::spaceShipDamaged(Entity& spaceShip,
    {
       health->health -= 1;
       health->invulnerableTime = 2000.0;
+      display->blink.startBlink(2000.0);
    }
 
    events.emit<EvPlaySound>(SHIP_EXPLOSION);

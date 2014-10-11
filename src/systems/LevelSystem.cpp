@@ -64,14 +64,14 @@ void LevelSystem::receive(const EvInit& e)
 
    SpaceShipCreator().create(spaceShipEntity);
 
-   for (size_t i = 0; i < level.obstacles.size(); ++i)
+   for (auto& obstacle : level.obstacles)
    {
-      addObstacle(level.obstacles[i]);
+      addObstacle(obstacle);
    }
 
-   for (size_t i = 0; i < level.enemies.size(); ++i)
+   for (auto& enemy : level.enemies)
    {
-      addEnemy(level.enemies[i]);
+      addEnemy(enemy);
    }
 
    SortCreatables sortFunctor;

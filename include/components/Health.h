@@ -12,10 +12,6 @@ struct Health : public entityx::Component<Health>
    long health;
 
    double invulnerableTime;
-
-   double timeSinceBlink;
-
-   bool isOff;
 };
 
 #endif // HEALTH_H
