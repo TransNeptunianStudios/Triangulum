@@ -70,6 +70,8 @@ add_executable(
    src/graphics/PauseMenuView.cpp
    include/graphics/LevelCompMenuView.h
    src/graphics/LevelCompMenuView.cpp
+   include/graphics/ScoreView.h
+   src/graphics/ScoreView.cpp
    include/graphics/StartMenuView.h
    src/graphics/StartMenuView.cpp
    include/systems/AnimationSystem.h
@@ -89,6 +91,8 @@ add_executable(
    include/systems/Events.h
    include/systems/GunSystem.h
    src/systems/GunSystem.cpp
+   include/systems/HudSystem.h
+   src/systems/HudSystem.cpp
    include/systems/LevelSystem.h
    src/systems/LevelSystem.cpp
    include/systems/MenuSystem.h
@@ -105,6 +109,8 @@ add_executable(
    src/utils/LevelLoader.cpp
    include/utils/Texture.h
    src/utils/Texture.cpp
+   include/utils/TextTexture.h
+   src/utils/TextTexture.cpp
    include/utils/Vector2.h
    src/utils/Vector2.cpp
 )
@@ -116,6 +122,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/modules/")
 find_package(SDL2 REQUIRED)
 find_package(SDL2_image REQUIRED)
 find_package(SDL2_mixer REQUIRED)
+find_package(SDL2_ttf REQUIRED)
 find_package(OpenGL REQUIRED)
 find_package(YamlCpp REQUIRED)
 find_package(EntityX REQUIRED)
@@ -123,6 +130,7 @@ find_package(EntityX REQUIRED)
 include_directories(include ${SDL2_INCLUDE_DIR})
 include_directories(include ${SDLIMAGE_INCLUDE_DIR})
 include_directories(include ${SDL2_MIXER_INCLUDE_DIRS})
+include_directories(include ${SDL2TTF_INCLUDE_DIR})
 include_directories(include ${OPENGL_INCLUDE_DIR})
 include_directories(include ${ENTITYX_INCLUDE_DIR})
 include_directories(include ${YAMLCPP_INCLUDE_DIR})
@@ -131,6 +139,7 @@ target_link_libraries(SpaceShooter
                         ${SDL2_LIBRARY}
                         ${SDLIMAGE_LIBRARY}
                         ${SDL2_MIXER_LIBRARIES}
+                        ${SDL2TTF_LIBRARY}
                         ${OPENGL_LIBRARIES}
                         ${YAMLCPP_LIBRARY}
                         ${ENTITYX_LIBRARY}

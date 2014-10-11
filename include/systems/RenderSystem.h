@@ -10,16 +10,13 @@ class RenderSystem : public entityx::System<RenderSystem>
 {
 public:
 
-   RenderSystem(SDL_Window* pWindow,
-                SpriteSheet* pSpriteSheet);
+   RenderSystem(SpriteSheet* pSpriteSheet);
 
    void update(entityx::EntityManager &entities,
                entityx::EventManager &events,
                double dt);
 
 private:
-
-   SDL_Window* m_pWindow;
 
    SpriteSheet* m_pSpriteSheet;
 };

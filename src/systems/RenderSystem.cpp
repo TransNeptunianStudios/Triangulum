@@ -7,10 +7,8 @@
 
 using namespace entityx;
 
-RenderSystem::RenderSystem(SDL_Window* pWindow,
-                           SpriteSheet* pSpriteSheet)
-: m_pWindow(pWindow)
-, m_pSpriteSheet(pSpriteSheet)
+RenderSystem::RenderSystem(SpriteSheet* pSpriteSheet)
+: m_pSpriteSheet(pSpriteSheet)
 {
 }
 
@@ -75,5 +73,5 @@ void RenderSystem::update(EntityManager &entities,
       glPopMatrix();
    }
 
-   SDL_GL_SwapWindow(m_pWindow);
+
 }

@@ -9,6 +9,7 @@ A top down scrolling space action game! Asteroids, lasers, bosses, cool music an
 * SDL2
 * SDL2_image
 * SDL2_mixer
+* SDL2_ttf
 * EntityX (latest)
 * yaml-cpp (0.3.0)
 

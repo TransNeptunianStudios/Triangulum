@@ -1,6 +1,8 @@
 #include <iostream>
 #include <cstdlib>
 
+#include "SDL_ttf.h"
+
 #include "Game.h"
 #include "ScreenSize.h"
 #include "systems/MenuSystem.h"
@@ -15,6 +17,7 @@
 #include "systems/AnimationSystem.h"
 #include "systems/AudioSystem.h"
 #include "systems/RenderSystem.h"
+#include "systems/HudSystem.h"
 #include "systems/Events.h"
 
 // Updates per milliseconds
@@ -45,6 +48,10 @@ void Game::init()
       std::cout << "SDL could not initialize! SDL_Error: " << SDL_GetError() << std::endl;
       std::exit(EXIT_FAILURE);
    }
+
+   TTF_Init();
+
+   atexit(TTF_Quit);
 
    // Not needed?
    //glEnable(GL_DEPTH_TEST);
@@ -190,7 +197,11 @@ void Game::update()
 
 void Game::render()
 {
-    m_systemManager.update<RenderSystem>(0.0);
+   m_systemManager.update<RenderSystem>(0.0);
+
+   m_systemManager.update<HudSystem>(0.0);
+
+   SDL_GL_SwapWindow(m_pWindow);
 }
 
 void Game::exit()
@@ -222,6 +233,7 @@ void Game::createSystems()
    m_systemManager.add<DeathRowSystem>();
    m_systemManager.add<AnimationSystem>();
    m_systemManager.add<AudioSystem>(m_audioManager);
-   m_systemManager.add<RenderSystem>(m_pWindow, new SpriteSheet("../images/SpriteSheet.png", 32));
+   m_systemManager.add<RenderSystem>(new SpriteSheet("../images/SpriteSheet.png", 32));
+   m_systemManager.add<HudSystem>();
    m_systemManager.configure();
 }

@@ -12,6 +12,8 @@ public:
 
    bool load(const std::string& fileName);
 
+   void draw();
+
    int width() const { return m_width; }
 
    int height() const { return m_height; }
@@ -25,6 +27,10 @@ private:
    int m_width;
 
    int m_height;
+
+   float m_halfLogoWidth;
+
+   float m_halfLogoHeight;
 };
 
 #endif // TEXTURE_H
