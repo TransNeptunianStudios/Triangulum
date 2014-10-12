@@ -17,6 +17,8 @@ public:
                entityx::EntityManager& entities,
                double dt);
 
+   void reset();
+
 private:
 
    enum /* First Boss Phase */
