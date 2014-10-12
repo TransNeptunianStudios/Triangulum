@@ -2,6 +2,7 @@
 #include "systems/Events.h"
 #include "components/DeathSentence.h"
 #include "components/SpaceShip.h"
+#include "components/Ai.h"
 
 using namespace entityx;
 
@@ -19,12 +20,17 @@ void DeathRowSystem::update(EntityManager& entities,
       if (deathSentence->timeToExecution <= 0.0)
       {
          const bool isSpaceShip = entity.has_component<SpaceShip>();
+         const bool isBoss = entity.has_component<Ai>();
 
          entity.destroy();
 
          if (isSpaceShip)
          {
             events.emit<EvGameOver>();
+         }
+         else if(isBoss)
+         {
+             events.emit<EvBossKilled>();
          }
       }
       else
@@ -34,3 +40,4 @@ void DeathRowSystem::update(EntityManager& entities,
    }
 
 }
+

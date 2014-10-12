@@ -144,12 +144,18 @@ AsteroidCreator::AsteroidCreator(const Vector2 &position,
 void AsteroidCreator::create(Entity entity)
 {
    auto volume = Volume();
+   AnimationContainer ac;
+
+   ac.addAnimation(AnimationId(AT_Death, DestroyedDeathAnimation),
+                   AnimationFactory::asteroidDeathAnimation());
+
    volume.m_boxes.push_back(CollisionBox(32, 32));
    entity.assign<Enemy>(ET_Asteroid);
    entity.assign<Health>(5);
    entity.assign<Motion>(m_velocity, m_rotation);
    entity.assign<Position>(m_position);
    entity.assign<Volume>(volume);
+   entity.assign<AnimationContainer>(ac);
    entity.assign<Display>(SpriteSheetCoordinate(0, 1));
 }
 
@@ -207,6 +213,11 @@ void FirstBossCreator::create(Entity entity)
    Gun gun(Vector2(0.0, 1.0));
    gun.bulletType = BT_Asteroid;
    auto volume = Volume();
+   AnimationContainer ac;
+
+   ac.addAnimation(AnimationId(AT_Death, DestroyedDeathAnimation),
+                   AnimationFactory::asteroidBossDeathAnimation());
+
    volume.m_boxes.push_back(CollisionBox(96, 96));
    entity.assign<Ai>(AI_ID_FIRST_BOSS);
    entity.assign<Enemy>(ET_Boss);
@@ -215,5 +226,6 @@ void FirstBossCreator::create(Entity entity)
    entity.assign<Position>(m_position);
    entity.assign<Gun>(gun);
    entity.assign<Volume>(volume);
+   entity.assign<AnimationContainer>(ac);
    entity.assign<Display>(SpriteSheetCoordinate(7, 0, 96));
 }

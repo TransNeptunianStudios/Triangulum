@@ -20,6 +20,7 @@ void CollisionSystem::update(EntityManager& entities,
                              EventManager& events,
                              double dt)
 {
+   // Spaceships hitting enemies
    SpaceShip::Handle spaceShip;
    Enemy::Handle enemy;
    Position::Handle spaceShipPos, enemyPos;
@@ -52,12 +53,14 @@ void CollisionSystem::update(EntityManager& entities,
       }
    }
 
+   // Bullets hitting things
    Bullet::Handle bullet;
    Position::Handle bulletPos;
    Volume::Handle bulletVol;
    Health::Handle health;
    for (Entity bulletEntity : entities.entities_with_components(bullet, bulletPos, bulletVol))
    {
+      // Bullets hitting spaceships
       for (Entity spaceShipEntity : entities.entities_with_components(spaceShip, spaceShipPos, spaceShipVol, spaceShipHealth))
       {
          if (spaceShipEntity.has_component<DeathSentence>() || bullet->ownerId == spaceShipEntity.id())
@@ -81,11 +84,11 @@ void CollisionSystem::update(EntityManager& entities,
                 return;
             }
          }
-      }
-
+      }      
+      // Bullets hitting Enemies
       for (Entity enemyEntity : entities.entities_with_components(enemy, enemyPos, enemyVol, health))
       {
-         if (bullet->ownerId == enemyEntity.id())
+         if ( enemyEntity.has_component<DeathSentence>() || bullet->ownerId == enemyEntity.id())
          {
             break;
          }
@@ -95,34 +98,15 @@ void CollisionSystem::update(EntityManager& entities,
                             enemyPos.get(),
                             enemyVol.get()))
          {
-             health->health -= bullet->damage;
-
              bulletEntity.destroy();
 
-             SoundId soundId = NO_SOUND;
-
-             if (health->health <= 0)
+             if( health->health == 0 )
              {
-                EnemyType type = enemy->type;
-
-                spaceShip->score += enemy->value;
-
-                enemyEntity.destroy();
-
-                events.emit<EvPlaySound>(getDeathSound(type));
-
-                if (type == ET_Boss)
-                {
-                   events.emit<EvBossKilled>();
-                   return;
-                }
-             }
-             else
-             {
-                events.emit<EvPlaySound>(getHitSound(enemy->type));
+                 spaceShip->score += enemy->value;
              }
 
-             break;
+             enemyDamaged(enemyEntity, events);
+             return;
          }
       }
    }
@@ -175,6 +159,39 @@ void CollisionSystem::spaceShipDamaged(Entity& spaceShip,
    }
 
    events.emit<EvPlaySound>(SHIP_EXPLOSION);
+}
+
+void CollisionSystem::enemyDamaged(Entity& enemyEntity,
+                                   EventManager& events)
+{
+   Health::Handle health = enemyEntity.component<Health>();
+   Display::Handle display = enemyEntity.component<Display>();
+   Enemy::Handle enemy = enemyEntity.component<Enemy>();
+
+   if (health->health == 0)
+   {
+      AnimationContainer::Handle acHandle = enemyEntity.component<AnimationContainer>();
+
+      acHandle->resetAnimation(AT_Movement);
+
+      acHandle->setAnimation(AnimationId(AT_Death, DestroyedDeathAnimation));
+
+      events.emit<EvPlaySound>(getDeathSound(enemy->type));
+
+      if (enemy->type == ET_Boss)
+      {
+         enemyEntity.assign<DeathSentence>(1500.0);
+      }
+      else
+      {
+          enemyEntity.assign<DeathSentence>(700.0);
+      }
+   }
+   else
+   {
+      health->health -= 1;
+      events.emit<EvPlaySound>(getHitSound(enemy->type));
+   }
 }
 
 SoundId CollisionSystem::getHitSound(EnemyType type)

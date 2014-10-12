@@ -16,6 +16,10 @@ public:
    static Animator spaceShipTurnLeftAnimation();
 
    static Animator spaceShipTurnRightAnimation();
+
+   static Animator asteroidDeathAnimation();
+
+   static Animator asteroidBossDeathAnimation();
 };
 
 #endif // ANIMATIONFACTORY_H

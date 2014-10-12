@@ -29,6 +29,9 @@ private:
    void spaceShipDamaged(entityx::Entity& spaceShip,
                            entityx::EventManager& events);
 
+   void enemyDamaged(entityx::Entity& enemy,
+                     entityx::EventManager& events);
+
    SoundId getHitSound(EnemyType type);
 
    SoundId getDeathSound(EnemyType type);
