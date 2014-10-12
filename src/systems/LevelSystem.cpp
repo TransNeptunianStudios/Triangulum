@@ -49,6 +49,9 @@ void LevelSystem::receive(const EvInit& e)
 {
    m_levelOffset = 0.0;
    m_creatables.clear();
+   m_bosses.clear();
+
+   m_eventManager.emit<EvResetAi>();
 
    LevelData level;
 

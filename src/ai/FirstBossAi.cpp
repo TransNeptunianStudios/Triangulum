@@ -91,3 +91,10 @@ void FirstBossAi::update(entityx::Entity::Id myEntityId,
       break;
    }
 }
+
+void FirstBossAi::reset()
+{
+   m_scrollSpeed = 0.0;
+   m_fbp = FBP_Init;
+   m_shootTimer = -1.0;
+}

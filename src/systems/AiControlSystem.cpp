@@ -16,8 +16,17 @@ AiControlSystem::AiControlSystem()
 
 void AiControlSystem::configure(EventManager& events)
 {
+   events.subscribe<EvResetAi>(*this);
    events.subscribe<EvReportScrollSpeed>(*this);
    events.subscribe<EvReportSpaceShipId>(*this);
+}
+
+void AiControlSystem::receive(const EvResetAi& e)
+{
+   for (auto& p : m_aiMap)
+   {
+      p.second->reset();
+   }
 }
 
 void AiControlSystem::receive(const EvReportScrollSpeed& e)

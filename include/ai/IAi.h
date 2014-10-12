@@ -21,6 +21,8 @@ public:
                        entityx::Entity::Id enemyEntityId,
                        entityx::EntityManager& entities,
                        double dt) = 0;
+
+   virtual void reset() = 0;
 };
 
 typedef std::shared_ptr<IAi> IAiSP;

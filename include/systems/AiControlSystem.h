@@ -7,6 +7,7 @@
 #include "systems/AiControlSystem.h"
 #include "ai/IAi.h"
 
+class EvResetAi;
 class EvReportScrollSpeed;
 class EvReportSpaceShipId;
 
@@ -19,6 +20,8 @@ public:
    AiControlSystem();
 
    void configure(entityx::EventManager& events);
+
+   void receive(const EvResetAi& e);
 
    void receive(const EvReportScrollSpeed& e);
 

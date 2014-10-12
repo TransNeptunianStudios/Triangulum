@@ -94,4 +94,9 @@ struct EvReportSpaceShipId : public entityx::Event<EvReportSpaceShipId>
    entityx::Entity::Id spaceShipId;
 };
 
+struct EvResetAi : public entityx::Event<EvResetAi>
+{
+   EvResetAi() {}
+};
+
 #endif // EVENTS_H
