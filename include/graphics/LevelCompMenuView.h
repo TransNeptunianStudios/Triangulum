@@ -2,7 +2,7 @@
 #define LEVELCOMPMENUVIEW_H
 
 #include "components/IMenu.h"
-#include "utils/Texture.h"
+#include "utils/TextTexture.h"
 
 class LevelCompMenuView
       : public IMenu
@@ -22,11 +22,7 @@ public:
 
 private:
 
-   Texture m_texture;
-
-   float m_halfLogoWidth;
-
-   float m_halfLogoHeight;
+   TextTexture m_textTexture;
 };
 
 #endif // LEVELCOMPMENUVIEW_H

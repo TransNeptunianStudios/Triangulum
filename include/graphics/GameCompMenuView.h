@@ -2,7 +2,7 @@
 #define GAMECOMPMENUVIEW_H
 
 #include "components/IMenu.h"
-#include "utils/Texture.h"
+#include "utils/TextTexture.h"
 
 class GameCompMenuView
       : public IMenu
@@ -22,12 +22,7 @@ public:
 
 private:
 
-   Texture m_texture;
-
-   float m_halfLogoWidth;
-
-   float m_halfLogoHeight;
-
+   TextTexture m_textGameCompleted;
 };
 
 #endif // GAMECOMPMENUVIEW_H

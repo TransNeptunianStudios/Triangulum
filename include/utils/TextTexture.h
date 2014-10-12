@@ -18,6 +18,8 @@ public:
 
    TextTexture();
 
+   ~TextTexture();
+
    bool load(const std::string& text,
              const std::string& font,
              SDL_Color color,

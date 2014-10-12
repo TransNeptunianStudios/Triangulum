@@ -7,15 +7,14 @@
 using namespace entityx;
 
 GameOverMenuView::GameOverMenuView()
-: m_texture()
-, m_halfLogoWidth(0.0)
-, m_halfLogoHeight(0.0)
+: m_textGameOver()
 {
-   m_texture.load("../images/game_over.png");
+   m_textGameOver.load("Game Over",
+                       "../resources/fonts/akashi.ttf",
+                       {255, 255, 255, 255},
+                       30);
 
-   m_halfLogoWidth = m_texture.width()/2.0;
-
-   m_halfLogoHeight = m_texture.height()/2.0;
+   m_textGameOver.setTextAlignment(TA_Center);
 }
 
 void GameOverMenuView::update(const KeyHandler &keyHandler,
@@ -29,33 +28,16 @@ void GameOverMenuView::update(const KeyHandler &keyHandler,
 
 void GameOverMenuView::draw()
 {
-   glBindTexture(GL_TEXTURE_2D, m_texture.glTexture());
-
-   glEnable(GL_TEXTURE_2D);
-
-   glBegin(GL_QUADS);
-
-   glColor3f(1.0f, 1.0f, 1.0f);
-
-   glTexCoord2f(0.0f, 1.0f);
-   glVertex3f(-m_halfLogoWidth, m_halfLogoHeight, 0.0f);
-   glTexCoord2f(1.0f, 1.0f);
-   glVertex3f(m_halfLogoWidth, m_halfLogoHeight, 0.0f);
-   glTexCoord2f(1.0f, 0.0f);
-   glVertex3f(m_halfLogoWidth, -m_halfLogoHeight, 0.0f);
-   glTexCoord2f(0.0f, 0.0f);
-   glVertex3f(-m_halfLogoWidth, -m_halfLogoHeight, 0.0f);
-
-   glEnd();
-
-   glDisable(GL_TEXTURE_2D);
+   m_textGameOver.draw();
 }
 
 
-void GameOverMenuView::onConfirm(entityx::EventManager& eventManager){
+void GameOverMenuView::onConfirm(entityx::EventManager& eventManager)
+{
     eventManager.emit<EvStartGame>();
 }
 
-void GameOverMenuView::onCancel(entityx::EventManager& eventManager){
+void GameOverMenuView::onCancel(entityx::EventManager& eventManager)
+{
     // Nothing
 }

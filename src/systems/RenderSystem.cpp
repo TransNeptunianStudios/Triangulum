@@ -72,6 +72,4 @@ void RenderSystem::update(EntityManager &entities,
 
       glPopMatrix();
    }
-
-
 }

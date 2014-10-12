@@ -6,9 +6,15 @@ Texture::Texture()
 : m_glTexture()
 , m_width(0)
 , m_height(0)
-, m_halfLogoWidth(0.0)
-, m_halfLogoHeight(0.0)
+, m_halfTextureWidth(0.0)
+, m_halfTextureHeight(0.0)
 {
+}
+
+Texture::~Texture()
+{
+   printf("Deleted texture %d\n", m_glTexture);
+   glDeleteTextures(1, &m_glTexture);
 }
 
 bool Texture::load(const std::string& fileName)
@@ -24,8 +30,8 @@ bool Texture::load(const std::string& fileName)
     m_width = pSurface->w;
     m_height = pSurface->h;
 
-    m_halfLogoWidth = m_width/2.0;
-    m_halfLogoHeight = m_height/2.0;
+    m_halfTextureWidth = m_width/2.0;
+    m_halfTextureHeight = m_height/2.0;
 
     glGenTextures(1, &m_glTexture);
 
@@ -66,13 +72,13 @@ void Texture::draw()
    glColor3f(1.0f, 1.0f, 1.0f);
 
    glTexCoord2f(0.0f, 1.0f);
-   glVertex3f(-m_halfLogoWidth, m_halfLogoHeight, 0.0f);
+   glVertex3f(-m_halfTextureWidth, m_halfTextureHeight, 0.0f);
    glTexCoord2f(1.0f, 1.0f);
-   glVertex3f(m_halfLogoWidth, m_halfLogoHeight, 0.0f);
+   glVertex3f(m_halfTextureWidth, m_halfTextureHeight, 0.0f);
    glTexCoord2f(1.0f, 0.0f);
-   glVertex3f(m_halfLogoWidth, -m_halfLogoHeight, 0.0f);
+   glVertex3f(m_halfTextureWidth, -m_halfTextureHeight, 0.0f);
    glTexCoord2f(0.0f, 0.0f);
-   glVertex3f(-m_halfLogoWidth, -m_halfLogoHeight, 0.0f);
+   glVertex3f(-m_halfTextureWidth, -m_halfTextureHeight, 0.0f);
 
    glEnd();
 

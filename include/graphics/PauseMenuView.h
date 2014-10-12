@@ -2,7 +2,7 @@
 #define PAUSEMENUVIEW_H
 
 #include "components/IMenu.h"
-#include "utils/Texture.h"
+#include "utils/TextTexture.h"
 
 class PauseMenuView
       : public IMenu
@@ -22,11 +22,7 @@ public:
 
  private:
 
-    Texture m_texture;
-
-    float m_halfLogoWidth;
-
-    float m_halfLogoHeight;
-
+    TextTexture m_textPause;
 };
+
 #endif // PAUSEMENUVIEW_H
