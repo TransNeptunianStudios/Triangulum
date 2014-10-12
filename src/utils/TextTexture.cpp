@@ -12,6 +12,12 @@ TextTexture::TextTexture()
 {
 }
 
+TextTexture::~TextTexture()
+{
+   printf("Deleted texture %d\n", m_glTexture);
+   glDeleteTextures(1, &m_glTexture);
+}
+
 bool TextTexture::load(const std::string& text,
                        const std::string& font,
                        SDL_Color color,

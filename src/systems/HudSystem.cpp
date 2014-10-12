@@ -1,6 +1,7 @@
 #include "systems/HudSystem.h"
 #include "components/SpaceShip.h"
 #include "components/Health.h"
+#include "components/DeathSentence.h"
 
 using namespace entityx;
 
@@ -41,12 +42,13 @@ void HudSystem::update(EntityManager& entities,
 
       glTranslatef(8.f, 25.f, 0.f);
 
-      for (int i = 0; i < health->health+1; ++i)
+      if (!entity.has_component<DeathSentence>())
       {
-         m_health.draw();
-
-         glTranslatef(25.f, 0.f, 0.f);
-
+         for (int i = 0; i < health->health+1; ++i)
+         {
+            m_health.draw();
+            glTranslatef(25.f, 0.f, 0.f);
+         }
       }
 
       glPopMatrix();

@@ -2,7 +2,7 @@
 #define GAMEOVERMENUVIEW_H
 
 #include "components/IMenu.h"
-#include "utils/Texture.h"
+#include "utils/TextTexture.h"
 
 class GameOverMenuView
       : public IMenu
@@ -22,12 +22,7 @@ public:
 
 private:
 
-   Texture m_texture;
-
-   float m_halfLogoWidth;
-
-   float m_halfLogoHeight;
-
+   TextTexture m_textGameOver;
 };
 
 #endif // GAMEOVERMENUVIEW_H

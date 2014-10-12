@@ -10,6 +10,8 @@ public:
 
    Texture();
 
+   ~Texture();
+
    bool load(const std::string& fileName);
 
    void draw();
@@ -28,9 +30,9 @@ private:
 
    int m_height;
 
-   float m_halfLogoWidth;
+   float m_halfTextureWidth;
 
-   float m_halfLogoHeight;
+   float m_halfTextureHeight;
 };
 
 #endif // TEXTURE_H

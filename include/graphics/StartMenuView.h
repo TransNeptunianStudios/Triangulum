@@ -23,11 +23,6 @@ public:
 private:
 
    Texture m_texture;
-
-   float m_halfLogoWidth;
-
-   float m_halfLogoHeight;
-
 };
 
 #endif // STARTMENUVIEW_H
