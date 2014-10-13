@@ -57,7 +57,7 @@ Animator AnimationFactory::asteroidDeathAnimation()
     animation.coordList.push_back({2, 1});
     animation.coordList.push_back({3, 1});
     animation.style = AS_RUN_ONCE;
-    animation.timePerFrame = 1000.0/3.0;
+    animation.timePerFrame = 500.0/3.0;
     return animation;
 }
 
@@ -69,6 +69,7 @@ Animator AnimationFactory::asteroidBossDeathAnimation()
     animation.coordList.push_back({10, 0, 96});
     animation.coordList.push_back({10, 3, 96});
     animation.coordList.push_back({10, 6, 96});
+    animation.coordList.push_back({999, 999, 96});
     animation.style = AS_RUN_ONCE;
     animation.timePerFrame = 1500.0/5.0;
     return animation;
