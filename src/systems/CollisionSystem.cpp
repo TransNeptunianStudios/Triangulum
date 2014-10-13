@@ -170,6 +170,8 @@ void CollisionSystem::enemyDamaged(Entity& enemyEntity,
 
    if (health->health == 0)
    {
+      enemyEntity.component<Volume>().remove();
+
       AnimationContainer::Handle acHandle = enemyEntity.component<AnimationContainer>();
 
       acHandle->resetAnimation(AT_Movement);
@@ -180,7 +182,8 @@ void CollisionSystem::enemyDamaged(Entity& enemyEntity,
 
       if (enemy->type == ET_Boss)
       {
-         enemyEntity.assign<DeathSentence>(1500.0);
+         enemyEntity.component<Gun>().remove();
+         enemyEntity.assign<DeathSentence>(5000.0);
       }
       else
       {
