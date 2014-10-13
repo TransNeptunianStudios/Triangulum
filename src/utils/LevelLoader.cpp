@@ -3,10 +3,10 @@
 #include "yaml-cpp/yaml.h"
 #include "utils/LevelLoader.h"
 
-void operator >> (const YAML::Node& vectorNode, Vector2& vec)
+void operator >> (const YAML::Node& vectorNode, sf::Vector2f& vec)
 {
-   vectorNode[0] >> vec.x();
-   vectorNode[1] >> vec.y();
+   vectorNode[0] >> vec.x;
+   vectorNode[1] >> vec.y;
 }
 
 void operator >> (const YAML::Node& enemyNode, EnemyData& enemy)

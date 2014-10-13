@@ -1,7 +1,7 @@
 #ifndef LEVELLOADER_H
 #define LEVELLOADER_H
 
-#include "utils/Vector2.h"
+#include "SFML/System/Vector2.hpp"
 
 struct EnemyData
 {
@@ -18,7 +18,7 @@ struct ObstacleData
   double levelOffset;
   double startXPos;
   double rotation;
-  Vector2 speed;
+  sf::Vector2f speed;
 };
 
 struct BossData

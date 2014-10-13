@@ -2,7 +2,7 @@
 #define COLLISIONBOX_H
 
 #include "SDL_rect.h"
-#include "utils/Vector2.h"
+#include "SFML/System/Vector2.hpp"
 
 class CollisionBox
 {
@@ -10,9 +10,9 @@ public:
 
    CollisionBox(int w, int h);
 
-   CollisionBox(int w, int h, const Vector2& offset);
+   CollisionBox(int w, int h, const sf::Vector2f& offset);
 
-   void setObjectPosition(const Vector2& objectPosition);
+   void setObjectPosition(const sf::Vector2f& objectPosition);
 
    SDL_Rect getRect() const;
 
@@ -24,9 +24,9 @@ private:
 
    int m_h;
 
-   Vector2 m_offset;
+   sf::Vector2f m_offset;
 
-   Vector2 m_objectPosition;
+   sf::Vector2f m_objectPosition;
 };
 
 #endif // COLLISIONBOX_H

@@ -2,7 +2,7 @@
 #define MOVEMENTSYSTEM_H
 
 #include "entityx/System.h"
-#include "utils/Vector2.h"
+#include "SFML/System/Vector2.hpp"
 
 class MovementSystem : public entityx::System<MovementSystem>
 {
@@ -15,7 +15,7 @@ public:
                double dt);
 
 private:
-   bool isOnScreen(Vector2 position) const;
+   bool isOnScreen(sf::Vector2f position) const;
 };
 
 #endif

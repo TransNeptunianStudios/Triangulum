@@ -20,8 +20,8 @@ void GunSystem::update(EntityManager &entities,
    {
       if (gun->isMainFirePressed && !gun->wasMainFirePressed)
       {
-         auto initVelocity = Vector2(500.0*gun->direction.x(),
-                                     500.0*gun->direction.y());
+         auto initVelocity = sf::Vector2f(500.0*gun->direction.x,
+                                          500.0*gun->direction.y);
 
          BulletCreator(entity.id(),
                        position->position,

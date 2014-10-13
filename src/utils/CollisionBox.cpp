@@ -8,7 +8,7 @@ CollisionBox::CollisionBox(int w, int h)
 {
 }
 
-CollisionBox::CollisionBox(int w, int h, const Vector2& offset)
+CollisionBox::CollisionBox(int w, int h, const sf::Vector2f& offset)
 : m_w(w)
 , m_h(h)
 , m_offset(offset)
@@ -16,7 +16,7 @@ CollisionBox::CollisionBox(int w, int h, const Vector2& offset)
 {
 }
 
-void CollisionBox::setObjectPosition(const Vector2& objectPosition)
+void CollisionBox::setObjectPosition(const sf::Vector2f& objectPosition)
 {
    m_objectPosition = objectPosition;
 }
@@ -26,8 +26,8 @@ SDL_Rect CollisionBox::getRect() const
    SDL_Rect rect;
    rect.w = m_w;
    rect.h = m_h;
-   rect.x = static_cast<int>(m_objectPosition.x()+m_offset.x())-m_w/2;
-   rect.y = static_cast<int>(m_objectPosition.y()+m_offset.y())-m_h/2;
+   rect.x = static_cast<int>(m_objectPosition.x+m_offset.x)-m_w/2;
+   rect.y = static_cast<int>(m_objectPosition.y+m_offset.y)-m_h/2;
    return rect;
 }
 

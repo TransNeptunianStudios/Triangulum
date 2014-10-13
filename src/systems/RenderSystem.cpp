@@ -28,11 +28,11 @@ void RenderSystem::update(EntityManager &entities,
    {
       glPushMatrix();
 
-      glTranslatef(position->position.x(),
-                   position->position.y(),
+      glTranslatef(position->position.x,
+                   position->position.y,
                    0.f);
 
-      background->view.draw(position->position.y());
+      background->view.draw(position->position.y);
 
       glPopMatrix();
    }
@@ -42,8 +42,8 @@ void RenderSystem::update(EntityManager &entities,
    {      
       glPushMatrix();
 
-      glTranslatef(position->position.x(),
-                   position->position.y(),
+      glTranslatef(position->position.x,
+                   position->position.y,
                    0.f);
 
       glRotatef(position->heading,
@@ -64,8 +64,8 @@ void RenderSystem::update(EntityManager &entities,
    {
       glPushMatrix();
 
-      glTranslatef(position->position.x(),
-                   position->position.y(),
+      glTranslatef(position->position.x,
+                   position->position.y,
                    0.f);
 
       menu->spMenu->draw();

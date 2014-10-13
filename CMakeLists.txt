@@ -111,8 +111,6 @@ add_executable(
    src/utils/Texture.cpp
    include/utils/TextTexture.h
    src/utils/TextTexture.cpp
-   include/utils/Vector2.h
-   src/utils/Vector2.cpp
 )
 
 add_definitions(-std=c++11)

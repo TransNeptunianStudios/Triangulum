@@ -2,16 +2,16 @@
 #define GUN_H
 
 #include "entityx/Entity.h"
-#include "utils/Vector2.h"
+#include "SFML/System/Vector2.hpp"
 #include "systems/BulletType.h"
 
 struct Gun : public entityx::Component<Gun>
 {
    Gun();
 
-   Gun(const Vector2& _direction);
+   Gun(const sf::Vector2f& _direction);
 
-   Vector2 direction;
+   sf::Vector2f direction;
 
    BulletType bulletType;
 
