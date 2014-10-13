@@ -206,8 +206,6 @@ void Game::render()
 
 void Game::exit()
 {
-   m_audioManager.cleanup();
-
    //Destroy openGl context
     SDL_GL_DeleteContext(m_GLContext);
 

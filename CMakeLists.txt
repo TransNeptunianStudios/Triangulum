@@ -119,17 +119,15 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/modules/")
 
 find_package(SDL2 REQUIRED)
 find_package(SDL2_image REQUIRED)
-find_package(SDL2_mixer REQUIRED)
 find_package(SDL2_ttf REQUIRED)
 find_package(OpenGL REQUIRED)
 find_package(YamlCpp REQUIRED)
 find_package(EntityX REQUIRED)
 
-find_package(SFML REQUIRED)
+find_package(SFML 2 REQUIRED system window graphics network audio)
 
 include_directories(include ${SDL2_INCLUDE_DIR})
 include_directories(include ${SDLIMAGE_INCLUDE_DIR})
-include_directories(include ${SDL2_MIXER_INCLUDE_DIRS})
 include_directories(include ${SDL2TTF_INCLUDE_DIR})
 include_directories(include ${OPENGL_INCLUDE_DIR})
 include_directories(include ${ENTITYX_INCLUDE_DIR})
@@ -140,7 +138,6 @@ include_directories(include ${SFML_INCLUDE_DIR})
 target_link_libraries(SpaceShooter
                         ${SDL2_LIBRARY}
                         ${SDLIMAGE_LIBRARY}
-                        ${SDL2_MIXER_LIBRARIES}
                         ${SDL2TTF_LIBRARY}
                         ${OPENGL_LIBRARIES}
                         ${YAMLCPP_LIBRARY}
