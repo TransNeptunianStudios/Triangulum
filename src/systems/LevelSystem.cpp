@@ -69,7 +69,7 @@ void LevelSystem::receive(const EvInit& e)
 
    Entity spaceShipEntity = m_entityManager.create();
 
-   SpaceShipCreator().create(spaceShipEntity);
+   SpaceShipCreator(e.score).create(spaceShipEntity);
 
    m_eventManager.emit<EvReportSpaceShipId>(spaceShipEntity.id());
 

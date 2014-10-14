@@ -1,6 +1,6 @@
 #include "components/SpaceShip.h"
 
-SpaceShip::SpaceShip()
-    : score(0)
+SpaceShip::SpaceShip(int score)
+    : score(score)
 {
 }

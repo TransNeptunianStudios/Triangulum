@@ -45,6 +45,7 @@ private:
    GameState m_gameState;
 
    int m_currentLevel;
+   int m_currentScore;
 };
 
 #endif // GAMEMANAGER_H

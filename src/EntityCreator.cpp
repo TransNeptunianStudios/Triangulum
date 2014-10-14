@@ -97,7 +97,8 @@ void BackgroundCreator::create(Entity entity)
 }
 
 
-SpaceShipCreator::SpaceShipCreator()
+SpaceShipCreator::SpaceShipCreator(int score)
+    : m_score(score)
 {
 }
 
@@ -120,7 +121,7 @@ void SpaceShipCreator::create(Entity entity)
    ac.addAnimation(AnimationId(AT_Death, DestroyedDeathAnimation),
                    AnimationFactory::spaceShipDeathAnimation());
 
-   entity.assign<SpaceShip>();
+   entity.assign<SpaceShip>(m_score);
    entity.assign<PlayerControl>();
    entity.assign<Motion>();
    entity.assign<Position>(Vector2(400.0, 300.0));

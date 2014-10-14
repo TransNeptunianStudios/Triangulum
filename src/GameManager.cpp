@@ -2,6 +2,7 @@
 #include "EntityCreator.h"
 
 #include "components/Menu.h"
+#include "components/SpaceShip.h"
 
 using namespace entityx;
 
@@ -13,6 +14,7 @@ GameManager::GameManager(EntityManager& entityManager,
 , m_eventManager(eventManager)
 , m_gameState(GS_StartMenu)
 , m_currentLevel(1)
+, m_currentScore(0)
 {
 }
 
@@ -42,7 +44,7 @@ void GameManager::receive(const EvStartGame& startGame)
 
    m_entityManager.reset();
 
-   m_eventManager.emit<EvInit>(m_currentLevel);
+   m_eventManager.emit<EvInit>(m_currentLevel, m_currentScore);
 
    m_eventManager.emit<EvPlayMusic>();
 }
@@ -66,9 +68,18 @@ void GameManager::receive(const EvBossKilled& bossKilled)
    }
    else
    {
+      m_currentScore = 0;
+      SpaceShip::Handle spaceShip;
+      for (Entity entity : m_entityManager.entities_with_components(spaceShip))
+      {
+          m_currentScore += spaceShip->score; // should be just once.
+          printf("current score: %d", m_currentScore);
+      }
+
       ++m_currentLevel;
       m_gameState = GS_LevelCompleted;
       m_entityManager.reset();
+
       LevelCompMenuCreator().create(m_entityManager.create());
    }
 }

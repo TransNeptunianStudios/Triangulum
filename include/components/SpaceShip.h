@@ -5,7 +5,7 @@
 
 struct SpaceShip : public entityx::Component<SpaceShip>
 {
-   SpaceShip();
+   SpaceShip(int score);
 
    int score;
 };

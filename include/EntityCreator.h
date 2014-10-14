@@ -71,9 +71,12 @@ class SpaceShipCreator : public ICreatable
 {
 public:
 
-   SpaceShipCreator();
+   SpaceShipCreator(int score = 0);
 
    void create(entityx::Entity entity);
+
+private:
+   int m_score;
 };
 
 class AsteroidCreator : public ICreatable
