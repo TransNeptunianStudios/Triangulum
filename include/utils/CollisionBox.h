@@ -1,8 +1,8 @@
 #ifndef COLLISIONBOX_H
 #define COLLISIONBOX_H
 
-#include "SDL_rect.h"
 #include "SFML/System/Vector2.hpp"
+#include <SFML/Graphics/Rect.hpp>
 
 class CollisionBox
 {
@@ -14,7 +14,7 @@ public:
 
    void setObjectPosition(const sf::Vector2f& objectPosition);
 
-   SDL_Rect getRect() const;
+   sf::IntRect getRect() const;
 
    bool checkCollision(const CollisionBox& box);
 
