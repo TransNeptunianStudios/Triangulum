@@ -10,9 +10,9 @@ A top down scrolling space action game! Asteroids, lasers, bosses, cool music an
 * yaml-cpp (0.3.0)
 
 ## Prepare to build
-Follow [EntityX](https://github.com/alecthomas/entityx.git) instructions for installation
-Install [yaml-cpp 0.3.0](https://code.google.com/p/yaml-cpp/)
-Install [SFML 2.1](http://www.sfml-dev.org/)
+* Follow [EntityX](https://github.com/alecthomas/entityx.git) instructions for installation
+* Install [yaml-cpp 0.3.0](https://code.google.com/p/yaml-cpp/)
+* Install [SFML 2.1](http://www.sfml-dev.org/)
 
 ## Building 
 * git clone
