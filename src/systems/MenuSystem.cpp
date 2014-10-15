@@ -4,9 +4,12 @@
 #include "KeyHandler.h"
 
 using namespace entityx;
-MenuSystem::MenuSystem(EntityManager &entities, EventManager &eventManager)
-    : m_entitiyManager(entities)
-    , m_eventManager(eventManager)
+MenuSystem::MenuSystem(EntityManager& entities,
+                       EventManager& eventManager,
+                       sf::RenderWindow& window)
+ : m_entitiyManager(entities)
+ , m_eventManager(eventManager)
+ , m_window(window)
 {
 }
 
@@ -19,6 +22,11 @@ void MenuSystem::update(EntityManager& entities,
                         EventManager& events,
                         double dt)
 {
+   Menu::Handle menu;
+   for (Entity entity : entities.entities_with_components(menu))
+   {
+      menu->spMenu->draw(m_window);
+   }
 }
 
 void MenuSystem::receive(const EvKeyboard& keyboard)

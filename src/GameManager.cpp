@@ -72,8 +72,7 @@ void GameManager::receive(const EvBossKilled& bossKilled)
       SpaceShip::Handle spaceShip;
       for (Entity entity : m_entityManager.entities_with_components(spaceShip))
       {
-          m_currentScore += spaceShip->score; // should be just once.
-          printf("current score: %d", m_currentScore);
+          m_currentScore += spaceShip->score;
       }
 
       ++m_currentLevel;

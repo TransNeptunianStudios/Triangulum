@@ -109,16 +109,8 @@ void Game::update()
 {
    GameState state(m_gameManager.getGameState());
 
-   if (state == GS_StartMenu ||
-       state == GS_GameOver ||
-       state == GS_LevelCompleted ||
-       state == GS_Paused)
+   if (state == GS_Playing)
    {
-      m_systemManager.update<MenuSystem>(MS_PER_UPDATE);
-   }
-   else if (state == GS_Playing)
-   {
-      m_systemManager.update<MenuSystem>(MS_PER_UPDATE);
       m_systemManager.update<LevelSystem>(MS_PER_UPDATE);
       m_systemManager.update<PlayerControlSystem>(MS_PER_UPDATE);
       m_systemManager.update<AiControlSystem>(MS_PER_UPDATE);
@@ -135,6 +127,7 @@ void Game::render()
 {
    m_systemManager.update<RenderSystem>(0.0);
    m_systemManager.update<HudSystem>(0.0);
+   m_systemManager.update<MenuSystem>(0.0);
    m_window.display();
 }
 
@@ -145,7 +138,6 @@ void Game::exit()
 
 void Game::createSystems()
 {
-   m_systemManager.add<MenuSystem>(m_entityManager, m_eventManager);
    m_systemManager.add<LevelSystem>(m_entityManager, m_eventManager);
    m_systemManager.add<PlayerControlSystem>(m_keyHandler);
    m_systemManager.add<AiControlSystem>();
@@ -158,5 +150,6 @@ void Game::createSystems()
    m_systemManager.add<AudioSystem>(m_audioManager);
    m_systemManager.add<RenderSystem>(m_window);
    m_systemManager.add<HudSystem>(m_window);
+   m_systemManager.add<MenuSystem>(m_entityManager, m_eventManager, m_window);
    m_systemManager.configure();
 }

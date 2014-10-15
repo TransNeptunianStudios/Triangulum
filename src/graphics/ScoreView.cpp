@@ -56,8 +56,6 @@ void ScoreView::draw(int score, sf::RenderWindow& window)
       ++it;
    }
 
-   //std::reverse(begin(digits), end(digits));
-
    float startX = 750.0f;
 
    for (auto i : digits)

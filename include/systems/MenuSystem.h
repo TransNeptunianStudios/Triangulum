@@ -1,6 +1,7 @@
 #ifndef MENUSYSTEM_H
 #define MENUSYSTEM_H
 
+#include "SFML/Graphics.hpp"
 #include "entityx/System.h"
 #include "systems/Events.h"
 
@@ -14,7 +15,8 @@ class MenuSystem
 public:
 
    MenuSystem(entityx::EntityManager &entities,
-              entityx::EventManager &m_eventManager);
+              entityx::EventManager &m_eventManager,
+              sf::RenderWindow& window);
 
    void configure(entityx::EventManager& eventManager);
 
@@ -27,7 +29,10 @@ public:
 private:
 
    entityx::EntityManager& m_entitiyManager;
+
    entityx::EventManager& m_eventManager;
+
+   sf::RenderWindow& m_window;
 };
 
 #endif // MENUSYSTEM_H

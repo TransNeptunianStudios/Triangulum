@@ -2,7 +2,6 @@
 #include "components/Position.h"
 #include "components/Display.h"
 #include "components/Background.h"
-#include "components/Menu.h"
 
 using namespace entityx;
 
@@ -48,11 +47,5 @@ void RenderSystem::update(EntityManager &entities,
       m_sprite.setTextureRect(display->coord);
 
       m_window.draw(m_sprite);
-   }
-
-   Menu::Handle menu;
-   for (Entity entity : entities.entities_with_components(menu))
-   {
-      menu->spMenu->draw(m_window);
    }
 }

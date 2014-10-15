@@ -15,7 +15,7 @@ public:
                double dt);
 
 private:
-   bool isOnScreen(sf::Vector2f position) const;
+   bool isOnScreen(const sf::Vector2f& position) const;
 };
 
 #endif

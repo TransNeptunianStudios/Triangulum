@@ -63,7 +63,6 @@ add_executable(
    src/graphics/GameCompMenuView.cpp
    include/graphics/GameOverMenuView.h
    src/graphics/GameOverMenuView.cpp
-   include/graphics/IDrawable.h
    include/graphics/PauseMenuView.h
    src/graphics/PauseMenuView.cpp
    include/graphics/LevelCompMenuView.h
