@@ -1,4 +1,3 @@
-#include "SDL_opengl.h"
 #include "systems/RenderSystem.h"
 #include "components/Position.h"
 #include "components/Display.h"
@@ -7,69 +6,53 @@
 
 using namespace entityx;
 
-RenderSystem::RenderSystem(SpriteSheet* pSpriteSheet)
-: m_pSpriteSheet(pSpriteSheet)
+RenderSystem::RenderSystem(sf::RenderWindow& window)
+: m_window(window)
+, m_bgTexture()
+, m_texture()
+, m_bgSprite()
+, m_sprite()
 {
+   m_bgTexture.loadFromFile("../images/bg.png");
+   m_bgTexture.setRepeated(true);
+   m_bgSprite.setTexture(m_bgTexture);
+
+   m_texture.loadFromFile("../images/SpriteSheet.png");
+   m_sprite.setTexture(m_texture);
 }
 
 void RenderSystem::update(EntityManager &entities,
                           EventManager &events,
                           double dt)
 {
-   glClear(GL_COLOR_BUFFER_BIT);
+   m_window.clear(sf::Color::Black);
 
-   glMatrixMode(GL_MODELVIEW);
-
-   glLoadIdentity();
-
-   Position::Handle position;
    Background::Handle background;
-   for (Entity entity : entities.entities_with_components(position, background))
+   Position::Handle position;
+   for (Entity entity : entities.entities_with_components(background, position))
    {
-      glPushMatrix();
-
-      glTranslatef(position->position.x(),
-                   position->position.y(),
-                   0.f);
-
-      background->view.draw(position->position.y());
-
-      glPopMatrix();
+      m_bgSprite.setTextureRect(sf::IntRect(0, -position->position.y, 800, 600));
+      m_window.draw(m_bgSprite);
    }
 
    Display::Handle display;
    for (Entity entity : entities.entities_with_components(position, display))
-   {      
-      glPushMatrix();
+   {
+      m_sprite.setOrigin(display->coord.width/2.0,
+                         display->coord.height/2.0);
 
-      glTranslatef(position->position.x(),
-                   position->position.y(),
-                   0.f);
+      m_sprite.setPosition(position->position);
 
-      glRotatef(position->heading,
-                0.f, 0.f, 1.f);
+      m_sprite.setRotation(position->heading);
 
-      if (display->coord.x != 999 && display->coord.y != 999)
-      {
-         m_pSpriteSheet->draw(display->coord.x,
-                              display->coord.y,
-                              display->coord.optionalSize);
-      }
+      m_sprite.setTextureRect(display->coord);
 
-      glPopMatrix();
+      m_window.draw(m_sprite);
    }
 
    Menu::Handle menu;
-   for (Entity entity : entities.entities_with_components(position, menu))
+   for (Entity entity : entities.entities_with_components(menu))
    {
-      glPushMatrix();
-
-      glTranslatef(position->position.x(),
-                   position->position.y(),
-                   0.f);
-
-      menu->spMenu->draw();
-
-      glPopMatrix();
+      menu->spMenu->draw(m_window);
    }
 }

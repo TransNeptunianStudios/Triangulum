@@ -2,9 +2,9 @@
 #define PLAYERCONTROLSYSTEM_H
 
 #include "entityx/System.h"
+#include "SFML/System/Vector2.hpp"
 
 class KeyHandler;
-class Vector2;
 
 class PlayerControlSystem : public entityx::System<PlayerControlSystem>
 {
@@ -18,7 +18,7 @@ public:
 
 private:
 
-   void assignAnimation(const Vector2& velocity,
+   void assignAnimation(const sf::Vector2f& velocity,
                         entityx::Entity& entity);
 
    const KeyHandler& m_keyHandler;

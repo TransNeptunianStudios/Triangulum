@@ -20,7 +20,7 @@ Display::Display()
 {
 }
 
-Display::Display(const SpriteSheetCoordinate& _coord)
+Display::Display(const sf::IntRect& _coord)
 : coord(_coord)
 , blink()
 {

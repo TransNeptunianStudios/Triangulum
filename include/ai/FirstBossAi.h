@@ -2,7 +2,6 @@
 #define FIRSTBOSSAI_H
 
 #include "ai/IAi.h"
-#include "utils/Vector2.h"
 
 class FirstBossAi : public IAi
 {

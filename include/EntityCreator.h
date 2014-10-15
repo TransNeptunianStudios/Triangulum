@@ -3,7 +3,7 @@
 
 #include "entityx/Entity.h"
 #include "systems/BulletType.h"
-#include "utils/Vector2.h"
+#include "SFML/System/Vector2.hpp"
 #include "ICreatable.h"
 
 class StartMenuCreator : public ICreatable
@@ -83,17 +83,17 @@ class AsteroidCreator : public ICreatable
 {
 public:
 
-   AsteroidCreator(const Vector2& position,
-                   const Vector2& velocity,
+   AsteroidCreator(const sf::Vector2f &position,
+                   const sf::Vector2f &velocity,
                    double rotation);
 
    void create(entityx::Entity entity);
 
 private:
 
-   Vector2 m_position;
+   sf::Vector2f m_position;
 
-   Vector2 m_velocity;
+   sf::Vector2f m_velocity;
 
    double m_rotation;
 };
@@ -103,8 +103,8 @@ class BulletCreator : public ICreatable
 public:
 
    BulletCreator(entityx::Entity::Id ownerId,
-                 const Vector2& position,
-                 const Vector2& velocity,
+                 const sf::Vector2f &position,
+                 const sf::Vector2f &velocity,
                  BulletType bulletType);
 
    void create(entityx::Entity entity);
@@ -113,9 +113,9 @@ private:
 
    entityx::Entity::Id m_ownerId;
 
-   Vector2 m_position;
+   sf::Vector2f m_position;
 
-   Vector2 m_velocity;
+   sf::Vector2f m_velocity;
 
    BulletType m_bulletType;
 };
@@ -125,7 +125,7 @@ class FirstBossCreator : public ICreatable
 public:
 
    FirstBossCreator(entityx::Entity::Id enemyId,
-                    const Vector2& position,
+                    const sf::Vector2f& position,
                     double scrollSpeed);
 
    void create(entityx::Entity entity);
@@ -134,7 +134,7 @@ private:
 
    entityx::Entity::Id m_enemyId;
 
-   Vector2 m_position;
+   sf::Vector2f m_position;
 
    double m_scrollSpeed;
 };

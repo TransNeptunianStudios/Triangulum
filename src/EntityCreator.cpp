@@ -14,14 +14,12 @@
 #include "components/Enemy.h"
 #include "components/Background.h"
 #include "components/Animation.h"
-#include "graphics/BackgroundView.h"
 #include "graphics/StartMenuView.h"
 #include "graphics/PauseMenuView.h"
 #include "graphics/GameOverMenuView.h"
 #include "graphics/LevelCompMenuView.h"
 #include "graphics/GameCompMenuView.h"
 #include "ai/FirstBossAi.h"
-#include "SpriteSheet.h"
 #include "ScreenSize.h"
 #include "AnimationFactory.h"
 
@@ -35,7 +33,7 @@ void StartMenuCreator::create(Entity entity)
 {
    auto pSmv = std::make_shared<StartMenuView>();
    entity.assign<Menu>(IMenuSP(pSmv));
-   entity.assign<Position>(Vector2(ScreenSize::width()/2.0, ScreenSize::height()*0.33));
+   entity.assign<Position>(sf::Vector2f(ScreenSize::width()/2.0, ScreenSize::height()*0.33));
 }
 
 PauseMenuCreator::PauseMenuCreator()
@@ -46,7 +44,7 @@ void PauseMenuCreator::create(Entity entity)
 {
    auto pSmv = std::make_shared<PauseMenuView>();
    entity.assign<Menu>(IMenuSP(pSmv));
-   entity.assign<Position>(Vector2(ScreenSize::width()/2.0, ScreenSize::height()*0.33));
+   entity.assign<Position>(sf::Vector2f(ScreenSize::width()/2.0, ScreenSize::height()*0.33));
 }
 
 GameOverMenuCreator::GameOverMenuCreator()
@@ -57,7 +55,7 @@ void GameOverMenuCreator::create(Entity entity)
 {
    auto pSmv = std::make_shared<GameOverMenuView>();
    entity.assign<Menu>(IMenuSP(pSmv));
-   entity.assign<Position>(Vector2(ScreenSize::width()/2.0, ScreenSize::height()*0.33));
+   entity.assign<Position>(sf::Vector2f(ScreenSize::width()/2.0, ScreenSize::height()*0.33));
 }
 
 LevelCompMenuCreator::LevelCompMenuCreator()
@@ -68,7 +66,7 @@ void LevelCompMenuCreator::create(Entity entity)
 {
    auto pSmv = std::make_shared<LevelCompMenuView>();
    entity.assign<Menu>(IMenuSP(pSmv));
-   entity.assign<Position>(Vector2(ScreenSize::width()/2.0, ScreenSize::height()*0.33));
+   entity.assign<Position>(sf::Vector2f(ScreenSize::width()/2.0, ScreenSize::height()*0.33));
 }
 
 GameCompMenuCreator::GameCompMenuCreator()
@@ -79,7 +77,7 @@ void GameCompMenuCreator::create(Entity entity)
 {
    auto pSmv = std::make_shared<GameCompMenuView>();
    entity.assign<Menu>(IMenuSP(pSmv));
-   entity.assign<Position>(Vector2(ScreenSize::width()/2.0, ScreenSize::height()*0.33));
+   entity.assign<Position>(sf::Vector2f(ScreenSize::width()/2.0, ScreenSize::height()*0.33));
 }
 
 BackgroundCreator::BackgroundCreator(const std::string& fileName,
@@ -91,9 +89,9 @@ BackgroundCreator::BackgroundCreator(const std::string& fileName,
 
 void BackgroundCreator::create(Entity entity)
 {
-   entity.assign<Motion>(Vector2(0.0, m_scrollSpeed));
+   entity.assign<Motion>(sf::Vector2f(0.0, m_scrollSpeed));
    entity.assign<Position>();
-   entity.assign<Background>(m_fileName);
+   entity.assign<Background>();
 }
 
 
@@ -124,17 +122,17 @@ void SpaceShipCreator::create(Entity entity)
    entity.assign<SpaceShip>(m_score);
    entity.assign<PlayerControl>();
    entity.assign<Motion>();
-   entity.assign<Position>(Vector2(400.0, 300.0));
-   entity.assign<Gun>(Vector2(0.0, -1.0));
+   entity.assign<Position>(sf::Vector2f(400.0, 300.0));
+   entity.assign<Gun>(sf::Vector2f(0.0, -1.0));
    entity.assign<Volume>(volume);
    entity.assign<Health>(2);
    entity.assign<AnimationContainer>(ac);
-   entity.assign<Display>(SpriteSheetCoordinate(0, 0));
+   entity.assign<Display>(sf::IntRect(32*0, 32*0, 32, 32));
 }
 
 
-AsteroidCreator::AsteroidCreator(const Vector2 &position,
-                                 const Vector2 &velocity,
+AsteroidCreator::AsteroidCreator(const sf::Vector2f &position,
+                                 const sf::Vector2f &velocity,
                                  double rotation)
 : m_position(position)
 , m_velocity(velocity)
@@ -157,12 +155,12 @@ void AsteroidCreator::create(Entity entity)
    entity.assign<Position>(m_position);
    entity.assign<Volume>(volume);
    entity.assign<AnimationContainer>(ac);
-   entity.assign<Display>(SpriteSheetCoordinate(0, 1));
+   entity.assign<Display>(sf::IntRect(32*0, 32*1, 32, 32));
 }
 
 BulletCreator::BulletCreator(Entity::Id ownerId,
-                             const Vector2 &position,
-                             const Vector2 &velocity,
+                             const sf::Vector2f &position,
+                             const sf::Vector2f &velocity,
                              BulletType bulletType)
 : m_ownerId(ownerId)
 , m_position(position)
@@ -173,20 +171,20 @@ BulletCreator::BulletCreator(Entity::Id ownerId,
 
 void BulletCreator::create(Entity entity)
 {
-   auto volume = Volume();
-   auto ssCoord = SpriteSheetCoordinate();
+   Volume volume;
+   sf::IntRect coord(0, 0, 32, 32);
 
    switch (m_bulletType)
    {
    case BT_Simple:
       volume.m_boxes.push_back(CollisionBox(4, 8));
-      ssCoord.x = 0;
-      ssCoord.y = 5;
+      coord.left = 32*0;
+      coord.top = 32*5;
       break;
    case BT_Asteroid:
       volume.m_boxes.push_back(CollisionBox(32, 32));
-      ssCoord.x = 0;
-      ssCoord.y = 1;
+      coord.left = 32*0;
+      coord.top = 32*1;
       break;
    default:
       break;
@@ -197,11 +195,11 @@ void BulletCreator::create(Entity entity)
    entity.assign<Position>(m_position);
    entity.assign<Bullet>(m_ownerId, 10000.0, damage);
    entity.assign<Volume>(volume);
-   entity.assign<Display>(ssCoord);
+   entity.assign<Display>(coord);
 }
 
 FirstBossCreator::FirstBossCreator(Entity::Id enemyId,
-                                   const Vector2& position,
+                                   const sf::Vector2f& position,
                                    double scrollSpeed)
 : m_enemyId(enemyId)
 , m_position(position)
@@ -211,7 +209,7 @@ FirstBossCreator::FirstBossCreator(Entity::Id enemyId,
 
 void FirstBossCreator::create(Entity entity)
 {
-   Gun gun(Vector2(0.0, 1.0));
+   Gun gun(sf::Vector2f(0.0, 1.0));
    gun.bulletType = BT_Asteroid;
    auto volume = Volume();
    AnimationContainer ac;
@@ -228,5 +226,5 @@ void FirstBossCreator::create(Entity entity)
    entity.assign<Gun>(gun);
    entity.assign<Volume>(volume);
    entity.assign<AnimationContainer>(ac);
-   entity.assign<Display>(SpriteSheetCoordinate(7, 0, 96));
+   entity.assign<Display>(sf::IntRect(32*7, 32*0, 96, 96));
 }

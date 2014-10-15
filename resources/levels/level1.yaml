@@ -1,6 +1,6 @@
 background:
    file: bg.png
-   scroll_speed: 0.02
+   scroll_speed: 30.0
 scroll_speed: 50.0
 boss:
    type: big_asteroid

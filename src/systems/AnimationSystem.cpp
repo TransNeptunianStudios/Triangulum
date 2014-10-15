@@ -64,7 +64,7 @@ void AnimationSystem::update(EntityManager &entities,
 
          if (blink.isOff)
          {
-            display->coord = SpriteSheetCoordinate(999, 999);
+            display->coord = sf::IntRect(0, 0, 0, 0);
          }
       }
    }

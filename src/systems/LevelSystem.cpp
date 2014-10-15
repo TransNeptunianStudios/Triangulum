@@ -99,7 +99,7 @@ void LevelSystem::addObstacle(const ObstacleData& obstacle)
       m_creatables.push_back(
          std::make_pair(
             obstacle.levelOffset,
-            ICreatableSP(new AsteroidCreator(Vector2(startXPos, -16.0),
+            ICreatableSP(new AsteroidCreator(sf::Vector2f(startXPos, -16.0),
                                              obstacle.speed,
                                              obstacle.rotation))));
    }
@@ -118,7 +118,7 @@ void LevelSystem::addBoss(const BossData& boss, Entity::Id spaceShipId)
       m_bosses.push_back(
          std::make_pair(offset,
                         ICreatableSP(new FirstBossCreator(spaceShipId,
-                                                          Vector2(400.0, -48.0),
+                                                          sf::Vector2f(400.0, -48.0),
                                                           m_scrollSpeed))));
    }
 }

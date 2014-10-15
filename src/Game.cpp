@@ -1,8 +1,6 @@
 #include <iostream>
 #include <cstdlib>
 
-#include "SDL_ttf.h"
-
 #include "Game.h"
 #include "ScreenSize.h"
 #include "systems/MenuSystem.h"
@@ -19,15 +17,15 @@
 #include "systems/RenderSystem.h"
 #include "systems/HudSystem.h"
 #include "systems/Events.h"
+#include "graphics/FontRepository.h"
 
 // Updates per milliseconds
-static Uint32 MS_PER_UPDATE = 10.0;
+static sf::Int32 MS_PER_UPDATE = 10.0;
 
 using namespace entityx;
 
 Game::Game()
-: m_pWindow(0)
-, m_GLContext(0)
+: m_window()
 , m_eventManager()
 , m_entityManager(m_eventManager)
 , m_systemManager(m_entityManager, m_eventManager)
@@ -42,126 +40,64 @@ void Game::init()
    ScreenSize::setWidth(800);
    ScreenSize::setHeight(600);
 
-   //Initialize SDL
-   if(SDL_Init(SDL_INIT_EVERYTHING|SDL_INIT_NOPARACHUTE)) // I'm a coward
-   {
-      std::cout << "SDL could not initialize! SDL_Error: " << SDL_GetError() << std::endl;
-      std::exit(EXIT_FAILURE);
-   }
+   m_window.create(sf::VideoMode(800, 600), "SpaceShooter");
 
-   TTF_Init();
-
-   atexit(TTF_Quit);
-
-   // Not needed?
-   //glEnable(GL_DEPTH_TEST);
-
-   m_pWindow = SDL_CreateWindow("Space-Shooter",
-                                SDL_WINDOWPOS_UNDEFINED,
-                                SDL_WINDOWPOS_UNDEFINED,
-                                ScreenSize::width(),
-                                ScreenSize::height(),
-                                SDL_WINDOW_SHOWN | SDL_WINDOW_OPENGL);
-
-   if (m_pWindow == 0)
-   {
-      std::cout << "Window could not be created! SDL_Error: " << SDL_GetError() << std::endl;
-
-      SDL_Quit();
-
-      std::exit(EXIT_FAILURE);
-   }
-
-   // Initlize OpenGl context to draw in
-   m_GLContext = SDL_GL_CreateContext(m_pWindow);
-
-   if(m_GLContext == 0)
-   {
-      std::cout << "OpenGl redner context could not be created: " << SDL_GetError() << std::endl;
-
-      SDL_Quit();
-
-      std::exit(EXIT_FAILURE);
-   }
-
-   initGL();
+   m_window.setVerticalSyncEnabled(true);
 
    m_gameManager.init();
 
    m_audioManager.init();
 
+   FontRepository::load();
+
    createSystems();
-}
-
-void Game::initGL()
-{
-   //glEnable(GL_DEPTH_TEST);
-
-   glEnable(GL_BLEND);
-
-   glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
-   glClearColor(0, 0, 0, 1); // Black
-
-   glViewport(0, 0, ScreenSize::width(), ScreenSize::height());
-
-   glMatrixMode(GL_PROJECTION);
-
-   glLoadIdentity();
-
-   glOrtho(0.0, (double)ScreenSize::width(), (double)ScreenSize::height(), 0.0, -1.0, 1.0);
 }
 
 void Game::run()
 {
-   Uint32 previousTime = SDL_GetTicks();
-   Uint32 lag = 0;
+   sf::Clock clock;
+   sf::Int32 lag = 0;
 
    // The game loop!
-   while (true)
+   while (m_window.isOpen())
    {
-      Uint32 currentTime = SDL_GetTicks();
-      Uint32 delta = currentTime - previousTime;
-      previousTime = currentTime;
-      lag += delta;
+      sf::Time dt = clock.restart();
+
+      lag += dt.asMilliseconds();
 
       processInput();
 
-      while (lag >= MS_PER_UPDATE)
+      while (lag > MS_PER_UPDATE)
       {
          update();
          lag -= MS_PER_UPDATE;
       }
 
-      // TODO: Pass (lag / MS_PER_UPDATE) to renderer
       render();
    }
+
+   exit();
 }
 
 void Game::processInput()
 {
-   SDL_Event event;
+   sf::Event event;
 
-   /* Poll for events */
-   while (SDL_PollEvent(&event))
+   while (m_window.pollEvent(event))
    {
       switch (event.type)
       {
-      case SDL_KEYDOWN:
-         if (event.key.keysym.sym == SDLK_q)
+      case sf::Event::KeyPressed:
+         if (event.key.code == sf::Keyboard::Q)
          {
             exit();
          }
-         m_eventManager.emit<EvKeyboard>(event.key.keysym.sym, true);
-         m_keyHandler.updateKey(event.key.keysym.sym, true);
+         m_eventManager.emit<EvKeyboard>(event.key.code, true);
+         m_keyHandler.updateKey(event.key.code, true);
          break;
-       case SDL_KEYUP:
-         m_eventManager.emit<EvKeyboard>(event.key.keysym.sym, false);
-         m_keyHandler.updateKey(event.key.keysym.sym, false);
-         break;
-      case SDL_QUIT:
-         // TBR
-         exit();
+       case sf::Event::KeyReleased:
+         m_eventManager.emit<EvKeyboard>(event.key.code, false);
+         m_keyHandler.updateKey(event.key.code, false);
          break;
       default:
          break;
@@ -198,25 +134,12 @@ void Game::update()
 void Game::render()
 {
    m_systemManager.update<RenderSystem>(0.0);
-
    m_systemManager.update<HudSystem>(0.0);
-
-   SDL_GL_SwapWindow(m_pWindow);
+   m_window.display();
 }
 
 void Game::exit()
 {
-   m_audioManager.cleanup();
-
-   //Destroy openGl context
-    SDL_GL_DeleteContext(m_GLContext);
-
-   //Destroy window
-   SDL_DestroyWindow(m_pWindow);
-
-   //Quit SDL subsystems
-   SDL_Quit();
-
    std::exit(EXIT_SUCCESS);
 }
 
@@ -233,7 +156,7 @@ void Game::createSystems()
    m_systemManager.add<DeathRowSystem>();
    m_systemManager.add<AnimationSystem>();
    m_systemManager.add<AudioSystem>(m_audioManager);
-   m_systemManager.add<RenderSystem>(new SpriteSheet("../images/SpriteSheet.png", 32));
-   m_systemManager.add<HudSystem>();
+   m_systemManager.add<RenderSystem>(m_window);
+   m_systemManager.add<HudSystem>(m_window);
    m_systemManager.configure();
 }

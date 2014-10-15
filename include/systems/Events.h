@@ -1,7 +1,7 @@
 #ifndef EVENTS_H
 #define EVENTS_H
 
-#include <SDL.h>
+#include "SFML/Window/Keyboard.hpp"
 #include "entityx/Event.h"
 #include "entityx/Entity.h"
 #include "SoundId.h"
@@ -66,13 +66,13 @@ struct EvPauseMusic : public entityx::Event<EvPauseMusic>
 
 struct EvKeyboard : public entityx::Event<EvKeyboard>
 {
-   EvKeyboard(SDL_Keycode _id, bool _isDown)
-   : id(_id)
+   EvKeyboard(sf::Keyboard::Key _key, bool _isDown)
+   : key(_key)
    , isDown(_isDown)
    {
    }
 
-   SDL_Keycode id;
+   sf::Keyboard::Key key;
    bool isDown;
 };
 

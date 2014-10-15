@@ -7,6 +7,7 @@
 #include "utils/LevelLoader.h"
 #include "EntityCreator.h"
 
+
 class LevelSystem
       : public entityx::System<LevelSystem>
       , public entityx::Receiver<EvInit>

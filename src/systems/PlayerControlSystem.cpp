@@ -28,35 +28,35 @@ void PlayerControlSystem::update(EntityManager &entities,
    {
       if (entity.has_component<DeathSentence>())
       {
-         motion->velocity.x() = 0.0;
-         motion->velocity.y() = 0.0;
+         motion->velocity.x = 0.0;
+         motion->velocity.y = 0.0;
          break;
       }
 
       if (m_keyHandler.isPressed(playerControl->right))
       {
-         motion->velocity.x() = vel;
+         motion->velocity.x = vel;
       }
       else if (m_keyHandler.isPressed(playerControl->left))
       {
-         motion->velocity.x() = -vel;
+         motion->velocity.x = -vel;
       }
       else
       {
-         motion->velocity.x() = 0.0f;
+         motion->velocity.x = 0.0f;
       }
 
       if (m_keyHandler.isPressed(playerControl->up))
       {
-         motion->velocity.y() = -vel;
+         motion->velocity.y = -vel;
       }
       else if (m_keyHandler.isPressed(playerControl->down))
       {
-         motion->velocity.y() = vel;
+         motion->velocity.y = vel;
       }
       else
       {
-         motion->velocity.y() = 0.0f;
+         motion->velocity.y = 0.0f;
       }
 
       gun->isMainFirePressed = m_keyHandler.isPressed(playerControl->shoot);
@@ -65,17 +65,17 @@ void PlayerControlSystem::update(EntityManager &entities,
    }
 }
 
-void PlayerControlSystem::assignAnimation(const Vector2& velocity,
+void PlayerControlSystem::assignAnimation(const sf::Vector2f &velocity,
                                           Entity& entity)
 {
    AnimationContainer* pAC = entity.component<AnimationContainer>().get();
 
-   if (velocity.x() > 0.1f)
+   if (velocity.x > 0.1f)
    {
       pAC->setAnimation(AnimationId(AT_Movement, RightMovementAnimation));
 
    }
-   else if (velocity.x() < -0.1f)
+   else if (velocity.x < -0.1f)
    {
       pAC->setAnimation(AnimationId(AT_Movement, LeftMovementAnimation));
    }

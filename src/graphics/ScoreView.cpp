@@ -1,8 +1,8 @@
 #include <sstream>
 #include <vector>
 #include <algorithm>
-#include "SDL_opengl.h"
 #include "graphics/ScoreView.h"
+#include "graphics/FontRepository.h"
 
 ScoreView::ScoreView(int maxScore)
 : m_digitMap()
@@ -20,10 +20,10 @@ void ScoreView::addDigit(int digit)
    std::stringstream ss;
    ss << digit;
 
-   m_digitMap[digit].load(ss.str().c_str(),
-                          "../resources/fonts/munro_small.ttf",
-                          { 255, 255, 255, 255},
-                          30);
+   m_digitMap[digit].setFont(FontRepository::getHudFont());
+   m_digitMap[digit].setCharacterSize(30);
+   m_digitMap[digit].setString(ss.str());
+   m_digitMap[digit].setOrigin(m_digitMap[digit].getLocalBounds().width, 0.0);
 }
 
 int ScoreView::countDigits(int number)
@@ -38,7 +38,7 @@ int ScoreView::countDigits(int number)
    return count;
 }
 
-void ScoreView::draw(int score)
+void ScoreView::draw(int score, sf::RenderWindow& window)
 {
    if (score > m_maxScore)
    {
@@ -56,11 +56,14 @@ void ScoreView::draw(int score)
       ++it;
    }
 
-   std::reverse(begin(digits), end(digits));
+   //std::reverse(begin(digits), end(digits));
+
+   float startX = 750.0f;
 
    for (auto i : digits)
    {
-      m_digitMap[i].draw();
-      glTranslatef(20.f, 0.f, 0.f);
+      m_digitMap[i].setPosition(startX, 525.0f);
+      window.draw(m_digitMap[i]);
+      startX -= 20.0;
    }
 }

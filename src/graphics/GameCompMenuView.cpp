@@ -1,16 +1,18 @@
 #include "graphics/GameCompMenuView.h"
+#include "graphics/FontRepository.h"
+#include "ScreenSize.h"
 
 using namespace entityx;
 
 GameCompMenuView::GameCompMenuView()
-: m_textGameCompleted()
+: m_text()
 {
-   m_textGameCompleted.load("Game Completed",
-                            "../resources/fonts/akashi.ttf",
-                            {255, 255, 255, 255},
-                            30);
+   m_text.setFont(FontRepository::getMenuFont());
+   m_text.setCharacterSize(40);
+   m_text.setString("Game Completed");
 
-   m_textGameCompleted.setTextAlignment(TA_Center);
+   sf::FloatRect bounds(m_text.getLocalBounds());
+   m_text.setOrigin(bounds.width/2.0, bounds.height/2.0);
 }
 
 void GameCompMenuView::update(const KeyHandler &keyHandler,
@@ -18,9 +20,12 @@ void GameCompMenuView::update(const KeyHandler &keyHandler,
 {
 }
 
-void GameCompMenuView::draw()
+void GameCompMenuView::draw(sf::RenderWindow& window)
 { 
-   m_textGameCompleted.draw();
+   m_text.setPosition(ScreenSize::width()*0.5,
+                      ScreenSize::height()*0.33);
+
+   window.draw(m_text);
 }
 
 

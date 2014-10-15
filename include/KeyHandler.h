@@ -2,7 +2,7 @@
 #define KEYHANDLER_H
 
 #include <map>
-#include "SDL_keycode.h"
+#include "SFML/Window/Keyboard.hpp"
 
 class KeyHandler
 {
@@ -10,13 +10,13 @@ public:
 
    KeyHandler();
 
-   void updateKey(SDL_Keycode key, bool isPressed);
+   void updateKey(sf::Keyboard::Key key, bool isPressed);
 
-   bool isPressed(SDL_Keycode key) const;
+   bool isPressed(sf::Keyboard::Key key) const;
 
 private:
 
-   typedef std::map<SDL_Keycode, bool> KeyMap;
+   typedef std::map<sf::Keyboard::Key, bool> KeyMap;
    KeyMap m_keyMap;
 };
 

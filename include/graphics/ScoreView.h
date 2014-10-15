@@ -2,7 +2,8 @@
 #define SCOREVIEW_H
 
 #include <map>
-#include "utils/TextTexture.h"
+#include "SFML/Graphics.hpp"
+#include "SFML/Graphics/Text.hpp"
 
 class ScoreView
 {
@@ -10,7 +11,7 @@ public:
 
    ScoreView(int maxScore);
 
-   void draw(int score);
+   void draw(int score, sf::RenderWindow& window);
 
 private:
 
@@ -18,7 +19,7 @@ private:
 
    int countDigits(int number);
 
-   typedef std::map<int, TextTexture> DigitTextureMap;
+   typedef std::map<int, sf::Text> DigitTextureMap;
 
    DigitTextureMap m_digitMap;
 

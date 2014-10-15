@@ -3,6 +3,7 @@
 #include "components/Position.h"
 #include "components/Gun.h"
 #include "components/SpaceShip.h"
+#include <math.h>
 
 using namespace entityx;
 
@@ -37,14 +38,14 @@ void FirstBossAi::update(entityx::Entity::Id myEntityId,
    switch (m_fbp)
    {
    case FBP_Init:
-      if (position->position.y() >= 100.0)
+      if (position->position.y >= 100.0)
       {
-         motion->velocity.y() = 0.0;
+         motion->velocity.y = 0.0;
          m_fbp = FBP_Attack;
       }
       else
       {
-         motion->velocity.y() = m_scrollSpeed;
+         motion->velocity.y = m_scrollSpeed;
       }
       break;
    case FBP_Attack:
@@ -52,23 +53,25 @@ void FirstBossAi::update(entityx::Entity::Id myEntityId,
       auto enemyPosition = entities.component<Position>(enemyEntityId);
       double horSpeed = 50.0;
 
-      if (position->position.x() < enemyPosition->position.x())
+      if (position->position.x < enemyPosition->position.x)
       {
-         motion->velocity.x() = horSpeed;
+         motion->velocity.x = horSpeed;
       }
-      else if (position->position.x() > enemyPosition->position.x())
+      else if (position->position.x > enemyPosition->position.x)
       {
-         motion->velocity.x() = -horSpeed;
+         motion->velocity.x = -horSpeed;
       }
       else
       {
-         motion->velocity.x() = 0.0;
+         motion->velocity.x = 0.0;
       }
 
-      Vector2 v(enemyPosition->position.x() - position->position.x(),
-                enemyPosition->position.y() - position->position.y());
+      sf::Vector2f v(enemyPosition->position.x - position->position.x,
+                     enemyPosition->position.y - position->position.y);
 
-      v.normalize();
+      float length = sqrt(v.x*v.x + v.y*v.y);
+      v.x /= length;
+      v.y /= length;
 
       gun->direction = v;
 

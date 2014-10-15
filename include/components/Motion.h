@@ -2,18 +2,19 @@
 #define MOTION_H
 
 #include "entityx/Entity.h"
-#include "utils/Vector2.h"
+#include "SFML/System/Vector2.hpp"
+
 
 struct Motion : public entityx::Component<Motion>
 {
    Motion();
 
-   Motion(const Vector2 _velocity);
+   Motion(const sf::Vector2f _velocity);
 
-   Motion(const Vector2 _velocity,
+   Motion(const sf::Vector2f _velocity,
           double _rotation);
 
-   Vector2 velocity;
+   sf::Vector2f velocity;
 
    double rotation;
 };

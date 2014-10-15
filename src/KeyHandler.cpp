@@ -5,12 +5,12 @@ KeyHandler::KeyHandler()
 {
 }
 
-void KeyHandler::updateKey(SDL_Keycode key, bool isPressed)
+void KeyHandler::updateKey(sf::Keyboard::Key key, bool isPressed)
 {
    m_keyMap[key] = isPressed;
 }
 
-bool KeyHandler::isPressed(SDL_Keycode key) const
+bool KeyHandler::isPressed(sf::Keyboard::Key key) const
 {
    KeyMap::const_iterator it = m_keyMap.find(key);
 
