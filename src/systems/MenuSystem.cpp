@@ -28,21 +28,21 @@ void MenuSystem::receive(const EvKeyboard& keyboard)
     int activeMenus = 0;
     for (Entity entity : m_entitiyManager.entities_with_components(menu))
     {
-       if(keyboard.id == SDLK_SPACE && keyboard.isDown)
+       if(keyboard.key == sf::Keyboard::Return && keyboard.isDown)
           menu->spMenu->onConfirm(m_eventManager);    
-       else if(keyboard.id == SDLK_ESCAPE && keyboard.isDown)
+       else if(keyboard.key == sf::Keyboard::Escape && keyboard.isDown)
           menu->spMenu->onCancel(m_eventManager);
        activeMenus++;
     }
 
     if( !activeMenus ){
-        if(keyboard.id == SDLK_ESCAPE && keyboard.isDown)
+        if(keyboard.key == sf::Keyboard::Escape && keyboard.isDown)
            m_eventManager.emit<EvPauseGame>();
     }
 
     // Don't really know where to put stuff like this
     // Pretty sure it's not menu's business
-    if(keyboard.id == SDLK_m  && keyboard.isDown)
+    if(keyboard.key == sf::Keyboard::M  && keyboard.isDown)
     {
         m_eventManager.emit<EvPauseMusic>();
     }

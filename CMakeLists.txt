@@ -61,6 +61,8 @@ add_executable(
    src/components/Volume.cpp
    include/graphics/BackgroundView.h
    src/graphics/BackgroundView.cpp
+   include/graphics/FontRepository.h
+   src/graphics/FontRepository.cpp
    include/graphics/GameCompMenuView.h
    src/graphics/GameCompMenuView.cpp
    include/graphics/GameOverMenuView.h
@@ -117,20 +119,11 @@ add_definitions(-std=c++11)
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/modules/")
 
-find_package(SDL2 REQUIRED)
-find_package(SDL2_image REQUIRED)
-find_package(SDL2_mixer REQUIRED)
-find_package(SDL2_ttf REQUIRED)
 find_package(OpenGL REQUIRED)
 find_package(YamlCpp REQUIRED)
 find_package(EntityX REQUIRED)
+find_package(SFML COMPONENTS system window graphics REQUIRED)
 
-find_package(SFML REQUIRED)
-
-include_directories(include ${SDL2_INCLUDE_DIR})
-include_directories(include ${SDLIMAGE_INCLUDE_DIR})
-include_directories(include ${SDL2_MIXER_INCLUDE_DIRS})
-include_directories(include ${SDL2TTF_INCLUDE_DIR})
 include_directories(include ${OPENGL_INCLUDE_DIR})
 include_directories(include ${ENTITYX_INCLUDE_DIR})
 include_directories(include ${YAMLCPP_INCLUDE_DIR})
@@ -138,10 +131,6 @@ include_directories(include ${YAMLCPP_INCLUDE_DIR})
 include_directories(include ${SFML_INCLUDE_DIR})
 
 target_link_libraries(SpaceShooter
-                        ${SDL2_LIBRARY}
-                        ${SDLIMAGE_LIBRARY}
-                        ${SDL2_MIXER_LIBRARIES}
-                        ${SDL2TTF_LIBRARY}
                         ${OPENGL_LIBRARIES}
                         ${YAMLCPP_LIBRARY}
                         ${ENTITYX_LIBRARY}

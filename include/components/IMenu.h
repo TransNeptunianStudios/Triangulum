@@ -1,6 +1,7 @@
 #ifndef IMENU_H
 #define IMENU_H
 
+#include "SFML/Graphics.hpp"
 #include "entityx/Event.h"
 
 class KeyHandler;
@@ -14,7 +15,7 @@ public:
    virtual void update(const KeyHandler& keyHandler,
                        entityx::EventManager& eventManager) = 0;
 
-   virtual void draw() = 0;
+   virtual void draw(sf::RenderWindow& window) = 0;
 
    virtual void onConfirm(entityx::EventManager& eventManager) = 0;
 

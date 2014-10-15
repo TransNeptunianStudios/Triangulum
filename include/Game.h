@@ -1,8 +1,7 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include "SDL.h"
-#include "SDL_opengl.h"
+#include "SFML/Graphics.hpp"
 
 #include "entityx/Event.h"
 #include "entityx/Entity.h"
@@ -24,7 +23,7 @@ public:
 
 private:
 
-   void initGL();
+   void createSystems();
 
    void processInput();
 
@@ -34,17 +33,7 @@ private:
 
    void exit();
 
-   void createSystems();
-
-   void createEntities();
-
-   void createSpaceShip();
-
-   // TBR
-   SDL_Window* m_pWindow;
-
-   // TBR (from here)
-   SDL_GLContext m_GLContext;
+   sf::RenderWindow m_window;
 
    entityx::EventManager m_eventManager;
 

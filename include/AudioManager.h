@@ -4,8 +4,6 @@
 #include <map>
 #include <string>
 
-#include "SDL_mixer.h"
-
 #include "SoundId.h"
 
 class AudioManager

@@ -1,10 +1,9 @@
 #ifndef HUDSYSTEM_H
 #define HUDSYSTEM_H
 
+#include "SFML/Graphics/Text.hpp"
 #include "entityx/System.h"
 #include "entityx/Event.h"
-#include "utils/TextTexture.h"
-#include "utils/Texture.h"
 #include "graphics/ScoreView.h"
 
 class HudSystem
@@ -12,7 +11,7 @@ class HudSystem
 {
 public:
 
-   HudSystem();
+   HudSystem(sf::RenderWindow& window);
 
    void update(entityx::EntityManager& entities,
                entityx::EventManager& events,
@@ -20,11 +19,15 @@ public:
 
 private:
 
-   TextTexture m_healtText;
+   sf::RenderWindow& m_window;
 
-   TextTexture m_scoreText;
+   sf::Text m_healthText;
 
-   Texture m_health;
+   sf::Text m_scoreText;
+
+   sf::Texture m_healthTexture;
+
+   sf::Sprite m_healthSprite;
 
    ScoreView m_scoreView;
 };

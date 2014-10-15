@@ -1,25 +1,24 @@
 #ifndef PLAYERCONTROL_H
 #define PLAYERCONTROL_H
 
-#include "SDL_keycode.h"
-
+#include "SFML/Window/Keyboard.hpp"
 #include "entityx/Entity.h"
 
 struct PlayerControl : public entityx::Component<PlayerControl>
 {
    PlayerControl();
 
-   SDL_Keycode left;
+   sf::Keyboard::Key left;
 
-   SDL_Keycode right;
+   sf::Keyboard::Key right;
 
-   SDL_Keycode up;
+   sf::Keyboard::Key up;
 
-   SDL_Keycode down;
+   sf::Keyboard::Key down;
 
-   SDL_Keycode shoot;
+   sf::Keyboard::Key shoot;
 
-   SDL_Keycode pause;
+   sf::Keyboard::Key pause;
 };
 
 #endif // PLAYERCONTROL_H

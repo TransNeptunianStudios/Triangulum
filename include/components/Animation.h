@@ -2,30 +2,8 @@
 #define ANIMATION_H
 
 #include <map>
+#include "SFML/Graphics/Rect.hpp"
 #include "entityx/Entity.h"
-
-struct SpriteSheetCoordinate
-{
-   SpriteSheetCoordinate()
-   : x(0)
-   , y(0)
-   , optionalSize(0)
-   {
-   }
-
-   SpriteSheetCoordinate(unsigned _x, unsigned _y, int _optionalSize = 0)
-   : x(_x)
-   , y(_y)
-   , optionalSize(_optionalSize)
-   {
-   }
-
-   unsigned x, y;
-
-   int optionalSize;
-};
-
-typedef std::vector<SpriteSheetCoordinate> CoordinateList;
 
 enum AnimationStyle
 {
@@ -39,6 +17,9 @@ enum AnimationType
    AT_Movement
 };
 
+
+typedef std::vector<sf::IntRect> SpriteCoordList;
+
 struct Animator
 {
    Animator();
@@ -51,7 +32,7 @@ struct Animator
 
    AnimationStyle style;
 
-   CoordinateList coordList;
+   SpriteCoordList coordList;
 
    size_t currentIndex;
 };

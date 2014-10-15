@@ -93,7 +93,7 @@ void BackgroundCreator::create(Entity entity)
 {
    entity.assign<Motion>(sf::Vector2f(0.0, m_scrollSpeed));
    entity.assign<Position>();
-   entity.assign<Background>(m_fileName);
+   entity.assign<Background>();
 }
 
 
@@ -128,7 +128,7 @@ void SpaceShipCreator::create(Entity entity)
    entity.assign<Volume>(volume);
    entity.assign<Health>(2);
    entity.assign<AnimationContainer>(ac);
-   entity.assign<Display>(SpriteSheetCoordinate(0, 0));
+   entity.assign<Display>(sf::IntRect(32*0, 32*0, 32, 32));
 }
 
 
@@ -156,7 +156,7 @@ void AsteroidCreator::create(Entity entity)
    entity.assign<Position>(m_position);
    entity.assign<Volume>(volume);
    entity.assign<AnimationContainer>(ac);
-   entity.assign<Display>(SpriteSheetCoordinate(0, 1));
+   entity.assign<Display>(sf::IntRect(32*0, 32*1, 32, 32));
 }
 
 BulletCreator::BulletCreator(Entity::Id ownerId,
@@ -172,20 +172,20 @@ BulletCreator::BulletCreator(Entity::Id ownerId,
 
 void BulletCreator::create(Entity entity)
 {
-   auto volume = Volume();
-   auto ssCoord = SpriteSheetCoordinate();
+   Volume volume;
+   sf::IntRect coord(0, 0, 32, 32);
 
    switch (m_bulletType)
    {
    case BT_Simple:
       volume.m_boxes.push_back(CollisionBox(4, 8));
-      ssCoord.x = 0;
-      ssCoord.y = 5;
+      coord.left = 32*0;
+      coord.top = 32*5;
       break;
    case BT_Asteroid:
       volume.m_boxes.push_back(CollisionBox(32, 32));
-      ssCoord.x = 0;
-      ssCoord.y = 1;
+      coord.left = 32*0;
+      coord.top = 32*1;
       break;
    default:
       break;
@@ -196,7 +196,7 @@ void BulletCreator::create(Entity entity)
    entity.assign<Position>(m_position);
    entity.assign<Bullet>(m_ownerId, 10000.0, damage);
    entity.assign<Volume>(volume);
-   entity.assign<Display>(ssCoord);
+   entity.assign<Display>(coord);
 }
 
 FirstBossCreator::FirstBossCreator(Entity::Id enemyId,
@@ -227,5 +227,5 @@ void FirstBossCreator::create(Entity entity)
    entity.assign<Gun>(gun);
    entity.assign<Volume>(volume);
    entity.assign<AnimationContainer>(ac);
-   entity.assign<Display>(SpriteSheetCoordinate(7, 0, 96));
+   entity.assign<Display>(sf::IntRect(32*7, 32*0, 96, 96));
 }

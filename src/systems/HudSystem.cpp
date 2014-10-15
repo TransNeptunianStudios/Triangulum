@@ -1,29 +1,30 @@
 #include "systems/HudSystem.h"
+#include "graphics/FontRepository.h"
 #include "components/SpaceShip.h"
 #include "components/Health.h"
 #include "components/DeathSentence.h"
 
 using namespace entityx;
 
-HudSystem::HudSystem()
-: m_healtText()
+HudSystem::HudSystem(sf::RenderWindow& window)
+: m_window(window)
+, m_healthText()
 , m_scoreText()
-, m_health()
+, m_healthTexture()
+, m_healthSprite()
 , m_scoreView(1000)
 {
-   m_healtText.load("Health",
-                 "../resources/fonts/munro_small.ttf",
-                 { 255, 255, 255, 255},
-                 30);
+   m_healthText.setFont(FontRepository::getHudFont());
+   m_healthText.setCharacterSize(30);
+   m_healthText.setString("Health");
 
-   m_scoreText.load("Score",
-                "../resources/fonts/munro_small.ttf",
-                { 255, 255, 255, 255},
-                30);
+   m_scoreText.setFont(FontRepository::getHudFont());
+   m_scoreText.setCharacterSize(30);
+   m_scoreText.setString("Score");
+   m_scoreText.setOrigin(m_scoreText.getLocalBounds().width, 0.0);
 
-   m_scoreText.setTextAlignment(TA_Right);
-
-   m_health.load("../images/health.png");
+   m_healthTexture.loadFromFile("../images/health.png");
+   m_healthSprite.setTexture(m_healthTexture);
 }
 
 void HudSystem::update(EntityManager& entities,
@@ -33,41 +34,26 @@ void HudSystem::update(EntityManager& entities,
    SpaceShip::Handle spaceShip;
    Health::Handle health;
    for (Entity entity : entities.entities_with_components(spaceShip, health))
-   {
-      glPushMatrix();
-
-      glTranslatef(50.f, 500.f, 0.f);
-
-      m_healtText.draw();
-
-      glTranslatef(8.f, 25.f, 0.f);
+   {      
+      m_healthText.setPosition(50.0f, 500.0f);
+      m_window.draw(m_healthText);
 
       if (!entity.has_component<DeathSentence>())
       {
+         float startX = 50.0f;
          for (int i = 0; i < health->health+1; ++i)
          {
-            m_health.draw();
-            glTranslatef(25.f, 0.f, 0.f);
+            m_healthSprite.setPosition(startX, 540.0f);
+            m_window.draw(m_healthSprite);
+            startX += 25.0f;
          }
       }
 
-      glPopMatrix();
+      m_scoreText.setPosition(750.0f, 500.0f);
 
-      glPushMatrix();
+      m_window.draw(m_scoreText);
 
-      glTranslatef(750.f, 500.f, 0.f);
-
-      m_scoreText.draw();
-
-      glPopMatrix();
-
-      glPushMatrix();
-
-      glTranslatef(675.f, 525.f, 0.f);
-
-      m_scoreView.draw(spaceShip->score);
-
-      glPopMatrix();
+      m_scoreView.draw(spaceShip->score, m_window);
 
       // Only support one space ship atm
       return;

@@ -2,6 +2,7 @@
 #define DISPLAY_H
 
 #include "entityx/Entity.h"
+#include "SFML/Graphics/Rect.hpp"
 #include "components/Animation.h"
 
 struct Blink
@@ -21,9 +22,9 @@ struct Display : public entityx::Component<Display>
 {
    Display();
 
-   Display(const SpriteSheetCoordinate& _coord);
+   Display(const sf::IntRect& _coord);
 
-   SpriteSheetCoordinate coord;
+   sf::IntRect coord;
 
    Blink blink;
 };

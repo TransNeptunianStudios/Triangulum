@@ -3,6 +3,7 @@
 
 #include "SDL.h"
 #include "SDL_opengl.h"
+#include "SFML/Graphics.hpp"
 #include "entityx/System.h"
 #include "SpriteSheet.h"
 
@@ -10,7 +11,7 @@ class RenderSystem : public entityx::System<RenderSystem>
 {
 public:
 
-   RenderSystem(SpriteSheet* pSpriteSheet);
+   RenderSystem(sf::RenderWindow& window);
 
    void update(entityx::EntityManager &entities,
                entityx::EventManager &events,
@@ -18,7 +19,15 @@ public:
 
 private:
 
-   SpriteSheet* m_pSpriteSheet;
+   sf::RenderWindow& m_window;
+
+   sf::Texture m_bgTexture;
+
+   sf::Texture m_texture;
+
+   sf::Sprite m_bgSprite;
+
+   sf::Sprite m_sprite;
 };
 
 #endif // RENDERSYSTEM_H

@@ -1,8 +1,8 @@
 #ifndef GAMEOVERMENUVIEW_H
 #define GAMEOVERMENUVIEW_H
 
+#include "SFML/Graphics/Text.hpp"
 #include "components/IMenu.h"
-#include "utils/TextTexture.h"
 
 class GameOverMenuView
       : public IMenu
@@ -14,7 +14,7 @@ public:
    void update(const KeyHandler &keyHandler,
                entityx::EventManager& eventManager);
 
-   void draw();
+   void draw(sf::RenderWindow& window);
 
    void onConfirm(entityx::EventManager& eventManager);
 
@@ -22,7 +22,7 @@ public:
 
 private:
 
-   TextTexture m_textGameOver;
+   sf::Text m_text;
 };
 
 #endif // GAMEOVERMENUVIEW_H
