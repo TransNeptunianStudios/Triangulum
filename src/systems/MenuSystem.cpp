@@ -27,7 +27,7 @@ void MenuSystem::receive(const EvKeyboard& keyboard)
     int activeMenus = 0;
     for (Entity entity : m_entitiyManager.entities_with_components(menu))
     {
-       if(keyboard.key == sf::Keyboard::Return && keyboard.isDown)
+       if(keyboard.key == sf::Keyboard::Space && keyboard.isDown)
           menu->spMenu->onConfirm(m_eventManager);    
        else if(keyboard.key == sf::Keyboard::Escape && keyboard.isDown)
           menu->spMenu->onCancel(m_eventManager);
