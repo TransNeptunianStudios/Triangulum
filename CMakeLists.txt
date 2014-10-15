@@ -127,8 +127,6 @@ find_package(OpenGL REQUIRED)
 find_package(YamlCpp REQUIRED)
 find_package(EntityX REQUIRED)
 
-find_package(SFML REQUIRED)
-
 include_directories(include ${SDL2_INCLUDE_DIR})
 include_directories(include ${SDLIMAGE_INCLUDE_DIR})
 include_directories(include ${SDL2_MIXER_INCLUDE_DIRS})
@@ -136,8 +134,6 @@ include_directories(include ${SDL2TTF_INCLUDE_DIR})
 include_directories(include ${OPENGL_INCLUDE_DIR})
 include_directories(include ${ENTITYX_INCLUDE_DIR})
 include_directories(include ${YAMLCPP_INCLUDE_DIR})
-
-include_directories(include ${SFML_INCLUDE_DIR})
 
 target_link_libraries(SpaceShooter
                         ${SDL2_LIBRARY}
@@ -147,5 +143,4 @@ target_link_libraries(SpaceShooter
                         ${OPENGL_LIBRARIES}
                         ${YAMLCPP_LIBRARY}
                         ${ENTITYX_LIBRARY}
-                        ${SFML_LIBRARIES}
 )
