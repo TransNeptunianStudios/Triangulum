@@ -1,8 +1,6 @@
 #ifndef COLLISIONSYSTEM_H
 #define COLLISIONSYSTEM_H
 
-#include "SDL_rect.h"
-
 #include "entityx/System.h"
 #include "components/Position.h"
 #include "components/Volume.h"

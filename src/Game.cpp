@@ -141,7 +141,8 @@ void Game::render()
 void Game::exit()
 {
    m_audioManager.cleanup();
-   std::exit(EXIT_SUCCESS);
+
+    std::exit(EXIT_SUCCESS);
 }
 
 void Game::createSystems()

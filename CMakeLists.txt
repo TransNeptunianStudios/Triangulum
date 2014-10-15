@@ -122,7 +122,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/modules/")
 find_package(OpenGL REQUIRED)
 find_package(YamlCpp REQUIRED)
 find_package(EntityX REQUIRED)
-find_package(SFML COMPONENTS system window graphics REQUIRED)
+find_package(SFML 2 REQUIRED system window graphics network audio)
 
 include_directories(include ${OPENGL_INCLUDE_DIR})
 include_directories(include ${ENTITYX_INCLUDE_DIR})

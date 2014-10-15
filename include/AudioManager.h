@@ -3,7 +3,7 @@
 
 #include <map>
 #include <string>
-
+#include <SFML/Audio.hpp>
 #include "SoundId.h"
 
 class AudioManager
@@ -13,8 +13,6 @@ public:
    AudioManager();
 
    void init();
-
-   void cleanup();
 
    void playSound(SoundId id);
 
@@ -28,11 +26,14 @@ private:
 
    void loadMusic(const std::string& fileName);
 
-   typedef std::map<SoundId, Mix_Chunk*> SoundMap;
+   typedef std::map<SoundId, sf::SoundBuffer*> SoundMap;
 
    SoundMap m_soundMap;
 
-   Mix_Music* m_music;
+   sf::Sound m_channelOne;
+   sf::Sound m_channelTwo;
+
+   sf::Music m_music;
 };
 
 #endif // AUDIOMANAGER_H
