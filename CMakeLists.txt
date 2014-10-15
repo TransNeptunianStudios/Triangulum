@@ -20,8 +20,6 @@ add_executable(
    src/KeyHandler.cpp
    include/ScreenSize.h
    src/ScreenSize.cpp
-   include/SpriteSheet.h
-   src/SpriteSheet.cpp
    include/SoundId.h
    include/ai/FirstBossAi.h
    src/ai/FirstBossAi.cpp
@@ -59,8 +57,6 @@ add_executable(
    src/components/SpaceShip.cpp
    include/components/Volume.h
    src/components/Volume.cpp
-   include/graphics/BackgroundView.h
-   src/graphics/BackgroundView.cpp
    include/graphics/FontRepository.h
    src/graphics/FontRepository.cpp
    include/graphics/GameCompMenuView.h
@@ -109,10 +105,6 @@ add_executable(
    src/utils/CollisionBox.cpp
    include/utils/LevelLoader.h
    src/utils/LevelLoader.cpp
-   include/utils/Texture.h
-   src/utils/Texture.cpp
-   include/utils/TextTexture.h
-   src/utils/TextTexture.cpp
 )
 
 add_definitions(-std=c++11)

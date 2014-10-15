@@ -140,9 +140,7 @@ void Game::render()
 
 void Game::exit()
 {
-   m_audioManager.cleanup();
-
-    std::exit(EXIT_SUCCESS);
+   std::exit(EXIT_SUCCESS);
 }
 
 void Game::createSystems()
@@ -157,7 +155,7 @@ void Game::createSystems()
    m_systemManager.add<CollisionSystem>();
    m_systemManager.add<DeathRowSystem>();
    m_systemManager.add<AnimationSystem>();
-//   m_systemManager.add<AudioSystem>(m_audioManager);
+   m_systemManager.add<AudioSystem>(m_audioManager);
    m_systemManager.add<RenderSystem>(m_window);
    m_systemManager.add<HudSystem>(m_window);
    m_systemManager.configure();

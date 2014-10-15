@@ -2,7 +2,6 @@
 #include "systems/Events.h"
 #include "components/Menu.h"
 #include "KeyHandler.h"
-#include "SDL.h"
 
 using namespace entityx;
 MenuSystem::MenuSystem(EntityManager &entities, EventManager &eventManager)

@@ -1,7 +1,6 @@
 #include <sstream>
 #include <vector>
 #include <algorithm>
-#include "SDL_opengl.h"
 #include "graphics/ScoreView.h"
 #include "graphics/FontRepository.h"
 

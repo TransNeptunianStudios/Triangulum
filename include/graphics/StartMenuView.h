@@ -3,7 +3,6 @@
 
 #include "SFML/Graphics/Texture.hpp"
 #include "components/IMenu.h"
-#include "utils/Texture.h"
 
 class StartMenuView
       : public IMenu

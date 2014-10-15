@@ -1,4 +1,3 @@
-#include "SDL_opengl.h"
 #include "systems/RenderSystem.h"
 #include "components/Position.h"
 #include "components/Display.h"

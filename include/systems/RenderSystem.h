@@ -1,11 +1,8 @@
 #ifndef RENDERSYSTEM_H
 #define RENDERSYSTEM_H
 
-#include "SDL.h"
-#include "SDL_opengl.h"
 #include "SFML/Graphics.hpp"
 #include "entityx/System.h"
-#include "SpriteSheet.h"
 
 class RenderSystem : public entityx::System<RenderSystem>
 {
