@@ -1,8 +1,10 @@
 #include "AudioManager.h"
 
 AudioManager::AudioManager()
-: m_soundMap()
-, m_music()
+: m_music()
+, m_soundMap()
+, m_soundList(100)
+, m_soundListIndex(0)
 {
 }
 
@@ -14,7 +16,9 @@ void AudioManager::init()
    loadSoundEffect("../resources/asteroid_explosion.wav", ASTEROID_EXPLOSION);
 
    if (!m_music.openFromFile("../resources/Space_Fighter_Loop.ogg"))
-       printf("Error loading music.");
+   {
+      printf("Error loading music.");
+   }
 }
 
 
@@ -24,23 +28,7 @@ void AudioManager::playSound(SoundId id)
 
    if (it != end(m_soundMap))
    {
-      // Is this how you'r supposed to do it? =/
-      sf::Sound* pChannel;
-      if(!m_channelOne.Playing)
-      {
-          pChannel = &m_channelOne;
-      }
-      else if(!m_channelTwo.Playing)
-      {
-          pChannel = &m_channelTwo;
-      }
-      else
-      {
-          pChannel = &m_channelOne;
-      }
-
-      pChannel->setBuffer(*it->second);
-      pChannel->play();
+      play(it->second);
    }
 }
 
@@ -51,7 +39,7 @@ void AudioManager::playMusic()
 
 void AudioManager::pauseMusic()
 {
-    if( m_music.Playing )
+    if (m_music.getStatus() == sf::SoundSource::Playing)
     {
         m_music.pause();
     }
@@ -63,7 +51,34 @@ void AudioManager::pauseMusic()
 
 void AudioManager::loadSoundEffect(const std::string& fileName, SoundId id)
 {
-    m_soundMap[id] = new sf::SoundBuffer();
-    if(!m_soundMap[id]->loadFromFile(fileName.c_str()))
-        printf("Colud not load sound");
+   auto it = m_soundMap.find(id);
+
+   if (it != end(m_soundMap))
+   {
+      // Sound already loaded
+      return;
+   }
+
+   if(!m_soundMap[id].loadFromFile(fileName.c_str()))
+   {
+      printf("Colud not load sound");
+   }
+}
+
+void AudioManager::play(const sf::SoundBuffer& soundBuffer)
+{
+   for (size_t i = 0; i < m_soundList.size(); ++i)
+   {
+      auto& sound(m_soundList[m_soundListIndex]);
+
+      if (sound.getStatus() != sf::SoundSource::Playing)
+      {
+         sound.setBuffer(soundBuffer);
+         sound.play();
+         m_soundListIndex = ++m_soundListIndex % m_soundList.size();
+         break;
+      }
+
+      m_soundListIndex = ++m_soundListIndex % m_soundList.size();
+   }
 }
