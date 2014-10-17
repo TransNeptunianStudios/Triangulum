@@ -40,7 +40,7 @@ void Game::init()
    ScreenSize::setWidth(800);
    ScreenSize::setHeight(600);
 
-   m_window.create(sf::VideoMode(800, 600), "SpaceShooter");
+   m_window.create(sf::VideoMode(800, 600), "Triangulum");
 
    m_window.setVerticalSyncEnabled(true);
 

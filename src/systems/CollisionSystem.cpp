@@ -8,6 +8,7 @@
 #include "components/PlayerControl.h"
 #include "components/Gun.h"
 #include "components/Display.h"
+#include "components/Motion.h"
 #include "AnimationFactory.h"
 
 using namespace entityx;
@@ -183,6 +184,7 @@ void CollisionSystem::enemyDamaged(Entity& enemyEntity,
       if (enemy->type == ET_Boss)
       {
          enemyEntity.component<Gun>().remove();
+         enemyEntity.component<Motion>().remove();
          enemyEntity.assign<DeathSentence>(5000.0);
       }
       else
