@@ -26,14 +26,19 @@ private:
 
    void loadMusic(const std::string& fileName);
 
-   typedef std::map<SoundId, sf::SoundBuffer*> SoundMap;
-
-   SoundMap m_soundMap;
-
-   sf::Sound m_channelOne;
-   sf::Sound m_channelTwo;
+   void play(const sf::SoundBuffer& soundBuffer);
 
    sf::Music m_music;
+
+   typedef std::map<SoundId, sf::SoundBuffer> SoundBufferMap;
+
+   SoundBufferMap m_soundMap;
+
+   typedef std::vector<sf::Sound> SoundList;
+
+   SoundList m_soundList;
+
+   size_t m_soundListIndex;
 };
 
 #endif // AUDIOMANAGER_H
