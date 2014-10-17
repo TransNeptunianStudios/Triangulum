@@ -2,6 +2,7 @@
 #include "components/PlayerControl.h"
 #include "components/Motion.h"
 #include "components/Position.h"
+#include "components/Volume.h"
 
 #include "ScreenSize.h"
 
@@ -23,7 +24,7 @@ void MovementSystem::update(EntityManager &entities,
                          position->position.y + motion->velocity.y * dt / 1000.0);
 
       // Players are not allowed outside the screen
-      if (entity.has_component<PlayerControl>() && !isOnScreen(newPos))
+      if (entity.has_component<PlayerControl>() && !isOnScreen(newPos, entity))
       {
          continue;
       }
@@ -36,10 +37,13 @@ void MovementSystem::update(EntityManager &entities,
 
 }
 
-bool MovementSystem::isOnScreen(const sf::Vector2f& position) const
+bool MovementSystem::isOnScreen(sf::Vector2f position, Entity& entity) const
 {
-    return     position.x > 0.f
-            && position.x < ScreenSize().width()
-            && position.y > 0.f
-            && position.y < ScreenSize().height();
+    // Until we get more hitboxes this will do
+    auto hitBox  = entity.component<Volume>()->m_boxes.front().getRect();
+
+    return position.x - hitBox.width/2 > 0.f
+    && position.x + hitBox.width/2 < ScreenSize().width()
+    && position.y - hitBox.height/2 > 0.f
+    && position.y + hitBox.height/2 < ScreenSize().height();
 }
