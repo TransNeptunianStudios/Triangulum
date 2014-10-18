@@ -78,14 +78,14 @@ void LevelSystem::receive(const EvInit& e)
 
    for (auto& enemy : level.enemies)
    {
-      addEnemy(enemy, spaceShipEntity.id());
+      addEnemy(enemy);
    }
 
    SortCreatables sortFunctor;
 
    m_creatables.sort(sortFunctor);
 
-   addBoss(level.boss, spaceShipEntity.id());
+   addBoss(level.boss);
 }
 
 void LevelSystem::addObstacle(const ObstacleData& obstacle)
@@ -103,21 +103,29 @@ void LevelSystem::addObstacle(const ObstacleData& obstacle)
    }
 }
 
-void LevelSystem::addEnemy(const EnemyData &enemy, Entity::Id spaceShipId)
+void LevelSystem::addEnemy(const EnemyData& enemy)
 {
-    if (enemy.type == "enemy_one")
-    {
-        m_creatables.push_back(
-           std::make_pair(
-              enemy.levelOffset,
-              ICreatableSP(new EnemyOneCreator(
-                               spaceShipId,
-                               sf::Vector2f(enemy.startXPos, -16.0),
-                               enemy.speed))));
-    }
+   double startXPos = ScreenSize::width() * enemy.startXPos;
+
+   AiId aiId = AI_ID_NONE;
+
+   if (enemy.ai == "shoot_at_player")
+   {
+      aiId = AI_ID_SHOOT_AT_PLAYER;
+   }
+
+   if (enemy.type == "enemy_one")
+   {
+     m_creatables.push_back(
+        std::make_pair(
+           enemy.levelOffset,
+           ICreatableSP(new EnemyOneCreator(sf::Vector2f(startXPos, -16.0),
+                                            enemy.speed,
+                                            aiId))));
+   }
 }
 
-void LevelSystem::addBoss(const BossData& boss, Entity::Id spaceShipId)
+void LevelSystem::addBoss(const BossData& boss)
 {
    double offset = m_creatables.back().first + 500.0;
 
@@ -125,8 +133,7 @@ void LevelSystem::addBoss(const BossData& boss, Entity::Id spaceShipId)
    {
       m_bosses.push_back(
          std::make_pair(offset,
-                        ICreatableSP(new FirstBossCreator(spaceShipId,
-                                                          sf::Vector2f(400.0, -48.0),
+                        ICreatableSP(new FirstBossCreator(sf::Vector2f(400.0, -48.0),
                                                           m_scrollSpeed))));
    }
 }

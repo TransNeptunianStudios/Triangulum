@@ -101,12 +101,20 @@ void CollisionSystem::update(EntityManager& entities,
          {
              bulletEntity.destroy();
 
-             if( health->health == 0 )
+             if (health->isInvulnerable())
              {
-                 spaceShip->score += enemy->value;
+                health->invulnerableTime -= dt;
+             }
+             else
+             {
+                if( health->health == 0 )
+                {
+                    spaceShip->score += enemy->value;
+                }
+
+                enemyDamaged(enemyEntity, events);
              }
 
-             enemyDamaged(enemyEntity, events);
              return;
          }
       }
@@ -166,7 +174,6 @@ void CollisionSystem::enemyDamaged(Entity& enemyEntity,
                                    EventManager& events)
 {
    Health::Handle health = enemyEntity.component<Health>();
-   Display::Handle display = enemyEntity.component<Display>();
    Enemy::Handle enemy = enemyEntity.component<Enemy>();
 
    if (health->health == 0)

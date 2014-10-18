@@ -2,6 +2,7 @@
 #include "components/Position.h"
 #include "components/Display.h"
 #include "components/Background.h"
+#include "ScreenSize.h"
 
 using namespace entityx;
 
@@ -37,15 +38,31 @@ void RenderSystem::update(EntityManager &entities,
    Display::Handle display;
    for (Entity entity : entities.entities_with_components(position, display))
    {
-      m_sprite.setOrigin(display->coord.width/2.0,
-                         display->coord.height/2.0);
+      if (!isOutsideScreen(position->position, display->coord.width, display->coord.height))
+      {
+         m_sprite.setOrigin(display->coord.width/2.0,
+                            display->coord.height/2.0);
 
-      m_sprite.setPosition(position->position);
+         m_sprite.setPosition(position->position);
 
-      m_sprite.setRotation(position->heading);
+         m_sprite.setRotation(position->heading);
 
-      m_sprite.setTextureRect(display->coord);
+         m_sprite.setTextureRect(display->coord);
 
-      m_window.draw(m_sprite);
+         m_window.draw(m_sprite);
+      }
+      else
+      {
+         entity.destroy();
+      }
    }
+}
+
+bool RenderSystem::isOutsideScreen(const sf::Vector2f& position,
+                                   int width,
+                                   int height)
+{
+   return    position.x + width / 2.0 < 0.0
+          || position.x - width / 2.0 > ScreenSize::width()
+          || position.y - height / 2.0 > ScreenSize::height();
 }

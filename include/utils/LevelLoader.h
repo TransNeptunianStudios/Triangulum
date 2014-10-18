@@ -6,7 +6,7 @@
 struct EnemyData
 {
    std::string type;
-   //std::string ai;
+   std::string ai;
    //std::string gun;
    double levelOffset;
    double startXPos;

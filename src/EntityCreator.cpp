@@ -170,13 +170,15 @@ void AsteroidCreator::create(Entity entity)
    entity.assign<Display>(sf::IntRect(32*0, 32*1, 32, 32));
 }
 
-BulletCreator::BulletCreator(Entity::Id ownerId,
-                             const sf::Vector2f &position,
+BulletCreator::BulletCreator(Entity::Id ownerId,                             
                              const sf::Vector2f &velocity,
+                             const sf::Vector2f &position,
+                             double heading,
                              BulletType bulletType)
 : m_ownerId(ownerId)
-, m_position(position)
 , m_velocity(velocity)
+, m_position(position)
+, m_heading(heading)
 , m_bulletType(bulletType)
 {
 }
@@ -204,18 +206,18 @@ void BulletCreator::create(Entity entity)
 
    auto damage = BulletDamageTable::lookup(m_bulletType);
    entity.assign<Motion>(m_velocity);
-   entity.assign<Position>(m_position);
+   entity.assign<Position>(m_position, m_heading);
    entity.assign<Bullet>(m_ownerId, 10000.0, damage);
    entity.assign<Volume>(volume);
    entity.assign<Display>(coord);
 }
 
-EnemyOneCreator::EnemyOneCreator(Entity::Id enemyId,
-                                 const sf::Vector2f &position,
-                                 const sf::Vector2f &velocity)
-    : m_enemyId(enemyId)
-    , m_position(position)
-    , m_velocity(velocity)
+EnemyOneCreator::EnemyOneCreator(const sf::Vector2f& position,
+                                 const sf::Vector2f& velocity,
+                                 AiId aiId)
+ : m_position(position)
+ , m_velocity(velocity)
+ , m_aiId(aiId)
 {
 }
 
@@ -239,16 +241,15 @@ void EnemyOneCreator::create(Entity entity)
     entity.assign<Position>(m_position);
     entity.assign<Gun>(gun);
     entity.assign<Volume>(volume);
-    entity.assign<Motion>(sf::Vector2f(0.0, 1.0));
+    entity.assign<Motion>(m_velocity);
+    entity.assign<Ai>(m_aiId);
     entity.assign<AnimationContainer>(ac);
     entity.assign<Display>(sf::IntRect(32*0, 32*6, 32, 32));
 }
 
-FirstBossCreator::FirstBossCreator(Entity::Id enemyId,
-                                   const sf::Vector2f& position,
+FirstBossCreator::FirstBossCreator(const sf::Vector2f& position,
                                    double scrollSpeed)
-: m_enemyId(enemyId)
-, m_position(position)
+: m_position(position)
 , m_scrollSpeed(scrollSpeed)
 {
 
@@ -267,7 +268,7 @@ void FirstBossCreator::create(Entity entity)
    volume.m_boxes.push_back(CollisionBox(96, 96));
    entity.assign<Ai>(AI_ID_FIRST_BOSS);
    entity.assign<Enemy>(ET_Boss);
-   entity.assign<Health>(10);
+   entity.assign<Health>(10, 10000.0);
    entity.assign<Motion>();
    entity.assign<Position>(m_position);
    entity.assign<Gun>(gun);

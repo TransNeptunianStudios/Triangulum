@@ -2,7 +2,7 @@
 #include "components/Motion.h"
 #include "components/Position.h"
 #include "components/Gun.h"
-#include "components/SpaceShip.h"
+#include "components/Health.h"
 #include "utils/Math.h"
 
 using namespace entityx;
@@ -27,10 +27,12 @@ void FirstBossAi::update(entityx::Entity::Id myEntityId,
    auto motion = entities.component<Motion>(myEntityId);
    auto position = entities.component<Position>(myEntityId);
    auto gun = entities.component<Gun>(myEntityId);
+   auto health = entities.component<Health>(myEntityId);
 
    if (!motion.valid() ||
        !position.valid() ||
-       !gun.valid())
+       !gun.valid() ||
+       !health.valid())
    {
       return;
    }
@@ -41,6 +43,9 @@ void FirstBossAi::update(entityx::Entity::Id myEntityId,
       if (position->position.y >= 100.0)
       {
          motion->velocity.y = 0.0;
+
+         health->invulnerableTime = 0.0;
+
          m_fbp = FBP_Attack;
       }
       else

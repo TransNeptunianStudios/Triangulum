@@ -21,17 +21,18 @@ void GunSystem::update(EntityManager &entities,
    {
       if (gun->isMainFirePressed && !gun->wasMainFirePressed)
       {
-         auto initVelocity = sf::Vector2f(200.0*gun->direction.x,
-                                          200.0*gun->direction.y);
+         auto initVelocity = sf::Vector2f(500.0*gun->direction.x,
+                                          500.0*gun->direction.y);
 
          auto bulletPosition = *position.get();
 
-         bulletPosition.heading = math::angleBetween(gun->direction,
-                                                     sf::Vector2f(0.0, 1.0));
+         bulletPosition.heading = math::angleBetween(sf::Vector2f(0.0, -1.0),
+                                                     gun->direction);
 
-         BulletCreator(entity.id(),
-                       position->position,
+         BulletCreator(entity.id(),                       
                        initVelocity,
+                       bulletPosition.position,
+                       bulletPosition.heading,
                        gun->bulletType).create(entities.create());
 
          events.emit<EvPlaySound>(GUN_SHOOT);
