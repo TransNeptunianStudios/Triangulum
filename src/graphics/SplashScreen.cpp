@@ -50,7 +50,7 @@ void SplashScreen::draw(sf::RenderWindow& window)
 
 void SplashScreen::onConfirm(EventManager &eventManager)
 {
-    // Nothing
+    eventManager.emit<EvShowStartMenu>();
 }
 
 void SplashScreen::onCancel(EventManager &eventManager)
