@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 2.8)
 
-project(SpaceShooter)
+project(Triangulum)
 
 add_executable(
-   SpaceShooter
+   Triangulum
    src/main.cpp
    include/AnimationFactory.h
    src/AnimationFactory.cpp
@@ -126,7 +126,7 @@ include_directories(include ${YAMLCPP_INCLUDE_DIR})
 
 include_directories(include ${SFML_INCLUDE_DIR})
 
-target_link_libraries(SpaceShooter
+target_link_libraries(Triangulum
                         ${OPENGL_LIBRARIES}
                         ${YAMLCPP_LIBRARY}
                         ${ENTITYX_LIBRARY}
