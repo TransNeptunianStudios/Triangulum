@@ -73,6 +73,8 @@ add_executable(
    src/graphics/ScoreView.cpp
    include/graphics/StartMenuView.h
    src/graphics/StartMenuView.cpp
+   include/graphics/SplashScreen.h
+   src/graphics/SplashScreen.cpp
    include/systems/AnimationSystem.h
    src/systems/AnimationSystem.cpp
    include/systems/AudioSystem.h

@@ -15,8 +15,7 @@ GameCompMenuView::GameCompMenuView()
    m_text.setOrigin(bounds.width/2.0, bounds.height/2.0);
 }
 
-void GameCompMenuView::update(const KeyHandler &keyHandler,
-                              EventManager &eventManager)
+void GameCompMenuView::update(EventManager &events, double dt)
 {
 }
 

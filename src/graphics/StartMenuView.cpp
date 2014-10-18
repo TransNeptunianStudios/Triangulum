@@ -17,13 +17,8 @@ StartMenuView::StartMenuView()
    m_logoSprite.setOrigin(size.x/2.0, size.y/2.0);
 }
 
-void StartMenuView::update(const KeyHandler& keyHandler,
-                           EventManager& eventManager)
+void StartMenuView::update(EventManager &events, double dt)
 {
-   if (keyHandler.isPressed(sf::Keyboard::Space))
-   {
-      eventManager.emit<EvStartGame>();
-   }
 }
 
 void StartMenuView::draw(sf::RenderWindow& window)

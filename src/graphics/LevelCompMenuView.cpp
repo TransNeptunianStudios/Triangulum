@@ -17,13 +17,8 @@ LevelCompMenuView::LevelCompMenuView()
    m_text.setOrigin(bounds.width/2.0, bounds.height/2.0);
 }
 
-void LevelCompMenuView::update(const KeyHandler &keyHandler,
-                               EventManager &eventManager)
+void LevelCompMenuView::update(EventManager &events, double dt)
 {
-   if (keyHandler.isPressed(sf::Keyboard::Space))
-   {
-      eventManager.emit<EvStartGame>();
-   }
 }
 
 void LevelCompMenuView::draw(sf::RenderWindow& window)

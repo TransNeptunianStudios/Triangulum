@@ -25,6 +25,7 @@ void MenuSystem::update(EntityManager& entities,
    Menu::Handle menu;
    for (Entity entity : entities.entities_with_components(menu))
    {
+      menu->spMenu->update(events, dt);
       menu->spMenu->draw(m_window);
    }
 }

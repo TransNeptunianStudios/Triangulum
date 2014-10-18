@@ -17,13 +17,8 @@ GameOverMenuView::GameOverMenuView()
    m_text.setOrigin(bounds.width/2.0, bounds.height/2.0);
 }
 
-void GameOverMenuView::update(const KeyHandler &keyHandler,
-                              EventManager &eventManager)
+void GameOverMenuView::update(EventManager &events, double dt)
 {
-   if (keyHandler.isPressed(sf::Keyboard::Space))
-   {
-      eventManager.emit<EvStartGame>();
-   }
 }
 
 void GameOverMenuView::draw(sf::RenderWindow& window)

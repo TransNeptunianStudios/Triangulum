@@ -4,6 +4,8 @@
 #include "KeyHandler.h"
 #include "ScreenSize.h"
 
+using namespace entityx;
+
 PauseMenuView::PauseMenuView()
 : m_text()
 {
@@ -15,12 +17,9 @@ PauseMenuView::PauseMenuView()
    m_text.setOrigin(bounds.width/2.0, bounds.height/2.0);
 }
 
-void PauseMenuView::update(const KeyHandler &keyHandler, entityx::EventManager &eventManager)
+void PauseMenuView::update(EventManager &events,
+                           double dt)
 {
-    if (keyHandler.isPressed(sf::Keyboard::Space))
-    {
-       eventManager.emit<EvResumeGame>();
-    }
 }
 
 void PauseMenuView::draw(sf::RenderWindow& window)

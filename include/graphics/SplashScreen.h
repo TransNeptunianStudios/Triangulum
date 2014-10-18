@@ -1,15 +1,15 @@
-#ifndef GAMECOMPMENUVIEW_H
-#define GAMECOMPMENUVIEW_H
+#ifndef SPLASHSCREEN_H
+#define SPLASHSCREEN_H
 
-#include "SFML/Graphics/Text.hpp"
+#include "SFML/Graphics/Texture.hpp"
 #include "components/IMenu.h"
 
-class GameCompMenuView
+class SplashScreen
       : public IMenu
 {
 public:
 
-   GameCompMenuView();
+   SplashScreen();
 
    void update(entityx::EventManager& events, double dt);
 
@@ -21,7 +21,13 @@ public:
 
 private:
 
-   sf::Text m_text;
+   sf::Texture m_texture;
+
+   sf::Sprite m_logoSprite;
+
+   double m_fadeIn, m_static, m_fadeOut;
+   double m_timer;
+   double m_alpha;
 };
 
-#endif // GAMECOMPMENUVIEW_H
+#endif // SPLASHSCREEN_H

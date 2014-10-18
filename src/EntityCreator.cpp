@@ -14,6 +14,7 @@
 #include "components/Enemy.h"
 #include "components/Background.h"
 #include "components/Animation.h"
+#include "graphics/SplashScreen.h"
 #include "graphics/StartMenuView.h"
 #include "graphics/PauseMenuView.h"
 #include "graphics/GameOverMenuView.h"
@@ -24,6 +25,17 @@
 #include "AnimationFactory.h"
 
 using namespace entityx;
+
+SplashScreenCreator::SplashScreenCreator()
+{
+}
+
+void SplashScreenCreator::create(Entity entity)
+{
+   auto pSmv = std::make_shared<SplashScreen>();
+   entity.assign<Menu>(IMenuSP(pSmv));
+   entity.assign<Position>(sf::Vector2f(ScreenSize::width()/2.0, ScreenSize::height()*0.33));
+}
 
 StartMenuCreator::StartMenuCreator()
 {
@@ -263,3 +275,4 @@ void FirstBossCreator::create(Entity entity)
    entity.assign<AnimationContainer>(ac);
    entity.assign<Display>(sf::IntRect(32*7, 32*0, 96, 96));
 }
+

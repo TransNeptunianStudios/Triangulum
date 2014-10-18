@@ -12,8 +12,7 @@ public:
 
    virtual ~IMenu() {}
 
-   virtual void update(const KeyHandler& keyHandler,
-                       entityx::EventManager& eventManager) = 0;
+   virtual void update(entityx::EventManager& events, double dt) = 0;
 
    virtual void draw(sf::RenderWindow& window) = 0;
 

@@ -30,7 +30,9 @@ void GameManager::init()
 
    m_eventManager.subscribe<EvResumeGame>(*this);
 
-   StartMenuCreator().create(m_entityManager.create());
+   m_eventManager.subscribe<EvShowStartMenu>(*this);
+
+   SplashScreenCreator().create(m_entityManager.create());
 }
 
 GameState GameManager::getGameState() const
@@ -96,4 +98,11 @@ void GameManager::receive(const EvResumeGame& gameResume)
         m_entityManager.destroy(entity.id());
 
     m_gameState = GS_Playing;
+}
+
+void GameManager::receive(const EvShowStartMenu &showStartMenu)
+{
+   m_entityManager.reset();
+
+   StartMenuCreator().create(m_entityManager.create());
 }

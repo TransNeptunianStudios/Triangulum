@@ -36,6 +36,8 @@ public:
 
    void receive(const EvResumeGame& gameResume);
 
+   void receive(const EvShowStartMenu& showStartMenu);
+
 private:
 
    entityx::EntityManager& m_entityManager;

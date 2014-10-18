@@ -11,8 +11,7 @@ public:
 
    GameOverMenuView();
 
-   void update(const KeyHandler &keyHandler,
-               entityx::EventManager& eventManager);
+   void update(entityx::EventManager& events, double dt);
 
    void draw(sf::RenderWindow& window);
 

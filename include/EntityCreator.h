@@ -6,6 +6,15 @@
 #include "SFML/System/Vector2.hpp"
 #include "ICreatable.h"
 
+class SplashScreenCreator : public ICreatable
+{
+public:
+
+   SplashScreenCreator();
+
+   void create(entityx::Entity entity);
+};
+
 class StartMenuCreator : public ICreatable
 {
 public:

@@ -127,7 +127,7 @@ void Game::render()
 {
    m_systemManager.update<RenderSystem>(0.0);
    m_systemManager.update<HudSystem>(0.0);
-   m_systemManager.update<MenuSystem>(0.0);
+   m_systemManager.update<MenuSystem>(MS_PER_UPDATE);
    m_window.display();
 }
 

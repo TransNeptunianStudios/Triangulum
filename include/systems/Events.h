@@ -6,6 +6,11 @@
 #include "entityx/Entity.h"
 #include "SoundId.h"
 
+struct EvShowStartMenu: public entityx::Event<EvShowStartMenu>
+{
+   EvShowStartMenu() {}
+};
+
 struct EvStartGame : public entityx::Event<EvStartGame>
 {
    EvStartGame() {}
