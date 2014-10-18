@@ -32,7 +32,7 @@ float angleBetween(const sf::Vector2f& v1,
    sf::Vector2f normV2(v2);
    normalize(normV1);
    normalize(normV2);
-   return acos(dotProduct(normV1, normV2));
+   return acos(dotProduct(normV1, normV2)) * (180.0/M_PI);
 }
 
 

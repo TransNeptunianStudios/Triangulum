@@ -18,9 +18,6 @@ public:
 
 private:
 
-   void assignAnimation(const sf::Vector2f& velocity,
-                        entityx::Entity& entity);
-
    const KeyHandler& m_keyHandler;
 };
 

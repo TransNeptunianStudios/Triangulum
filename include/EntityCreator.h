@@ -1,10 +1,11 @@
 #ifndef ENTITYCREATOR_H
 #define ENTITYCREATOR_H
 
+#include "SFML/System/Vector2.hpp"
 #include "entityx/Entity.h"
 #include "systems/BulletType.h"
-#include "SFML/System/Vector2.hpp"
 #include "ICreatable.h"
+#include "ai/IAi.h"
 
 class StartMenuCreator : public ICreatable
 {
@@ -103,8 +104,9 @@ class BulletCreator : public ICreatable
 public:
 
    BulletCreator(entityx::Entity::Id ownerId,
-                 const sf::Vector2f &position,
                  const sf::Vector2f &velocity,
+                 const sf::Vector2f &position,
+                 double heading,
                  BulletType bulletType);
 
    void create(entityx::Entity entity);
@@ -113,9 +115,11 @@ private:
 
    entityx::Entity::Id m_ownerId;
 
+   sf::Vector2f m_velocity;
+
    sf::Vector2f m_position;
 
-   sf::Vector2f m_velocity;
+   double m_heading;
 
    BulletType m_bulletType;
 };
@@ -124,18 +128,19 @@ class EnemyOneCreator : public ICreatable
 {
 public:
 
-   EnemyOneCreator(entityx::Entity::Id enemyId,
-                   const sf::Vector2f &position,
-                   const sf::Vector2f &velocity);
+   EnemyOneCreator(const sf::Vector2f& position,
+                   const sf::Vector2f& velocity,
+                   AiId aiId);
 
    void create(entityx::Entity entity);
 
 private:
 
-   entityx::Entity::Id m_enemyId;
-
    sf::Vector2f m_position;
+
    sf::Vector2f m_velocity;
+
+   AiId m_aiId;
 };
 
 class FirstBossCreator : public ICreatable

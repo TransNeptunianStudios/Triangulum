@@ -16,6 +16,10 @@ public:
 
 private:
 
+   bool isOutsideScreen(const sf::Vector2f& position,
+                        int width,
+                        int height);
+
    sf::RenderWindow& m_window;
 
    sf::Texture m_bgTexture;

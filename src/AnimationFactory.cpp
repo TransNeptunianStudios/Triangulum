@@ -92,7 +92,7 @@ Animator AnimationFactory::enemyOneDeathAnimation()
     animation.coordList.push_back(sf::IntRect(32*3, 32*6, 32, 32));
     animation.coordList.push_back(sf::IntRect(32*4, 32*6, 32, 32));
     animation.coordList.push_back(sf::IntRect(32*5, 32*6, 32, 32));
-    animation.style = AS_LOOP;
+    animation.style = AS_RUN_ONCE;
     animation.timePerFrame = 200.0/2.0;
     return animation;
 }

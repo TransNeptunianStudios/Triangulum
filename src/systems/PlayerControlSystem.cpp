@@ -4,7 +4,6 @@
 #include "components/Motion.h"
 #include "components/Gun.h"
 #include "components/DeathSentence.h"
-#include "components/Animation.h"
 #include "KeyHandler.h"
 #include "AnimationFactory.h"
 
@@ -60,27 +59,5 @@ void PlayerControlSystem::update(EntityManager &entities,
       }
 
       gun->isMainFirePressed = m_keyHandler.isPressed(playerControl->shoot);
-
-      assignAnimation(motion->velocity, entity);
-   }
-}
-
-void PlayerControlSystem::assignAnimation(const sf::Vector2f &velocity,
-                                          Entity& entity)
-{
-   AnimationContainer* pAC = entity.component<AnimationContainer>().get();
-
-   if (velocity.x > 0.1f)
-   {
-      pAC->setAnimation(AnimationId(AT_Movement, RightMovementAnimation));
-
-   }
-   else if (velocity.x < -0.1f)
-   {
-      pAC->setAnimation(AnimationId(AT_Movement, LeftMovementAnimation));
-   }
-   else
-   {
-      pAC->setAnimation(AnimationId(AT_Movement, IdleMovementAnimation));
    }
 }

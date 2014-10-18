@@ -35,14 +35,11 @@ void AiControlSystem::receive(const EvReportSpaceShipId& e)
 
 void AiControlSystem::receive(const ComponentAddedEvent<Ai>& e)
 {
-   printf("Component added!\n");
-
    IAiSP spAi;
 
    switch (e.component->aiId)
    {
    case AI_ID_FIRST_BOSS:
-      printf("First boss ai added!\n");
       spAi.reset(new FirstBossAi());
       break;
    case AI_ID_SHOOT_AT_PLAYER:
