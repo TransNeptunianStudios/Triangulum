@@ -1,8 +1,7 @@
-![Alt text](https://raw.githubusercontent.com/RocSolidProductions/Space-Shooter/master/images/logo.png "Space shooter logo")
-
 A top down scrolling space action game! Asteroids, lasers, bosses, cool music and explosions. A classic space shooter that wants to be the next R-type!  
 
-![Alt text](https://github.com/RocSolidProductions/Space-Shooter/blob/master/images/Screenshoot1.png "Screenshoot")
+<img src="https://raw.githubusercontent.com/TransNeptunianStudios/Triangulum/133f56ebe55d6b3ef16aae516f3b3b06db9552df/images/Screenshot2.png" alt="Screenshot" style="width:160;height:120">
+
 
 ## Dependencies
 * SFML 2.1
@@ -16,7 +15,7 @@ A top down scrolling space action game! Asteroids, lasers, bosses, cool music an
 
 ## Building 
 * git clone
-* cd Space-Shooter
+* cd Triangulum
 * mkdir build
 * cd build
 * cmake .. && make
