@@ -6,8 +6,9 @@
 
 typedef uint32_t AiId;
 
-static const AiId AI_ID_NONE           = 0;
-static const AiId AI_ID_FIRST_BOSS     = 1;
+static const AiId AI_ID_NONE              = 0;
+static const AiId AI_ID_FIRST_BOSS        = 1;
+static const AiId AI_ID_SHOOT_AT_PLAYER   = 2;
 
 class IAi
 {
@@ -21,8 +22,6 @@ public:
                        entityx::Entity::Id enemyEntityId,
                        entityx::EntityManager& entities,
                        double dt) = 0;
-
-   virtual void reset() = 0;
 };
 
 typedef std::shared_ptr<IAi> IAiSP;

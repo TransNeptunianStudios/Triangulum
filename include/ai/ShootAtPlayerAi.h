@@ -1,13 +1,13 @@
-#ifndef FIRSTBOSSAI_H
-#define FIRSTBOSSAI_H
+#ifndef SHOOTATPLAYERAI_H
+#define SHOOTATPLAYERAI_H
 
 #include "ai/IAi.h"
 
-class FirstBossAi : public IAi
+class ShootAtPlayerAi : public IAi
 {
 public:
 
-   FirstBossAi();
+   ShootAtPlayerAi();
 
    void setScrollSpeed(double scrollSpeed);
 
@@ -18,15 +18,7 @@ public:
 
 private:
 
-   enum /* First Boss Phase */
-   {
-      FBP_Init,
-      FBP_Attack,
-   } m_fbp;
-
-   double m_scrollSpeed;
-
    double m_shootTimer;
 };
 
-#endif // FIRSTBOSSAI_H
+#endif // SHOOTATPLAYERAI_H

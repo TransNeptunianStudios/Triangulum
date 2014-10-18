@@ -2,6 +2,7 @@
 #include "systems/Events.h"
 #include "components/Position.h"
 #include "components/Gun.h"
+#include "utils/Math.h"
 #include "EntityCreator.h"
 
 using namespace entityx;
@@ -20,8 +21,13 @@ void GunSystem::update(EntityManager &entities,
    {
       if (gun->isMainFirePressed && !gun->wasMainFirePressed)
       {
-         auto initVelocity = sf::Vector2f(500.0*gun->direction.x,
-                                          500.0*gun->direction.y);
+         auto initVelocity = sf::Vector2f(200.0*gun->direction.x,
+                                          200.0*gun->direction.y);
+
+         auto bulletPosition = *position.get();
+
+         bulletPosition.heading = math::angleBetween(gun->direction,
+                                                     sf::Vector2f(0.0, 1.0));
 
          BulletCreator(entity.id(),
                        position->position,

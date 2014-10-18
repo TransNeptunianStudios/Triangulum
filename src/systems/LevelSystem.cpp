@@ -51,8 +51,6 @@ void LevelSystem::receive(const EvInit& e)
    m_creatables.clear();
    m_bosses.clear();
 
-   m_eventManager.emit<EvResetAi>();
-
    LevelData level;
 
    if (!LevelLoader::load(e.levelNr, level))

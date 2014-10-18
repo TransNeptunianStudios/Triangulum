@@ -24,6 +24,8 @@ add_executable(
    include/ai/FirstBossAi.h
    src/ai/FirstBossAi.cpp
    include/ai/IAi.h
+   include/ai/ShootAtPlayerAi.h
+   src/ai/ShootAtPlayerAi.cpp
    include/components/Ai.h
    src/components/Ai.cpp
    include/components/Animation.h
@@ -104,13 +106,14 @@ add_executable(
    src/utils/CollisionBox.cpp
    include/utils/LevelLoader.h
    src/utils/LevelLoader.cpp
+   include/utils/Math.h
+   src/utils/Math.cpp
 )
 
 add_definitions(-std=c++11)
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/modules/")
 
-find_package(OpenGL REQUIRED)
 find_package(YamlCpp REQUIRED)
 find_package(EntityX REQUIRED)
 find_package(SFML 2 REQUIRED system window graphics network audio)

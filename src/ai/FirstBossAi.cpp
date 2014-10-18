@@ -3,7 +3,7 @@
 #include "components/Position.h"
 #include "components/Gun.h"
 #include "components/SpaceShip.h"
-#include <math.h>
+#include "utils/Math.h"
 
 using namespace entityx;
 
@@ -69,9 +69,7 @@ void FirstBossAi::update(entityx::Entity::Id myEntityId,
       sf::Vector2f v(enemyPosition->position.x - position->position.x,
                      enemyPosition->position.y - position->position.y);
 
-      float length = sqrt(v.x*v.x + v.y*v.y);
-      v.x /= length;
-      v.y /= length;
+      math::normalize(v);
 
       gun->direction = v;
 
@@ -93,11 +91,4 @@ void FirstBossAi::update(entityx::Entity::Id myEntityId,
    default:
       break;
    }
-}
-
-void FirstBossAi::reset()
-{
-   m_scrollSpeed = 0.0;
-   m_fbp = FBP_Init;
-   m_shootTimer = -1.0;
 }
