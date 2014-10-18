@@ -5,7 +5,11 @@
 
 struct Health : public entityx::Component<Health>
 {
+   Health();
+
    Health(long _health);
+
+   Health(long _health, double _invulnerableTime);
 
    bool isInvulnerable() const;
 

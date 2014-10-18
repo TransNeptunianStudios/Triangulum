@@ -44,7 +44,7 @@ private:
 
    void addEnemy(const EnemyData& enemy);
 
-   void addBoss(const BossData& boss, entityx::Entity::Id spaceShipId);
+   void addBoss(const BossData& boss);
 
    entityx::EntityManager& m_entityManager;
 

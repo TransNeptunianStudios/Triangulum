@@ -147,15 +147,12 @@ class FirstBossCreator : public ICreatable
 {
 public:
 
-   FirstBossCreator(entityx::Entity::Id enemyId,
-                    const sf::Vector2f& position,
+   FirstBossCreator(const sf::Vector2f& position,
                     double scrollSpeed);
 
    void create(entityx::Entity entity);
 
 private:
-
-   entityx::Entity::Id m_enemyId;
 
    sf::Vector2f m_position;
 

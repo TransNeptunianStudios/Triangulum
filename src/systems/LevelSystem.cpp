@@ -85,7 +85,7 @@ void LevelSystem::receive(const EvInit& e)
 
    m_creatables.sort(sortFunctor);
 
-   addBoss(level.boss, spaceShipEntity.id());
+   addBoss(level.boss);
 }
 
 void LevelSystem::addObstacle(const ObstacleData& obstacle)
@@ -125,7 +125,7 @@ void LevelSystem::addEnemy(const EnemyData& enemy)
    }
 }
 
-void LevelSystem::addBoss(const BossData& boss, Entity::Id spaceShipId)
+void LevelSystem::addBoss(const BossData& boss)
 {
    double offset = m_creatables.back().first + 500.0;
 
@@ -133,8 +133,7 @@ void LevelSystem::addBoss(const BossData& boss, Entity::Id spaceShipId)
    {
       m_bosses.push_back(
          std::make_pair(offset,
-                        ICreatableSP(new FirstBossCreator(spaceShipId,
-                                                          sf::Vector2f(400.0, -48.0),
+                        ICreatableSP(new FirstBossCreator(sf::Vector2f(400.0, -48.0),
                                                           m_scrollSpeed))));
    }
 }
