@@ -74,3 +74,25 @@ Animator AnimationFactory::asteroidBossDeathAnimation()
     animation.timePerFrame = 1500.0/5.0;
     return animation;
 }
+
+Animator AnimationFactory::enemyOneIdleAnimation()
+{
+    Animator animation;
+    animation.coordList.push_back(sf::IntRect(32*0, 32*6, 32, 32));
+    animation.coordList.push_back(sf::IntRect(32*1, 32*6, 32, 32));
+    animation.style = AS_LOOP;
+    animation.timePerFrame = 200.0/2.0;
+    return animation;
+}
+
+Animator AnimationFactory::enemyOneDeathAnimation()
+{
+    Animator animation;
+    animation.coordList.push_back(sf::IntRect(32*2, 32*6, 32, 32));
+    animation.coordList.push_back(sf::IntRect(32*3, 32*6, 32, 32));
+    animation.coordList.push_back(sf::IntRect(32*4, 32*6, 32, 32));
+    animation.coordList.push_back(sf::IntRect(32*5, 32*6, 32, 32));
+    animation.style = AS_LOOP;
+    animation.timePerFrame = 200.0/2.0;
+    return animation;
+}

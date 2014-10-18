@@ -12,8 +12,8 @@ void operator >> (const YAML::Node& vectorNode, sf::Vector2f& vec)
 void operator >> (const YAML::Node& enemyNode, EnemyData& enemy)
 {
    enemyNode["type"] >> enemy.type;
-   enemyNode["ai"] >> enemy.ai;
-   enemyNode["gun"] >> enemy.gun;
+   //enemyNode["ai"] >> enemy.ai;
+   //enemyNode["gun"] >> enemy.gun;
    enemyNode["level_offset"] >> enemy.levelOffset;
    enemyNode["start_x_pos"] >> enemy.startXPos;
 }

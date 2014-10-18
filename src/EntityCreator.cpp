@@ -198,6 +198,40 @@ void BulletCreator::create(Entity entity)
    entity.assign<Display>(coord);
 }
 
+EnemyOneCreator::EnemyOneCreator(Entity::Id enemyId,
+                                 const sf::Vector2f &position,
+                                 const sf::Vector2f &velocity)
+    : m_enemyId(enemyId)
+    , m_position(position)
+    , m_velocity(velocity)
+{
+}
+
+void EnemyOneCreator::create(Entity entity)
+{
+
+    Gun gun(sf::Vector2f(0.0, 1.0));
+    gun.bulletType = BT_Simple;
+    auto volume = Volume();
+    AnimationContainer ac;
+
+    ac.addAnimation(AnimationId(AT_Movement, IdleMovementAnimation),
+                    AnimationFactory::enemyOneIdleAnimation());
+    ac.addAnimation(AnimationId(AT_Death, DestroyedDeathAnimation),
+                    AnimationFactory::enemyOneDeathAnimation());
+
+    volume.m_boxes.push_back(CollisionBox(32, 32));
+
+    entity.assign<Enemy>(ET_EnemyOne);
+    entity.assign<Health>(5);
+    entity.assign<Position>(m_position);
+    entity.assign<Gun>(gun);
+    entity.assign<Volume>(volume);
+    entity.assign<Motion>(sf::Vector2f(0.0, 1.0));
+    entity.assign<AnimationContainer>(ac);
+    entity.assign<Display>(sf::IntRect(32*0, 32*6, 32, 32));
+}
+
 FirstBossCreator::FirstBossCreator(Entity::Id enemyId,
                                    const sf::Vector2f& position,
                                    double scrollSpeed)
@@ -205,6 +239,7 @@ FirstBossCreator::FirstBossCreator(Entity::Id enemyId,
 , m_position(position)
 , m_scrollSpeed(scrollSpeed)
 {
+
 }
 
 void FirstBossCreator::create(Entity entity)

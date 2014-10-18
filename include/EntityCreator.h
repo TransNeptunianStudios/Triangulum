@@ -120,6 +120,24 @@ private:
    BulletType m_bulletType;
 };
 
+class EnemyOneCreator : public ICreatable
+{
+public:
+
+   EnemyOneCreator(entityx::Entity::Id enemyId,
+                   const sf::Vector2f &position,
+                   const sf::Vector2f &velocity);
+
+   void create(entityx::Entity entity);
+
+private:
+
+   entityx::Entity::Id m_enemyId;
+
+   sf::Vector2f m_position;
+   sf::Vector2f m_velocity;
+};
+
 class FirstBossCreator : public ICreatable
 {
 public:

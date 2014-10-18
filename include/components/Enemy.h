@@ -7,6 +7,7 @@ enum EnemyType
 {
    ET_Unknown,
    ET_Asteroid,
+   ET_EnemyOne,
    ET_Boss,
 };
 

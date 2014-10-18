@@ -6,11 +6,6 @@ boss:
    type: big_asteroid
 obstacles:
    - type: asteroid
-     level_offset: 300.0
-     start_x_pos: 0.25
-     rotation: 100.0
-     speed: [0.0, 50.0]
-   - type: asteroid
      level_offset: 320.0
      start_x_pos: 0.40
      rotation: -250.0
@@ -36,3 +31,7 @@ obstacles:
      rotation: 50.0
      speed: [0.0, 50.0]
 enemies:
+   - type: enemy_one
+     level_offset: 300.0
+     start_x_pos: 0.25
+     speed: [0.0, 50.0]

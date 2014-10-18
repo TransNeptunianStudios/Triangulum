@@ -20,6 +20,10 @@ public:
    static Animator asteroidDeathAnimation();
 
    static Animator asteroidBossDeathAnimation();
+
+   static Animator enemyOneIdleAnimation();
+
+   static Animator enemyOneDeathAnimation();
 };
 
 #endif // ANIMATIONFACTORY_H
