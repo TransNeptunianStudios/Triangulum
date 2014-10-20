@@ -29,7 +29,7 @@ private:
 
    void update();
 
-   void render();
+   void render(double ms);
 
    void exit();
 

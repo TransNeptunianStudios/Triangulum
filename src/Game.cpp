@@ -73,7 +73,7 @@ void Game::run()
          lag -= MS_PER_UPDATE;
       }
 
-      render();
+      render(dt.asMilliseconds());
    }
 
    exit();
@@ -123,11 +123,11 @@ void Game::update()
    }
 }
 
-void Game::render()
+void Game::render(double ms)
 {
    m_systemManager.update<RenderSystem>(0.0);
    m_systemManager.update<HudSystem>(0.0);
-   m_systemManager.update<MenuSystem>(MS_PER_UPDATE);
+   m_systemManager.update<MenuSystem>(ms);
    m_window.display();
 }
 
