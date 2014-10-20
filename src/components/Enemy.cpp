@@ -13,8 +13,11 @@ Enemy::Enemy(EnemyType _type)
     case ET_Asteroid:
         value = 5;
         break;
+    case ET_Scout:
+        value = 10;
+        break;
     case ET_Boss:
-        value = 20;
+        value = 40;
         break;
     default:
         value = 0;

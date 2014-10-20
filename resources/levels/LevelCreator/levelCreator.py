@@ -21,7 +21,7 @@ for y in range(0, h):
 			Enemies.append([x / 10.0, 32 * abs(y - h + 1)]);
 
 # write to new newLevel.yaml
-file = open("level1.yaml", "w")
+file = open("newLevel.yaml", "w")
 
 # Add background info
 file.write("background:\n   file: bg.png\n   scroll_speed: 30.0\n");
@@ -46,7 +46,7 @@ for pos in Obstacles:
 file.write("enemies:\n");
 
 for pos in Enemies:
-	file.write("   - type: enemy_one\n");	
+	file.write("   - type: scout\n");	
 	file.write("     ai: shoot_at_player\n");
 	file.write("     level_offset: " + str(round(pos[1], 2)) + "\n");
  	file.write("     start_x_pos: " + str(pos[0]) + "\n");

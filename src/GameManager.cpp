@@ -6,7 +6,7 @@
 
 using namespace entityx;
 
-static const int NR_OF_LEVELS = 2;
+static const int NR_OF_LEVELS = 1;
 
 GameManager::GameManager(EntityManager& entityManager,
                          EventManager& eventManager)

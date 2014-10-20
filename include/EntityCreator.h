@@ -133,11 +133,11 @@ private:
    BulletType m_bulletType;
 };
 
-class EnemyOneCreator : public ICreatable
+class ScoutCreator : public ICreatable
 {
 public:
 
-   EnemyOneCreator(const sf::Vector2f& position,
+   ScoutCreator(const sf::Vector2f& position,
                    const sf::Vector2f& velocity,
                    AiId aiId);
 

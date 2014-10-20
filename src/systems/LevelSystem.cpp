@@ -114,12 +114,12 @@ void LevelSystem::addEnemy(const EnemyData& enemy)
       aiId = AI_ID_SHOOT_AT_PLAYER;
    }
 
-   if (enemy.type == "enemy_one")
+   if (enemy.type == "scout")
    {
      m_creatables.push_back(
         std::make_pair(
            enemy.levelOffset,
-           ICreatableSP(new EnemyOneCreator(sf::Vector2f(startXPos, -16.0),
+           ICreatableSP(new ScoutCreator(sf::Vector2f(startXPos, -16.0),
                                             enemy.speed,
                                             aiId))));
    }

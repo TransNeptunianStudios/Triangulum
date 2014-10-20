@@ -212,7 +212,7 @@ void BulletCreator::create(Entity entity)
    entity.assign<Display>(coord);
 }
 
-EnemyOneCreator::EnemyOneCreator(const sf::Vector2f& position,
+ScoutCreator::ScoutCreator(const sf::Vector2f& position,
                                  const sf::Vector2f& velocity,
                                  AiId aiId)
  : m_position(position)
@@ -221,7 +221,7 @@ EnemyOneCreator::EnemyOneCreator(const sf::Vector2f& position,
 {
 }
 
-void EnemyOneCreator::create(Entity entity)
+void ScoutCreator::create(Entity entity)
 {
 
     Gun gun(sf::Vector2f(0.0, 1.0));
@@ -236,7 +236,7 @@ void EnemyOneCreator::create(Entity entity)
 
     volume.m_boxes.push_back(CollisionBox(32, 32));
 
-    entity.assign<Enemy>(ET_EnemyOne);
+    entity.assign<Enemy>(ET_Scout);
     entity.assign<Health>(5);
     entity.assign<Position>(m_position);
     entity.assign<Gun>(gun);
@@ -268,7 +268,7 @@ void FirstBossCreator::create(Entity entity)
    volume.m_boxes.push_back(CollisionBox(96, 96));
    entity.assign<Ai>(AI_ID_FIRST_BOSS);
    entity.assign<Enemy>(ET_Boss);
-   entity.assign<Health>(10, 10000.0);
+   entity.assign<Health>(30, 10000.0);
    entity.assign<Motion>();
    entity.assign<Position>(m_position);
    entity.assign<Gun>(gun);

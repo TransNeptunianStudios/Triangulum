@@ -192,7 +192,6 @@ void CollisionSystem::enemyDamaged(Entity& enemyEntity,
 
       if (enemy->type == ET_Boss)
       {
-         enemyEntity.component<Gun>().remove();
          enemyEntity.component<Motion>().remove();
          enemyEntity.assign<DeathSentence>(5000.0);
       }

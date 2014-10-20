@@ -29,6 +29,8 @@ void FirstBossAi::update(entityx::Entity::Id myEntityId,
    auto gun = entities.component<Gun>(myEntityId);
    auto health = entities.component<Health>(myEntityId);
 
+   int maxHealth = 30;
+
    if (!motion.valid() ||
        !position.valid() ||
        !gun.valid() ||
@@ -56,7 +58,7 @@ void FirstBossAi::update(entityx::Entity::Id myEntityId,
    case FBP_Attack:
    {
       auto enemyPosition = entities.component<Position>(enemyEntityId);
-      double horSpeed = 50.0;
+      double horSpeed = 50.0 + (30 - health->health);
 
       if (position->position.x < enemyPosition->position.x)
       {
@@ -81,7 +83,7 @@ void FirstBossAi::update(entityx::Entity::Id myEntityId,
       if (gun->isMainFirePressed)
       {
          gun->isMainFirePressed = false;
-         m_shootTimer = 2000.0;
+         m_shootTimer = 2000.0 - (maxHealth - health->health) * 40;
       }
       else if (m_shootTimer <= 0.0)
       {
