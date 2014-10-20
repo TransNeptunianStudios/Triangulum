@@ -179,6 +179,8 @@ void CollisionSystem::enemyDamaged(Entity& enemyEntity,
    if (health->health == 0)
    {
       enemyEntity.component<Volume>().remove();
+      if(enemyEntity.has_component<Gun>())
+          enemyEntity.component<Gun>().remove();
 
       AnimationContainer::Handle acHandle = enemyEntity.component<AnimationContainer>();
 
