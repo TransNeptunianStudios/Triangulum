@@ -107,7 +107,7 @@ void CollisionSystem::update(EntityManager& entities,
              }
              else
              {
-                if( health->health == 0 )
+                if( health->health == 0)// why no work?! && entities.get(bullet->ownerId).has_component<SpaceShip>())
                 {
                     spaceShip->score += enemy->value;
                 }
@@ -213,8 +213,11 @@ SoundId CollisionSystem::getHitSound(EnemyType type)
 
    switch (type) {
    case ET_Asteroid:
+       soundId = ASTEROID_HIT;
+       break;
    case ET_Boss:
-      soundId = ASTEROID_HIT;
+   case ET_Scout:
+      soundId = SCOUT_HIT;
       break;
    default:
       break;
@@ -229,8 +232,11 @@ SoundId CollisionSystem::getDeathSound(EnemyType type)
 
    switch (type) {
    case ET_Asteroid:
+       soundId = ASTEROID_EXPLOSION;
+       break;
    case ET_Boss:
-      soundId = ASTEROID_EXPLOSION;
+   case ET_Scout:
+       soundId = SCOUT_EXPLOSION;
       break;
    default:
       break;

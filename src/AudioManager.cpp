@@ -14,6 +14,8 @@ void AudioManager::init()
    loadSoundEffect("../resources/ship_explosion.wav", SHIP_EXPLOSION);
    loadSoundEffect("../resources/asteroid_hit.wav", ASTEROID_HIT);
    loadSoundEffect("../resources/asteroid_explosion.wav", ASTEROID_EXPLOSION);
+   loadSoundEffect("../resources/scout_hit.wav", SCOUT_HIT);
+   loadSoundEffect("../resources/scout_explosion.wav", SCOUT_EXPLOSION);
 
    if (!m_music.openFromFile("../resources/Space_Fighter_Loop.ogg"))
    {
