@@ -26,7 +26,11 @@ public:
 
    GameState getGameState() const;
 
+   bool isRunning() const;
+
    void receive(const EvStartGame& startGame);
+
+   void receive(const EvQuitGame& quitGame);
 
    void receive(const EvGameOver& gameOver);
 
@@ -47,7 +51,10 @@ private:
    GameState m_gameState;
 
    int m_currentLevel;
+
    int m_currentScore;
+
+   bool m_isRunning;
 };
 
 #endif // GAMEMANAGER_H

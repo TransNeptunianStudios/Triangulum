@@ -36,10 +36,14 @@ void MenuSystem::receive(const EvKeyboard& keyboard)
     int activeMenus = 0;
     for (Entity entity : m_entitiyManager.entities_with_components(menu))
     {
-       if(keyboard.key == sf::Keyboard::Space && keyboard.isDown)
-          menu->spMenu->onConfirm(m_eventManager);    
+       if(keyboard.key == sf::Keyboard::Return && keyboard.isDown)
+          menu->spMenu->onConfirm(m_eventManager);
        else if(keyboard.key == sf::Keyboard::Escape && keyboard.isDown)
           menu->spMenu->onCancel(m_eventManager);
+       else if(keyboard.key == sf::Keyboard::Up && keyboard.isDown)
+          menu->spMenu->onUp(m_eventManager);
+       else if(keyboard.key == sf::Keyboard::Down && keyboard.isDown)
+          menu->spMenu->onDown(m_eventManager);
        activeMenus++;
     }
 

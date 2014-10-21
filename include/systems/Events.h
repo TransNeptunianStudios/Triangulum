@@ -16,6 +16,11 @@ struct EvStartGame : public entityx::Event<EvStartGame>
    EvStartGame() {}
 };
 
+struct EvQuitGame : public entityx::Event<EvQuitGame>
+{
+   EvQuitGame() {}
+};
+
 struct EvInit : public entityx::Event<EvInit>
 {
    EvInit(int _levelNr, int _score)

@@ -19,17 +19,31 @@ public:
 
    void onCancel(entityx::EventManager &eventManager);
 
+   void onUp(entityx::EventManager &eventManager);
+
+   void onDown(entityx::EventManager &eventManager);
+
 private:
 
    sf::Texture m_texture;
 
    sf::Sprite m_logoSprite;
 
+   sf::Text m_newGameText;
+
+   sf::Text m_quitText;
+
    double m_timer;
 
-   double m_fadeIn;
+   double m_fadeInTimer;
+
+   double m_showTextTimer;
 
    double m_alpha;
+
+   bool m_drawText;
+
+   bool m_isNewGameSelected;
 };
 
 #endif // STARTMENUVIEW_H

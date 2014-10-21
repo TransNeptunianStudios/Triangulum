@@ -59,7 +59,7 @@ void Game::run()
    sf::Int32 lag = 0;
 
    // The game loop!
-   while (m_window.isOpen())
+   while (m_window.isOpen() && m_gameManager.isRunning())
    {
       sf::Time dt = clock.restart();
 

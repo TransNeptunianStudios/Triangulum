@@ -15,12 +15,15 @@ GameManager::GameManager(EntityManager& entityManager,
 , m_gameState(GS_StartMenu)
 , m_currentLevel(1)
 , m_currentScore(0)
+, m_isRunning(true)
 {
 }
 
 void GameManager::init()
 {
    m_eventManager.subscribe<EvStartGame>(*this);
+
+   m_eventManager.subscribe<EvQuitGame>(*this);
 
    m_eventManager.subscribe<EvGameOver>(*this);
 
@@ -40,6 +43,11 @@ GameState GameManager::getGameState() const
    return m_gameState;
 }
 
+bool GameManager::isRunning() const
+{
+   return m_isRunning;
+}
+
 void GameManager::receive(const EvStartGame& startGame)
 {
    m_gameState = GS_Playing;
@@ -49,6 +57,11 @@ void GameManager::receive(const EvStartGame& startGame)
    m_eventManager.emit<EvInit>(m_currentLevel, m_currentScore);
 
    m_eventManager.emit<EvPlayMusic>();
+}
+
+void GameManager::receive(const EvQuitGame &quitGame)
+{
+   m_isRunning = false;
 }
 
 void GameManager::receive(const EvGameOver& gameOver)

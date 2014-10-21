@@ -19,6 +19,10 @@ public:
    virtual void onConfirm(entityx::EventManager& eventManager) = 0;
 
    virtual void onCancel(entityx::EventManager& eventManager) = 0;
+
+   virtual void onUp(entityx::EventManager& eventManager) {};
+
+   virtual void onDown(entityx::EventManager& eventManager) {};
 };
 
 typedef std::shared_ptr<IMenu> IMenuSP;
