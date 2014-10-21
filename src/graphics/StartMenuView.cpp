@@ -9,8 +9,11 @@ using namespace entityx;
 StartMenuView::StartMenuView()
 : m_texture()
 , m_logoSprite()
+, m_timer(0.0)
+, m_fadeIn(2000.0)
+, m_alpha(0.0)
 {   
-   m_texture.loadFromFile("../images/logo.png");
+   m_texture.loadFromFile("../images/triangulum.png");
 
    sf::Vector2u size(m_texture.getSize());
    m_logoSprite.setTexture(m_texture);
@@ -19,12 +22,25 @@ StartMenuView::StartMenuView()
 
 void StartMenuView::update(EventManager &events, double dt)
 {
+   m_timer += dt;
+
+   if (m_timer < m_fadeIn)
+   {
+      m_alpha = m_timer/m_fadeIn;
+   }
+   else
+   {
+      m_alpha = 1.0;
+   }
 }
 
 void StartMenuView::draw(sf::RenderWindow& window)
 {
    m_logoSprite.setPosition(ScreenSize::width()*0.5,
                             ScreenSize::height()*0.33);
+
+   m_logoSprite.setColor(sf::Color(255, 255, 255, 255 * m_alpha));
+
    window.draw(m_logoSprite);
 }
 

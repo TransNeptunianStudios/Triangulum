@@ -24,6 +24,12 @@ private:
    sf::Texture m_texture;
 
    sf::Sprite m_logoSprite;
+
+   double m_timer;
+
+   double m_fadeIn;
+
+   double m_alpha;
 };
 
 #endif // STARTMENUVIEW_H
