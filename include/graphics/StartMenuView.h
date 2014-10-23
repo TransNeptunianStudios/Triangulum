@@ -2,10 +2,10 @@
 #define STARTMENUVIEW_H
 
 #include "SFML/Graphics/Texture.hpp"
-#include "components/IMenu.h"
+#include "components/AbstractMenu.h"
 
 class StartMenuView
-      : public IMenu
+      : public AbstractMenu
 {
 public:
 
@@ -16,8 +16,6 @@ public:
    void draw(sf::RenderWindow& window);
 
    void onConfirm(entityx::EventManager& eventManager);
-
-   void onCancel(entityx::EventManager &eventManager);
 
    void onUp(entityx::EventManager &eventManager);
 

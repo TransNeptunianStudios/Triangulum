@@ -2,10 +2,10 @@
 #define PAUSEMENUVIEW_H
 
 #include "SFML/Graphics/Text.hpp"
-#include "components/IMenu.h"
+#include "components/AbstractMenu.h"
 
 class PauseMenuView
-      : public IMenu
+      : public AbstractMenu
 {
 public:
 
@@ -14,8 +14,6 @@ public:
     void update(entityx::EventManager& events, double dt);
 
     void draw(sf::RenderWindow& window);
-
-    void onConfirm(entityx::EventManager& eventManager);
 
     void onCancel(entityx::EventManager &eventManager);
 

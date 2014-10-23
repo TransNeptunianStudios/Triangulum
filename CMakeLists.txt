@@ -25,7 +25,8 @@ add_executable(
    src/ai/FirstBossAi.cpp
    include/ai/IAi.h
    include/ai/ShootAtPlayerAi.h
-   src/ai/ShootAtPlayerAi.cpp
+   src/ai/ShootAtPlayerAi.cpp   
+   include/components/AbstractMenu.h
    include/components/Ai.h
    src/components/Ai.cpp
    include/components/Animation.h
@@ -44,7 +45,6 @@ add_executable(
    src/components/Gun.cpp
    include/components/Health.h
    src/components/Health.cpp
-   include/components/IMenu.h
    include/components/Menu.h
    src/components/Menu.cpp
    include/components/Motion.h

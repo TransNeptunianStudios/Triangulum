@@ -26,12 +26,3 @@ void GameCompMenuView::draw(sf::RenderWindow& window)
 
    window.draw(m_text);
 }
-
-
-void GameCompMenuView::onConfirm(EventManager& eventManager)
-{
-}
-
-void GameCompMenuView::onCancel(EventManager& eventManager)
-{
-}

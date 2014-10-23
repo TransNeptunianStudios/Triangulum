@@ -110,11 +110,6 @@ void StartMenuView::onConfirm(entityx::EventManager& eventManager)
    }
 }
 
-void StartMenuView::onCancel(entityx::EventManager& eventManager)
-{
-   //nothing
-}
-
 void StartMenuView::onUp(EventManager& eventManager)
 {
    m_isNewGameSelected = true;

@@ -2,10 +2,10 @@
 #define SPLASHSCREEN_H
 
 #include "SFML/Graphics/Texture.hpp"
-#include "components/IMenu.h"
+#include "components/AbstractMenu.h"
 
 class SplashScreen
-      : public IMenu
+      : public AbstractMenu
 {
 public:
 

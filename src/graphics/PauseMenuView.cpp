@@ -30,11 +30,6 @@ void PauseMenuView::draw(sf::RenderWindow& window)
    window.draw(m_text);
 }
 
-void PauseMenuView::onConfirm(entityx::EventManager& eventManager)
-{
-    //Nothing
-}
-
 
 void PauseMenuView::onCancel(entityx::EventManager& eventManager){
     eventManager.emit<EvResumeGame>();

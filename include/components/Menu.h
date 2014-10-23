@@ -2,7 +2,7 @@
 #define MENU_H
 
 #include "entityx/Entity.h"
-#include "components/IMenu.h"
+#include "components/AbstractMenu.h"
 
 struct Menu : public entityx::Component<Menu>
 {

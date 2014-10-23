@@ -2,10 +2,10 @@
 #define LEVELCOMPMENUVIEW_H
 
 #include "SFML/Graphics/Text.hpp"
-#include "components/IMenu.h"
+#include "components/AbstractMenu.h"
 
 class LevelCompMenuView
-      : public IMenu
+      : public AbstractMenu
 {
 public:
 
@@ -16,8 +16,6 @@ public:
    void draw(sf::RenderWindow& window);
 
    void onConfirm(entityx::EventManager& eventManager);
-
-   void onCancel(entityx::EventManager &eventManager);
 
 private:
 
