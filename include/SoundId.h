@@ -10,5 +10,6 @@ static const SoundId ASTEROID_HIT         = 2;
 static const SoundId ASTEROID_EXPLOSION   = 3;
 static const SoundId SCOUT_HIT            = 4;
 static const SoundId SCOUT_EXPLOSION      = 5;
+static const SoundId SELECT_BLIP          = 6;
 
 #endif // SOUNDID_H

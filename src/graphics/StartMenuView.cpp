@@ -112,10 +112,16 @@ void StartMenuView::onConfirm(entityx::EventManager& eventManager)
 
 void StartMenuView::onUp(EventManager& eventManager)
 {
+   if(!m_isNewGameSelected)
+       eventManager.emit<EvPlaySound>(SELECT_BLIP);
+
    m_isNewGameSelected = true;
 }
 
 void StartMenuView::onDown(EventManager& eventManager)
 {
-   m_isNewGameSelected = false;
+  if(m_isNewGameSelected)
+      eventManager.emit<EvPlaySound>(SELECT_BLIP);
+
+  m_isNewGameSelected = false;
 }
