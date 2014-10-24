@@ -49,6 +49,8 @@ void RenderSystem::update(EntityManager &entities,
 
          m_sprite.setTextureRect(display->coord);
 
+         m_sprite.setColor(display->color);
+
          m_window.draw(m_sprite);
       }
       else

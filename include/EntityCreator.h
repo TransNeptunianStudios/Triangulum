@@ -2,6 +2,7 @@
 #define ENTITYCREATOR_H
 
 #include "SFML/System/Vector2.hpp"
+#include "SFML/Graphics/Color.hpp"
 #include "entityx/Entity.h"
 #include "systems/BulletType.h"
 #include "ICreatable.h"
@@ -116,7 +117,8 @@ public:
                  const sf::Vector2f &velocity,
                  const sf::Vector2f &position,
                  double heading,
-                 BulletType bulletType);
+                 BulletType bulletType,
+                 sf::Color color);
 
    void create(entityx::Entity entity);
 
@@ -131,6 +133,8 @@ private:
    double m_heading;
 
    BulletType m_bulletType;
+
+   sf::Color m_color;
 };
 
 class ScoutCreator : public ICreatable

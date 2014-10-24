@@ -174,12 +174,14 @@ BulletCreator::BulletCreator(Entity::Id ownerId,
                              const sf::Vector2f &velocity,
                              const sf::Vector2f &position,
                              double heading,
-                             BulletType bulletType)
+                             BulletType bulletType,
+                             sf::Color color)
 : m_ownerId(ownerId)
 , m_velocity(velocity)
 , m_position(position)
 , m_heading(heading)
 , m_bulletType(bulletType)
+, m_color(color)
 {
 }
 
@@ -208,8 +210,8 @@ void BulletCreator::create(Entity entity)
    entity.assign<Motion>(m_velocity);
    entity.assign<Position>(m_position, m_heading);
    entity.assign<Bullet>(m_ownerId, 10000.0, damage);
+   entity.assign<Display>(coord, m_color);
    entity.assign<Volume>(volume);
-   entity.assign<Display>(coord);
 }
 
 ScoutCreator::ScoutCreator(const sf::Vector2f& position,

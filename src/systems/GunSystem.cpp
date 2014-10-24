@@ -2,8 +2,12 @@
 #include "systems/Events.h"
 #include "components/Position.h"
 #include "components/Gun.h"
+#include "components/Enemy.h"
+#include "components/SpaceShip.h"
 #include "utils/Math.h"
 #include "EntityCreator.h"
+
+#include "SFML/Graphics/Color.hpp"
 
 using namespace entityx;
 
@@ -29,11 +33,21 @@ void GunSystem::update(EntityManager &entities,
          bulletPosition.heading = math::angleBetween(sf::Vector2f(0.0, -1.0),
                                                      gun->direction);
 
+         // Enemies have evil red shoots,
+         // our hero have green, star wars style
+         // Civilians have white.
+         auto color = sf::Color();
+         if(entity.has_component<Enemy>())
+             color = sf::Color(255, 0, 0);
+         else if(entity.has_component<SpaceShip>())
+             color = sf::Color(0, 255, 0);
+
          BulletCreator(entity.id(),                       
                        initVelocity,
                        bulletPosition.position,
                        bulletPosition.heading,
-                       gun->bulletType).create(entities.create());
+                       gun->bulletType,
+                       color).create(entities.create());
 
          events.emit<EvPlaySound>(GUN_SHOOT);
       }

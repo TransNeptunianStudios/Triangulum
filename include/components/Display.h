@@ -4,6 +4,7 @@
 #include "entityx/Entity.h"
 #include "SFML/Graphics/Rect.hpp"
 #include "components/Animation.h"
+#include "SFML/Graphics/Color.hpp"
 
 struct Blink
 {
@@ -24,7 +25,11 @@ struct Display : public entityx::Component<Display>
 
    Display(const sf::IntRect& _coord);
 
+   Display(const sf::IntRect& _coord, sf::Color _color);
+
    sf::IntRect coord;
+
+   sf::Color color;
 
    Blink blink;
 };

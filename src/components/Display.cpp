@@ -22,6 +22,15 @@ Display::Display()
 
 Display::Display(const sf::IntRect& _coord)
 : coord(_coord)
+, color(sf::Color(255, 255, 255, 255))
 , blink()
 {
 }
+
+Display::Display(const sf::IntRect& _coord, sf::Color _color)
+: coord(_coord)
+, color(_color)
+, blink()
+{
+}
+
