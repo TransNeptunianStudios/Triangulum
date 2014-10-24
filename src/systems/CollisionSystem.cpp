@@ -99,20 +99,19 @@ void CollisionSystem::update(EntityManager& entities,
                             enemyPos.get(),
                             enemyVol.get()))
          {
-             bulletEntity.destroy();
-
              if (health->isInvulnerable())
              {
                 health->invulnerableTime -= dt;
              }
              else
              {
-                if( health->health == 0)// why no work?! && entities.get(bullet->ownerId).has_component<SpaceShip>())
+                if( health->health == 0 && entities.get(bullet->ownerId).has_component<SpaceShip>())
                 {
                     spaceShip->score += enemy->value;
                 }
 
                 enemyDamaged(enemyEntity, events);
+                bulletEntity.destroy();
              }
 
              return;
