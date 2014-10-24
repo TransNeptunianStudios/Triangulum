@@ -3,6 +3,11 @@
 
 namespace math {
 
+float pi()
+{
+   return 3.141592654f;
+}
+
 float magnitude(const sf::Vector2f &v)
 {
    return sqrt(v.x*v.x + v.y*v.y);
@@ -32,7 +37,7 @@ float angleBetween(const sf::Vector2f& v1,
    sf::Vector2f normV2(v2);
    normalize(normV1);
    normalize(normV2);
-   return acos(dotProduct(normV1, normV2)) * (180.0/M_PI);
+   return acos(dotProduct(normV1, normV2)) * (180.0/pi());
 }
 
 

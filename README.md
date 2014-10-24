@@ -20,6 +20,26 @@ A top down scrolling space action game! Asteroids, lasers, bosses, cool music an
 * cd build
 * cmake .. && make
 
+## Building for Windows with MinGW
+* Download latest MinGW from http://www.mingw.org/
+* Install mingw32-base, mingw32-gcc-g++
+* Download EntityX
+* cd EntityX
+* mkdir build
+* cmake .. -G "MinGW Makefiles"
+* mingw32-make
+* Download yaml-cpp
+* cd yaml-cpp
+* mkdir build
+* cmake .. -G "MinGW Makefiles"
+* mingw32-make
+* Download SFML (GCC 4.7 MinGW (DW2) - 32 bits)
+* Download external library dependencies for SFML https://github.com/LaurentGomila/SFML/tree/master/extlibs/libs-mingw/x86 (put in SFML/lib)
+* clone Triangulum
+* mkdir build
+* cd build
+* cmake .. -G "MinGW Makefiles" -DENTITYX_ROOT="<path to EntityX>" -DYAMLCPP_DIR="<path to yaml-cpp>" -DSFML_ROOT="<path to SFML>"
+
 ## Other esources, current, future and potential
 
 * CMake 3.0.1     	- http://www.cmake.org/
