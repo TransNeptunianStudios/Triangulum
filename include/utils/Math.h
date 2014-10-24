@@ -6,6 +6,8 @@
 namespace math
 {
 
+float pi();
+
 float magnitude(const sf::Vector2f& v);
 
 void normalize(sf::Vector2f& v);
