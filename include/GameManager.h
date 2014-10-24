@@ -42,6 +42,8 @@ public:
 
    void receive(const EvShowStartMenu& showStartMenu);
 
+   void receive(const EvCurrentScore& currentScore);
+
 private:
 
    entityx::EntityManager& m_entityManager;

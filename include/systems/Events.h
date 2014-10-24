@@ -106,4 +106,14 @@ struct EvReportSpaceShipId : public entityx::Event<EvReportSpaceShipId>
    entityx::Entity::Id spaceShipId;
 };
 
+struct EvCurrentScore : public entityx::Event<EvCurrentScore>
+{
+   EvCurrentScore(int _currentScore)
+   : currentScore(_currentScore)
+   {
+   }
+
+   int currentScore;
+};
+
 #endif // EVENTS_H

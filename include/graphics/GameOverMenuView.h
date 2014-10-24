@@ -3,13 +3,14 @@
 
 #include "SFML/Graphics/Text.hpp"
 #include "components/AbstractMenu.h"
+#include "graphics/ScoreView.h"
 
 class GameOverMenuView
       : public AbstractMenu
 {
 public:
 
-   GameOverMenuView();
+   GameOverMenuView(int score);
 
    void update(entityx::EventManager& events, double dt);
 
@@ -19,7 +20,13 @@ public:
 
 private:
 
-   sf::Text m_text;
+   int m_score;
+
+   sf::Text m_gameOverText;
+
+   sf::Text m_scoreText;
+
+   ScoreView m_scoreView;
 };
 
 #endif // GAMEOVERMENUVIEW_H

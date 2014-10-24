@@ -35,6 +35,8 @@ void GameManager::init()
 
    m_eventManager.subscribe<EvShowStartMenu>(*this);
 
+   m_eventManager.subscribe<EvCurrentScore>(*this);
+
    SplashScreenCreator().create(m_entityManager.create());
 }
 
@@ -70,7 +72,9 @@ void GameManager::receive(const EvGameOver& gameOver)
 
    m_entityManager.reset();
 
-   GameOverMenuCreator().create(m_entityManager.create());
+   GameOverMenuCreator(m_currentScore).create(m_entityManager.create());
+
+   m_currentScore = 0;
 }
 
 void GameManager::receive(const EvBossKilled& bossKilled)
@@ -79,21 +83,13 @@ void GameManager::receive(const EvBossKilled& bossKilled)
    {
       m_gameState = GS_GameCompleted;
       m_entityManager.reset();
-      GameCompMenuCreator().create(m_entityManager.create());
+      GameCompMenuCreator(m_currentScore).create(m_entityManager.create());
    }
    else
    {
-      m_currentScore = 0;
-      SpaceShip::Handle spaceShip;
-      for (Entity entity : m_entityManager.entities_with_components(spaceShip))
-      {
-          m_currentScore += spaceShip->score;
-      }
-
       ++m_currentLevel;
       m_gameState = GS_LevelCompleted;
       m_entityManager.reset();
-
       LevelCompMenuCreator().create(m_entityManager.create());
    }
 }
@@ -118,4 +114,9 @@ void GameManager::receive(const EvShowStartMenu &showStartMenu)
    m_entityManager.reset();
 
    StartMenuCreator().create(m_entityManager.create());
+}
+
+void GameManager::receive(const EvCurrentScore &currentScore)
+{
+   m_currentScore = currentScore.currentScore;
 }

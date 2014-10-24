@@ -108,6 +108,7 @@ void CollisionSystem::update(EntityManager& entities,
                 if( health->health == 0 && entities.get(bullet->ownerId).has_component<SpaceShip>())
                 {
                     spaceShip->score += enemy->value;
+                    events.emit<EvCurrentScore>(spaceShip->score);
                 }
 
                 enemyDamaged(enemyEntity, events);

@@ -2,40 +2,28 @@
 #include <vector>
 #include <algorithm>
 #include "graphics/ScoreView.h"
-#include "graphics/FontRepository.h"
 
-ScoreView::ScoreView(int maxScore)
-: m_digitMap()
-, m_maxScore(maxScore)
-, m_maxNrOfDigits(countDigits(m_maxScore))
+ScoreView::ScoreView(const sf::Font& font, int fontSize)
+: m_maxScore(1000)
+, m_maxNrOfDigits(4)
+, m_align(0)
+, m_scoreText()
 {
-   for (int i = 0; i < 10; ++i)
-   {
-      addDigit(i);
-   }
+   m_scoreText.setFont(font);
+   m_scoreText.setCharacterSize(fontSize);
+   m_scoreText.setString("0");
+   updateAlign();
 }
 
-void ScoreView::addDigit(int digit)
+void ScoreView::setAlign(int align)
 {
-   std::stringstream ss;
-   ss << digit;
-
-   m_digitMap[digit].setFont(FontRepository::getHudFont());
-   m_digitMap[digit].setCharacterSize(30);
-   m_digitMap[digit].setString(ss.str());
-   m_digitMap[digit].setOrigin(m_digitMap[digit].getLocalBounds().width, 0.0);
+   m_align = align;
+   updateAlign();
 }
 
-int ScoreView::countDigits(int number)
+void ScoreView::setPosition(float x, float y)
 {
-   int count = 0;
-   while (number > 0)
-   {
-      ++count;
-      number /= 10;
-   }
-
-   return count;
+   m_scoreText.setPosition(x, y);
 }
 
 void ScoreView::draw(int score, sf::RenderWindow& window)
@@ -45,23 +33,32 @@ void ScoreView::draw(int score, sf::RenderWindow& window)
       score = m_maxScore;
    }
 
-   std::vector<int> digits(m_maxNrOfDigits, 0);
+   std::stringstream ss;
+   ss << score;
 
-   std::vector<int>::iterator it = begin(digits);
+   m_scoreText.setString(ss.str());
 
-   while (score > 0)
+   updateAlign();
+
+   window.draw(m_scoreText);
+
+}
+
+void ScoreView::updateAlign()
+{
+   sf::FloatRect bounds(m_scoreText.getLocalBounds());
+   m_scoreText.setOrigin(bounds.width/2.0, bounds.height/2.0);
+
+   if (m_align == 0)
    {
-      *it = score % 10;
-      score /= 10;
-      ++it;
+      m_scoreText.setOrigin(0.0, bounds.height/2.0);
    }
-
-   float startX = 750.0f;
-
-   for (auto i : digits)
+   else if (m_align == 1)
    {
-      m_digitMap[i].setPosition(startX, 525.0f);
-      window.draw(m_digitMap[i]);
-      startX -= 20.0;
+      m_scoreText.setOrigin(bounds.width/2.0, bounds.height/2.0);
+   }
+   else if (m_align == 2)
+   {
+      m_scoreText.setOrigin(bounds.width, bounds.height/2.0);
    }
 }

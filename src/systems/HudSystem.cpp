@@ -12,7 +12,7 @@ HudSystem::HudSystem(sf::RenderWindow& window)
 , m_scoreText()
 , m_healthTexture()
 , m_healthSprite()
-, m_scoreView(1000)
+, m_scoreView(FontRepository::getHudFont(), 30)
 {
    m_healthText.setFont(FontRepository::getHudFont());
    m_healthText.setCharacterSize(30);
@@ -22,6 +22,8 @@ HudSystem::HudSystem(sf::RenderWindow& window)
    m_scoreText.setCharacterSize(30);
    m_scoreText.setString("Score");
    m_scoreText.setOrigin(m_scoreText.getLocalBounds().width, 0.0);
+
+   m_scoreView.setAlign(2);
 
    m_healthTexture.loadFromFile("../images/health.png");
    m_healthSprite.setTexture(m_healthTexture);
@@ -52,6 +54,8 @@ void HudSystem::update(EntityManager& entities,
       m_scoreText.setPosition(750.0f, 500.0f);
 
       m_window.draw(m_scoreText);
+
+      m_scoreView.setPosition(750.0f, 533.0f);
 
       m_scoreView.draw(spaceShip->score, m_window);
 

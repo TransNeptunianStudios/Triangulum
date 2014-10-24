@@ -59,13 +59,14 @@ void PauseMenuCreator::create(Entity entity)
    entity.assign<Position>(sf::Vector2f(ScreenSize::width()/2.0, ScreenSize::height()*0.33));
 }
 
-GameOverMenuCreator::GameOverMenuCreator()
+GameOverMenuCreator::GameOverMenuCreator(int score)
+: m_score(score)
 {
 }
 
 void GameOverMenuCreator::create(Entity entity)
 {
-   auto pSmv = std::make_shared<GameOverMenuView>();
+   auto pSmv = std::make_shared<GameOverMenuView>(m_score);
    entity.assign<Menu>(IMenuSP(pSmv));
    entity.assign<Position>(sf::Vector2f(ScreenSize::width()/2.0, ScreenSize::height()*0.33));
 }
@@ -81,13 +82,14 @@ void LevelCompMenuCreator::create(Entity entity)
    entity.assign<Position>(sf::Vector2f(ScreenSize::width()/2.0, ScreenSize::height()*0.33));
 }
 
-GameCompMenuCreator::GameCompMenuCreator()
+GameCompMenuCreator::GameCompMenuCreator(int score)
+: m_score(score)
 {
 }
 
 void GameCompMenuCreator::create(Entity entity)
 {
-   auto pSmv = std::make_shared<GameCompMenuView>();
+   auto pSmv = std::make_shared<GameCompMenuView>(m_score);
    entity.assign<Menu>(IMenuSP(pSmv));
    entity.assign<Position>(sf::Vector2f(ScreenSize::width()/2.0, ScreenSize::height()*0.33));
 }

@@ -39,9 +39,13 @@ class GameOverMenuCreator : public ICreatable
 {
 public:
 
-   GameOverMenuCreator();
+   GameOverMenuCreator(int score);
 
    void create(entityx::Entity entity);
+
+private:
+
+   int m_score;
 };
 
 class LevelCompMenuCreator : public ICreatable
@@ -57,9 +61,13 @@ class GameCompMenuCreator : public ICreatable
 {
 public:
 
-   GameCompMenuCreator();
+   GameCompMenuCreator(int score);
 
    void create(entityx::Entity entity);
+
+private:
+
+   int m_score;
 };
 
 class BackgroundCreator : public ICreatable

@@ -9,23 +9,26 @@ class ScoreView
 {
 public:
 
-   ScoreView(int maxScore);
+   ScoreView(const sf::Font& font, int fontSize);
+
+   // 0 = right, 1 = center, 2 = left
+   void setAlign(int align);
+
+   void setPosition(float x, float y);
 
    void draw(int score, sf::RenderWindow& window);
 
 private:
 
-   void addDigit(int digit);
+   void updateAlign();
 
-   int countDigits(int number);
+   const int m_maxScore;
 
-   typedef std::map<int, sf::Text> DigitTextureMap;
+   const int m_maxNrOfDigits;
 
-   DigitTextureMap m_digitMap;
+   int m_align;
 
-   int m_maxScore;
-
-   int m_maxNrOfDigits;
+   sf::Text m_scoreText;
 };
 
 #endif // SCOREVIEW_H
