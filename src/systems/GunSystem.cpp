@@ -30,8 +30,7 @@ void GunSystem::update(EntityManager &entities,
 
          auto bulletPosition = *position.get();
 
-         bulletPosition.heading = math::angleBetween(sf::Vector2f(0.0, -1.0),
-                                                     gun->direction);
+         bulletPosition.heading = math::angleBetween(gun->direction);
 
          // Enemies have evil red shoots,
          // our hero have green, star wars style

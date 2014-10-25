@@ -1,5 +1,5 @@
 
-MESSAGE("ENTITYX_ROOT is ${ENTITYX_ROOT}")
+#MESSAGE("ENTITYX_ROOT is ${ENTITYX_ROOT}")
 
 find_path(ENTITYX_INCLUDE_DIR entityx/entityx.h
    PATHS

@@ -42,7 +42,7 @@ void StartMenuView::update(EventManager &events, double dt)
 {
    m_timer += dt;
 
-   if (m_fadeInTimer > m_timer)
+   if (!m_drawText && m_fadeInTimer > m_timer)
    {
       m_alpha = m_timer/m_fadeInTimer;
    }
@@ -107,6 +107,10 @@ void StartMenuView::onConfirm(entityx::EventManager& eventManager)
       {
          eventManager.emit<EvQuitGame>();
       }
+   }
+   else
+   {
+      m_drawText = true;
    }
 }
 
