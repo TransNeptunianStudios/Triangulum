@@ -203,6 +203,7 @@ void BulletCreator::create(Entity entity)
       volume.m_boxes.push_back(CollisionBox(32, 32));
       coord.left = 32*0;
       coord.top = 32*1;
+      m_color = sf::Color(255, 255, 255);
       break;
    default:
       break;
