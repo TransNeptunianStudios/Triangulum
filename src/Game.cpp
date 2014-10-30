@@ -44,11 +44,11 @@ void Game::init()
 
    m_window.setVerticalSyncEnabled(true);
 
+   FontRepository::load();
+
    m_gameManager.init();
 
    m_audioManager.init();
-
-   FontRepository::load();
 
    createSystems();
 }
@@ -87,11 +87,11 @@ void Game::processInput()
    {
       switch (event.type)
       {
+      case sf::Event::Closed:
+         m_window.close();
+         exit();
+         break;
       case sf::Event::KeyPressed:
-         if (event.key.code == sf::Keyboard::Q)
-         {
-            exit();
-         }
          m_eventManager.emit<EvKeyboard>(event.key.code, true);
          m_keyHandler.updateKey(event.key.code, true);
          break;

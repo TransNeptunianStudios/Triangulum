@@ -23,6 +23,8 @@ public:
    virtual void onUp(entityx::EventManager& eventManager) {};
 
    virtual void onDown(entityx::EventManager& eventManager) {};
+
+   virtual void onKey(sf::Keyboard::Key key) {};
 };
 
 typedef std::shared_ptr<AbstractMenu> IMenuSP;

@@ -72,7 +72,7 @@ void GameManager::receive(const EvGameOver& gameOver)
 
    m_entityManager.reset();
 
-   GameOverMenuCreator(m_currentScore).create(m_entityManager.create());
+   GameCompMenuCreator(m_currentScore).create(m_entityManager.create());
 
    m_currentScore = 0;
 }

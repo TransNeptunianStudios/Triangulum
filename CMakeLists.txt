@@ -117,11 +117,12 @@ add_definitions(-std=c++11)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/modules/")
 
 set(YAMLCPP_STATIC_LIBRARY TRUE)
-set(SFML_STATIC_LIBRARIES TRUE)
+#set(SFML_STATIC_LIBRARIES TRUE)
+#set(CMAKE_FIND_FRAMEWORK NEVER)
 
 find_package(YamlCpp REQUIRED)
 find_package(EntityX REQUIRED)
-find_package(SFML 2 REQUIRED audio graphics window system)
+find_package(SFML 2 REQUIRED audio graphics window system network)
 
 include_directories(include ${ENTITYX_INCLUDE_DIR})
 include_directories(include ${YAMLCPP_INCLUDE_DIR})
