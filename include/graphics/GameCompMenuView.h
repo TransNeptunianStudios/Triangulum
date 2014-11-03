@@ -1,26 +1,17 @@
 #ifndef GAMECOMPMENUVIEW_H
 #define GAMECOMPMENUVIEW_H
 
-#include <future>
-#include <vector>
 #include "SFML/Graphics/Text.hpp"
 #include "components/AbstractMenu.h"
 #include "graphics/ScoreView.h"
-
-struct HighScore
-{
-   std::string name;
-   int score;
-};
-
-typedef std::vector<HighScore> HighScoreList;
+#include "utils/HighScoreManager.h"
 
 class GameCompMenuView
       : public AbstractMenu
 {
 public:
 
-   GameCompMenuView(int score);
+   GameCompMenuView(const std::string& menuTitle, int score);
 
    void update(entityx::EventManager& events, double dt);
 
@@ -34,10 +25,6 @@ private:
 
    void updateText(sf::Text& text, const std::string& string);
 
-   bool checkHighScore();
-
-   void insertNewScore();
-
    void updateHighScoreTextList();
 
    std::string convertKey(sf::Keyboard::Key key);
@@ -45,7 +32,6 @@ private:
    enum GameCompState
    {
       GCS_FetchingHighScore,
-      GCS_W4HighScore,
       GCS_FetchingFailed,
       GCS_W4ConfirmNoHighScore,
       GCS_W4PlayerNameInput,
@@ -70,11 +56,7 @@ private:
 
    std::vector<NameScoreText> m_highScoreTextList;
 
-   std::future<HighScoreList> m_highScoreListFuture;
-
-   std::future<void> m_sendHighScoreFuture;
-
-   HighScoreList m_highScoreList;
+   HighScoreManager m_highScoreManager;
 
    int m_insertedAtIndex;
 };

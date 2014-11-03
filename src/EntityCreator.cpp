@@ -17,7 +17,6 @@
 #include "graphics/SplashScreen.h"
 #include "graphics/StartMenuView.h"
 #include "graphics/PauseMenuView.h"
-#include "graphics/GameOverMenuView.h"
 #include "graphics/LevelCompMenuView.h"
 #include "graphics/GameCompMenuView.h"
 #include "ai/FirstBossAi.h"
@@ -66,7 +65,7 @@ GameOverMenuCreator::GameOverMenuCreator(int score)
 
 void GameOverMenuCreator::create(Entity entity)
 {
-   auto pSmv = std::make_shared<GameOverMenuView>(m_score);
+   auto pSmv = std::make_shared<GameCompMenuView>("Game Over", m_score);
    entity.assign<Menu>(IMenuSP(pSmv));
    entity.assign<Position>(sf::Vector2f(ScreenSize::width()/2.0, ScreenSize::height()*0.33));
 }
@@ -89,7 +88,7 @@ GameCompMenuCreator::GameCompMenuCreator(int score)
 
 void GameCompMenuCreator::create(Entity entity)
 {
-   auto pSmv = std::make_shared<GameCompMenuView>(m_score);
+   auto pSmv = std::make_shared<GameCompMenuView>("Game Completed", m_score);
    entity.assign<Menu>(IMenuSP(pSmv));
    entity.assign<Position>(sf::Vector2f(ScreenSize::width()/2.0, ScreenSize::height()*0.33));
 }

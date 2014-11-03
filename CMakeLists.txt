@@ -63,8 +63,6 @@ add_executable(
    src/graphics/FontRepository.cpp
    include/graphics/GameCompMenuView.h
    src/graphics/GameCompMenuView.cpp
-   include/graphics/GameOverMenuView.h
-   src/graphics/GameOverMenuView.cpp
    include/graphics/PauseMenuView.h
    src/graphics/PauseMenuView.cpp
    include/graphics/LevelCompMenuView.h
@@ -106,6 +104,8 @@ add_executable(
    src/systems/PlayerControlSystem.cpp
    include/utils/CollisionBox.h
    src/utils/CollisionBox.cpp
+   include/utils/HighScoreManager.h
+   src/utils/HighScoreManager.cpp
    include/utils/LevelLoader.h
    src/utils/LevelLoader.cpp
    include/utils/Math.h
