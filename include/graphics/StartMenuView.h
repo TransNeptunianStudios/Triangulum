@@ -31,6 +31,8 @@ private:
 
    sf::Text m_quitText;
 
+   sf::Text m_versionText;
+
    double m_timer;
 
    double m_fadeInTimer;

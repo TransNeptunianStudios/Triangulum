@@ -73,6 +73,7 @@ add_executable(
    src/graphics/StartMenuView.cpp
    include/graphics/SplashScreen.h
    src/graphics/SplashScreen.cpp
+   include/Release.h
    include/systems/AnimationSystem.h
    src/systems/AnimationSystem.cpp
    include/systems/AudioSystem.h

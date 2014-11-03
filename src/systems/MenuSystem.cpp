@@ -57,8 +57,14 @@ void MenuSystem::receive(const EvKeyboard& keyboard)
 
     // Don't really know where to put stuff like this
     // Pretty sure it's not menu's business
-    if(keyboard.key == sf::Keyboard::M  && keyboard.isDown)
+    if(keyboard.key == sf::Keyboard::F1  && keyboard.isDown)
     {
         m_eventManager.emit<EvPauseMusic>();
     }
+
+    if(keyboard.key == sf::Keyboard::F2  && keyboard.isDown)
+    {
+        m_eventManager.emit<EvQuitGame>();
+    }
+
 }
