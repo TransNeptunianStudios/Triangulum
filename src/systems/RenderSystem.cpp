@@ -3,6 +3,7 @@
 #include "components/Display.h"
 #include "components/Background.h"
 #include "ScreenSize.h"
+#include "ResourcePath.hpp"
 
 using namespace entityx;
 
@@ -13,11 +14,11 @@ RenderSystem::RenderSystem(sf::RenderWindow& window)
 , m_bgSprite()
 , m_sprite()
 {
-   m_bgTexture.loadFromFile("../images/bg.png");
+   m_bgTexture.loadFromFile(resourcePath() + "images/bg.png");
    m_bgTexture.setRepeated(true);
    m_bgSprite.setTexture(m_bgTexture);
 
-   m_texture.loadFromFile("../images/SpriteSheet.png");
+   m_texture.loadFromFile(resourcePath() + "images/SpriteSheet.png");
    m_sprite.setTexture(m_texture);
 }
 

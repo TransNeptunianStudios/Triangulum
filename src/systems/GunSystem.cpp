@@ -4,7 +4,7 @@
 #include "components/Gun.h"
 #include "components/Enemy.h"
 #include "components/SpaceShip.h"
-#include "utils/Math.h"
+#include "utils/TMath.h"
 #include "EntityCreator.h"
 
 #include "SFML/Graphics/Color.hpp"

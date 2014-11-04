@@ -1,4 +1,5 @@
 #include "AudioManager.h"
+#include "ResourcePath.hpp"
 
 AudioManager::AudioManager()
 : m_music()
@@ -10,15 +11,15 @@ AudioManager::AudioManager()
 
 void AudioManager::init()
 {
-   loadSoundEffect("../resources/gun_shoot.wav", GUN_SHOOT);
-   loadSoundEffect("../resources/ship_explosion.wav", SHIP_EXPLOSION);
-   loadSoundEffect("../resources/asteroid_hit.wav", ASTEROID_HIT);
-   loadSoundEffect("../resources/asteroid_explosion.wav", ASTEROID_EXPLOSION);
-   loadSoundEffect("../resources/scout_hit.wav", SCOUT_HIT);
-   loadSoundEffect("../resources/scout_explosion.wav", SCOUT_EXPLOSION);
-   loadSoundEffect("../resources/blip.wav", SELECT_BLIP);
+   loadSoundEffect(resourcePath() + "audio/gun_shoot.wav", GUN_SHOOT);
+   loadSoundEffect(resourcePath() + "audio/ship_explosion.wav", SHIP_EXPLOSION);
+   loadSoundEffect(resourcePath() + "audio/asteroid_hit.wav", ASTEROID_HIT);
+   loadSoundEffect(resourcePath() + "audio/asteroid_explosion.wav", ASTEROID_EXPLOSION);
+   loadSoundEffect(resourcePath() + "audio/scout_hit.wav", SCOUT_HIT);
+   loadSoundEffect(resourcePath() + "audio/scout_explosion.wav", SCOUT_EXPLOSION);
+   loadSoundEffect(resourcePath() + "audio/blip.wav", SELECT_BLIP);
 
-   if (!m_music.openFromFile("../resources/Space_Fighter_Loop.ogg"))
+   if (!m_music.openFromFile(resourcePath() + "audio/Space_Fighter_Loop.ogg"))
    {
       printf("Error loading music.");
    }

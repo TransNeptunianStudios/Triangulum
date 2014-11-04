@@ -3,6 +3,7 @@
 #include "components/SpaceShip.h"
 #include "components/Health.h"
 #include "components/DeathSentence.h"
+#include "ResourcePath.hpp"
 
 using namespace entityx;
 
@@ -25,7 +26,7 @@ HudSystem::HudSystem(sf::RenderWindow& window)
 
    m_scoreView.setAlign(2);
 
-   m_healthTexture.loadFromFile("../images/health.png");
+   m_healthTexture.loadFromFile(resourcePath() + "images/health.png");
    m_healthSprite.setTexture(m_healthTexture);
 }
 

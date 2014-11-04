@@ -2,6 +2,7 @@
 #include <iostream>
 #include "yaml-cpp/yaml.h"
 #include "utils/LevelLoader.h"
+#include "ResourcePath.hpp"
 
 void operator >> (const YAML::Node& vectorNode, sf::Vector2f& vec)
 {
@@ -66,7 +67,8 @@ LevelLoader::LevelLoader()
 bool LevelLoader::load(int nr, LevelData& level)
 {
    std::stringstream ss;
-   ss << "../resources/levels/level";
+   ss << resourcePath();
+   ss << "levels/level";
    ss << nr;
    ss << ".yaml";
 

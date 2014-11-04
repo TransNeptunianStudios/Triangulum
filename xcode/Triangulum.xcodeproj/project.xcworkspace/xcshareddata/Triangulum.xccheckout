@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>F6405074-6307-428F-AD1A-E906064D1D06</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Triangulum</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>2923AAF56A3049626C79906A2902A6F7A7CDB93B</key>
+		<string>https://github.com/TransNeptunianStudios/Triangulum.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>xcode/Triangulum.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>2923AAF56A3049626C79906A2902A6F7A7CDB93B</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/TransNeptunianStudios/Triangulum.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>2923AAF56A3049626C79906A2902A6F7A7CDB93B</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>2923AAF56A3049626C79906A2902A6F7A7CDB93B</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Triangulum</string>
+		</dict>
+	</array>
+</dict>
+</plist>

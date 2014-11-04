@@ -3,6 +3,7 @@
 #include "systems/Events.h"
 #include "KeyHandler.h"
 #include "ScreenSize.h"
+#include "ResourcePath.hpp"
 
 using namespace entityx;
 
@@ -15,7 +16,7 @@ SplashScreen::SplashScreen()
 , m_timer(0)
 , m_alpha(0)
 {
-   m_texture.loadFromFile("../images/TNS_logo.png");
+   m_texture.loadFromFile(resourcePath() + "images/TNS_logo.png");
 
    sf::Vector2u size(m_texture.getSize());
    m_logoSprite.setTexture(m_texture);

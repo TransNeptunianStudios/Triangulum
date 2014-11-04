@@ -1,0 +1,709 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		73275D641A08100000094788 /* ResourcePath.mm in Sources */ = {isa = PBXBuildFile; fileRef = 73275D631A08100000094788 /* ResourcePath.mm */; };
+		737F99011A09345300810089 /* FirstBossAi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 737F985A1A0933D400810089 /* FirstBossAi.cpp */; };
+		737F99021A09345300810089 /* ShootAtPlayerAi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 737F985B1A0933D400810089 /* ShootAtPlayerAi.cpp */; };
+		737F99031A09345300810089 /* AnimationFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 737F985C1A0933D400810089 /* AnimationFactory.cpp */; };
+		737F99041A09345300810089 /* AudioManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 737F985D1A0933D400810089 /* AudioManager.cpp */; };
+		737F99051A09345300810089 /* Ai.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 737F985F1A0933D400810089 /* Ai.cpp */; };
+		737F99061A09345300810089 /* Animation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 737F98601A0933D400810089 /* Animation.cpp */; };
+		737F99071A09345300810089 /* Background.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 737F98611A0933D400810089 /* Background.cpp */; };
+		737F99081A09345300810089 /* Bullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 737F98621A0933D400810089 /* Bullet.cpp */; };
+		737F99091A09345300810089 /* DeathSentence.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 737F98631A0933D400810089 /* DeathSentence.cpp */; };
+		737F990A1A09345300810089 /* Display.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 737F98641A0933D400810089 /* Display.cpp */; };
+		737F990B1A09345300810089 /* Enemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 737F98651A0933D400810089 /* Enemy.cpp */; };
+		737F990C1A09345300810089 /* Gun.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 737F98661A0933D400810089 /* Gun.cpp */; };
+		737F990D1A09345300810089 /* Health.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 737F98671A0933D400810089 /* Health.cpp */; };
+		737F990E1A09345300810089 /* Menu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 737F98681A0933D400810089 /* Menu.cpp */; };
+		737F990F1A09345300810089 /* Motion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 737F98691A0933D400810089 /* Motion.cpp */; };
+		737F99101A09345300810089 /* Obstacle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 737F986A1A0933D400810089 /* Obstacle.cpp */; };
+		737F99111A09345300810089 /* PlayerControl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 737F986B1A0933D400810089 /* PlayerControl.cpp */; };
+		737F99121A09345300810089 /* Position.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 737F986C1A0933D400810089 /* Position.cpp */; };
+		737F99131A09345300810089 /* SpaceShip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 737F986D1A0933D400810089 /* SpaceShip.cpp */; };
+		737F99141A09345300810089 /* Volume.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 737F986E1A0933D400810089 /* Volume.cpp */; };
+		737F99151A09345300810089 /* EntityCreator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 737F986F1A0933D400810089 /* EntityCreator.cpp */; };
+		737F99161A09345300810089 /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 737F98701A0933D400810089 /* Game.cpp */; };
+		737F99171A09345300810089 /* GameManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 737F98711A0933D400810089 /* GameManager.cpp */; };
+		737F99181A09345300810089 /* FontRepository.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 737F98731A0933D400810089 /* FontRepository.cpp */; };
+		737F99191A09345300810089 /* GameCompMenuView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 737F98741A0933D400810089 /* GameCompMenuView.cpp */; };
+		737F991A1A09345300810089 /* LevelCompMenuView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 737F98751A0933D400810089 /* LevelCompMenuView.cpp */; };
+		737F991B1A09345300810089 /* PauseMenuView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 737F98761A0933D400810089 /* PauseMenuView.cpp */; };
+		737F991C1A09345300810089 /* ScoreView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 737F98771A0933D400810089 /* ScoreView.cpp */; };
+		737F991D1A09345300810089 /* SplashScreen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 737F98781A0933D400810089 /* SplashScreen.cpp */; };
+		737F991E1A09345300810089 /* StartMenuView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 737F98791A0933D400810089 /* StartMenuView.cpp */; };
+		737F991F1A09345300810089 /* KeyHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 737F987A1A0933D400810089 /* KeyHandler.cpp */; };
+		737F99201A09345300810089 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 737F987B1A0933D400810089 /* main.cpp */; };
+		737F99211A09345300810089 /* ScreenSize.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 737F987C1A0933D400810089 /* ScreenSize.cpp */; };
+		737F99221A09345300810089 /* AiControlSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 737F987E1A0933D400810089 /* AiControlSystem.cpp */; };
+		737F99231A09345300810089 /* AnimationSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 737F987F1A0933D400810089 /* AnimationSystem.cpp */; };
+		737F99241A09345300810089 /* AudioSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 737F98801A0933D400810089 /* AudioSystem.cpp */; };
+		737F99251A09345300810089 /* BulletLifeTimeSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 737F98811A0933D400810089 /* BulletLifeTimeSystem.cpp */; };
+		737F99261A09345300810089 /* BulletType.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 737F98821A0933D400810089 /* BulletType.cpp */; };
+		737F99271A09345300810089 /* CollisionSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 737F98831A0933D400810089 /* CollisionSystem.cpp */; };
+		737F99281A09345300810089 /* DeathRowSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 737F98841A0933D400810089 /* DeathRowSystem.cpp */; };
+		737F99291A09345300810089 /* GunSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 737F98851A0933D400810089 /* GunSystem.cpp */; };
+		737F992A1A09345300810089 /* HudSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 737F98861A0933D400810089 /* HudSystem.cpp */; };
+		737F992B1A09345300810089 /* LevelSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 737F98871A0933D400810089 /* LevelSystem.cpp */; };
+		737F992C1A09345300810089 /* MenuSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 737F98881A0933D400810089 /* MenuSystem.cpp */; };
+		737F992D1A09345300810089 /* MovementSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 737F98891A0933D400810089 /* MovementSystem.cpp */; };
+		737F992E1A09345300810089 /* PlayerControlSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 737F988A1A0933D400810089 /* PlayerControlSystem.cpp */; };
+		737F992F1A09345300810089 /* RenderSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 737F988B1A0933D400810089 /* RenderSystem.cpp */; };
+		737F99301A09345300810089 /* CollisionBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 737F988D1A0933D400810089 /* CollisionBox.cpp */; };
+		737F99311A09345300810089 /* HighScoreManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 737F988E1A0933D400810089 /* HighScoreManager.cpp */; };
+		737F99321A09345300810089 /* LevelLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 737F988F1A0933D400810089 /* LevelLoader.cpp */; };
+		737F99331A09345300810089 /* Math.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 737F98901A0933D400810089 /* Math.cpp */; };
+		73814A3A1A09603E00167A43 /* libentityx.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 73814A391A09603E00167A43 /* libentityx.a */; };
+		73814A3C1A09605000167A43 /* libyaml-cpp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 73814A3B1A09605000167A43 /* libyaml-cpp.a */; };
+		73814A441A096AA500167A43 /* audio in Resources */ = {isa = PBXBuildFile; fileRef = 73814A401A096AA500167A43 /* audio */; };
+		73814A451A096AA500167A43 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 73814A411A096AA500167A43 /* fonts */; };
+		73814A461A096AA500167A43 /* images in Resources */ = {isa = PBXBuildFile; fileRef = 73814A421A096AA500167A43 /* images */; };
+		73814A471A096AA500167A43 /* levels in Resources */ = {isa = PBXBuildFile; fileRef = 73814A431A096AA500167A43 /* levels */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		73275D5E1A08100000094788 /* Triangulum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Triangulum.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		73275D621A08100000094788 /* Triangulum-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Triangulum-Info.plist"; sourceTree = "<group>"; };
+		73275D631A08100000094788 /* ResourcePath.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ResourcePath.mm; sourceTree = "<group>"; };
+		737F985A1A0933D400810089 /* FirstBossAi.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FirstBossAi.cpp; sourceTree = "<group>"; };
+		737F985B1A0933D400810089 /* ShootAtPlayerAi.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ShootAtPlayerAi.cpp; sourceTree = "<group>"; };
+		737F985C1A0933D400810089 /* AnimationFactory.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AnimationFactory.cpp; sourceTree = "<group>"; };
+		737F985D1A0933D400810089 /* AudioManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AudioManager.cpp; sourceTree = "<group>"; };
+		737F985F1A0933D400810089 /* Ai.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Ai.cpp; sourceTree = "<group>"; };
+		737F98601A0933D400810089 /* Animation.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Animation.cpp; sourceTree = "<group>"; };
+		737F98611A0933D400810089 /* Background.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Background.cpp; sourceTree = "<group>"; };
+		737F98621A0933D400810089 /* Bullet.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Bullet.cpp; sourceTree = "<group>"; };
+		737F98631A0933D400810089 /* DeathSentence.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DeathSentence.cpp; sourceTree = "<group>"; };
+		737F98641A0933D400810089 /* Display.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Display.cpp; sourceTree = "<group>"; };
+		737F98651A0933D400810089 /* Enemy.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Enemy.cpp; sourceTree = "<group>"; };
+		737F98661A0933D400810089 /* Gun.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Gun.cpp; sourceTree = "<group>"; };
+		737F98671A0933D400810089 /* Health.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Health.cpp; sourceTree = "<group>"; };
+		737F98681A0933D400810089 /* Menu.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Menu.cpp; sourceTree = "<group>"; };
+		737F98691A0933D400810089 /* Motion.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Motion.cpp; sourceTree = "<group>"; };
+		737F986A1A0933D400810089 /* Obstacle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Obstacle.cpp; sourceTree = "<group>"; };
+		737F986B1A0933D400810089 /* PlayerControl.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PlayerControl.cpp; sourceTree = "<group>"; };
+		737F986C1A0933D400810089 /* Position.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Position.cpp; sourceTree = "<group>"; };
+		737F986D1A0933D400810089 /* SpaceShip.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SpaceShip.cpp; sourceTree = "<group>"; };
+		737F986E1A0933D400810089 /* Volume.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Volume.cpp; sourceTree = "<group>"; };
+		737F986F1A0933D400810089 /* EntityCreator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = EntityCreator.cpp; sourceTree = "<group>"; };
+		737F98701A0933D400810089 /* Game.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Game.cpp; sourceTree = "<group>"; };
+		737F98711A0933D400810089 /* GameManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GameManager.cpp; sourceTree = "<group>"; };
+		737F98731A0933D400810089 /* FontRepository.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FontRepository.cpp; sourceTree = "<group>"; };
+		737F98741A0933D400810089 /* GameCompMenuView.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GameCompMenuView.cpp; sourceTree = "<group>"; };
+		737F98751A0933D400810089 /* LevelCompMenuView.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LevelCompMenuView.cpp; sourceTree = "<group>"; };
+		737F98761A0933D400810089 /* PauseMenuView.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PauseMenuView.cpp; sourceTree = "<group>"; };
+		737F98771A0933D400810089 /* ScoreView.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ScoreView.cpp; sourceTree = "<group>"; };
+		737F98781A0933D400810089 /* SplashScreen.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SplashScreen.cpp; sourceTree = "<group>"; };
+		737F98791A0933D400810089 /* StartMenuView.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = StartMenuView.cpp; sourceTree = "<group>"; };
+		737F987A1A0933D400810089 /* KeyHandler.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = KeyHandler.cpp; sourceTree = "<group>"; };
+		737F987B1A0933D400810089 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		737F987C1A0933D400810089 /* ScreenSize.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ScreenSize.cpp; sourceTree = "<group>"; };
+		737F987E1A0933D400810089 /* AiControlSystem.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AiControlSystem.cpp; sourceTree = "<group>"; };
+		737F987F1A0933D400810089 /* AnimationSystem.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AnimationSystem.cpp; sourceTree = "<group>"; };
+		737F98801A0933D400810089 /* AudioSystem.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AudioSystem.cpp; sourceTree = "<group>"; };
+		737F98811A0933D400810089 /* BulletLifeTimeSystem.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BulletLifeTimeSystem.cpp; sourceTree = "<group>"; };
+		737F98821A0933D400810089 /* BulletType.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BulletType.cpp; sourceTree = "<group>"; };
+		737F98831A0933D400810089 /* CollisionSystem.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CollisionSystem.cpp; sourceTree = "<group>"; };
+		737F98841A0933D400810089 /* DeathRowSystem.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DeathRowSystem.cpp; sourceTree = "<group>"; };
+		737F98851A0933D400810089 /* GunSystem.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GunSystem.cpp; sourceTree = "<group>"; };
+		737F98861A0933D400810089 /* HudSystem.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = HudSystem.cpp; sourceTree = "<group>"; };
+		737F98871A0933D400810089 /* LevelSystem.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LevelSystem.cpp; sourceTree = "<group>"; };
+		737F98881A0933D400810089 /* MenuSystem.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MenuSystem.cpp; sourceTree = "<group>"; };
+		737F98891A0933D400810089 /* MovementSystem.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MovementSystem.cpp; sourceTree = "<group>"; };
+		737F988A1A0933D400810089 /* PlayerControlSystem.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PlayerControlSystem.cpp; sourceTree = "<group>"; };
+		737F988B1A0933D400810089 /* RenderSystem.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RenderSystem.cpp; sourceTree = "<group>"; };
+		737F988D1A0933D400810089 /* CollisionBox.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CollisionBox.cpp; sourceTree = "<group>"; };
+		737F988E1A0933D400810089 /* HighScoreManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = HighScoreManager.cpp; sourceTree = "<group>"; };
+		737F988F1A0933D400810089 /* LevelLoader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LevelLoader.cpp; sourceTree = "<group>"; };
+		737F98901A0933D400810089 /* Math.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Math.cpp; sourceTree = "<group>"; };
+		737F98931A09341300810089 /* FirstBossAi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstBossAi.h; sourceTree = "<group>"; };
+		737F98941A09341300810089 /* IAi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAi.h; sourceTree = "<group>"; };
+		737F98951A09341300810089 /* ShootAtPlayerAi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShootAtPlayerAi.h; sourceTree = "<group>"; };
+		737F98961A09341300810089 /* AnimationFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationFactory.h; sourceTree = "<group>"; };
+		737F98971A09341300810089 /* AudioManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioManager.h; sourceTree = "<group>"; };
+		737F98991A09341300810089 /* AbstractMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractMenu.h; sourceTree = "<group>"; };
+		737F989A1A09341300810089 /* Ai.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ai.h; sourceTree = "<group>"; };
+		737F989B1A09341300810089 /* Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Animation.h; sourceTree = "<group>"; };
+		737F989C1A09341300810089 /* Background.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Background.h; sourceTree = "<group>"; };
+		737F989D1A09341300810089 /* Bullet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bullet.h; sourceTree = "<group>"; };
+		737F989E1A09341300810089 /* DeathSentence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeathSentence.h; sourceTree = "<group>"; };
+		737F989F1A09341300810089 /* Display.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Display.h; sourceTree = "<group>"; };
+		737F98A01A09341300810089 /* Enemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Enemy.h; sourceTree = "<group>"; };
+		737F98A11A09341300810089 /* Gun.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gun.h; sourceTree = "<group>"; };
+		737F98A21A09341300810089 /* Health.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Health.h; sourceTree = "<group>"; };
+		737F98A31A09341300810089 /* Menu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Menu.h; sourceTree = "<group>"; };
+		737F98A41A09341300810089 /* Motion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Motion.h; sourceTree = "<group>"; };
+		737F98A51A09341300810089 /* Obstacle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Obstacle.h; sourceTree = "<group>"; };
+		737F98A61A09341300810089 /* PlayerControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerControl.h; sourceTree = "<group>"; };
+		737F98A71A09341300810089 /* Position.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Position.h; sourceTree = "<group>"; };
+		737F98A81A09341300810089 /* SpaceShip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpaceShip.h; sourceTree = "<group>"; };
+		737F98A91A09341300810089 /* Volume.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Volume.h; sourceTree = "<group>"; };
+		737F98AA1A09341300810089 /* EntityCreator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntityCreator.h; sourceTree = "<group>"; };
+		737F98AB1A09341300810089 /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
+		737F98AC1A09341300810089 /* GameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameManager.h; sourceTree = "<group>"; };
+		737F98AE1A09341300810089 /* FontRepository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontRepository.h; sourceTree = "<group>"; };
+		737F98AF1A09341300810089 /* GameCompMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameCompMenuView.h; sourceTree = "<group>"; };
+		737F98B01A09341300810089 /* LevelCompMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelCompMenuView.h; sourceTree = "<group>"; };
+		737F98B11A09341300810089 /* PauseMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PauseMenuView.h; sourceTree = "<group>"; };
+		737F98B21A09341300810089 /* ScoreView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreView.h; sourceTree = "<group>"; };
+		737F98B31A09341300810089 /* SplashScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashScreen.h; sourceTree = "<group>"; };
+		737F98B41A09341300810089 /* StartMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartMenuView.h; sourceTree = "<group>"; };
+		737F98B51A09341300810089 /* ICreatable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICreatable.h; sourceTree = "<group>"; };
+		737F98B61A09341300810089 /* KeyHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyHandler.h; sourceTree = "<group>"; };
+		737F98B71A09341300810089 /* ResourcePath.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ResourcePath.hpp; sourceTree = "<group>"; };
+		737F98B81A09341300810089 /* ScreenSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScreenSize.h; sourceTree = "<group>"; };
+		737F98B91A09341300810089 /* SoundId.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundId.h; sourceTree = "<group>"; };
+		737F98BB1A09341300810089 /* AiControlSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AiControlSystem.h; sourceTree = "<group>"; };
+		737F98BC1A09341300810089 /* AnimationSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationSystem.h; sourceTree = "<group>"; };
+		737F98BD1A09341300810089 /* AudioSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioSystem.h; sourceTree = "<group>"; };
+		737F98BE1A09341300810089 /* BulletLifeTimeSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BulletLifeTimeSystem.h; sourceTree = "<group>"; };
+		737F98BF1A09341300810089 /* BulletType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BulletType.h; sourceTree = "<group>"; };
+		737F98C01A09341300810089 /* CollisionSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollisionSystem.h; sourceTree = "<group>"; };
+		737F98C11A09341300810089 /* DeathRowSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeathRowSystem.h; sourceTree = "<group>"; };
+		737F98C21A09341300810089 /* Events.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Events.h; sourceTree = "<group>"; };
+		737F98C31A09341300810089 /* GunSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GunSystem.h; sourceTree = "<group>"; };
+		737F98C41A09341300810089 /* HudSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HudSystem.h; sourceTree = "<group>"; };
+		737F98C51A09341300810089 /* LevelSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelSystem.h; sourceTree = "<group>"; };
+		737F98C61A09341300810089 /* MenuSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuSystem.h; sourceTree = "<group>"; };
+		737F98C71A09341300810089 /* MovementSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovementSystem.h; sourceTree = "<group>"; };
+		737F98C81A09341300810089 /* PlayerControlSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerControlSystem.h; sourceTree = "<group>"; };
+		737F98C91A09341300810089 /* RenderSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RenderSystem.h; sourceTree = "<group>"; };
+		737F98CB1A09341300810089 /* CollisionBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollisionBox.h; sourceTree = "<group>"; };
+		737F98CC1A09341300810089 /* HighScoreManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HighScoreManager.h; sourceTree = "<group>"; };
+		737F98CD1A09341300810089 /* LevelLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelLoader.h; sourceTree = "<group>"; };
+		737F98CE1A09341300810089 /* TMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMath.h; sourceTree = "<group>"; };
+		73814A391A09603E00167A43 /* libentityx.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libentityx.a; path = ../../../../../../usr/local/lib/libentityx.a; sourceTree = "<group>"; };
+		73814A3B1A09605000167A43 /* libyaml-cpp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libyaml-cpp.a"; path = "../../../../../../usr/local/lib/libyaml-cpp.a"; sourceTree = "<group>"; };
+		73814A401A096AA500167A43 /* audio */ = {isa = PBXFileReference; lastKnownFileType = folder; name = audio; path = ../resources/audio; sourceTree = "<group>"; };
+		73814A411A096AA500167A43 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = fonts; path = ../resources/fonts; sourceTree = "<group>"; };
+		73814A421A096AA500167A43 /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; name = images; path = ../resources/images; sourceTree = "<group>"; };
+		73814A431A096AA500167A43 /* levels */ = {isa = PBXFileReference; lastKnownFileType = folder; name = levels; path = ../resources/levels; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		73275D5A1A08100000094788 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				73814A3C1A09605000167A43 /* libyaml-cpp.a in Frameworks */,
+				73814A3A1A09603E00167A43 /* libentityx.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		73275D541A08100000094788 = {
+			isa = PBXGroup;
+			children = (
+				73814A401A096AA500167A43 /* audio */,
+				73814A411A096AA500167A43 /* fonts */,
+				73814A421A096AA500167A43 /* images */,
+				73814A431A096AA500167A43 /* levels */,
+				73814A3B1A09605000167A43 /* libyaml-cpp.a */,
+				73814A391A09603E00167A43 /* libentityx.a */,
+				737F98911A09341300810089 /* include */,
+				737F98581A0933D400810089 /* src */,
+				73275D621A08100000094788 /* Triangulum-Info.plist */,
+				73275D631A08100000094788 /* ResourcePath.mm */,
+				73275D5F1A08100000094788 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		73275D5F1A08100000094788 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				73275D5E1A08100000094788 /* Triangulum.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		737F98581A0933D400810089 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				737F98591A0933D400810089 /* ai */,
+				737F985C1A0933D400810089 /* AnimationFactory.cpp */,
+				737F985D1A0933D400810089 /* AudioManager.cpp */,
+				737F985E1A0933D400810089 /* components */,
+				737F986F1A0933D400810089 /* EntityCreator.cpp */,
+				737F98701A0933D400810089 /* Game.cpp */,
+				737F98711A0933D400810089 /* GameManager.cpp */,
+				737F98721A0933D400810089 /* graphics */,
+				737F987A1A0933D400810089 /* KeyHandler.cpp */,
+				737F987B1A0933D400810089 /* main.cpp */,
+				737F987C1A0933D400810089 /* ScreenSize.cpp */,
+				737F987D1A0933D400810089 /* systems */,
+				737F988C1A0933D400810089 /* utils */,
+			);
+			name = src;
+			path = ../src;
+			sourceTree = "<group>";
+		};
+		737F98591A0933D400810089 /* ai */ = {
+			isa = PBXGroup;
+			children = (
+				737F985A1A0933D400810089 /* FirstBossAi.cpp */,
+				737F985B1A0933D400810089 /* ShootAtPlayerAi.cpp */,
+			);
+			path = ai;
+			sourceTree = "<group>";
+		};
+		737F985E1A0933D400810089 /* components */ = {
+			isa = PBXGroup;
+			children = (
+				737F985F1A0933D400810089 /* Ai.cpp */,
+				737F98601A0933D400810089 /* Animation.cpp */,
+				737F98611A0933D400810089 /* Background.cpp */,
+				737F98621A0933D400810089 /* Bullet.cpp */,
+				737F98631A0933D400810089 /* DeathSentence.cpp */,
+				737F98641A0933D400810089 /* Display.cpp */,
+				737F98651A0933D400810089 /* Enemy.cpp */,
+				737F98661A0933D400810089 /* Gun.cpp */,
+				737F98671A0933D400810089 /* Health.cpp */,
+				737F98681A0933D400810089 /* Menu.cpp */,
+				737F98691A0933D400810089 /* Motion.cpp */,
+				737F986A1A0933D400810089 /* Obstacle.cpp */,
+				737F986B1A0933D400810089 /* PlayerControl.cpp */,
+				737F986C1A0933D400810089 /* Position.cpp */,
+				737F986D1A0933D400810089 /* SpaceShip.cpp */,
+				737F986E1A0933D400810089 /* Volume.cpp */,
+			);
+			path = components;
+			sourceTree = "<group>";
+		};
+		737F98721A0933D400810089 /* graphics */ = {
+			isa = PBXGroup;
+			children = (
+				737F98731A0933D400810089 /* FontRepository.cpp */,
+				737F98741A0933D400810089 /* GameCompMenuView.cpp */,
+				737F98751A0933D400810089 /* LevelCompMenuView.cpp */,
+				737F98761A0933D400810089 /* PauseMenuView.cpp */,
+				737F98771A0933D400810089 /* ScoreView.cpp */,
+				737F98781A0933D400810089 /* SplashScreen.cpp */,
+				737F98791A0933D400810089 /* StartMenuView.cpp */,
+			);
+			path = graphics;
+			sourceTree = "<group>";
+		};
+		737F987D1A0933D400810089 /* systems */ = {
+			isa = PBXGroup;
+			children = (
+				737F987E1A0933D400810089 /* AiControlSystem.cpp */,
+				737F987F1A0933D400810089 /* AnimationSystem.cpp */,
+				737F98801A0933D400810089 /* AudioSystem.cpp */,
+				737F98811A0933D400810089 /* BulletLifeTimeSystem.cpp */,
+				737F98821A0933D400810089 /* BulletType.cpp */,
+				737F98831A0933D400810089 /* CollisionSystem.cpp */,
+				737F98841A0933D400810089 /* DeathRowSystem.cpp */,
+				737F98851A0933D400810089 /* GunSystem.cpp */,
+				737F98861A0933D400810089 /* HudSystem.cpp */,
+				737F98871A0933D400810089 /* LevelSystem.cpp */,
+				737F98881A0933D400810089 /* MenuSystem.cpp */,
+				737F98891A0933D400810089 /* MovementSystem.cpp */,
+				737F988A1A0933D400810089 /* PlayerControlSystem.cpp */,
+				737F988B1A0933D400810089 /* RenderSystem.cpp */,
+			);
+			path = systems;
+			sourceTree = "<group>";
+		};
+		737F988C1A0933D400810089 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				737F988D1A0933D400810089 /* CollisionBox.cpp */,
+				737F988E1A0933D400810089 /* HighScoreManager.cpp */,
+				737F988F1A0933D400810089 /* LevelLoader.cpp */,
+				737F98901A0933D400810089 /* Math.cpp */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
+		737F98911A09341300810089 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				737F98921A09341300810089 /* ai */,
+				737F98961A09341300810089 /* AnimationFactory.h */,
+				737F98971A09341300810089 /* AudioManager.h */,
+				737F98981A09341300810089 /* components */,
+				737F98AA1A09341300810089 /* EntityCreator.h */,
+				737F98AB1A09341300810089 /* Game.h */,
+				737F98AC1A09341300810089 /* GameManager.h */,
+				737F98AD1A09341300810089 /* graphics */,
+				737F98B51A09341300810089 /* ICreatable.h */,
+				737F98B61A09341300810089 /* KeyHandler.h */,
+				737F98B71A09341300810089 /* ResourcePath.hpp */,
+				737F98B81A09341300810089 /* ScreenSize.h */,
+				737F98B91A09341300810089 /* SoundId.h */,
+				737F98BA1A09341300810089 /* systems */,
+				737F98CA1A09341300810089 /* utils */,
+			);
+			name = include;
+			path = ../include;
+			sourceTree = "<group>";
+		};
+		737F98921A09341300810089 /* ai */ = {
+			isa = PBXGroup;
+			children = (
+				737F98931A09341300810089 /* FirstBossAi.h */,
+				737F98941A09341300810089 /* IAi.h */,
+				737F98951A09341300810089 /* ShootAtPlayerAi.h */,
+			);
+			path = ai;
+			sourceTree = "<group>";
+		};
+		737F98981A09341300810089 /* components */ = {
+			isa = PBXGroup;
+			children = (
+				737F98991A09341300810089 /* AbstractMenu.h */,
+				737F989A1A09341300810089 /* Ai.h */,
+				737F989B1A09341300810089 /* Animation.h */,
+				737F989C1A09341300810089 /* Background.h */,
+				737F989D1A09341300810089 /* Bullet.h */,
+				737F989E1A09341300810089 /* DeathSentence.h */,
+				737F989F1A09341300810089 /* Display.h */,
+				737F98A01A09341300810089 /* Enemy.h */,
+				737F98A11A09341300810089 /* Gun.h */,
+				737F98A21A09341300810089 /* Health.h */,
+				737F98A31A09341300810089 /* Menu.h */,
+				737F98A41A09341300810089 /* Motion.h */,
+				737F98A51A09341300810089 /* Obstacle.h */,
+				737F98A61A09341300810089 /* PlayerControl.h */,
+				737F98A71A09341300810089 /* Position.h */,
+				737F98A81A09341300810089 /* SpaceShip.h */,
+				737F98A91A09341300810089 /* Volume.h */,
+			);
+			path = components;
+			sourceTree = "<group>";
+		};
+		737F98AD1A09341300810089 /* graphics */ = {
+			isa = PBXGroup;
+			children = (
+				737F98AE1A09341300810089 /* FontRepository.h */,
+				737F98AF1A09341300810089 /* GameCompMenuView.h */,
+				737F98B01A09341300810089 /* LevelCompMenuView.h */,
+				737F98B11A09341300810089 /* PauseMenuView.h */,
+				737F98B21A09341300810089 /* ScoreView.h */,
+				737F98B31A09341300810089 /* SplashScreen.h */,
+				737F98B41A09341300810089 /* StartMenuView.h */,
+			);
+			path = graphics;
+			sourceTree = "<group>";
+		};
+		737F98BA1A09341300810089 /* systems */ = {
+			isa = PBXGroup;
+			children = (
+				737F98BB1A09341300810089 /* AiControlSystem.h */,
+				737F98BC1A09341300810089 /* AnimationSystem.h */,
+				737F98BD1A09341300810089 /* AudioSystem.h */,
+				737F98BE1A09341300810089 /* BulletLifeTimeSystem.h */,
+				737F98BF1A09341300810089 /* BulletType.h */,
+				737F98C01A09341300810089 /* CollisionSystem.h */,
+				737F98C11A09341300810089 /* DeathRowSystem.h */,
+				737F98C21A09341300810089 /* Events.h */,
+				737F98C31A09341300810089 /* GunSystem.h */,
+				737F98C41A09341300810089 /* HudSystem.h */,
+				737F98C51A09341300810089 /* LevelSystem.h */,
+				737F98C61A09341300810089 /* MenuSystem.h */,
+				737F98C71A09341300810089 /* MovementSystem.h */,
+				737F98C81A09341300810089 /* PlayerControlSystem.h */,
+				737F98C91A09341300810089 /* RenderSystem.h */,
+			);
+			path = systems;
+			sourceTree = "<group>";
+		};
+		737F98CA1A09341300810089 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				737F98CB1A09341300810089 /* CollisionBox.h */,
+				737F98CC1A09341300810089 /* HighScoreManager.h */,
+				737F98CD1A09341300810089 /* LevelLoader.h */,
+				737F98CE1A09341300810089 /* TMath.h */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		73275D5D1A08100000094788 /* Triangulum */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 73275D731A08100000094788 /* Build configuration list for PBXNativeTarget "Triangulum" */;
+			buildPhases = (
+				73275D591A08100000094788 /* Sources */,
+				73275D5A1A08100000094788 /* Frameworks */,
+				73275D5B1A08100000094788 /* Resources */,
+				73275D5C1A08100000094788 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Triangulum;
+			productName = Triangulum;
+			productReference = 73275D5E1A08100000094788 /* Triangulum.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		73275D551A08100000094788 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Trans-Neptunian Studios";
+				TargetAttributes = {
+					73275D5D1A08100000094788 = {
+						CreatedOnToolsVersion = 6.1;
+					};
+				};
+			};
+			buildConfigurationList = 73275D581A08100000094788 /* Build configuration list for PBXProject "Triangulum" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 73275D541A08100000094788;
+			productRefGroup = 73275D5F1A08100000094788 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				73275D5D1A08100000094788 /* Triangulum */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		73275D5B1A08100000094788 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				73814A461A096AA500167A43 /* images in Resources */,
+				73814A471A096AA500167A43 /* levels in Resources */,
+				73814A441A096AA500167A43 /* audio in Resources */,
+				73814A451A096AA500167A43 /* fonts in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		73275D5C1A08100000094788 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# This shell script simply copies required sfml dylibs/frameworks into the application bundle frameworks folder.\n# If you're using static libraries (which is not recommended) you should remove this script from your project.\n\n# Are we building a project that uses framework or dylibs ?\ncase \"$SFML_BINARY_TYPE\" in\n    DYLIBS)\n        frameworks=\"false\"\n        ;;\n    *)\n        frameworks=\"true\"\n        ;;\nesac\n\n# Echoes to stderr\nerror () # $* message to display\n{\n    echo $* 1>&2\n    exit 2\n}\n\nassert () # $1 is a boolean, $2...N is an error message\n{\n    if [ $# -lt 2 ]\n    then\n        error \"Internal error in assert : not enough args\"\n    fi\n\n    if [ $1 -ne 0 ]\n    then\n        shift\n        error \"$*\"\n    fi\n}\n\nforce_remove () # $1 is a path\n{\n    test $# -eq 1\n    assert $? \"force_remove() requires one parameter\"\n    rm -fr \"$1\"\n    assert $? \"couldn't remove $1\"\n}\n\ncopy () # $1 is a source, $2 is a destination\n{\n    test $# -eq 2\n    assert $? \"copy() requires two parameters\"\n    ditto \"$1\" \"$2\"\n    assert $? \"couldn't copy $1 to $2\"\n}\n\nrequire () # $1 is a SFML module like 'system' or 'audio'\n{\n    dest=\"$BUILT_PRODUCTS_DIR/$PRODUCT_NAME.app/Contents/Frameworks\"\n\n    if [ -z \"$1\" ]\n    then\n        error \"require() requires one parameter!\"\n    else\n        # clean potentially old stuff\n        force_remove \"$dest/libsfml-$1.2.dylib\"\n        force_remove \"$dest/libsfml-$1-d.2.dylib\"\n        force_remove \"$dest/sfml-$1.framework\"\n\n        # copy SFML libraries\n        if [ \"$frameworks\" = \"true\" ]\n        then\n            copy \"/Library/Frameworks/sfml-$1.framework\" \"$dest/sfml-$1.framework\"\n        elif [ \"$SFML_LINK_DYLIBS_SUFFIX\" = \"-d\" ]\n        then\n            copy \"/usr/local/lib/libsfml-$1-d.2.dylib\" \"$dest/libsfml-$1-d.2.dylib\"\n        else\n            copy \"/usr/local/lib/libsfml-$1.2.dylib\" \"$dest/libsfml-$1.2.dylib\"\n        fi\n\n        if [ \"$1\" = \"audio\" ]\n        then\n            # copy sndfile framework too\n            copy \"/Library/Frameworks/sndfile.framework\" \"$dest/sndfile.framework\"\n        fi\n\n        if [ \"$1\" = \"graphics\" ]\n        then\n            # copy freetype framework too\n            copy \"/Library/Frameworks/freetype.framework\" \"$dest/freetype.framework\"\n        fi\n    fi\n}\n\nif [ -n \"$SFML_SYSTEM\" ]\nthen\n    require \"system\"\nfi\n\nif [ -n \"$SFML_AUDIO\" ]\nthen\n    require \"audio\"\nfi\n\nif [ -n \"$SFML_NETWORK\" ]\nthen\n    require \"network\"\nfi\n\nif [ -n \"$SFML_WINDOW\" ]\nthen\n    require \"window\"\nfi\n\nif [ -n \"$SFML_GRAPHICS\" ]\nthen\n    require \"graphics\"\nfi\n\n                ";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		73275D591A08100000094788 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				737F99011A09345300810089 /* FirstBossAi.cpp in Sources */,
+				737F99021A09345300810089 /* ShootAtPlayerAi.cpp in Sources */,
+				737F99031A09345300810089 /* AnimationFactory.cpp in Sources */,
+				737F99041A09345300810089 /* AudioManager.cpp in Sources */,
+				737F99051A09345300810089 /* Ai.cpp in Sources */,
+				737F99061A09345300810089 /* Animation.cpp in Sources */,
+				737F99071A09345300810089 /* Background.cpp in Sources */,
+				737F99081A09345300810089 /* Bullet.cpp in Sources */,
+				737F99091A09345300810089 /* DeathSentence.cpp in Sources */,
+				737F990A1A09345300810089 /* Display.cpp in Sources */,
+				737F990B1A09345300810089 /* Enemy.cpp in Sources */,
+				737F990C1A09345300810089 /* Gun.cpp in Sources */,
+				737F990D1A09345300810089 /* Health.cpp in Sources */,
+				737F990E1A09345300810089 /* Menu.cpp in Sources */,
+				737F990F1A09345300810089 /* Motion.cpp in Sources */,
+				737F99101A09345300810089 /* Obstacle.cpp in Sources */,
+				737F99111A09345300810089 /* PlayerControl.cpp in Sources */,
+				737F99121A09345300810089 /* Position.cpp in Sources */,
+				737F99131A09345300810089 /* SpaceShip.cpp in Sources */,
+				737F99141A09345300810089 /* Volume.cpp in Sources */,
+				737F99151A09345300810089 /* EntityCreator.cpp in Sources */,
+				737F99161A09345300810089 /* Game.cpp in Sources */,
+				737F99171A09345300810089 /* GameManager.cpp in Sources */,
+				737F99181A09345300810089 /* FontRepository.cpp in Sources */,
+				737F99191A09345300810089 /* GameCompMenuView.cpp in Sources */,
+				737F991A1A09345300810089 /* LevelCompMenuView.cpp in Sources */,
+				737F991B1A09345300810089 /* PauseMenuView.cpp in Sources */,
+				737F991C1A09345300810089 /* ScoreView.cpp in Sources */,
+				737F991D1A09345300810089 /* SplashScreen.cpp in Sources */,
+				737F991E1A09345300810089 /* StartMenuView.cpp in Sources */,
+				737F991F1A09345300810089 /* KeyHandler.cpp in Sources */,
+				737F99201A09345300810089 /* main.cpp in Sources */,
+				737F99211A09345300810089 /* ScreenSize.cpp in Sources */,
+				737F99221A09345300810089 /* AiControlSystem.cpp in Sources */,
+				737F99231A09345300810089 /* AnimationSystem.cpp in Sources */,
+				737F99241A09345300810089 /* AudioSystem.cpp in Sources */,
+				737F99251A09345300810089 /* BulletLifeTimeSystem.cpp in Sources */,
+				737F99261A09345300810089 /* BulletType.cpp in Sources */,
+				737F99271A09345300810089 /* CollisionSystem.cpp in Sources */,
+				737F99281A09345300810089 /* DeathRowSystem.cpp in Sources */,
+				737F99291A09345300810089 /* GunSystem.cpp in Sources */,
+				737F992A1A09345300810089 /* HudSystem.cpp in Sources */,
+				737F992B1A09345300810089 /* LevelSystem.cpp in Sources */,
+				737F992C1A09345300810089 /* MenuSystem.cpp in Sources */,
+				737F992D1A09345300810089 /* MovementSystem.cpp in Sources */,
+				737F992E1A09345300810089 /* PlayerControlSystem.cpp in Sources */,
+				737F992F1A09345300810089 /* RenderSystem.cpp in Sources */,
+				737F99301A09345300810089 /* CollisionBox.cpp in Sources */,
+				737F99311A09345300810089 /* HighScoreManager.cpp in Sources */,
+				737F99321A09345300810089 /* LevelLoader.cpp in Sources */,
+				737F99331A09345300810089 /* Math.cpp in Sources */,
+				73275D641A08100000094788 /* ResourcePath.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		73275D711A08100000094788 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				FRAMEWORK_SEARCH_PATHS = (
+					/Library/Frameworks/,
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include/,
+					"$(inherited)",
+					../include,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					/usr/local/lib/,
+					"$(inherited)",
+				);
+				MACOSX_DEPLOYMENT_TARGET = "";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"$(SFML_SYSTEM)",
+					"$(SFML_WINDOW)",
+					"$(SFML_GRAPHICS)",
+					"$(SFML_AUDIO)",
+					"$(SFML_NETWORK)",
+				);
+				SFML_AUDIO = "$(SFML_LINK_PREFIX) sfml-audio$(SFML_LINK_SUFFIX)";
+				SFML_BINARY_TYPE = FRAMEWORKS;
+				SFML_GRAPHICS = "$(SFML_LINK_PREFIX) sfml-graphics$(SFML_LINK_SUFFIX)";
+				SFML_LINK_DYLIBS_PREFIX = "-l";
+				SFML_LINK_DYLIBS_SUFFIX = "";
+				SFML_LINK_FRAMEWORKS_PREFIX = "-framework";
+				SFML_LINK_FRAMEWORKS_SUFFIX = "";
+				SFML_LINK_PREFIX = "$(SFML_LINK_$(SFML_BINARY_TYPE)_PREFIX)";
+				SFML_LINK_SUFFIX = "$(SFML_LINK_$(SFML_BINARY_TYPE)_SUFFIX)";
+				SFML_NETWORK = "$(SFML_LINK_PREFIX) sfml-network$(SFML_LINK_SUFFIX)";
+				SFML_SYSTEM = "$(SFML_LINK_PREFIX) sfml-system$(SFML_LINK_SUFFIX)";
+				SFML_WINDOW = "$(SFML_LINK_PREFIX) sfml-window$(SFML_LINK_SUFFIX)";
+				SUPPORTED_PLATFORMS = macosx;
+			};
+			name = Debug;
+		};
+		73275D721A08100000094788 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				FRAMEWORK_SEARCH_PATHS = (
+					/Library/Frameworks/,
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include/,
+					"$(inherited)",
+					../include,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					/usr/local/lib/,
+					"$(inherited)",
+				);
+				MACOSX_DEPLOYMENT_TARGET = "";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"$(SFML_SYSTEM)",
+					"$(SFML_WINDOW)",
+					"$(SFML_GRAPHICS)",
+					"$(SFML_AUDIO)",
+					"$(SFML_NETWORK)",
+				);
+				SFML_AUDIO = "$(SFML_LINK_PREFIX) sfml-audio$(SFML_LINK_SUFFIX)";
+				SFML_BINARY_TYPE = FRAMEWORKS;
+				SFML_GRAPHICS = "$(SFML_LINK_PREFIX) sfml-graphics$(SFML_LINK_SUFFIX)";
+				SFML_LINK_DYLIBS_PREFIX = "-l";
+				SFML_LINK_DYLIBS_SUFFIX = "";
+				SFML_LINK_FRAMEWORKS_PREFIX = "-framework";
+				SFML_LINK_FRAMEWORKS_SUFFIX = "";
+				SFML_LINK_PREFIX = "$(SFML_LINK_$(SFML_BINARY_TYPE)_PREFIX)";
+				SFML_LINK_SUFFIX = "$(SFML_LINK_$(SFML_BINARY_TYPE)_SUFFIX)";
+				SFML_NETWORK = "$(SFML_LINK_PREFIX) sfml-network$(SFML_LINK_SUFFIX)";
+				SFML_SYSTEM = "$(SFML_LINK_PREFIX) sfml-system$(SFML_LINK_SUFFIX)";
+				SFML_WINDOW = "$(SFML_LINK_PREFIX) sfml-window$(SFML_LINK_SUFFIX)";
+				SUPPORTED_PLATFORMS = macosx;
+			};
+			name = Release;
+		};
+		73275D741A08100000094788 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "$(SRCROOT)/Triangulum-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		73275D751A08100000094788 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "$(SRCROOT)/Triangulum-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		73275D581A08100000094788 /* Build configuration list for PBXProject "Triangulum" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				73275D711A08100000094788 /* Debug */,
+				73275D721A08100000094788 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		73275D731A08100000094788 /* Build configuration list for PBXNativeTarget "Triangulum" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				73275D741A08100000094788 /* Debug */,
+				73275D751A08100000094788 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 73275D551A08100000094788 /* Project object */;
+}

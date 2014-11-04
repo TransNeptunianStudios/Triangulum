@@ -4,6 +4,7 @@
 #include "systems/Events.h"
 #include "KeyHandler.h"
 #include "ScreenSize.h"
+#include "ResourcePath.hpp"
 
 using namespace entityx;
 
@@ -17,7 +18,7 @@ StartMenuView::StartMenuView()
 , m_drawText(false)
 , m_isNewGameSelected(true)
 {   
-   m_texture.loadFromFile("../images/triangulum.png");
+   m_texture.loadFromFile(resourcePath() + "images/triangulum.png");
 
    sf::Vector2u size(m_texture.getSize());
    m_logoSprite.setTexture(m_texture);

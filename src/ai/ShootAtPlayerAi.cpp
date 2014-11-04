@@ -2,7 +2,7 @@
 #include "components/Position.h"
 #include "components/Gun.h"
 #include "components/SpaceShip.h"
-#include "utils/Math.h"
+#include "utils/TMath.h"
 
 using namespace entityx;
 

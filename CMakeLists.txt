@@ -18,6 +18,8 @@ add_executable(
    include/ICreatable.h
    include/KeyHandler.h
    src/KeyHandler.cpp
+   include/ResourcePath.hpp
+   src/ResourcePath.cpp
    include/ScreenSize.h
    src/ScreenSize.cpp
    include/SoundId.h
@@ -108,7 +110,7 @@ add_executable(
    src/utils/HighScoreManager.cpp
    include/utils/LevelLoader.h
    src/utils/LevelLoader.cpp
-   include/utils/Math.h
+   include/utils/TMath.h
    src/utils/Math.cpp
 )
 
