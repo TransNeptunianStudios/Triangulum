@@ -54,6 +54,9 @@ void GameManager::receive(const EvStartGame& startGame)
 {
    m_gameState = GS_Playing;
 
+   if(m_currentLevel == 1)
+       m_currentScore = 0;
+
    m_entityManager.reset();
 
    m_eventManager.emit<EvInit>(m_currentLevel, m_currentScore);
