@@ -5,6 +5,7 @@
 #include "KeyHandler.h"
 #include "ScreenSize.h"
 #include "ResourcePath.hpp"
+#include "Release.h"
 
 using namespace entityx;
 
@@ -37,6 +38,13 @@ StartMenuView::StartMenuView()
 
    bounds = m_quitText.getLocalBounds();
    m_quitText.setOrigin(bounds.width/2.0, bounds.height/2.0);
+
+   m_versionText.setFont(FontRepository::getMenuFont());
+   m_versionText.setCharacterSize(15);
+   m_versionText.setString("Version " + VERSION);
+
+   bounds = m_versionText.getLocalBounds();
+   m_versionText.setOrigin(bounds.width+10, bounds.height+15);
 }
 
 void StartMenuView::update(EventManager &events, double dt)
@@ -93,6 +101,10 @@ void StartMenuView::draw(sf::RenderWindow& window)
                                 newGameTextY + 60);
 
       window.draw(m_quitText);
+
+      m_versionText.setPosition(ScreenSize::width(),
+                                ScreenSize::height());
+      window.draw(m_versionText);
    }
 }
 
