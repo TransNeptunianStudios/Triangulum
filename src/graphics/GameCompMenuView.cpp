@@ -14,7 +14,7 @@ GameCompMenuView::GameCompMenuView(const std::string& menuTitle, int score)
 , m_playNameText()
 , m_highScoreTextList()
 , m_scoreView(FontRepository::getMenuFont(), 30)
-, m_state(GCS_FetchingHighScore)
+, m_state(GCS_Init)
 , m_highScoreManager()
 , m_insertedAtIndex(-1)
 {
@@ -38,8 +38,10 @@ GameCompMenuView::GameCompMenuView(const std::string& menuTitle, int score)
 void GameCompMenuView::update(EventManager &events, double dt)
 {
    switch (m_state) {
-   case GCS_FetchingHighScore:
+   case GCS_Init:
       updateText(m_statusText, "Fetching high score...");
+      break;
+   case GCS_FetchingHighScore:
       if (m_highScoreManager.downloadHighScoreList())
       {
          if (m_highScoreManager.isHighScore(m_score))
@@ -71,6 +73,9 @@ void GameCompMenuView::draw(sf::RenderWindow& window)
 {
    switch (m_state)
    {
+   case GCS_Init:
+      m_state = GCS_FetchingHighScore;
+      // Intentional fall through!
    case GCS_FetchingHighScore:
    case GCS_W4ConfirmNoHighScore:
    case GCS_FetchingFailed:
@@ -141,7 +146,13 @@ void GameCompMenuView::onConfirm(EventManager& eventManager)
 {
    switch (m_state) {
    case GCS_W4PlayerNameInput:
-      m_highScoreManager.insertHighScore(m_playNameText.getString(), m_score);
+
+      if (m_playNameText.getString().getSize() == 0)
+      {
+         return;
+      }
+
+      m_insertedAtIndex = m_highScoreManager.insertHighScore(m_playNameText.getString(), m_score);
       m_highScoreManager.uploadHighScore();
       updateText(m_titleText, "High score");
       updateHighScoreTextList();

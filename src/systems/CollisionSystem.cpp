@@ -36,6 +36,7 @@ void CollisionSystem::update(EntityManager& entities,
 
       if (spaceShipHealth->isInvulnerable())
       {
+        // Beware! Must be done only once in this update!
          spaceShipHealth->invulnerableTime -= dt;
       }
       else
@@ -48,7 +49,7 @@ void CollisionSystem::update(EntityManager& entities,
                                enemyVol.get()))
             {
                spaceShipDamaged(spaceShipEntity, events);
-               return;
+               break;
             }
          }
       }
@@ -69,29 +70,34 @@ void CollisionSystem::update(EntityManager& entities,
             break;
          }
 
-         if (spaceShipHealth->isInvulnerable())
-         {
-            spaceShipHealth->invulnerableTime -= dt;
-         }
-         else
-         {
-            if (checkCollision(bulletPos.get(),
-                               bulletVol.get(),
-                               spaceShipPos.get(),
-                               spaceShipVol.get()))
-            {
-                bulletEntity.destroy();
+         if (checkCollision(bulletPos.get(),
+                            bulletVol.get(),
+                            spaceShipPos.get(),
+                            spaceShipVol.get()))
+          {
+             if (!spaceShipHealth->isInvulnerable())
+             {
                 spaceShipDamaged(spaceShipEntity, events);
-                return;
-            }
-         }
-      }      
+             }
+              
+             bulletEntity.destroy();
+              
+             break;
+          }
+      }
+
+      if (!bulletEntity.valid())
+      {
+        break;
+      }
+
       // Bullets hitting Enemies
       for (Entity enemyEntity : entities.entities_with_components(enemy, enemyPos, enemyVol, health))
       {
-         if ( enemyEntity.has_component<DeathSentence>() || bullet->ownerId == enemyEntity.id())
+         if (   bullet->ownerId == enemyEntity.id()
+             || enemyEntity.has_component<DeathSentence>())
          {
-            break;
+            continue;
          }
 
          if (checkCollision(bulletPos.get(),
@@ -99,23 +105,20 @@ void CollisionSystem::update(EntityManager& entities,
                             enemyPos.get(),
                             enemyVol.get()))
          {
-             if (health->isInvulnerable())
-             {
-                health->invulnerableTime -= dt;
-             }
-             else
-             {
-                if( health->health == 0 && entities.get(bullet->ownerId).has_component<SpaceShip>())
-                {
-                    spaceShip->score += enemy->value;
-                    events.emit<EvCurrentScore>(spaceShip->score);
-                }
+            if (!health->isInvulnerable())
+            {
+               enemyDamaged(enemyEntity, events);
 
-                enemyDamaged(enemyEntity, events);
-                bulletEntity.destroy();
-             }
+               if(health->health == 0 && entities.get(bullet->ownerId).has_component<SpaceShip>())
+               {
+                 spaceShip->score += enemy->value;
+                 events.emit<EvCurrentScore>(spaceShip->score);
+               }
+            }
 
-             return;
+            bulletEntity.destroy();
+
+            break;
          }
       }
    }
@@ -176,6 +179,9 @@ void CollisionSystem::enemyDamaged(Entity& enemyEntity,
    Health::Handle health = enemyEntity.component<Health>();
    Enemy::Handle enemy = enemyEntity.component<Enemy>();
 
+   health->health -= 1;
+   events.emit<EvPlaySound>(getHitSound(enemy->type));
+
    if (health->health == 0)
    {
       enemyEntity.component<Volume>().remove();
@@ -199,11 +205,6 @@ void CollisionSystem::enemyDamaged(Entity& enemyEntity,
       {
           enemyEntity.assign<DeathSentence>(700.0);
       }
-   }
-   else
-   {
-      health->health -= 1;
-      events.emit<EvPlaySound>(getHitSound(enemy->type));
    }
 }
 

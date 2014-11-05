@@ -163,7 +163,7 @@ void AsteroidCreator::create(Entity entity)
 
    volume.m_boxes.push_back(CollisionBox(32, 32));
    entity.assign<Enemy>(ET_Asteroid);
-   entity.assign<Health>(5);
+   entity.assign<Health>(10);
    entity.assign<Motion>(m_velocity, m_rotation);
    entity.assign<Position>(m_position);
    entity.assign<Volume>(volume);

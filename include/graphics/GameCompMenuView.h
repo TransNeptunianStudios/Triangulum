@@ -31,6 +31,7 @@ private:
 
    enum GameCompState
    {
+      GCS_Init,
       GCS_FetchingHighScore,
       GCS_FetchingFailed,
       GCS_W4ConfirmNoHighScore,

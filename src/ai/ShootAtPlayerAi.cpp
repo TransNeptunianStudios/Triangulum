@@ -41,7 +41,7 @@ void ShootAtPlayerAi::update(Entity::Id myEntityId,
    if (gun->isMainFirePressed)
    {
       gun->isMainFirePressed = false;
-      m_shootTimer = 2000.0;
+      m_shootTimer = 1500.0;
    }
    else if (m_shootTimer <= 0.0)
    {

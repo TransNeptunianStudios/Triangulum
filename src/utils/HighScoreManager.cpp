@@ -104,6 +104,11 @@ bool HighScoreManager::uploadHighScore()
 
 bool HighScoreManager::isHighScore(int score) const
 {
+   if (score == 0)
+   {
+      return false;
+   }
+
    if (m_highScoreList.size() < 10)
    {
       return true;
@@ -145,11 +150,12 @@ int HighScoreManager::insertHighScore(const std::string& playerName, int score)
       }
    }
 
-   if (m_highScoreList.size() < 10)
+   if (insertedAtIndex == -1 && m_highScoreList.size() < 10)
    {
       m_highScoreList.push_back(h);
-      insertedAtIndex = m_highScoreList.size();
+      insertedAtIndex = m_highScoreList.size()-1;
    }
+
 
    if (insertedAtIndex != -1)
    {
