@@ -75,7 +75,7 @@ Animator AnimationFactory::asteroidBossDeathAnimation()
     return animation;
 }
 
-Animator AnimationFactory::enemyOneIdleAnimation()
+Animator AnimationFactory::scoutIdleAnimation()
 {
     Animator animation;
     animation.coordList.push_back(sf::IntRect(32*0, 32*6, 32, 32));
@@ -85,7 +85,7 @@ Animator AnimationFactory::enemyOneIdleAnimation()
     return animation;
 }
 
-Animator AnimationFactory::enemyOneDeathAnimation()
+Animator AnimationFactory::scoutDeathAnimation()
 {
     Animator animation;
     animation.coordList.push_back(sf::IntRect(32*2, 32*6, 32, 32));
@@ -94,5 +94,15 @@ Animator AnimationFactory::enemyOneDeathAnimation()
     animation.coordList.push_back(sf::IntRect(32*5, 32*6, 32, 32));
     animation.style = AS_RUN_ONCE;
     animation.timePerFrame = 200.0/2.0;
+    return animation;
+}
+
+Animator AnimationFactory::mineIdleAnimation()
+{
+    Animator animation;
+    animation.coordList.push_back(sf::IntRect(32*0, 32*7, 32, 32));
+    animation.coordList.push_back(sf::IntRect(32*1, 32*7, 32, 32));
+    animation.style = AS_LOOP;
+    animation.timePerFrame = 750.0/2.0;
     return animation;
 }

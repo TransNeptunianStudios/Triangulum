@@ -234,9 +234,9 @@ void ScoutCreator::create(Entity entity)
     AnimationContainer ac;
 
     ac.addAnimation(AnimationId(AT_Movement, IdleMovementAnimation),
-                    AnimationFactory::enemyOneIdleAnimation());
+                    AnimationFactory::scoutIdleAnimation());
     ac.addAnimation(AnimationId(AT_Death, DestroyedDeathAnimation),
-                    AnimationFactory::enemyOneDeathAnimation());
+                    AnimationFactory::scoutDeathAnimation());
 
     volume.m_boxes.push_back(CollisionBox(32, 32));
 
@@ -268,9 +268,9 @@ void MineCreator::create(Entity entity)
     auto volume = Volume();
     AnimationContainer ac;
 
-    /*ac.addAnimation(AnimationId(AT_Movement, IdleMovementAnimation),
-                    AnimationFactory::enemyOneIdleAnimation());
-    ac.addAnimation(AnimationId(AT_Death, DestroyedDeathAnimation),
+    ac.addAnimation(AnimationId(AT_Movement, IdleMovementAnimation),
+                    AnimationFactory::mineIdleAnimation());
+    /*ac.addAnimation(AnimationId(AT_Death, DestroyedDeathAnimation),
                     AnimationFactory::enemyOneDeathAnimation());
     */
 

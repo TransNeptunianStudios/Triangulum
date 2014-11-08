@@ -21,9 +21,11 @@ public:
 
    static Animator asteroidBossDeathAnimation();
 
-   static Animator enemyOneIdleAnimation();
+   static Animator scoutIdleAnimation();
 
-   static Animator enemyOneDeathAnimation();
+   static Animator scoutDeathAnimation();
+
+   static Animator mineIdleAnimation();
 };
 
 #endif // ANIMATIONFACTORY_H
