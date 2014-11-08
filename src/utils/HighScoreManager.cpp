@@ -81,7 +81,7 @@ bool HighScoreManager::uploadHighScore()
    if (IS_IN_BETA)
    {
       // We don't want to upload score while in beta!
-      return;
+      return true;
    }
    
    if (m_playerName == "" || m_score == -1)
