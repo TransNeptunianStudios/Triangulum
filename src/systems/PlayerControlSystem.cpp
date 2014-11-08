@@ -32,11 +32,13 @@ void PlayerControlSystem::update(EntityManager &entities,
          break;
       }
 
-      if (m_keyHandler.isPressed(playerControl->right))
+      if (m_keyHandler.isPressed(playerControl->right)
+              || m_keyHandler.isPressed(playerControl->altRight))
       {
          motion->velocity.x = vel;
       }
-      else if (m_keyHandler.isPressed(playerControl->left))
+      else if (m_keyHandler.isPressed(playerControl->left)
+               || m_keyHandler.isPressed(playerControl->altLeft))
       {
          motion->velocity.x = -vel;
       }
@@ -45,11 +47,13 @@ void PlayerControlSystem::update(EntityManager &entities,
          motion->velocity.x = 0.0f;
       }
 
-      if (m_keyHandler.isPressed(playerControl->up))
+      if (m_keyHandler.isPressed(playerControl->up)
+              || m_keyHandler.isPressed(playerControl->altUp))
       {
          motion->velocity.y = -vel;
       }
-      else if (m_keyHandler.isPressed(playerControl->down))
+      else if (m_keyHandler.isPressed(playerControl->down)
+               || m_keyHandler.isPressed(playerControl->altDown))
       {
          motion->velocity.y = vel;
       }

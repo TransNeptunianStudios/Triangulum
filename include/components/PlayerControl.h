@@ -8,13 +8,13 @@ struct PlayerControl : public entityx::Component<PlayerControl>
 {
    PlayerControl();
 
-   sf::Keyboard::Key left;
+   sf::Keyboard::Key left, altLeft;
 
-   sf::Keyboard::Key right;
+   sf::Keyboard::Key right, altRight;
 
-   sf::Keyboard::Key up;
+   sf::Keyboard::Key up, altUp;
 
-   sf::Keyboard::Key down;
+   sf::Keyboard::Key down, altDown;
 
    sf::Keyboard::Key shoot;
 
