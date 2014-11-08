@@ -8,9 +8,11 @@ pix = im.load()
 # Read from Image
 # Asteroids, 22 (RGB: 155 173 163) light Grey
 # Scout    , 27 (RGB: 172 50 50)   Red
+# Scout    , 17 (RGB: 91 110 255)   Blue
 
 Obstacles = []
-Enemies = []
+Scouts = []
+Mines = []
 
 w, h = im.size #Get the width and hight of the image for iterating over
 for y in range(0, h):
@@ -18,7 +20,9 @@ for y in range(0, h):
 		if pix[x, y] == 22 :
 			Obstacles.append([x / 10.0, 32 * abs(y - h + 1)]);
 		elif pix[x, y] == 27 :
-			Enemies.append([x / 10.0, 32 * abs(y - h + 1)]);
+			Scouts.append([x / 10.0, 32 * abs(y - h + 1)]);
+		elif pix[x, y] == 17 :
+			Mines.append([x / 10.0, 32 * abs(y - h + 1)]);
 
 # write to new newLevel.yaml
 file = open("newLevel.yaml", "w")
@@ -45,9 +49,16 @@ for pos in Obstacles:
 # Add Obstacles header
 file.write("enemies:\n");
 
-for pos in Enemies:
+for pos in Scouts:
 	file.write("   - type: scout\n");	
 	file.write("     ai: shoot_at_player\n");
+	file.write("     level_offset: " + str(round(pos[1], 2)) + "\n");
+ 	file.write("     start_x_pos: " + str(pos[0]) + "\n");
+ 	file.write("     speed: [0.0, 50.0]\n");
+
+for pos in Mines:
+	file.write("   - type: mine\n");	
+	file.write("     ai: shoot_at_player_when_near\n");
 	file.write("     level_offset: " + str(round(pos[1], 2)) + "\n");
  	file.write("     start_x_pos: " + str(pos[0]) + "\n");
  	file.write("     speed: [0.0, 50.0]\n");

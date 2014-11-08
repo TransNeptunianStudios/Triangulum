@@ -164,6 +164,25 @@ private:
    AiId m_aiId;
 };
 
+class MineCreator : public ICreatable
+{
+public:
+
+   MineCreator(const sf::Vector2f& position,
+                   const sf::Vector2f& velocity,
+                   AiId aiId);
+
+   void create(entityx::Entity entity);
+
+private:
+
+   sf::Vector2f m_position;
+
+   sf::Vector2f m_velocity;
+
+   AiId m_aiId;
+};
+
 class FirstBossCreator : public ICreatable
 {
 public:

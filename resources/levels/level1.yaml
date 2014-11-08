@@ -8,502 +8,502 @@ obstacles:
    - type: asteroid
      level_offset: 3424.0
      start_x_pos: 0.0
-     rotation: 6
+     rotation: 23
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 3424.0
      start_x_pos: 0.1
-     rotation: 40
+     rotation: 37
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 3424.0
      start_x_pos: 0.4
-     rotation: 2
+     rotation: 17
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 3424.0
      start_x_pos: 0.5
-     rotation: -43
+     rotation: 11
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 3424.0
      start_x_pos: 0.8
-     rotation: -26
+     rotation: 45
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 3424.0
      start_x_pos: 1.0
-     rotation: 42
+     rotation: 36
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 3392.0
      start_x_pos: 0.0
-     rotation: 8
+     rotation: 15
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 3392.0
      start_x_pos: 0.2
+     rotation: -5
+     speed: [0.0, 50.0]
+   - type: asteroid
+     level_offset: 3392.0
+     start_x_pos: 0.3
+     rotation: -41
+     speed: [0.0, 50.0]
+   - type: asteroid
+     level_offset: 3392.0
+     start_x_pos: 0.5
      rotation: -31
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 3392.0
-     start_x_pos: 0.3
-     rotation: 29
-     speed: [0.0, 50.0]
-   - type: asteroid
-     level_offset: 3392.0
-     start_x_pos: 0.5
-     rotation: 28
-     speed: [0.0, 50.0]
-   - type: asteroid
-     level_offset: 3392.0
      start_x_pos: 0.6
-     rotation: -14
+     rotation: -21
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 3392.0
      start_x_pos: 0.7
-     rotation: 2
+     rotation: -9
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 3392.0
      start_x_pos: 0.8
-     rotation: -44
+     rotation: 26
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 3392.0
      start_x_pos: 0.9
-     rotation: -47
+     rotation: 27
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 3360.0
      start_x_pos: 0.0
-     rotation: -28
-     speed: [0.0, 50.0]
-   - type: asteroid
-     level_offset: 3360.0
-     start_x_pos: 0.1
-     rotation: 10
-     speed: [0.0, 50.0]
-   - type: asteroid
-     level_offset: 3360.0
-     start_x_pos: 0.2
-     rotation: 39
-     speed: [0.0, 50.0]
-   - type: asteroid
-     level_offset: 3360.0
-     start_x_pos: 0.4
      rotation: 30
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 3360.0
+     start_x_pos: 0.1
+     rotation: 1
+     speed: [0.0, 50.0]
+   - type: asteroid
+     level_offset: 3360.0
+     start_x_pos: 0.2
+     rotation: -42
+     speed: [0.0, 50.0]
+   - type: asteroid
+     level_offset: 3360.0
+     start_x_pos: 0.4
+     rotation: -33
+     speed: [0.0, 50.0]
+   - type: asteroid
+     level_offset: 3360.0
      start_x_pos: 0.5
-     rotation: 6
+     rotation: -30
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 3360.0
      start_x_pos: 0.7
-     rotation: 47
+     rotation: 27
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 3360.0
      start_x_pos: 0.9
-     rotation: -12
+     rotation: 32
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 3360.0
      start_x_pos: 1.0
-     rotation: -43
-     speed: [0.0, 50.0]
-   - type: asteroid
-     level_offset: 3328.0
-     start_x_pos: 0.1
-     rotation: -14
-     speed: [0.0, 50.0]
-   - type: asteroid
-     level_offset: 3328.0
-     start_x_pos: 0.3
-     rotation: 9
-     speed: [0.0, 50.0]
-   - type: asteroid
-     level_offset: 3328.0
-     start_x_pos: 0.5
      rotation: 6
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 3328.0
+     start_x_pos: 0.1
+     rotation: -32
+     speed: [0.0, 50.0]
+   - type: asteroid
+     level_offset: 3328.0
+     start_x_pos: 0.3
+     rotation: 13
+     speed: [0.0, 50.0]
+   - type: asteroid
+     level_offset: 3328.0
+     start_x_pos: 0.5
+     rotation: -17
+     speed: [0.0, 50.0]
+   - type: asteroid
+     level_offset: 3328.0
      start_x_pos: 0.6
-     rotation: 18
+     rotation: 1
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 3328.0
      start_x_pos: 0.8
-     rotation: 31
+     rotation: 27
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 3328.0
      start_x_pos: 0.9
-     rotation: -29
+     rotation: 13
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 3296.0
      start_x_pos: 1.0
-     rotation: -24
+     rotation: 28
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 3264.0
      start_x_pos: 0.2
-     rotation: -5
+     rotation: -2
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 3264.0
      start_x_pos: 0.5
-     rotation: -42
+     rotation: -15
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 3200.0
      start_x_pos: 0.1
-     rotation: 39
+     rotation: -17
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 3200.0
      start_x_pos: 0.9
-     rotation: 16
+     rotation: 34
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 3104.0
      start_x_pos: 0.6
-     rotation: -25
+     rotation: 29
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 3072.0
      start_x_pos: 0.1
-     rotation: 36
+     rotation: -16
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 3008.0
      start_x_pos: 1.0
-     rotation: 25
+     rotation: 20
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 2944.0
      start_x_pos: 0.5
-     rotation: -16
+     rotation: -7
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 2912.0
      start_x_pos: 0.0
-     rotation: 30
+     rotation: -5
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 2880.0
      start_x_pos: 0.4
-     rotation: -44
+     rotation: 34
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 2848.0
      start_x_pos: 1.0
-     rotation: 23
+     rotation: 21
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 2784.0
      start_x_pos: 0.0
-     rotation: 7
+     rotation: 12
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 2720.0
      start_x_pos: 0.9
-     rotation: 10
+     rotation: 45
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 2656.0
      start_x_pos: 0.5
-     rotation: 32
+     rotation: 34
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 2528.0
      start_x_pos: 0.6
-     rotation: 28
+     rotation: 2
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 2464.0
      start_x_pos: 0.2
-     rotation: -37
+     rotation: -29
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 2176.0
      start_x_pos: 0.1
-     rotation: 3
+     rotation: 41
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 2144.0
      start_x_pos: 0.9
-     rotation: -34
+     rotation: 39
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 1984.0
      start_x_pos: 0.2
-     rotation: -28
+     rotation: -22
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 1984.0
      start_x_pos: 0.8
-     rotation: -49
+     rotation: -35
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 1824.0
      start_x_pos: 0.4
-     rotation: 43
+     rotation: -2
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 1824.0
      start_x_pos: 0.7
-     rotation: 33
+     rotation: 42
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 1792.0
      start_x_pos: 0.0
-     rotation: -38
+     rotation: 7
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 1792.0
      start_x_pos: 0.6
-     rotation: -34
+     rotation: -43
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 1792.0
      start_x_pos: 1.0
-     rotation: -23
+     rotation: -6
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 1760.0
      start_x_pos: 0.3
-     rotation: 16
+     rotation: 50
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 1728.0
      start_x_pos: 0.1
-     rotation: -27
+     rotation: 41
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 1728.0
      start_x_pos: 0.6
-     rotation: 9
+     rotation: 44
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 1728.0
      start_x_pos: 0.8
-     rotation: 47
+     rotation: 34
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 1696.0
      start_x_pos: 0.8
-     rotation: 43
+     rotation: -27
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 1664.0
      start_x_pos: 0.0
-     rotation: -39
+     rotation: -33
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 1664.0
      start_x_pos: 0.4
-     rotation: 32
+     rotation: 3
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 1664.0
      start_x_pos: 0.7
-     rotation: 11
+     rotation: 44
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 1664.0
      start_x_pos: 0.9
-     rotation: -12
+     rotation: -5
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 1632.0
      start_x_pos: 0.2
-     rotation: -49
+     rotation: -20
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 1600.0
      start_x_pos: 0.0
-     rotation: 16
+     rotation: -40
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 1600.0
      start_x_pos: 0.4
-     rotation: -1
+     rotation: -45
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 1600.0
      start_x_pos: 0.6
-     rotation: -34
+     rotation: 12
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 1600.0
      start_x_pos: 1.0
-     rotation: -29
+     rotation: 37
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 1504.0
      start_x_pos: 0.0
-     rotation: -5
+     rotation: -47
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 1440.0
      start_x_pos: 0.9
-     rotation: 11
+     rotation: -48
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 1344.0
      start_x_pos: 0.7
-     rotation: -6
+     rotation: 16
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 1280.0
      start_x_pos: 0.3
-     rotation: 37
+     rotation: 35
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 1120.0
      start_x_pos: 0.4
-     rotation: -28
+     rotation: 21
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 1120.0
      start_x_pos: 0.7
-     rotation: -24
+     rotation: 2
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 1120.0
      start_x_pos: 1.0
-     rotation: -5
+     rotation: -10
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 1088.0
      start_x_pos: 0.0
-     rotation: 22
+     rotation: -22
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 1088.0
      start_x_pos: 0.5
-     rotation: 39
+     rotation: -4
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 1056.0
      start_x_pos: 0.8
-     rotation: 12
-     speed: [0.0, 50.0]
-   - type: asteroid
-     level_offset: 1024.0
-     start_x_pos: 0.2
-     rotation: -17
-     speed: [0.0, 50.0]
-   - type: asteroid
-     level_offset: 1024.0
-     start_x_pos: 0.6
-     rotation: -3
-     speed: [0.0, 50.0]
-   - type: asteroid
-     level_offset: 1024.0
-     start_x_pos: 1.0
-     rotation: -19
-     speed: [0.0, 50.0]
-   - type: asteroid
-     level_offset: 960.0
-     start_x_pos: 0.2
-     rotation: -44
-     speed: [0.0, 50.0]
-   - type: asteroid
-     level_offset: 960.0
-     start_x_pos: 0.8
-     rotation: 11
-     speed: [0.0, 50.0]
-   - type: asteroid
-     level_offset: 832.0
-     start_x_pos: 0.6
-     rotation: -6
-     speed: [0.0, 50.0]
-   - type: asteroid
-     level_offset: 768.0
-     start_x_pos: 0.4
-     rotation: -44
-     speed: [0.0, 50.0]
-   - type: asteroid
-     level_offset: 672.0
-     start_x_pos: 0.6
-     rotation: 46
-     speed: [0.0, 50.0]
-   - type: asteroid
-     level_offset: 608.0
-     start_x_pos: 0.3
-     rotation: 41
-     speed: [0.0, 50.0]
-   - type: asteroid
-     level_offset: 544.0
-     start_x_pos: 1.0
-     rotation: 4
-     speed: [0.0, 50.0]
-   - type: asteroid
-     level_offset: 512.0
-     start_x_pos: 0.0
      rotation: -18
      speed: [0.0, 50.0]
    - type: asteroid
-     level_offset: 416.0
-     start_x_pos: 0.2
-     rotation: 9
-     speed: [0.0, 50.0]
-   - type: asteroid
-     level_offset: 416.0
-     start_x_pos: 0.9
-     rotation: 45
-     speed: [0.0, 50.0]
-   - type: asteroid
-     level_offset: 384.0
-     start_x_pos: 1.0
-     rotation: -19
-     speed: [0.0, 50.0]
-   - type: asteroid
-     level_offset: 288.0
-     start_x_pos: 0.6
-     rotation: -32
-     speed: [0.0, 50.0]
-   - type: asteroid
-     level_offset: 256.0
-     start_x_pos: 0.0
-     rotation: 26
-     speed: [0.0, 50.0]
-   - type: asteroid
-     level_offset: 192.0
+     level_offset: 1024.0
      start_x_pos: 0.2
      rotation: 48
      speed: [0.0, 50.0]
    - type: asteroid
+     level_offset: 1024.0
+     start_x_pos: 0.6
+     rotation: -41
+     speed: [0.0, 50.0]
+   - type: asteroid
+     level_offset: 1024.0
+     start_x_pos: 1.0
+     rotation: 15
+     speed: [0.0, 50.0]
+   - type: asteroid
+     level_offset: 960.0
+     start_x_pos: 0.2
+     rotation: -12
+     speed: [0.0, 50.0]
+   - type: asteroid
+     level_offset: 960.0
+     start_x_pos: 0.8
+     rotation: -16
+     speed: [0.0, 50.0]
+   - type: asteroid
+     level_offset: 832.0
+     start_x_pos: 0.6
+     rotation: 11
+     speed: [0.0, 50.0]
+   - type: asteroid
+     level_offset: 768.0
+     start_x_pos: 0.4
+     rotation: -45
+     speed: [0.0, 50.0]
+   - type: asteroid
+     level_offset: 672.0
+     start_x_pos: 0.6
+     rotation: 3
+     speed: [0.0, 50.0]
+   - type: asteroid
+     level_offset: 608.0
+     start_x_pos: 0.3
+     rotation: 6
+     speed: [0.0, 50.0]
+   - type: asteroid
+     level_offset: 544.0
+     start_x_pos: 1.0
+     rotation: 19
+     speed: [0.0, 50.0]
+   - type: asteroid
+     level_offset: 512.0
+     start_x_pos: 0.0
+     rotation: -39
+     speed: [0.0, 50.0]
+   - type: asteroid
+     level_offset: 416.0
+     start_x_pos: 0.2
+     rotation: 48
+     speed: [0.0, 50.0]
+   - type: asteroid
+     level_offset: 416.0
+     start_x_pos: 0.9
+     rotation: 31
+     speed: [0.0, 50.0]
+   - type: asteroid
+     level_offset: 384.0
+     start_x_pos: 1.0
+     rotation: -42
+     speed: [0.0, 50.0]
+   - type: asteroid
+     level_offset: 288.0
+     start_x_pos: 0.6
+     rotation: 8
+     speed: [0.0, 50.0]
+   - type: asteroid
+     level_offset: 256.0
+     start_x_pos: 0.0
+     rotation: -32
+     speed: [0.0, 50.0]
+   - type: asteroid
+     level_offset: 192.0
+     start_x_pos: 0.2
+     rotation: 35
+     speed: [0.0, 50.0]
+   - type: asteroid
      level_offset: 192.0
      start_x_pos: 0.9
-     rotation: -37
+     rotation: 40
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 128.0
      start_x_pos: 0.4
-     rotation: -21
+     rotation: 50
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 64.0
      start_x_pos: 0.7
-     rotation: 19
+     rotation: -9
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 32.0
      start_x_pos: 0.0
-     rotation: 1
+     rotation: 41
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 0.0
      start_x_pos: 0.3
-     rotation: 7
+     rotation: 41
      speed: [0.0, 50.0]
    - type: asteroid
      level_offset: 0.0
@@ -538,16 +538,6 @@ enemies:
      speed: [0.0, 50.0]
    - type: scout
      ai: shoot_at_player
-     level_offset: 2304.0
-     start_x_pos: 0.3
-     speed: [0.0, 50.0]
-   - type: scout
-     ai: shoot_at_player
-     level_offset: 2144.0
-     start_x_pos: 0.6
-     speed: [0.0, 50.0]
-   - type: scout
-     ai: shoot_at_player
      level_offset: 1504.0
      start_x_pos: 0.2
      speed: [0.0, 50.0]
@@ -576,8 +566,43 @@ enemies:
      level_offset: 384.0
      start_x_pos: 0.3
      speed: [0.0, 50.0]
-   - type: scout
+   - type: mine
      ai: shoot_at_player_when_near
-     level_offset: 0.0
+     level_offset: 2144.0
+     start_x_pos: 0.6
+     speed: [0.0, 50.0]
+   - type: mine
+     ai: shoot_at_player_when_near
+     level_offset: 2080.0
+     start_x_pos: 0.1
+     speed: [0.0, 50.0]
+   - type: mine
+     ai: shoot_at_player_when_near
+     level_offset: 2048.0
+     start_x_pos: 0.9
+     speed: [0.0, 50.0]
+   - type: mine
+     ai: shoot_at_player_when_near
+     level_offset: 2016.0
      start_x_pos: 0.5
+     speed: [0.0, 50.0]
+   - type: mine
+     ai: shoot_at_player_when_near
+     level_offset: 1888.0
+     start_x_pos: 0.9
+     speed: [0.0, 50.0]
+   - type: mine
+     ai: shoot_at_player_when_near
+     level_offset: 1856.0
+     start_x_pos: 0.1
+     speed: [0.0, 50.0]
+   - type: mine
+     ai: shoot_at_player_when_near
+     level_offset: 1024.0
+     start_x_pos: 0.4
+     speed: [0.0, 50.0]
+   - type: mine
+     ai: shoot_at_player_when_near
+     level_offset: 256.0
+     start_x_pos: 0.9
      speed: [0.0, 50.0]

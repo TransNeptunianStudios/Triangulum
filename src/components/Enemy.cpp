@@ -14,6 +14,9 @@ Enemy::Enemy(EnemyType _type)
         value = 5;
         break;
     case ET_Scout:
+        value = 15;
+        break;
+    case ET_Mine:
         value = 10;
         break;
     case ET_Boss:

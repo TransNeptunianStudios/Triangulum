@@ -128,6 +128,16 @@ void LevelSystem::addEnemy(const EnemyData& enemy)
                                             enemy.speed,
                                             aiId))));
    }
+
+   if (enemy.type == "mine")
+   {
+     m_creatables.push_back(
+        std::make_pair(
+           enemy.levelOffset,
+           ICreatableSP(new MineCreator(sf::Vector2f(startXPos, -16.0),
+                                            enemy.speed,
+                                            aiId))));
+   }
 }
 
 void LevelSystem::addBoss(const BossData& boss)

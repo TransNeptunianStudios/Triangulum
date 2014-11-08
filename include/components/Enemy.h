@@ -8,6 +8,7 @@ enum EnemyType
    ET_Unknown,
    ET_Asteroid,
    ET_Scout,
+   ET_Mine,
    ET_Boss,
 };
 
