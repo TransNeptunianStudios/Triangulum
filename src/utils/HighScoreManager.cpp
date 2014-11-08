@@ -3,6 +3,7 @@
 #include "SFML/Network.hpp"
 #include "yaml-cpp/yaml.h"
 #include "utils/HighScoreManager.h"
+#include "Release.h"
 
 struct HighScoreListWrapper
 {
@@ -77,6 +78,12 @@ bool HighScoreManager::downloadHighScoreList()
 
 bool HighScoreManager::uploadHighScore()
 {
+   if (IS_IN_BETA)
+   {
+      // We don't want to upload score while in beta!
+      return;
+   }
+   
    if (m_playerName == "" || m_score == -1)
    {
       return false;
