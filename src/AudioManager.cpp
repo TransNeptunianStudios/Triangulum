@@ -39,6 +39,7 @@ void AudioManager::playSound(SoundId id)
 void AudioManager::playMusic()
 {
     m_music.play();
+    m_music.setLoop(true);
 }
 
 void AudioManager::pauseMusic()

@@ -60,8 +60,6 @@ void GameManager::receive(const EvStartGame& startGame)
    m_entityManager.reset();
 
    m_eventManager.emit<EvInit>(m_currentLevel, m_currentScore);
-
-   m_eventManager.emit<EvPlayMusic>();
 }
 
 void GameManager::receive(const EvQuitGame &quitGame)
@@ -115,6 +113,8 @@ void GameManager::receive(const EvResumeGame& gameResume)
 void GameManager::receive(const EvShowStartMenu &showStartMenu)
 {
    m_entityManager.reset();
+
+   m_eventManager.emit<EvPlayMusic>();
 
    StartMenuCreator().create(m_entityManager.create());
 }

@@ -31,6 +31,8 @@ private:
 
    AudioManager& m_audioManager;
 
+   bool m_musicMute;
+
 };
 
 #endif // AUDIOSYSTEM_H

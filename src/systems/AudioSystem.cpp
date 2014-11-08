@@ -5,6 +5,7 @@ using namespace entityx;
 
 AudioSystem::AudioSystem(AudioManager &audioManager)
 : m_audioManager(audioManager)
+, m_musicMute(false)
 {
 }
 
@@ -28,10 +29,16 @@ void AudioSystem::receive(const EvPlaySound& playSound)
 
 void AudioSystem::receive(const EvPlayMusic &playMusic)
 {
-    m_audioManager.playMusic();
+    if(!m_musicMute)
+        m_audioManager.playMusic();
 }
 
 void AudioSystem::receive(const EvPauseMusic &pauseMusic)
 {
-    m_audioManager.pauseMusic();
+    m_musicMute = !m_musicMute;
+
+    if(m_musicMute)
+        m_audioManager.pauseMusic();
+    else
+        m_audioManager.playMusic();
 }
