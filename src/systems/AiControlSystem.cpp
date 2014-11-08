@@ -5,6 +5,7 @@
 #include "components/Gun.h"
 #include "ai/FirstBossAi.h"
 #include "ai/ShootAtPlayerAi.h"
+#include "ai/ShootAtPlayerWhenNearAi.h"
 
 using namespace entityx;
 
@@ -44,6 +45,9 @@ void AiControlSystem::receive(const ComponentAddedEvent<Ai>& e)
       break;
    case AI_ID_SHOOT_AT_PLAYER:
       spAi.reset(new ShootAtPlayerAi());
+      break;
+   case AI_ID_SHOOT_AT_PLAYER_WHEN_NEAR:
+      spAi.reset(new ShootAtPlayerWhenNearAi());
       break;
    default:
       break;

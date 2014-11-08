@@ -114,6 +114,11 @@ void LevelSystem::addEnemy(const EnemyData& enemy)
       aiId = AI_ID_SHOOT_AT_PLAYER;
    }
 
+   if (enemy.ai == "shoot_at_player_when_near")
+   {
+      aiId = AI_ID_SHOOT_AT_PLAYER_WHEN_NEAR;
+   }
+
    if (enemy.type == "scout")
    {
      m_creatables.push_back(

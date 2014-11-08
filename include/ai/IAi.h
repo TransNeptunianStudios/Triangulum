@@ -9,6 +9,7 @@ typedef uint32_t AiId;
 static const AiId AI_ID_NONE              = 0;
 static const AiId AI_ID_FIRST_BOSS        = 1;
 static const AiId AI_ID_SHOOT_AT_PLAYER   = 2;
+static const AiId AI_ID_SHOOT_AT_PLAYER_WHEN_NEAR = 3;
 
 class IAi
 {

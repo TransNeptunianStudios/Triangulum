@@ -27,7 +27,9 @@ add_executable(
    src/ai/FirstBossAi.cpp
    include/ai/IAi.h
    include/ai/ShootAtPlayerAi.h
-   src/ai/ShootAtPlayerAi.cpp   
+   src/ai/ShootAtPlayerAi.cpp
+   include/ai/ShootAtPlayerWhenNearAi.h
+   src/ai/ShootAtPlayerWhenNearAi.cpp     
    include/components/AbstractMenu.h
    include/components/Ai.h
    src/components/Ai.cpp
@@ -115,7 +117,7 @@ add_executable(
    src/utils/Math.cpp
 )
 
-add_definitions(-std=c++11)
+add_definitions(-std=c++11 -Wl,-Rbin.)
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/modules/")
 

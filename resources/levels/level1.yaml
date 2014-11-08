@@ -576,3 +576,8 @@ enemies:
      level_offset: 384.0
      start_x_pos: 0.3
      speed: [0.0, 50.0]
+   - type: scout
+     ai: shoot_at_player_when_near
+     level_offset: 0.0
+     start_x_pos: 0.5
+     speed: [0.0, 50.0]
