@@ -72,12 +72,13 @@ void AiControlSystem::update(EntityManager& entities,
    Ai::Handle ai;
    for (Entity entity : entities.entities_with_components(ai))
    {
-      if (m_aiMap.find(entity.id()) != end(m_aiMap))
+      AiMap::iterator it = m_aiMap.find(entity.id());
+      if (it != end(m_aiMap))
       {
-         m_aiMap[entity.id()]->update(entity.id(),
-                                      m_spaceShipId,
-                                      entities,
-                                      dt);
+         it->second->update(entity.id(),
+                            m_spaceShipId,
+                            entities,
+                            dt);
       }
    }
 }
