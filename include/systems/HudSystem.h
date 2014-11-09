@@ -30,6 +30,8 @@ private:
    sf::Sprite m_healthSprite;
 
    ScoreView m_scoreView;
+
+   ScoreView m_heatView;
 };
 
 #endif // HUDSYSTEM_H

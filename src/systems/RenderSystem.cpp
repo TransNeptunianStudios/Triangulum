@@ -19,6 +19,7 @@ RenderSystem::RenderSystem(sf::RenderWindow& window)
    m_bgSprite.setTexture(m_bgTexture);
 
    m_texture.loadFromFile(resourcePath() + "images/SpriteSheet.png");
+   m_texture.setSmooth(true);
    m_sprite.setTexture(m_texture);
 }
 

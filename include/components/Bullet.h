@@ -17,6 +17,8 @@ struct Bullet : public entityx::Component<Bullet>
 
    double age;
 
+   double producedHeat;
+
    long damage;
 };
 

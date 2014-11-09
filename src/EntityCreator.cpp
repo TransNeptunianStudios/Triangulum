@@ -208,7 +208,7 @@ void BulletCreator::create(Entity entity)
       break;
    }
 
-   auto damage = BulletDamageTable::lookup(m_bulletType);
+   auto damage = BulletDataTable::lookupDamage(m_bulletType);
    entity.assign<Motion>(m_velocity);
    entity.assign<Position>(m_position, m_heading);
    entity.assign<Bullet>(m_ownerId, 10000.0, damage);

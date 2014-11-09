@@ -23,7 +23,20 @@ void GunSystem::update(EntityManager &entities,
    Gun::Handle gun;
    for (Entity entity : entities.entities_with_components(position, gun))
    {
-      if (gun->isMainFirePressed && !gun->wasMainFirePressed)
+      gun->shootTimer -= dt;
+
+      gun->heat -= dt / gun->cooldownTime * 100.0;
+
+      if (gun->heat < 0.0)
+      {
+         gun->heat = 0.0;
+      }
+
+      auto bulletHeat = BulletDataTable::lookupHeat(gun->bulletType);
+
+      if (gun->isMainFirePressed &&
+          gun->shootTimer <= 0.0 &&
+          gun ->heat < 100.0 - bulletHeat)
       {
          auto initVelocity = sf::Vector2f(500.0*gun->direction.x,
                                           500.0*gun->direction.y);
@@ -48,9 +61,11 @@ void GunSystem::update(EntityManager &entities,
                        gun->bulletType,
                        color).create(entities.create());
 
+         gun->shootTimer = 5.0 / 100.0 * 2500.0;
+
+         gun->heat += bulletHeat;
+
          events.emit<EvPlaySound>(GUN_SHOOT);
       }
-
-      gun->wasMainFirePressed = gun->isMainFirePressed;
    }
 }
