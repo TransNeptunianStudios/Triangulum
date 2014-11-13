@@ -32,6 +32,7 @@ Game::Game()
 , m_gameManager(m_entityManager, m_eventManager)
 , m_keyHandler()
 , m_audioManager()
+, m_inFullscreenMode(false)
 {
 }
 
@@ -51,6 +52,8 @@ void Game::init()
    m_audioManager.init();
 
    createSystems();
+
+   m_eventManager.subscribe<EvToggleFullscreen>(*this);
 }
 
 void Game::run()
@@ -79,6 +82,17 @@ void Game::run()
    exit();
 }
 
+void Game::receive(const EvToggleFullscreen &toggleFullscreen)
+{
+  if(!m_inFullscreenMode){
+    m_window.create( sf::VideoMode::getFullscreenModes()[0],"Triangulum", sf::Style::Fullscreen);
+    m_inFullscreenMode = true;
+
+    sf::Vector2u size = m_window.getSize();
+    ScreenSize::setWidth(size.x);
+    ScreenSize::setHeight(size.y);
+    }
+}
 void Game::processInput()
 {
    sf::Event event;

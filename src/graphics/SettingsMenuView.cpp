@@ -10,6 +10,7 @@
 using namespace entityx;
 
 SettingsMenuView::SettingsMenuView()
+  : m_selected(EFFECTS)
 {
    m_headerText.setFont(FontRepository::getMenuFont());
    m_headerText.setCharacterSize(60);
@@ -34,7 +35,7 @@ SettingsMenuView::SettingsMenuView()
 
    m_fullscreenText.setFont(FontRepository::getMenuFont());
    m_fullscreenText.setCharacterSize(30);
-   m_fullscreenText.setString("Enable Fullscreen");
+   m_fullscreenText.setString("Toggle Fullscreen");
 
    bounds = m_fullscreenText.getLocalBounds();
    m_fullscreenText.setOrigin(bounds.width/2.0, bounds.height/2.0);
@@ -57,6 +58,24 @@ void SettingsMenuView::draw(sf::RenderWindow& window)
     m_fullscreenText.setPosition(ScreenSize::width()*0.5,
                                   newGameTextY + 100);
 
+    switch(m_selected){
+    case EFFECTS:
+          m_effectVolumeText.setStyle(sf::Text::Underlined);
+          m_musicVolumeText.setStyle(sf::Text::Regular);
+          m_fullscreenText.setStyle(sf::Text::Regular);
+       break;
+    case MUSIC:
+          m_effectVolumeText.setStyle(sf::Text::Regular);
+          m_musicVolumeText.setStyle(sf::Text::Underlined);
+          m_fullscreenText.setStyle(sf::Text::Regular);
+       break;
+    case FULLSCREEN:
+          m_effectVolumeText.setStyle(sf::Text::Regular);
+          m_musicVolumeText.setStyle(sf::Text::Regular);
+          m_fullscreenText.setStyle(sf::Text::Underlined);
+       break;
+    }
+
     window.draw(m_headerText);
     window.draw(m_effectVolumeText);
     window.draw(m_musicVolumeText);
@@ -65,14 +84,39 @@ void SettingsMenuView::draw(sf::RenderWindow& window)
 
 void SettingsMenuView::onConfirm(entityx::EventManager& eventManager)
 {
+  switch(m_selected){
+  case EFFECTS:
+
+     break;
+  case MUSIC:
+
+     break;
+  case FULLSCREEN:
+      eventManager.emit<EvToggleFullscreen>();
+     break;
+  }
 }
 
 void SettingsMenuView::onUp(EventManager& eventManager)
 {
+  if(m_selected != EFFECTS)
+      eventManager.emit<EvPlaySound>(SELECT_BLIP);
+
+  if(m_selected == MUSIC)
+      m_selected = EFFECTS;
+  else if(m_selected == FULLSCREEN)
+      m_selected = MUSIC;
 }
 
 void SettingsMenuView::onDown(EventManager& eventManager)
 {
+  if(m_selected != FULLSCREEN)
+      eventManager.emit<EvPlaySound>(SELECT_BLIP);
+
+  if(m_selected == EFFECTS)
+      m_selected = MUSIC;
+  else if(m_selected == MUSIC)
+      m_selected = FULLSCREEN;
 }
 
 void SettingsMenuView::onCancel(EventManager &eventManager)

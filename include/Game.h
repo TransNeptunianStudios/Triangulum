@@ -11,15 +11,18 @@
 #include "KeyHandler.h"
 #include "AudioManager.h"
 
-class Game
+class Game : public entityx::Receiver<Game>
 {
 public:
-   
+
    Game();
 
    void init();
 
    void run();
+
+   // this must be here if we dont want to pass around window?
+   void receive(const EvToggleFullscreen& toggleFullscreen);
 
 private:
 
@@ -46,6 +49,9 @@ private:
    KeyHandler m_keyHandler;
 
    AudioManager m_audioManager;
+
+   // there must be some way to check if we are in fullscreen
+   bool m_inFullscreenMode;
 };
 
 #endif

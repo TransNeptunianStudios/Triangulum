@@ -30,6 +30,12 @@ private:
    sf::Text m_musicVolumeText;
 
    sf::Text m_fullscreenText;
+
+   enum MenuChoices{
+       EFFECTS, MUSIC, FULLSCREEN
+   };
+
+   MenuChoices m_selected;
 };
 
 #endif // SETTINGSMENUVIEW_H

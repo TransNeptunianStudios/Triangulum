@@ -83,6 +83,10 @@ struct EvPauseMusic : public entityx::Event<EvPauseMusic>
    EvPauseMusic() {}
 };
 
+struct EvToggleFullscreen : public entityx::Event<EvToggleFullscreen>
+{
+   EvToggleFullscreen() {}
+};
 
 struct EvKeyboard : public entityx::Event<EvKeyboard>
 {
