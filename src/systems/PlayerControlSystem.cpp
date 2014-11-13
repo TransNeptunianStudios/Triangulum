@@ -29,6 +29,7 @@ void PlayerControlSystem::update(EntityManager &entities,
       {
          motion->velocity.x = 0.0;
          motion->velocity.y = 0.0;
+         gun->isMainFirePressed = false;
          break;
       }
 

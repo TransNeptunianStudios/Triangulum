@@ -8,7 +8,8 @@ class RenderSystem : public entityx::System<RenderSystem>
 {
 public:
 
-   RenderSystem(sf::RenderWindow& window);
+   RenderSystem(sf::RenderWindow& window,
+                const std::shared_ptr<sf::Texture>& spSSTexture);
 
    void update(entityx::EntityManager &entities,
                entityx::EventManager &events,
@@ -22,9 +23,9 @@ private:
 
    sf::RenderWindow& m_window;
 
-   sf::Texture m_bgTexture;
+   std::shared_ptr<sf::Texture> m_spSSTexture;
 
-   sf::Texture m_texture;
+   sf::Texture m_bgTexture;
 
    sf::Sprite m_bgSprite;
 

@@ -11,7 +11,8 @@ class HudSystem
 {
 public:
 
-   HudSystem(sf::RenderWindow& window);
+   HudSystem(sf::RenderWindow& window,
+             const std::shared_ptr<sf::Texture> &spSSTexture);
 
    void update(entityx::EntityManager& entities,
                entityx::EventManager& events,
@@ -21,6 +22,8 @@ private:
 
    sf::RenderWindow& m_window;
 
+   std::shared_ptr<sf::Texture> m_spSSTexture;
+
    sf::Text m_healthText;
 
    sf::Text m_scoreText;
@@ -29,9 +32,13 @@ private:
 
    sf::Sprite m_healthSprite;
 
+   sf::Sprite m_heatBorderSprite;
+
+   sf::Sprite m_heatBarSprite;
+
    ScoreView m_scoreView;
 
-   ScoreView m_heatView;
+   sf::IntRect m_heatBarRect;
 };
 
 #endif // HUDSYSTEM_H
