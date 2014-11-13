@@ -8,14 +8,16 @@
 
 using namespace entityx;
 
-HudSystem::HudSystem(sf::RenderWindow& window)
+HudSystem::HudSystem(sf::RenderWindow& window,
+                     const std::shared_ptr<sf::Texture>& spSSTexture)
 : m_window(window)
+, m_spSSTexture(spSSTexture)
 , m_healthText()
 , m_scoreText()
 , m_healthTexture()
 , m_healthSprite()
 , m_scoreView(FontRepository::getHudFont(), 30)
-, m_heatView(FontRepository::getHudFont(), 30)
+, m_heatBarRect(32*0, 32*8+16, 0, 16)
 {
    m_healthText.setFont(FontRepository::getHudFont());
    m_healthText.setCharacterSize(30);
@@ -27,10 +29,13 @@ HudSystem::HudSystem(sf::RenderWindow& window)
    m_scoreText.setOrigin(m_scoreText.getLocalBounds().width, 0.0);
 
    m_scoreView.setAlign(2);
-   m_heatView.setAlign(0);
 
    m_healthTexture.loadFromFile(resourcePath() + "images/health.png");
    m_healthSprite.setTexture(m_healthTexture);
+
+   m_heatBorderSprite.setTexture(*m_spSSTexture);
+   m_heatBorderSprite.setTextureRect(sf::IntRect(32*0, 32*8, 104, 16));
+   m_heatBarSprite.setTexture(*m_spSSTexture);
 }
 
 void HudSystem::update(EntityManager& entities,
@@ -41,7 +46,15 @@ void HudSystem::update(EntityManager& entities,
    Health::Handle health;
    Gun::Handle gun;
    for (Entity entity : entities.entities_with_components(spaceShip, health, gun))
-   {      
+   {
+      m_heatBorderSprite.setPosition(50.0f, 485.0f);
+      m_window.draw(m_heatBorderSprite);
+
+      m_heatBarSprite.setPosition(50.0f, 485.0f);
+      m_heatBarRect.width = static_cast<int>(gun->heat+0.5);
+      m_heatBarSprite.setTextureRect(m_heatBarRect);
+      m_window.draw(m_heatBarSprite);
+
       m_healthText.setPosition(50.0f, 500.0f);
       m_window.draw(m_healthText);
 
@@ -63,10 +76,6 @@ void HudSystem::update(EntityManager& entities,
       m_scoreView.setPosition(750.0f, 533.0f);
 
       m_scoreView.draw(spaceShip->score, m_window);
-
-      m_heatView.setPosition(50.0f, 470.0f);
-
-      m_heatView.draw(gun->heat, m_window);
 
       // Only support one space ship atm
       return;

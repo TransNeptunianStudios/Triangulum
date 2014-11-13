@@ -18,6 +18,7 @@
 #include "systems/HudSystem.h"
 #include "systems/Events.h"
 #include "graphics/FontRepository.h"
+#include "ResourcePath.hpp"
 
 // Updates per milliseconds
 static sf::Int32 MS_PER_UPDATE = 10.0;
@@ -138,6 +139,10 @@ void Game::exit()
 
 void Game::createSystems()
 {
+   auto spTexture = std::make_shared<sf::Texture>();
+   spTexture->loadFromFile(resourcePath() + "images/SpriteSheet.png");
+   spTexture->setSmooth(true);
+
    m_systemManager.add<LevelSystem>(m_entityManager, m_eventManager);
    m_systemManager.add<PlayerControlSystem>(m_keyHandler);
    m_systemManager.add<AiControlSystem>();
@@ -148,8 +153,8 @@ void Game::createSystems()
    m_systemManager.add<DeathRowSystem>();
    m_systemManager.add<AnimationSystem>();
    m_systemManager.add<AudioSystem>(m_audioManager);
-   m_systemManager.add<RenderSystem>(m_window);
-   m_systemManager.add<HudSystem>(m_window);
+   m_systemManager.add<RenderSystem>(m_window, spTexture);
+   m_systemManager.add<HudSystem>(m_window, spTexture);
    m_systemManager.add<MenuSystem>(m_entityManager, m_eventManager, m_window);
    m_systemManager.configure();
 }

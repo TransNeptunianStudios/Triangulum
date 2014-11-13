@@ -7,20 +7,19 @@
 
 using namespace entityx;
 
-RenderSystem::RenderSystem(sf::RenderWindow& window)
+RenderSystem::RenderSystem(sf::RenderWindow& window,
+                           const std::shared_ptr<sf::Texture>& spSSTexture)
 : m_window(window)
+, m_spSSTexture(spSSTexture)
 , m_bgTexture()
-, m_texture()
 , m_bgSprite()
 , m_sprite()
 {
+   m_sprite.setTexture(*m_spSSTexture);
+
    m_bgTexture.loadFromFile(resourcePath() + "images/bg.png");
    m_bgTexture.setRepeated(true);
    m_bgSprite.setTexture(m_bgTexture);
-
-   m_texture.loadFromFile(resourcePath() + "images/SpriteSheet.png");
-   m_texture.setSmooth(true);
-   m_sprite.setTexture(m_texture);
 }
 
 void RenderSystem::update(EntityManager &entities,
