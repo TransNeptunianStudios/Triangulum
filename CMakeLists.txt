@@ -73,6 +73,8 @@ add_executable(
    src/graphics/LevelCompMenuView.cpp
    include/graphics/ScoreView.h
    src/graphics/ScoreView.cpp
+   include/graphics/SettingsMenuView.h
+   src/graphics/SettingsMenuView.cpp
    include/graphics/StartMenuView.h
    src/graphics/StartMenuView.cpp
    include/graphics/SplashScreen.h

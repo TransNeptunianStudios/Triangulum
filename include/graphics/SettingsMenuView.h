@@ -1,15 +1,15 @@
-#ifndef STARTMENUVIEW_H
-#define STARTMENUVIEW_H
+#ifndef SETTINGSMENUVIEW_H
+#define SETTINGSMENUVIEW_H
 
 #include "SFML/Graphics/Texture.hpp"
 #include "components/AbstractMenu.h"
 
-class StartMenuView
+class SettingsMenuView
       : public AbstractMenu
 {
 public:
 
-   StartMenuView();
+   SettingsMenuView();
 
    void update(entityx::EventManager& events, double dt);
 
@@ -27,11 +27,9 @@ private:
 
    sf::Sprite m_logoSprite;
 
-   sf::Text m_newGameText;
+   sf::Text m_effectVolumeText;
 
-   sf::Text m_settingsText;
-
-   sf::Text m_quitText;
+   sf::Text m_musicVolumeText;
 
    sf::Text m_versionText;
 
@@ -45,13 +43,7 @@ private:
 
    bool m_drawText;
 
-   enum MenuChoices{
-       NEW_GAME, SETTINGS, QUIT_GAME
-   };
-
-   MenuChoices m_selected;
-
    bool m_isNewGameSelected;
 };
 
-#endif // STARTMENUVIEW_H
+#endif // SETTINGSMENUVIEW_H

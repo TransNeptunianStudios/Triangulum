@@ -18,6 +18,7 @@ StartMenuView::StartMenuView()
 , m_alpha(0.0)
 , m_drawText(false)
 , m_isNewGameSelected(true)
+, m_selected(NEW_GAME)
 {   
    m_texture.loadFromFile(resourcePath() + "images/triangulum.png");
 
@@ -31,6 +32,13 @@ StartMenuView::StartMenuView()
 
    sf::FloatRect bounds(m_newGameText.getLocalBounds());
    m_newGameText.setOrigin(bounds.width/2.0, bounds.height/2.0);
+
+   m_settingsText.setFont(FontRepository::getMenuFont());
+   m_settingsText.setCharacterSize(30);
+   m_settingsText.setString("Settings");
+
+   bounds = m_settingsText.getLocalBounds();
+   m_settingsText.setOrigin(bounds.width/2.0, bounds.height/2.0);
 
    m_quitText.setFont(FontRepository::getMenuFont());
    m_quitText.setCharacterSize(30);
@@ -83,27 +91,35 @@ void StartMenuView::draw(sf::RenderWindow& window)
       m_newGameText.setPosition(ScreenSize::width()*0.5,
                                 newGameTextY);
 
-      if (m_isNewGameSelected)
-      {
-         m_newGameText.setStyle(sf::Text::Underlined);
-         m_quitText.setStyle(sf::Text::Regular);
-      }
-      else
-      {
-         m_quitText.setStyle(sf::Text::Underlined);
-         m_newGameText.setStyle(sf::Text::Regular);
-      }
-
-
-      window.draw(m_newGameText);
+      m_settingsText.setPosition(ScreenSize::width()*0.5,
+                                newGameTextY+50);
 
       m_quitText.setPosition(ScreenSize::width()*0.5,
-                                newGameTextY + 60);
-
-      window.draw(m_quitText);
+                                newGameTextY + 100);
 
       m_versionText.setPosition(ScreenSize::width(),
                                 ScreenSize::height());
+
+      switch(m_selected){
+      case NEW_GAME:
+            m_newGameText.setStyle(sf::Text::Underlined);
+            m_settingsText.setStyle(sf::Text::Regular);
+            m_quitText.setStyle(sf::Text::Regular);
+         break;
+      case SETTINGS:
+            m_quitText.setStyle(sf::Text::Regular);
+            m_settingsText.setStyle(sf::Text::Underlined);
+            m_newGameText.setStyle(sf::Text::Regular);
+         break;
+      case QUIT_GAME:
+            m_quitText.setStyle(sf::Text::Underlined);
+            m_settingsText.setStyle(sf::Text::Regular);
+            m_newGameText.setStyle(sf::Text::Regular);
+         break;
+      }
+      window.draw(m_newGameText);
+      window.draw(m_settingsText);
+      window.draw(m_quitText);
       window.draw(m_versionText);
    }
 }
@@ -112,13 +128,16 @@ void StartMenuView::onConfirm(entityx::EventManager& eventManager)
 {
    if (m_drawText)
    {
-      if (m_isNewGameSelected)
-      {
+      switch(m_selected){
+      case NEW_GAME:
          eventManager.emit<EvStartGame>();
-      }
-      else
-      {
+         break;
+      case SETTINGS:
+         eventManager.emit<EvShowSettings>();
+         break;
+      case QUIT_GAME:
          eventManager.emit<EvQuitGame>();
+         break;
       }
    }
    else
@@ -129,16 +148,22 @@ void StartMenuView::onConfirm(entityx::EventManager& eventManager)
 
 void StartMenuView::onUp(EventManager& eventManager)
 {
-   if(!m_isNewGameSelected)
+   if(m_selected != NEW_GAME)
        eventManager.emit<EvPlaySound>(SELECT_BLIP);
 
-   m_isNewGameSelected = true;
+   if(m_selected == QUIT_GAME)
+       m_selected = SETTINGS;
+   else if(m_selected == SETTINGS)
+       m_selected = NEW_GAME;
 }
 
 void StartMenuView::onDown(EventManager& eventManager)
 {
-  if(m_isNewGameSelected)
-      eventManager.emit<EvPlaySound>(SELECT_BLIP);
+   if(m_selected != QUIT_GAME)
+       eventManager.emit<EvPlaySound>(SELECT_BLIP);
 
-  m_isNewGameSelected = false;
+   if(m_selected == NEW_GAME)
+       m_selected = SETTINGS;
+   else if(m_selected == SETTINGS)
+       m_selected = QUIT_GAME;
 }
