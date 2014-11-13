@@ -9,17 +9,17 @@
 
 using namespace entityx;
 
-StartMenuView::StartMenuView()
+StartMenuView::StartMenuView(bool withFade)
 : m_texture()
 , m_logoSprite()
 , m_timer(0.0)
 , m_fadeInTimer(2000.0)
 , m_showTextTimer(4000.0)
 , m_alpha(0.0)
-, m_drawText(false)
+, m_drawText( !withFade )
 , m_isNewGameSelected(true)
 , m_selected(NEW_GAME)
-{   
+{
    m_texture.loadFromFile(resourcePath() + "images/triangulum.png");
 
    sf::Vector2u size(m_texture.getSize());
@@ -133,7 +133,7 @@ void StartMenuView::onConfirm(entityx::EventManager& eventManager)
          eventManager.emit<EvStartGame>();
          break;
       case SETTINGS:
-         eventManager.emit<EvShowSettings>();
+         eventManager.emit<EvShowSettingsMenu>();
          break;
       case QUIT_GAME:
          eventManager.emit<EvQuitGame>();

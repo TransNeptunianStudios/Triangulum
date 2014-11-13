@@ -38,8 +38,10 @@ void AudioManager::playSound(SoundId id)
 
 void AudioManager::playMusic()
 {
-    m_music.play();
-    m_music.setLoop(true);
+   if( m_music.getStatus() != sf::Music::Playing ){
+      m_music.play();
+      m_music.setLoop(true);
+   }
 }
 
 void AudioManager::pauseMusic()

@@ -1,7 +1,6 @@
 #ifndef SETTINGSMENUVIEW_H
 #define SETTINGSMENUVIEW_H
 
-#include "SFML/Graphics/Texture.hpp"
 #include "components/AbstractMenu.h"
 
 class SettingsMenuView
@@ -21,29 +20,16 @@ public:
 
    void onDown(entityx::EventManager &eventManager);
 
+   void onCancel(entityx::EventManager &eventManager);
 private:
 
-   sf::Texture m_texture;
-
-   sf::Sprite m_logoSprite;
+   sf::Text m_headerText;
 
    sf::Text m_effectVolumeText;
 
    sf::Text m_musicVolumeText;
 
-   sf::Text m_versionText;
-
-   double m_timer;
-
-   double m_fadeInTimer;
-
-   double m_showTextTimer;
-
-   double m_alpha;
-
-   bool m_drawText;
-
-   bool m_isNewGameSelected;
+   sf::Text m_fullscreenText;
 };
 
 #endif // SETTINGSMENUVIEW_H

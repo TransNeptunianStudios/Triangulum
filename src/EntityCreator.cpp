@@ -16,6 +16,7 @@
 #include "components/Animation.h"
 #include "graphics/SplashScreen.h"
 #include "graphics/StartMenuView.h"
+#include "graphics/SettingsMenuView.h"
 #include "graphics/PauseMenuView.h"
 #include "graphics/LevelCompMenuView.h"
 #include "graphics/GameCompMenuView.h"
@@ -36,13 +37,26 @@ void SplashScreenCreator::create(Entity entity)
    entity.assign<Position>(sf::Vector2f(ScreenSize::width()/2.0, ScreenSize::height()*0.33));
 }
 
-StartMenuCreator::StartMenuCreator()
+StartMenuCreator::StartMenuCreator(bool fade)
+  : m_fade(fade)
 {
 }
 
 void StartMenuCreator::create(Entity entity)
 {
-   auto pSmv = std::make_shared<StartMenuView>();
+   auto pSmv = std::make_shared<StartMenuView>(m_fade);
+   entity.assign<Menu>(IMenuSP(pSmv));
+   entity.assign<Position>(sf::Vector2f(ScreenSize::width()/2.0, ScreenSize::height()*0.33));
+}
+
+SettingsMenuCreator::SettingsMenuCreator()
+{
+
+}
+
+void SettingsMenuCreator::create(Entity entity)
+{
+   auto pSmv = std::make_shared<SettingsMenuView>();
    entity.assign<Menu>(IMenuSP(pSmv));
    entity.assign<Position>(sf::Vector2f(ScreenSize::width()/2.0, ScreenSize::height()*0.33));
 }
@@ -171,7 +185,7 @@ void AsteroidCreator::create(Entity entity)
    entity.assign<Display>(sf::IntRect(32*0, 32*1, 32, 32));
 }
 
-BulletCreator::BulletCreator(Entity::Id ownerId,                             
+BulletCreator::BulletCreator(Entity::Id ownerId,
                              const sf::Vector2f &velocity,
                              const sf::Vector2f &position,
                              double heading,
@@ -316,5 +330,3 @@ void FirstBossCreator::create(Entity entity)
    entity.assign<AnimationContainer>(ac);
    entity.assign<Display>(sf::IntRect(32*7, 32*0, 96, 96));
 }
-
-

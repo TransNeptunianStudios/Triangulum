@@ -8,7 +8,12 @@
 
 struct EvShowStartMenu: public entityx::Event<EvShowStartMenu>
 {
-   EvShowStartMenu() {}
+   EvShowStartMenu(bool _fade)
+     : fade (_fade)
+   {
+   }
+
+   bool fade;
 };
 
 struct EvStartGame : public entityx::Event<EvStartGame>
@@ -21,9 +26,9 @@ struct EvQuitGame : public entityx::Event<EvQuitGame>
    EvQuitGame() {}
 };
 
-struct EvShowSettings : public entityx::Event<EvShowSettings>
+struct EvShowSettingsMenu : public entityx::Event<EvShowSettingsMenu>
 {
-   EvShowSettings() {}
+   EvShowSettingsMenu() {}
 };
 
 struct EvInit : public entityx::Event<EvInit>

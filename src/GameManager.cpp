@@ -37,6 +37,8 @@ void GameManager::init()
 
    m_eventManager.subscribe<EvCurrentScore>(*this);
 
+   m_eventManager.subscribe<EvShowSettingsMenu>(*this);
+
    SplashScreenCreator().create(m_entityManager.create());
 }
 
@@ -116,10 +118,17 @@ void GameManager::receive(const EvShowStartMenu &showStartMenu)
 
    m_eventManager.emit<EvPlayMusic>();
 
-   StartMenuCreator().create(m_entityManager.create());
+   StartMenuCreator(showStartMenu.fade).create(m_entityManager.create());
 }
 
 void GameManager::receive(const EvCurrentScore &currentScore)
 {
    m_currentScore = currentScore.currentScore;
+}
+
+void GameManager::receive(const EvShowSettingsMenu &showSettingsMenu)
+{
+  m_gameState = GS_Paused;
+  m_entityManager.reset();
+  SettingsMenuCreator().create(m_entityManager.create());
 }

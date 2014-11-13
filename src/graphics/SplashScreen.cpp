@@ -34,7 +34,7 @@ void SplashScreen::update(EventManager &events, double dt)
     else if(m_timer < m_fadeIn + m_static + m_fadeOut)
         m_alpha = 1.0f - (m_timer - m_static - m_fadeIn) / m_fadeOut;
     else
-        events.emit<EvShowStartMenu>();
+        events.emit<EvShowStartMenu>(true);
 
     // yeah, I'm a bracet rebel
 }
@@ -51,7 +51,7 @@ void SplashScreen::draw(sf::RenderWindow& window)
 
 void SplashScreen::onConfirm(EventManager &eventManager)
 {
-    eventManager.emit<EvShowStartMenu>();
+    eventManager.emit<EvShowStartMenu>(true);
 }
 
 void SplashScreen::onCancel(EventManager &eventManager)

@@ -40,9 +40,11 @@ public:
 
    void receive(const EvResumeGame& gameResume);
 
-   void receive(const EvShowStartMenu& showStartMenu);
+   void receive(const EvShowStartMenu &showStartMenu);
 
    void receive(const EvCurrentScore& currentScore);
+
+   void receive(const EvShowSettingsMenu &showSettingsMenu);
 
 private:
 

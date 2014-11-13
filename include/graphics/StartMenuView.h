@@ -9,7 +9,7 @@ class StartMenuView
 {
 public:
 
-   StartMenuView();
+   StartMenuView(bool withFade);
 
    void update(entityx::EventManager& events, double dt);
 

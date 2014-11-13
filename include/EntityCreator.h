@@ -21,7 +21,19 @@ class StartMenuCreator : public ICreatable
 {
 public:
 
-   StartMenuCreator();
+   StartMenuCreator(bool fade);
+
+   void create(entityx::Entity entity);
+
+private:
+   bool m_fade;
+};
+
+class SettingsMenuCreator : public ICreatable
+{
+public:
+
+   SettingsMenuCreator();
 
    void create(entityx::Entity entity);
 };
