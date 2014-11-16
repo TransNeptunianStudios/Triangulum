@@ -27,9 +27,7 @@ private:
    sf::Text m_healthText;
 
    sf::Text m_scoreText;
-
-   sf::Texture m_healthTexture;
-
+   
    sf::Sprite m_healthSprite;
 
    sf::Sprite m_heatBorderSprite;

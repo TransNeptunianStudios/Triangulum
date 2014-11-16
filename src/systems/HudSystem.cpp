@@ -14,7 +14,6 @@ HudSystem::HudSystem(sf::RenderWindow& window,
 , m_spSSTexture(spSSTexture)
 , m_healthText()
 , m_scoreText()
-, m_healthTexture()
 , m_healthSprite()
 , m_scoreView(FontRepository::getHudFont(), 30)
 , m_heatBarRect(32*0, 32*8+16, 0, 16)
@@ -30,8 +29,8 @@ HudSystem::HudSystem(sf::RenderWindow& window,
 
    m_scoreView.setAlign(2);
 
-   m_healthTexture.loadFromFile(resourcePath() + "images/health.png");
-   m_healthSprite.setTexture(m_healthTexture);
+   m_healthSprite.setTexture(*m_spSSTexture);
+   m_healthSprite.setTextureRect(sf::IntRect(32*0, 32*9, 16, 16));
 
    m_heatBorderSprite.setTexture(*m_spSSTexture);
    m_heatBorderSprite.setTextureRect(sf::IntRect(32*0, 32*8, 104, 16));
