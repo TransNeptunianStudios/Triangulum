@@ -116,8 +116,6 @@ void GameManager::receive(const EvShowStartMenu &showStartMenu)
 {
    m_entityManager.reset();
 
-   m_eventManager.emit<EvPlayMusic>();
-
    StartMenuCreator(showStartMenu.fade).create(m_entityManager.create());
 }
 

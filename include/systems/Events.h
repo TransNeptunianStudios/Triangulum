@@ -73,14 +73,13 @@ struct EvPlaySound : public entityx::Event<EvPlaySound>
    SoundId id;
 };
 
-struct EvPlayMusic : public entityx::Event<EvPlayMusic>
+struct EvMusicVolume : public entityx::Event<EvMusicVolume>
 {
-   EvPlayMusic() {}
-};
-
-struct EvPauseMusic : public entityx::Event<EvPauseMusic>
-{
-   EvPauseMusic() {}
+   EvMusicVolume(int _vol)
+       :vol (_vol)
+   {
+   }
+   int vol;
 };
 
 struct EvToggleFullscreen : public entityx::Event<EvToggleFullscreen>

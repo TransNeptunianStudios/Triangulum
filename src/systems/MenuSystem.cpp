@@ -47,6 +47,10 @@ void MenuSystem::receive(const EvKeyboard& keyboard)
           menu->spMenu->onUp(m_eventManager);
        else if(keyboard.key == sf::Keyboard::Down && keyboard.isDown)
           menu->spMenu->onDown(m_eventManager);
+       else if(keyboard.key == sf::Keyboard::Left && keyboard.isDown)
+          menu->spMenu->onLeft(m_eventManager);
+       else if(keyboard.key == sf::Keyboard::Right && keyboard.isDown)
+          menu->spMenu->onRight(m_eventManager);
        activeMenus++;
     }
 
@@ -59,7 +63,7 @@ void MenuSystem::receive(const EvKeyboard& keyboard)
     // Pretty sure it's not menu's business
     if(keyboard.key == sf::Keyboard::F1  && keyboard.isDown)
     {
-        m_eventManager.emit<EvPauseMusic>();
+        m_eventManager.emit<EvMusicVolume>(0);
     }
 
     if(keyboard.key == sf::Keyboard::F2  && keyboard.isDown)

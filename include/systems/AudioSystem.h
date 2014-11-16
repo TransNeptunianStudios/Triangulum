@@ -23,9 +23,7 @@ public:
 
    void receive(const EvPlaySound& playSound);
 
-   void receive(const EvPlayMusic& playMusic);
-
-   void receive(const EvPauseMusic& pauseMusic);
+   void receive(const EvMusicVolume& musicVolume);
 
 private:
 

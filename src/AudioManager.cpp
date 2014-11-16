@@ -6,6 +6,7 @@ AudioManager::AudioManager()
 , m_soundMap()
 , m_soundList(100)
 , m_soundListIndex(0)
+, m_soundVol(70)
 {
 }
 
@@ -23,6 +24,11 @@ void AudioManager::init()
    {
       printf("Error loading music.");
    }
+   
+   // Start the music right away
+   m_music.play();
+   m_music.setLoop(true);
+   m_music.setVolume(80);
 }
 
 
@@ -36,24 +42,14 @@ void AudioManager::playSound(SoundId id)
    }
 }
 
-void AudioManager::playMusic()
+void AudioManager::setMusicVolume(int vol)
 {
-   if( m_music.getStatus() != sf::Music::Playing ){
-      m_music.play();
-      m_music.setLoop(true);
-   }
+       m_music.setVolume(vol);
 }
 
-void AudioManager::pauseMusic()
+void AudioManager::setSoundVolume(int vol)
 {
-    if (m_music.getStatus() == sf::SoundSource::Playing)
-    {
-        m_music.pause();
-    }
-    else
-    {
-        m_music.play();
-    }
+    m_soundVol = vol;
 }
 
 void AudioManager::loadSoundEffect(const std::string& fileName, SoundId id)
@@ -81,6 +77,7 @@ void AudioManager::play(const sf::SoundBuffer& soundBuffer)
       if (sound.getStatus() != sf::SoundSource::Playing)
       {
          sound.setBuffer(soundBuffer);
+         sound.setVolume(m_soundVol);
          sound.play();
          m_soundListIndex = ++m_soundListIndex % m_soundList.size();
          break;

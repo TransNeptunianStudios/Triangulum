@@ -23,6 +23,10 @@ public:
    virtual void onUp(entityx::EventManager& eventManager) {};
 
    virtual void onDown(entityx::EventManager& eventManager) {};
+    
+    virtual void onLeft(entityx::EventManager& eventManager) {};
+ 
+    virtual void onRight(entityx::EventManager& eventManager) {};    
 
    virtual void onKey(sf::Keyboard::Key key) {};
 };

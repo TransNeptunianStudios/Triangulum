@@ -16,9 +16,9 @@ public:
 
    void playSound(SoundId id);
 
-   void playMusic();
-
-   void pauseMusic();
+   void setMusicVolume(int vol);
+   
+   void setSoundVolume(int vol);
 
 private:
 
@@ -39,6 +39,8 @@ private:
    SoundList m_soundList;
 
    size_t m_soundListIndex;
+   
+   int m_soundVol; 
 };
 
 #endif // AUDIOMANAGER_H
