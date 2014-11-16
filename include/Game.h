@@ -52,6 +52,8 @@ private:
 
    // there must be some way to check if we are in fullscreen
    bool m_inFullscreenMode;
+   
+   sf::VideoMode m_desktopVideoMode;
 };
 
 #endif

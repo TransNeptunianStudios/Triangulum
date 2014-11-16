@@ -55,6 +55,8 @@ void Game::init()
    createSystems();
 
    m_eventManager.subscribe<EvToggleFullscreen>(*this);
+   
+   m_desktopVideoMode = sf::VideoMode::getDesktopMode();
 }
 
 void Game::run()
@@ -93,6 +95,15 @@ void Game::receive(const EvToggleFullscreen &toggleFullscreen)
     ScreenSize::setWidth(size.x);
     ScreenSize::setHeight(size.y);
     }
+  else
+  {
+      m_window.create(sf::VideoMode(800, 600), "Triangulum");
+      m_inFullscreenMode = false;
+  
+      sf::Vector2u size = m_window.getSize();
+      ScreenSize::setWidth(size.x);
+      ScreenSize::setHeight(size.y);
+  }
 }
 void Game::processInput()
 {
@@ -148,6 +159,10 @@ void Game::render(double ms)
 
 void Game::exit()
 {
+    // In Ubuntu (at least) the desktop videoMode can have changed
+    // Here we change it back to the original
+    m_window.create(m_desktopVideoMode, "quiting Triangulum");
+    
    std::exit(EXIT_SUCCESS);
 }
 
