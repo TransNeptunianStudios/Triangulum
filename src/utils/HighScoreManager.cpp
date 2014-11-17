@@ -14,7 +14,6 @@ void operator >> (const YAML::Node& highsScoreNode, HighScore& highScore)
 {
    highsScoreNode["name"] >> highScore.name;
    highsScoreNode["score"] >> highScore.score;
-   highsScoreNode[VERSION] >> highScore.version;
 }
 
 void operator >> (const YAML::Node& highScoreListNode, HighScoreListWrapper& hList)

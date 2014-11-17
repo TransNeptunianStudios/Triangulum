@@ -5,7 +5,6 @@ struct HighScore
 {
    std::string name;
    int score;
-   std::string version;
 };
 
 typedef std::vector<HighScore> HighScoreList;
