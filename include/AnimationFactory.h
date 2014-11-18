@@ -26,6 +26,8 @@ public:
    static Animator scoutDeathAnimation();
 
    static Animator mineIdleAnimation();
+   
+   static Animator mineDeathAnimation();
 };
 
 #endif // ANIMATIONFACTORY_H

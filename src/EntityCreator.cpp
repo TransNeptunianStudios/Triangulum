@@ -284,9 +284,9 @@ void MineCreator::create(Entity entity)
 
     ac.addAnimation(AnimationId(AT_Movement, IdleMovementAnimation),
                     AnimationFactory::mineIdleAnimation());
-    /*ac.addAnimation(AnimationId(AT_Death, DestroyedDeathAnimation),
-                    AnimationFactory::enemyOneDeathAnimation());
-    */
+    ac.addAnimation(AnimationId(AT_Death, DestroyedDeathAnimation),
+                    AnimationFactory::mineDeathAnimation());
+    
 
     volume.m_boxes.push_back(CollisionBox(32, 32));
 

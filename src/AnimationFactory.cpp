@@ -106,3 +106,14 @@ Animator AnimationFactory::mineIdleAnimation()
     animation.timePerFrame = 750.0/2.0;
     return animation;
 }
+
+Animator AnimationFactory::mineDeathAnimation()
+{
+    Animator animation;
+    animation.coordList.push_back(sf::IntRect(32*9, 32*9, 64, 64));
+    animation.coordList.push_back(sf::IntRect(32*11, 32*9, 64, 64));
+    animation.coordList.push_back(sf::IntRect(32*13, 32*9, 64, 64));
+    animation.style = AS_RUN_ONCE;
+    animation.timePerFrame = 5000.0/3.0;
+    return animation;
+}
