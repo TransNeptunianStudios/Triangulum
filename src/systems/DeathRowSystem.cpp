@@ -3,6 +3,8 @@
 #include "components/DeathSentence.h"
 #include "components/SpaceShip.h"
 #include "components/Enemy.h"
+#include "components/Animation.h"
+#include "components/Gun.h"
 
 using namespace entityx;
 
@@ -17,6 +19,21 @@ void DeathRowSystem::update(EntityManager& entities,
    DeathSentence::Handle deathSentence;
    for (Entity entity : entities.entities_with_components(deathSentence))
    {
+       if(!deathSentence->haveBeenPrepared)
+       {
+           if(entity.has_component<AnimationContainer>())
+           {
+               AnimationContainer::Handle acHandle = entity.component<AnimationContainer>();
+               acHandle->resetAnimation(AT_Movement);
+               acHandle->setAnimation(AnimationId(AT_Death, DestroyedDeathAnimation));
+           }
+           
+           if(entity.has_component<Gun>())
+               entity.component<Gun>().remove();
+
+           deathSentence->haveBeenPrepared = true;
+       }
+       
       if (deathSentence->timeToExecution <= 0.0)
       {
          if (entity.has_component<SpaceShip>())

@@ -2,31 +2,35 @@
 #include "components/Position.h"
 #include "components/Gun.h"
 #include "components/SpaceShip.h"
+#include "components/Volume.h"
+#include "components/DeathSentence.h"
 #include "utils/TMath.h"
 
 using namespace entityx;
 
-ShootAtPlayerWhenNearAi::ShootAtPlayerWhenNearAi()
-: m_shootTimer(0.0)
+DieWhenPlayerIsNearAI::DieWhenPlayerIsNearAI()
+: m_distanceThreshold(150)
+, m_timeThreshold(1000.0)
+, m_timeClose(0.0)
 {
 }
 
-void ShootAtPlayerWhenNearAi::setScrollSpeed(double scrollSpeed)
+void DieWhenPlayerIsNearAI::setScrollSpeed(double scrollSpeed)
 {
 }
 
-void ShootAtPlayerWhenNearAi::update(Entity::Id myEntityId,
+void DieWhenPlayerIsNearAI::update(Entity::Id myEntityId,
                              Entity::Id enemyEntityId,
                              EntityManager &entities,
                              double dt)
 {
    auto position = entities.component<Position>(myEntityId);
+   auto volume = entities.component<Volume>(myEntityId);
    auto enemyPosition = entities.component<Position>(enemyEntityId);
-   auto gun = entities.component<Gun>(myEntityId);
 
    if (!position.valid() ||
        !enemyPosition.valid() ||
-       !gun.valid())
+           entities.get(myEntityId).has_component<DeathSentence>())
    {
       return;
    }
@@ -34,26 +38,15 @@ void ShootAtPlayerWhenNearAi::update(Entity::Id myEntityId,
    sf::Vector2f v(enemyPosition->position.x - position->position.x,
                   enemyPosition->position.y - position->position.y);
 
-   float distance = math::magnitude(v);
-
-   if(distance > 150)
-       return;
-
-   // To be changed, no timer, no direction
-   math::normalize(v);
-   gun->direction = v;
-
-   if (gun->isMainFirePressed)
-   {
-      gun->isMainFirePressed = false;
-      m_shootTimer = 1500.0;
-   }
-   else if (m_shootTimer <= 0.0)
-   {
-      gun->isMainFirePressed = true;
-   }
+   if(math::magnitude(v) > m_distanceThreshold)
+       m_timeClose = 0.0;
    else
+       m_timeClose += dt;
+
+   if (m_timeClose >= m_timeThreshold)
    {
-      m_shootTimer -= dt;
+       volume->m_boxes.clear();
+       volume->m_boxes.push_back(CollisionBox(64, 64)); // Should check animation size
+       entities.get(myEntityId).assign<DeathSentence>(400.0); // cant be longer than the animation since the volume is stil there..
    }
 }

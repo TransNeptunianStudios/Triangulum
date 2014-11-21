@@ -114,6 +114,6 @@ Animator AnimationFactory::mineDeathAnimation()
     animation.coordList.push_back(sf::IntRect(32*11, 32*9, 64, 64));
     animation.coordList.push_back(sf::IntRect(32*13, 32*9, 64, 64));
     animation.style = AS_RUN_ONCE;
-    animation.timePerFrame = 5000.0/3.0;
+    animation.timePerFrame = 400.0/3.0;
     return animation;
 }

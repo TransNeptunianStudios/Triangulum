@@ -1,13 +1,13 @@
-#ifndef SHOOTATPLAYERWHENNEARAI_H
-#define SHOOTATPLAYERWHENNEARAI_H
+#ifndef DIEWHENPLAYERISNEARAI_H
+#define DIEWHENPLAYERISNEARAI_H
 
 #include "ai/IAi.h"
 
-class ShootAtPlayerWhenNearAi : public IAi
+class DieWhenPlayerIsNearAI : public IAi
 {
 public:
 
-   ShootAtPlayerWhenNearAi();
+   DieWhenPlayerIsNearAI();
 
    void setScrollSpeed(double scrollSpeed);
 
@@ -18,7 +18,10 @@ public:
 
 private:
 
-   double m_shootTimer;
+   const double m_distanceThreshold;
+   const double m_timeThreshold;
+   
+   double m_timeClose;
 };
 
-#endif // SHOOTATPLAYERWHENNEARAI_H
+#endif //DIEWHENPLAYERISNEARAI_H

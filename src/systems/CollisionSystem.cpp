@@ -155,12 +155,6 @@ void CollisionSystem::spaceShipDamaged(Entity& spaceShip,
 
    if (health->health == 0)
    {
-      AnimationContainer::Handle acHandle = spaceShip.component<AnimationContainer>();
-
-      acHandle->resetAnimation(AT_Movement);
-
-      acHandle->setAnimation(AnimationId(AT_Death, DestroyedDeathAnimation));
-
       spaceShip.assign<DeathSentence>(2000.0);
    }
    else
@@ -185,14 +179,6 @@ void CollisionSystem::enemyDamaged(Entity& enemyEntity,
    if (health->health == 0)
    {
       enemyEntity.component<Volume>().remove();
-      if(enemyEntity.has_component<Gun>())
-          enemyEntity.component<Gun>().remove();
-
-      AnimationContainer::Handle acHandle = enemyEntity.component<AnimationContainer>();
-
-      acHandle->resetAnimation(AT_Movement);
-
-      acHandle->setAnimation(AnimationId(AT_Death, DestroyedDeathAnimation));
 
       events.emit<EvPlaySound>(getDeathSound(enemy->type));
 

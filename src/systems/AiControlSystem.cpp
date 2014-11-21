@@ -47,7 +47,7 @@ void AiControlSystem::receive(const ComponentAddedEvent<Ai>& e)
       spAi.reset(new ShootAtPlayerAi());
       break;
    case AI_ID_SHOOT_AT_PLAYER_WHEN_NEAR:
-      spAi.reset(new ShootAtPlayerWhenNearAi());
+      spAi.reset(new DieWhenPlayerIsNearAI());
       break;
    default:
       break;
