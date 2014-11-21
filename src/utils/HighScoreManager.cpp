@@ -92,7 +92,10 @@ bool HighScoreManager::uploadHighScore()
    sf::Http::Request req("/highscore.php", sf::Http::Request::Post);
 
    std::ostringstream oss;
-   oss << "action=post_score&name=" << m_playerName << "&score=" << m_score;
+   oss << "action=post_score&name=" 
+       << m_playerName 
+       << "&score=" << m_score
+       << "&version=" << VERSION;
    req.setBody(oss.str());
 
    sf::Http http("trans-neptunian-studios.com");
