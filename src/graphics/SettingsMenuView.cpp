@@ -17,6 +17,7 @@ SettingsMenuView::SettingsMenuView()
 {
    m_headerText.setFont(FontRepository::getMenuFont());
    m_headerText.setCharacterSize(60);
+   m_headerText.setColor(sf::Color(255, 162, 0));
    m_headerText.setString("Settings");
 
    sf::FloatRect bounds(m_headerText.getLocalBounds());
