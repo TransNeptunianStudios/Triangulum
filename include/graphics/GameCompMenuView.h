@@ -21,6 +21,7 @@ public:
 
    void onKey(sf::Keyboard::Key key);
 
+   void onCancel(entityx::EventManager &eventManager);
 private:
 
    void updateText(sf::Text& text, const std::string& string);
@@ -44,6 +45,8 @@ private:
    sf::Text m_titleText;
 
    sf::Text m_statusText;
+
+   sf::Text m_infoText;
 
    sf::Text m_scoreText;
 

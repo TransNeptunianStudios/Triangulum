@@ -10,6 +10,7 @@ GameCompMenuView::GameCompMenuView(const std::string& menuTitle, int score)
 : m_score(score)
 , m_titleText()
 , m_statusText()
+, m_infoText()
 , m_scoreText()
 , m_playNameText()
 , m_highScoreTextList()
@@ -24,6 +25,13 @@ GameCompMenuView::GameCompMenuView(const std::string& menuTitle, int score)
 
    m_statusText.setFont(FontRepository::getMenuFont());
    m_statusText.setCharacterSize(30);
+
+   m_infoText.setFont(FontRepository::getMenuFont());
+   m_infoText.setCharacterSize(15);
+   updateText(m_infoText, "Press ESC to cancel");
+   sf::FloatRect bounds(m_infoText.getLocalBounds());
+   m_infoText.setOrigin( bounds.left-15,
+                         bounds.height+15);
 
    m_scoreText.setFont(FontRepository::getMenuFont());
    m_scoreText.setCharacterSize(30);
@@ -85,10 +93,12 @@ void GameCompMenuView::draw(sf::RenderWindow& window)
       m_statusText.setPosition(ScreenSize::width()*0.5,
                                ScreenSize::height()*0.5);
 
+      m_infoText.setPosition(0.0,
+                             ScreenSize::height());
+
       window.draw(m_titleText);
 
       window.draw(m_statusText);
-
       break;
    case GCS_W4PlayerNameInput:
       m_titleText.setPosition(ScreenSize::width()*0.5,
@@ -104,8 +114,9 @@ void GameCompMenuView::draw(sf::RenderWindow& window)
 
       window.draw(m_statusText);
 
-      window.draw(m_playNameText);
+      window.draw(m_infoText);
 
+      window.draw(m_playNameText);
       break;
    case GCS_ShowHighScore:
    {
@@ -192,6 +203,20 @@ void GameCompMenuView::onKey(sf::Keyboard::Key key)
          }
       }
       updateText(m_playNameText, playerName);
+   }
+}
+
+void GameCompMenuView::onCancel(EventManager& eventManager)
+{
+   switch (m_state)
+   {
+   case GCS_W4PlayerNameInput:
+      updateText(m_titleText, "High score");
+      updateHighScoreTextList();
+      m_state = GCS_ShowHighScore;
+      break;
+   default:
+      break;
    }
 }
 
