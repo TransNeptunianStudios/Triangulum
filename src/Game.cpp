@@ -16,6 +16,7 @@
 #include "systems/AudioSystem.h"
 #include "systems/RenderSystem.h"
 #include "systems/HudSystem.h"
+#include "systems/PickUpSystem.h"
 #include "systems/Events.h"
 #include "graphics/FontRepository.h"
 #include "ResourcePath.hpp"
@@ -143,6 +144,7 @@ void Game::update()
       m_systemManager.update<MovementSystem>(MS_PER_UPDATE);
       m_systemManager.update<GunSystem>(MS_PER_UPDATE);
       m_systemManager.update<BulletLifeTimeSystem>(MS_PER_UPDATE);
+      m_systemManager.update<PickUpSystem>(MS_PER_UPDATE);
       m_systemManager.update<CollisionSystem>(MS_PER_UPDATE);
       m_systemManager.update<DeathRowSystem>(MS_PER_UPDATE);
       m_systemManager.update<AnimationSystem>(MS_PER_UPDATE);
@@ -181,6 +183,7 @@ void Game::createSystems()
    m_systemManager.add<CollisionSystem>();
    m_systemManager.add<DeathRowSystem>();
    m_systemManager.add<AnimationSystem>();
+   m_systemManager.add<PickUpSystem>(m_entityManager);
    m_systemManager.add<AudioSystem>(m_audioManager);
    m_systemManager.add<RenderSystem>(m_window, spTexture);
    m_systemManager.add<HudSystem>(m_window, spTexture);

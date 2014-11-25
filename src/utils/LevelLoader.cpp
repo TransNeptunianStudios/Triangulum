@@ -10,6 +10,13 @@ void operator >> (const YAML::Node& vectorNode, sf::Vector2f& vec)
    vectorNode[1] >> vec.y;
 }
 
+void operator >> (const YAML::Node& pickUpNode, PickUpData& pickUp)
+{
+   pickUpNode["type"] >> pickUp.type;
+   pickUpNode["level_offset"] >> pickUp.levelOffset;
+   pickUpNode["start_x_pos"] >> pickUp.startXPos;
+}
+
 void operator >> (const YAML::Node& enemyNode, EnemyData& enemy)
 {
    enemyNode["type"] >> enemy.type;
@@ -57,6 +64,14 @@ void operator >> (const YAML::Node& levelNode, LevelData& level)
       EnemyData enemy;
       enemiesNode[i] >> enemy;
       level.enemies.push_back(enemy);
+   }
+
+   const YAML::Node& pickUpsNode = levelNode["pickups"];
+   for (unsigned i = 0; i < pickUpsNode.size(); ++i)
+   {
+      PickUpData pickUp;
+      pickUpsNode[i] >> pickUp;
+      level.pickUps.push_back(pickUp);
    }
 }
 

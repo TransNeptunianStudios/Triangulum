@@ -4,6 +4,7 @@
 #include "SFML/Window/Keyboard.hpp"
 #include "entityx/Event.h"
 #include "entityx/Entity.h"
+#include "components/PickUp.h"
 #include "SoundId.h"
 
 struct EvShowStartMenu: public entityx::Event<EvShowStartMenu>
@@ -127,6 +128,19 @@ struct EvCurrentScore : public entityx::Event<EvCurrentScore>
    }
 
    int currentScore;
+};
+
+struct EvPickUp : public entityx::Event<EvPickUp>
+{
+   EvPickUp(entityx::Entity::Id _id, PickUpType _pickUpType)
+   : id(_id)
+   , pickUpType(_pickUpType)
+   {
+   }
+
+   entityx::Entity::Id id;
+
+   PickUpType pickUpType;
 };
 
 #endif // EVENTS_H

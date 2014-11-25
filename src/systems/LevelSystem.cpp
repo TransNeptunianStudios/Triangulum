@@ -81,6 +81,11 @@ void LevelSystem::receive(const EvInit& e)
       addEnemy(enemy);
    }
 
+   for (auto& pickUp : level.pickUps)
+   {
+      addPickUp(pickUp);
+   }
+
    SortCreatables sortFunctor;
 
    m_creatables.sort(sortFunctor);
@@ -138,6 +143,30 @@ void LevelSystem::addEnemy(const EnemyData& enemy)
                                             enemy.speed,
                                             aiId))));
    }
+}
+
+void LevelSystem::addPickUp(const PickUpData& pickUp)
+{
+   double startXPos = ScreenSize::width() * pickUp.startXPos;
+
+   PickUpType pickUpType;
+   
+   // TODO: Use map
+   if (pickUp.type == "double_gun")
+   {
+      pickUpType = PUT_DOUBLE_GUN;
+   }
+   else if (pickUp.type == "one_health")
+   {
+      pickUpType = PUT_ONE_HEALTH;
+   }
+
+   m_creatables.push_back(
+      std::make_pair(
+         pickUp.levelOffset,
+         ICreatableSP(new PickUpCreator(pickUpType,
+                                        sf::Vector2f(startXPos, -16.0),
+                                        sf::Vector2f(0.0, m_scrollSpeed)))));
 }
 
 void LevelSystem::addBoss(const BossData& boss)

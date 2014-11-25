@@ -55,6 +55,8 @@ add_executable(
    src/components/Motion.cpp
    include/components/Obstacle.h
    src/components/Obstacle.cpp
+   include/components/PickUp.h
+   src/components/PickUp.cpp
    include/components/Position.h
    src/components/Position.cpp
    include/components/PlayerControl.h
@@ -107,6 +109,8 @@ add_executable(
    src/systems/MovementSystem.cpp
    include/systems/RenderSystem.h
    src/systems/RenderSystem.cpp
+   include/systems/PickUpSystem.h
+   src/systems/PickUpSystem.cpp
    include/systems/PlayerControlSystem.h
    src/systems/PlayerControlSystem.cpp
    include/utils/CollisionBox.h
@@ -128,7 +132,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/modules/")
 
 if(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 	set(YAMLCPP_STATIC_LIBRARY TRUE)
-	set(SFML_STATIC_LIBRARIES TRUE)
+	#set(SFML_STATIC_LIBRARIES TRUE)
     endif()
 
 find_package(YamlCpp REQUIRED)

@@ -606,3 +606,7 @@ enemies:
      level_offset: 256.0
      start_x_pos: 0.9
      speed: [0.0, 50.0]
+pickups:
+   - type: one_health
+     level_offset: 0.0
+     start_x_pos: 0.5

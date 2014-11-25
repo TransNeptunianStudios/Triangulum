@@ -44,6 +44,8 @@ private:
 
    void addEnemy(const EnemyData& enemy);
 
+   void addPickUp(const PickUpData& pickUp);
+
    void addBoss(const BossData& boss);
 
    entityx::EntityManager& m_entityManager;

@@ -330,3 +330,25 @@ void FirstBossCreator::create(Entity entity)
    entity.assign<AnimationContainer>(ac);
    entity.assign<Display>(sf::IntRect(32*7, 32*0, 96, 96));
 }
+
+
+PickUpCreator::PickUpCreator(PickUpType pickUpType,
+                             const sf::Vector2f& position,
+                             const sf::Vector2f& velocity)
+: m_pickUpType(pickUpType)
+, m_position(position)
+, m_velocity(velocity)
+{
+}
+
+void PickUpCreator::create(Entity entity)
+{
+   auto volume = Volume();
+   volume.m_boxes.push_back(CollisionBox(16, 16));
+
+   entity.assign<PickUp>(m_pickUpType);
+   entity.assign<Motion>(m_velocity);
+   entity.assign<Position>(m_position);
+   entity.assign<Volume>(volume);
+   entity.assign<Display>(sf::IntRect(32*0, 32*9, 16, 16));
+}

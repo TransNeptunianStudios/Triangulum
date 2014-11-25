@@ -24,8 +24,9 @@ void CollisionSystem::update(EntityManager& entities,
    // Spaceships hitting enemies
    SpaceShip::Handle spaceShip;
    Enemy::Handle enemy;
-   Position::Handle spaceShipPos, enemyPos;
-   Volume::Handle spaceShipVol, enemyVol;
+   PickUp::Handle pickUp;
+   Position::Handle spaceShipPos, enemyPos, pickUpPos;
+   Volume::Handle spaceShipVol, enemyVol, pickUpVol;
    Health::Handle spaceShipHealth;
    for (Entity spaceShipEntity : entities.entities_with_components(spaceShip, spaceShipPos, spaceShipVol, spaceShipHealth))
    {
@@ -49,6 +50,19 @@ void CollisionSystem::update(EntityManager& entities,
                                enemyVol.get()))
             {
                spaceShipDamaged(spaceShipEntity, events);
+               break;
+            }
+         }
+
+         for (Entity pickUpEntity : entities.entities_with_components(pickUp, pickUpPos, pickUpVol))
+         {
+            if (checkCollision(spaceShipPos.get(),
+                               spaceShipVol.get(),
+                               pickUpPos.get(),
+                               pickUpVol.get()))
+            {
+               events.emit<EvPickUp>(spaceShipEntity.id(), pickUp->pickUpType);
+               pickUpEntity.destroy();
                break;
             }
          }

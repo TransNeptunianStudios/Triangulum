@@ -3,6 +3,13 @@
 
 #include "SFML/System/Vector2.hpp"
 
+struct PickUpData
+{
+   std::string type;
+   double levelOffset;
+   double startXPos;
+};
+
 struct EnemyData
 {
    std::string type;
@@ -39,6 +46,7 @@ struct LevelData
    BossData boss;
    std::vector<ObstacleData> obstacles;
    std::vector<EnemyData> enemies;
+   std::vector<PickUpData> pickUps;
 };
 
 class LevelLoader

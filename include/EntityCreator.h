@@ -7,6 +7,7 @@
 #include "systems/BulletType.h"
 #include "ICreatable.h"
 #include "ai/IAi.h"
+#include "components/PickUp.h"
 
 class SplashScreenCreator : public ICreatable
 {
@@ -209,6 +210,25 @@ private:
    sf::Vector2f m_position;
 
    double m_scrollSpeed;
+};
+
+class PickUpCreator : public ICreatable
+{
+public:
+
+   PickUpCreator(PickUpType pickUpType,
+                 const sf::Vector2f& position,
+                 const sf::Vector2f& velocity);
+
+   void create(entityx::Entity entity);
+
+private:
+
+   PickUpType m_pickUpType;
+
+   sf::Vector2f m_position;
+
+   sf::Vector2f m_velocity;
 };
 
 #endif // ENTITYCREATOR_H
